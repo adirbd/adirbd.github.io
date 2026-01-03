@@ -17,7 +17,7 @@
   
   <!-- Illustrated Profile Picture (left side) -->
   <g transform="translate(200, 315)">
-    <image href="Snowy Alpine Village Stroll.png" width="300" height="400" x="-150" y="-200" preserveAspectRatio="xMidYMid meet" />
+    <image href="profile-photo.png" width="300" height="400" x="-150" y="-200" preserveAspectRatio="xMidYMid meet" />
   </g>
   
   <!-- Main Content (right side) -->
