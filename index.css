@@ -13,7 +13,7 @@
     font-family: 'Jost';
     font-style: normal;
     font-weight: 400;
-    src: url('./fonts/Jost-Regular.ttf') format('woff');
+    src: url('./fonts/Jost-Regular.ttf') format('truetype');
 }
 
 * {
@@ -90,12 +90,6 @@ body {
 @media(max-width: 1240px) {
     .row {
         padding: 0 var(--gutter-medium);
-    }
-}
-
-@media(max-width: 600px) {
-    .row {
-        padding: 0 var(--gutter-normal);
     }
 }
 

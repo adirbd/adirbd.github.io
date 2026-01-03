@@ -14,6 +14,9 @@
   <!-- Open Graph / Facebook -->
   <meta property="og:type" content="website" />
   <meta property="og:url" content="https://adirbd.github.io/he.html" />
+  <meta property="og:site_name" content="אדיר בן דוד" />
+  <meta property="og:locale" content="he_IL" />
+  <meta property="og:locale:alternate" content="en_US" />
   <meta property="og:title" content="אדיר בן דוד | מהנדס DevOps מתל אביב, ישראל" />
   <meta property="og:description" content="מהנדס DevOps עם 5+ שנות ניסיון בצק פוינט, מתמחה באוטומציה, פייפליינים של CI/CD ותשתיות ענן יציבות. גר בתל אביב, ישראל." />
   <meta property="og:image" content="https://adirbd.github.io/images/og-image.png" />
@@ -31,6 +34,7 @@
   <!-- hreflang for SEO -->
   <link rel="alternate" hreflang="en" href="https://adirbd.github.io/" />
   <link rel="alternate" hreflang="he" href="https://adirbd.github.io/he.html" />
+  <link rel="alternate" hreflang="x-default" href="https://adirbd.github.io/" />
   <link rel="canonical" href="https://adirbd.github.io/he.html" />
   
   <!-- Schema.org structured data -->
@@ -67,6 +71,8 @@
   }
   </script>
   
+  <link rel="preload" href="./fonts/HKGrotesk-Regular.woff" as="font" type="font/woff" crossorigin />
+  <link rel="preload" href="./fonts/Jost-Regular.ttf" as="font" type="font/truetype" crossorigin />
   <link rel="stylesheet" href="index.css" />
 </head>
 
@@ -119,7 +125,7 @@
           </div>
 
           <div class="about__photo-container">
-            <img class="about__photo" src="./images/Snowy Alpine Village Stroll.png" alt="אדיר בן דוד" />
+            <img class="about__photo" src="./images/Snowy Alpine Village Stroll.png" alt="אדיר בן דוד" loading="lazy" />
           </div>
         </div>
       </div>
@@ -188,7 +194,7 @@
     </div>
   </footer>
 
-  <a href="#top" class="back-to-top" title="חזרה למעלה">
+  <a href="#top" class="back-to-top" title="חזרה למעלה" aria-label="חזרה למעלה">
     <img src="./images/arrow-up.svg" alt="חזרה למעלה" class="back-to-top__image"/>
   </a>
   <script src="./index.js"></script>

@@ -14,6 +14,9 @@
   <!-- Open Graph / Facebook -->
   <meta property="og:type" content="website" />
   <meta property="og:url" content="https://adirbd.github.io/" />
+  <meta property="og:site_name" content="Adir Ben David" />
+  <meta property="og:locale" content="en_US" />
+  <meta property="og:locale:alternate" content="he_IL" />
   <meta property="og:title" content="Adir Ben David | DevOps Engineer based in Tel Aviv, Israel" />
   <meta property="og:description" content="DevOps Engineer with 5+ years at Check Point, specializing in automation, CI/CD pipelines, and reliable cloud infrastructure. Based in Tel Aviv, Israel." />
   <meta property="og:image" content="https://adirbd.github.io/images/og-image.png" />
@@ -31,6 +34,7 @@
   <!-- hreflang for SEO -->
   <link rel="alternate" hreflang="en" href="https://adirbd.github.io/" />
   <link rel="alternate" hreflang="he" href="https://adirbd.github.io/he.html" />
+  <link rel="alternate" hreflang="x-default" href="https://adirbd.github.io/" />
   <link rel="canonical" href="https://adirbd.github.io/" />
   
   <!-- Schema.org structured data -->
@@ -67,6 +71,8 @@
   }
   </script>
   
+  <link rel="preload" href="./fonts/HKGrotesk-Regular.woff" as="font" type="font/woff" crossorigin />
+  <link rel="preload" href="./fonts/Jost-Regular.ttf" as="font" type="font/truetype" crossorigin />
   <link rel="stylesheet" href="index.css" />
 </head>
 
@@ -119,7 +125,7 @@
           </div>
 
           <div class="about__photo-container">
-            <img class="about__photo" src="./images/Snowy Alpine Village Stroll.png" alt="Adir Ben David" />
+            <img class="about__photo" src="./images/Snowy Alpine Village Stroll.png" alt="Adir Ben David" loading="lazy" />
           </div>
         </div>
       </div>
@@ -188,7 +194,7 @@
     </div>
   </footer>
 
-  <a href="#top" class="back-to-top" title="Back to Top">
+  <a href="#top" class="back-to-top" title="Back to Top" aria-label="Back to top">
     <img src="./images/arrow-up.svg" alt="Back to Top" class="back-to-top__image"/>
   </a>
   <script src="./index.js"></script>
