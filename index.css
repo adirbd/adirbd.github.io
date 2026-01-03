@@ -611,3 +611,50 @@ body:not(.user-is-tabbing) a:focus {
         padding: var(--gutter-medium) 0;
     } 
 }
+
+/* --------------------------------------- */
+/* ----- RTL Support (Hebrew) ----- */
+/* --------------------------------------- */
+
+[dir="rtl"] .nav__items {
+    flex-direction: row-reverse;
+}
+
+[dir="rtl"] .nav__item:not(:last-child) {
+    margin-right: 0;
+    margin-left: var(--gutter-medium);
+}
+
+[dir="rtl"] .about__content {
+    flex-direction: row;
+}
+
+[dir="rtl"] .about__photo-container {
+    margin: 0 0 0 var(--gutter-huge);
+}
+
+[dir="rtl"] .footer__social-link-item:not(:last-of-type) {
+    margin-right: 0;
+    margin-left: var(--gutter-small);
+}
+
+@media(max-width: 900px) {
+    [dir="rtl"] .about__content {
+        flex-direction: column-reverse;
+    }
+    
+    [dir="rtl"] .about__photo-container {
+        margin: 0 0 var(--gutter-normal) 0;
+    }
+}
+
+/* Language Switcher Button */
+.nav__lang-switcher {
+    padding: 0;
+    text-decoration: none;
+    transition: all 0.3s;
+}
+
+.nav__lang-switcher:hover {
+    opacity: 0.7;
+}
