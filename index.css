@@ -117,8 +117,15 @@ section {
 }
 
 img {
-    object-fit: contain;
     max-width: 100%;
+    height: auto;
+}
+
+.about__photo {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+    display: block;
 }
 
 /* --------------------------------------- */
@@ -494,6 +501,14 @@ body:not(.user-is-tabbing) a:focus {
 
 .about__photo-container {
     margin-bottom: var(--gutter-normal);
+    overflow: hidden;
+}
+
+.about__photo {
+    width: 100%;
+    height: auto;
+    display: block;
+    object-fit: cover;
 }
 
 @media(min-width: 901px) {
