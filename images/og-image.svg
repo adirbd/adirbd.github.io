@@ -29,13 +29,13 @@
     
     <!-- Subtitle -->
     <text x="0" y="15" font-family="Arial, sans-serif" font-size="32" font-weight="400" fill="rgba(255,255,255,0.95)" text-anchor="middle" dominant-baseline="middle">
-      <tspan x="0" dy="0">DevOps Engineer | Automation &amp; Infrastructure</tspan>
+      <tspan x="0" dy="0">Working with systems, automation, and infrastructure</tspan>
     </text>
     
     <!-- CTA Button -->
-    <rect x="-120" y="75" width="240" height="60" rx="8" fill="#ff6b6b"/>
+    <rect x="-80" y="75" width="160" height="60" rx="8" fill="#ff6b6b"/>
     <text x="0" y="110" font-family="Arial, sans-serif" font-size="24" font-weight="600" fill="white" text-anchor="middle" dominant-baseline="middle">
-      <tspan x="0" dy="0">Visit My Portfolio →</tspan>
+      <tspan x="0" dy="0">Read more</tspan>
     </text>
   </g>
 </svg>
