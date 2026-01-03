@@ -16,25 +16,25 @@
   <rect width="1200" height="630" fill="url(#grid)"/>
   
   <!-- Logo (left side) -->
-  <g transform="translate(150, 315)">
-    <image href="../favicon-min.svg" width="200" height="200" x="-100" y="-100" />
+  <g transform="translate(200, 315)">
+    <image href="../favicon-min.svg" width="180" height="180" x="-90" y="-90" />
   </g>
   
-  <!-- Main Content -->
-  <g transform="translate(700, 250)">
+  <!-- Main Content (centered) -->
+  <g transform="translate(650, 315)">
     <!-- Headline -->
-    <text x="0" y="0" font-family="Arial, sans-serif" font-size="64" font-weight="700" fill="white" text-anchor="middle" dominant-baseline="middle">
+    <text x="0" y="-65" font-family="Arial, sans-serif" font-size="64" font-weight="700" fill="white" text-anchor="middle" dominant-baseline="middle">
       <tspan x="0" dy="0">Adir Ben David</tspan>
     </text>
     
     <!-- Subtitle -->
-    <text x="0" y="80" font-family="Arial, sans-serif" font-size="32" font-weight="400" fill="rgba(255,255,255,0.95)" text-anchor="middle" dominant-baseline="middle">
+    <text x="0" y="15" font-family="Arial, sans-serif" font-size="32" font-weight="400" fill="rgba(255,255,255,0.95)" text-anchor="middle" dominant-baseline="middle">
       <tspan x="0" dy="0">DevOps Engineer | Automation &amp; Infrastructure</tspan>
     </text>
     
     <!-- CTA Button -->
-    <rect x="-120" y="140" width="240" height="60" rx="8" fill="#ff6b6b"/>
-    <text x="0" y="175" font-family="Arial, sans-serif" font-size="24" font-weight="600" fill="white" text-anchor="middle" dominant-baseline="middle">
+    <rect x="-120" y="75" width="240" height="60" rx="8" fill="#ff6b6b"/>
+    <text x="0" y="110" font-family="Arial, sans-serif" font-size="24" font-weight="600" fill="white" text-anchor="middle" dominant-baseline="middle">
       <tspan x="0" dy="0">Visit My Portfolio →</tspan>
     </text>
   </g>
