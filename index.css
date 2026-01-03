@@ -620,8 +620,11 @@ body:not(.user-is-tabbing) a:focus {
     flex-direction: row-reverse;
 }
 
-[dir="rtl"] .nav__item:not(:last-child) {
+[dir="rtl"] .nav__item {
     margin-right: 0;
+}
+
+[dir="rtl"] .nav__item:not(:last-child) {
     margin-left: var(--gutter-medium);
 }
 
