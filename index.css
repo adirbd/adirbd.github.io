@@ -45,11 +45,11 @@
     --container-medium-width: 700px; 
     --container-small-width: 500px;
 
-    --gutter-huge: 12rem;
-    --gutter-medium: 6rem;
-    --gutter-normal: 3rem;
-    --gutter-small-1: 2.5rem;
-    --gutter-small: 2rem;
+    --gutter-huge: 8rem;
+    --gutter-medium: 4rem;
+    --gutter-normal: 2.5rem;
+    --gutter-small-1: 2rem;
+    --gutter-small: 1.5rem;
 
     --border-light: 1px solid rgb(36, 35, 35);
 }
@@ -104,6 +104,18 @@ section {
     border-bottom: var(--border-light);
 }
 
+@media(max-width: 900px) {
+    section {
+        padding: var(--gutter-medium) 0;
+    }
+}
+
+@media(max-width: 500px) {
+    section {
+        padding: var(--gutter-normal) 0;
+    }
+}
+
 img {
     object-fit: contain;
     max-width: 100%;
@@ -136,7 +148,13 @@ h3 {
 
 h2 {
     font-size: var(--font-size-large);
-    margin-bottom: var(--gutter-medium);
+    margin-bottom: var(--gutter-normal);
+}
+
+@media(max-width: 500px) {
+    h2 {
+        margin-bottom: var(--gutter-small);
+    }
 }
 
 h2::after {
@@ -432,6 +450,12 @@ body:not(.user-is-tabbing) a:focus {
     font-size: var(--font-size-medium);
 }
 
+@media(max-width: 900px) {
+    .header__text p {
+        margin: 1rem 0 2.5rem;
+    }
+}
+
 @media(max-width: 500px) {
     .header {
         text-align: center;
@@ -439,6 +463,7 @@ body:not(.user-is-tabbing) a:focus {
 
     .header__text p {
         transform: scale(.8);
+        margin: 0.8rem 0 2rem;
     }
 }
 
@@ -457,6 +482,13 @@ body:not(.user-is-tabbing) a:focus {
     .about__content {
         flex-direction: column-reverse;
         align-items: initial;
+        gap: var(--gutter-medium);
+    }
+}
+
+@media(max-width: 500px) {
+    .about__content {
+        gap: var(--gutter-normal);
     }
 }
 
