@@ -444,6 +444,7 @@ body:not(.user-is-tabbing) a:focus {
     display: flex;
     flex-direction: row-reverse;
     align-items: center;
+    gap: var(--gutter-huge);
 }
 
 @media(max-width: 900px) {
@@ -464,15 +465,6 @@ body:not(.user-is-tabbing) a:focus {
     
     .about__photo-container {
         flex: 1;
-        margin: 0 var(--gutter-huge) 0 0;
-    }
-    
-    [dir="rtl"] .about__photo-container {
-        margin: 0 0 0 var(--gutter-huge);
-    }
-    
-    [dir="rtl"] .about__text {
-        margin-right: 0;
     }
 }
 
@@ -536,15 +528,6 @@ body:not(.user-is-tabbing) a:focus {
 
 [dir="rtl"] .about__content {
     flex-direction: row;
-}
-
-[dir="rtl"] .about__photo-container {
-    margin: 0 0 0 var(--gutter-huge);
-}
-
-[dir="rtl"] .about__text {
-    margin-right: 0;
-    margin-left: 0;
 }
 
 [dir="rtl"] .footer__social-link-item:not(:last-of-type) {
