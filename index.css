@@ -625,7 +625,7 @@ body:not(.user-is-tabbing) a:focus {
 /* --------------------------------------- */
 
 [dir="rtl"] .nav {
-    justify-content: flex-start;
+    justify-content: flex-end;
 }
 
 [dir="rtl"] .nav__items {
