@@ -525,6 +525,18 @@ body:not(.user-is-tabbing) a:focus {
 /* ----- Contact ----- */
 /* --------------------------------------- */
 
+.professional__content {
+    max-width: var(--container-medium-width);
+}
+
+.professional__content p {
+    margin-bottom: var(--gutter-small);
+}
+
+.professional__content p:last-child {
+    margin-bottom: 0;
+}
+
 .contact__info {
     max-width: var(--container-medium-width);
 }
