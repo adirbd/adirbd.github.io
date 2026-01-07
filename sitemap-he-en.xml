@@ -4,18 +4,16 @@
   <url>
     <loc>https://adirbd.github.io/</loc>
     <lastmod>2026-01-07</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>1.0</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://adirbd.github.io/"/>
     <xhtml:link rel="alternate" hreflang="he" href="https://adirbd.github.io/he.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://adirbd.github.io/"/>
   </url>
   <url>
     <loc>https://adirbd.github.io/he.html</loc>
     <lastmod>2026-01-07</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>1.0</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://adirbd.github.io/"/>
     <xhtml:link rel="alternate" hreflang="he" href="https://adirbd.github.io/he.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://adirbd.github.io/"/>
   </url>
 </urlset>
 
