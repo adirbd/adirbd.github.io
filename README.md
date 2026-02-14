@@ -4,8 +4,8 @@ Bilingual (English/Hebrew) personal portfolio website.
 
 ## Live Site
 
-- English: https://adirbd.github.io/
-- Hebrew: https://adirbd.github.io/he.html
+- English: https://www.adirbd.com/
+- Hebrew: https://www.adirbd.com/he.html
 
 ## Features
 

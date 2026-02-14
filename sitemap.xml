@@ -3,20 +3,25 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
         xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
-    <loc>https://adirbd.github.io/</loc>
-    <lastmod>2026-01-07</lastmod>
+    <loc>https://www.adirbd.com/</loc>
+    <lastmod>2026-02-14</lastmod>
     <changefreq>monthly</changefreq>
     <priority>1.0</priority>
-    <xhtml:link rel="alternate" hreflang="en" href="https://adirbd.github.io/"/>
-    <xhtml:link rel="alternate" hreflang="he" href="https://adirbd.github.io/he.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.adirbd.com/"/>
+    <xhtml:link rel="alternate" hreflang="en-US" href="https://www.adirbd.com/"/>
+    <xhtml:link rel="alternate" hreflang="he" href="https://www.adirbd.com/he.html"/>
+    <xhtml:link rel="alternate" hreflang="he-IL" href="https://www.adirbd.com/he.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.adirbd.com/"/>
   </url>
   <url>
-    <loc>https://adirbd.github.io/he.html</loc>
-    <lastmod>2026-01-07</lastmod>
+    <loc>https://www.adirbd.com/he.html</loc>
+    <lastmod>2026-02-14</lastmod>
     <changefreq>monthly</changefreq>
     <priority>1.0</priority>
-    <xhtml:link rel="alternate" hreflang="en" href="https://adirbd.github.io/"/>
-    <xhtml:link rel="alternate" hreflang="he" href="https://adirbd.github.io/he.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.adirbd.com/"/>
+    <xhtml:link rel="alternate" hreflang="en-US" href="https://www.adirbd.com/"/>
+    <xhtml:link rel="alternate" hreflang="he" href="https://www.adirbd.com/he.html"/>
+    <xhtml:link rel="alternate" hreflang="he-IL" href="https://www.adirbd.com/he.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.adirbd.com/"/>
   </url>
 </urlset>
-
