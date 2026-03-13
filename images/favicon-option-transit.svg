@@ -1,31 +1,31 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="Transit-system hashtag favicon">
   <defs>
     <linearGradient id="hashBlue" x1="0" y1="0" x2="1" y2="1">
-      <stop offset="0%" stop-color="#38bdf8"/>
-      <stop offset="100%" stop-color="#0ea5e9"/>
+      <stop offset="0%" stop-color="#60a5fa"/>
+      <stop offset="100%" stop-color="#22d3ee"/>
     </linearGradient>
   </defs>
 
-  <rect width="64" height="64" rx="14" fill="#0f172a"/>
+  <rect width="64" height="64" rx="14" fill="#0b1530"/>
 
-  <!-- Hashtag motif behind A (communication + transit network feel) -->
-  <g stroke="url(#hashBlue)" stroke-linecap="round" opacity="0.85">
+  <!-- Hashtag motif: clearer, wider, and slightly offset so it remains visible behind A -->
+  <g stroke="url(#hashBlue)" stroke-linecap="round" opacity="0.98">
     <!-- vertical rails -->
-    <path d="M24 14 L18 50" stroke-width="3.2"/>
-    <path d="M40 14 L34 50" stroke-width="3.2"/>
+    <path d="M21 13 L15.5 51" stroke-width="4"/>
+    <path d="M43 13 L37.5 51" stroke-width="4"/>
     <!-- horizontal links -->
-    <path d="M15 24 H45" stroke-width="2.8"/>
-    <path d="M13 38 H43" stroke-width="2.8"/>
+    <path d="M12 23.5 H46" stroke-width="3.4"/>
+    <path d="M10 39.5 H44" stroke-width="3.4"/>
   </g>
 
-  <!-- subtle nodes to hint network/stations -->
-  <g fill="#67e8f9" opacity="0.9">
-    <circle cx="24" cy="24" r="1.6"/>
-    <circle cx="40" cy="24" r="1.6"/>
-    <circle cx="22" cy="38" r="1.6"/>
-    <circle cx="38" cy="38" r="1.6"/>
+  <!-- network nodes -->
+  <g fill="#7dd3fc" opacity="0.95">
+    <circle cx="21" cy="23.5" r="1.7"/>
+    <circle cx="43" cy="23.5" r="1.7"/>
+    <circle cx="18.5" cy="39.5" r="1.7"/>
+    <circle cx="40.5" cy="39.5" r="1.7"/>
   </g>
 
-  <!-- Foreground A for brand clarity at small sizes -->
-  <path d="M14 52 L30.5 12 H34 L50 52 H42.6 L39 42.8 H25.2 L21.4 52 Z M32 24.8 L28.2 34.7 H35.8 Z" fill="#ffffff"/>
+  <!-- Foreground A: slightly slimmer to reveal more of the hashtag -->
+  <path d="M15 52 L31 12 H33.8 L49 52 H42.2 L38.8 43 H25.3 L21.8 52 Z M32.2 24.8 L28.8 34.5 H35.4 Z" fill="#ffffff"/>
 </svg>
