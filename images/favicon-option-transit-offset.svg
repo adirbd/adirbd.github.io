@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="Transit hashtag offset favicon">
+  <defs>
+    <linearGradient id="g1" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#60a5fa"/>
+      <stop offset="100%" stop-color="#22d3ee"/>
+    </linearGradient>
+  </defs>
+  <rect width="64" height="64" rx="14" fill="#081235"/>
+
+  <!-- # shifted right so it is not swallowed by A -->
+  <g stroke="url(#g1)" stroke-linecap="round" opacity="0.98">
+    <path d="M27 12 L22 52" stroke-width="4.2"/>
+    <path d="M47 12 L42 52" stroke-width="4.2"/>
+    <path d="M17 23.5 H55" stroke-width="3.8"/>
+    <path d="M15 40 H53" stroke-width="3.8"/>
+  </g>
+
+  <!-- A slightly left -->
+  <path d="M10.5 52 L27.5 12 H30.8 L46 52 H39.2 L36.2 43.2 H22.3 L19.1 52 Z M29 25 L26 34.2 H32.7 Z" fill="#ffffff"/>
+</svg>
