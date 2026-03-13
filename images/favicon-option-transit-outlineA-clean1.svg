@@ -9,6 +9,14 @@
     <path d="M8 40 H50" stroke-width="4.2"/>
   </g>
 
+  <!-- subtle network nodes (minimal to avoid clutter at 16px) -->
+  <g fill="#a5f3fc" opacity="0.9">
+    <circle cx="22" cy="24" r="1.35"/>
+    <circle cx="42" cy="24" r="1.35"/>
+    <circle cx="19.5" cy="40" r="1.35"/>
+    <circle cx="39.5" cy="40" r="1.35"/>
+  </g>
+
   <!-- crisp A -->
   <path d="M15 52 L31 12 H33.8 L49 52 H42.3 L39 43.2 H25.2 L21.8 52 Z M32.2 24.8 L29 34.2 H35.4 Z"
         fill="#ffffff" stroke="#0b1530" stroke-width="1.4"/>
