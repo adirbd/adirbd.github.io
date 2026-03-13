@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="Engineering grid monogram favicon">
+  <rect width="64" height="64" rx="14" fill="#111827"/>
+  <!-- subtle engineering grid -->
+  <g stroke="#1f2937" stroke-width="1" opacity="0.7">
+    <path d="M16 0V64M32 0V64M48 0V64"/>
+    <path d="M0 16H64M0 32H64M0 48H64"/>
+  </g>
+  <!-- geometric ABD mark -->
+  <path d="M14 50 L28 14 H36 L50 50 H42.5 L39 41 H25 L21.5 50 Z M32 24 L28.7 34.5 H35.3 Z" fill="#f9fafb"/>
+  <path d="M40.5 18.5 H47.2 C51 18.5 53.4 20.5 53.4 23.7 C53.4 26 52.1 27.6 49.8 28.2 C52.7 28.8 54.4 30.6 54.4 33.6 C54.4 37.9 51.2 40.3 46.4 40.3 H40.5 Z" fill="#34d399"/>
+  <path d="M47.2 44 C47.2 47.7 44.1 50 39.8 50 H36.6 V44 Z" fill="#34d399"/>
+</svg>
