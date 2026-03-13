@@ -8,24 +8,24 @@
 
   <rect width="64" height="64" rx="14" fill="#0b1530"/>
 
-  <!-- Hashtag motif: clearer, wider, and slightly offset so it remains visible behind A -->
+  <!-- Clear hashtag behind A (horizontal bars extend beyond A so # is visible even at 16px) -->
   <g stroke="url(#hashBlue)" stroke-linecap="round" opacity="0.98">
-    <!-- vertical rails -->
-    <path d="M21 13 L15.5 51" stroke-width="4"/>
-    <path d="M43 13 L37.5 51" stroke-width="4"/>
-    <!-- horizontal links -->
-    <path d="M12 23.5 H46" stroke-width="3.4"/>
-    <path d="M10 39.5 H44" stroke-width="3.4"/>
+    <!-- vertical stems -->
+    <path d="M22 13 L16.5 51" stroke-width="4.1"/>
+    <path d="M42 13 L36.5 51" stroke-width="4.1"/>
+    <!-- horizontal bars, deliberately long -->
+    <path d="M9.5 24 H50.5" stroke-width="4"/>
+    <path d="M8.5 40 H49.5" stroke-width="4"/>
   </g>
 
-  <!-- network nodes -->
-  <g fill="#7dd3fc" opacity="0.95">
-    <circle cx="21" cy="23.5" r="1.7"/>
-    <circle cx="43" cy="23.5" r="1.7"/>
-    <circle cx="18.5" cy="39.5" r="1.7"/>
-    <circle cx="40.5" cy="39.5" r="1.7"/>
+  <!-- subtle station dots -->
+  <g fill="#a5f3fc" opacity="0.95">
+    <circle cx="22" cy="24" r="1.7"/>
+    <circle cx="42" cy="24" r="1.7"/>
+    <circle cx="19.5" cy="40" r="1.7"/>
+    <circle cx="39.5" cy="40" r="1.7"/>
   </g>
 
-  <!-- Foreground A: slightly slimmer to reveal more of the hashtag -->
-  <path d="M15 52 L31 12 H33.8 L49 52 H42.2 L38.8 43 H25.3 L21.8 52 Z M32.2 24.8 L28.8 34.5 H35.4 Z" fill="#ffffff"/>
+  <!-- Foreground A (narrowed center so hash bars stay visible) -->
+  <path d="M15 52 L31 12 H33.6 L49 52 H42.3 L39.1 43.2 H25.1 L21.7 52 Z M32.1 24.8 L29.1 34 H35.2 Z" fill="#ffffff"/>
 </svg>
