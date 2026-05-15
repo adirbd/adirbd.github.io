@@ -5,7 +5,7 @@ Bilingual (English/Hebrew) personal portfolio website.
 ## Live Site
 
 - English: https://www.adirbd.com/
-- Hebrew: https://www.adirbd.com/he.html
+- Hebrew: https://www.adirbd.com/he/
 
 ## Features
 
@@ -23,7 +23,7 @@ Bilingual (English/Hebrew) personal portfolio website.
 
 ## Maintenance
 
-Shared header/footer markup is synced with:
+Shared head/header/footer markup is synced with:
 
 ```bash
 python3 scripts/sync_shared.py
