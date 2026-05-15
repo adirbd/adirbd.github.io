@@ -1,65 +1,49 @@
-/* -----------------------------------------
-  Have focus outline only for keyboard users 
- ---------------------------------------- */
 
-const handleFirstTab = (e) => {
-  if(e.key === 'Tab') {
-    document.body.classList.add('user-is-tabbing')
+const root = document.documentElement;
+const themeToggle = document.querySelector('[data-theme-toggle]');
+const navToggle = document.querySelector('[data-nav-toggle]');
+const body = document.body;
+const storageKey = 'adirbd-theme';
 
-    window.removeEventListener('keydown', handleFirstTab)
-    window.addEventListener('mousedown', handleMouseDownOnce)
+const getPreferredTheme = () => {
+  const saved = localStorage.getItem(storageKey);
+  if (saved === 'light' || saved === 'dark') return saved;
+  return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+};
+
+const setTheme = (theme) => {
+  root.dataset.theme = theme;
+  localStorage.setItem(storageKey, theme);
+  if (themeToggle) {
+    themeToggle.setAttribute('aria-label', theme === 'dark' ? 'Switch to light mode' : 'Switch to dark mode');
+    themeToggle.querySelector('[data-theme-label]').textContent = theme === 'dark' ? 'Light' : 'Dark';
   }
+};
 
+setTheme(getPreferredTheme());
+
+if (themeToggle) {
+  themeToggle.addEventListener('click', () => {
+    setTheme(root.dataset.theme === 'dark' ? 'light' : 'dark');
+  });
 }
 
-const handleMouseDownOnce = () => {
-  document.body.classList.remove('user-is-tabbing')
+if (navToggle) {
+  navToggle.addEventListener('click', () => {
+    const open = body.classList.toggle('nav-open');
+    navToggle.setAttribute('aria-expanded', String(open));
+  });
 
-  window.removeEventListener('mousedown', handleMouseDownOnce)
-  window.addEventListener('keydown', handleFirstTab)
-}
-
-window.addEventListener('keydown', handleFirstTab)
-
-const backToTopButton = document.querySelector(".back-to-top");
-let isBackToTopRendered = false;
-
-if (backToTopButton) {
-  let alterStyles = (isBackToTopRendered) => {
-    backToTopButton.style.visibility = isBackToTopRendered ? "visible" : "hidden";
-    backToTopButton.style.opacity = isBackToTopRendered ? 1 : 0;
-    backToTopButton.style.transform = isBackToTopRendered
-      ? "scale(1)"
-      : "scale(0)";
-  };
-
-  // Debounce function for scroll events
-  let scrollTimeout;
-  const handleScroll = () => {
-    if (scrollTimeout) {
-      window.cancelAnimationFrame(scrollTimeout);
+  document.addEventListener('click', (event) => {
+    if (!body.classList.contains('nav-open')) return;
+    const insideMenu = event.target.closest('.nav-area') || event.target.closest('[data-nav-toggle]');
+    if (!insideMenu) {
+      body.classList.remove('nav-open');
+      navToggle.setAttribute('aria-expanded', 'false');
     }
-    scrollTimeout = window.requestAnimationFrame(() => {
-      if (window.scrollY > 700) {
-        if (!isBackToTopRendered) {
-          isBackToTopRendered = true;
-          alterStyles(isBackToTopRendered);
-        }
-      } else {
-        if (isBackToTopRendered) {
-          isBackToTopRendered = false;
-          alterStyles(isBackToTopRendered);
-        }
-      }
-    });
-  };
-
-  window.addEventListener("scroll", handleScroll, { passive: true });
+  });
 }
 
-// Set current year in footer
-const currentYear = new Date().getFullYear();
-const yearElement = document.getElementById('current-year');
-if (yearElement) {
-  yearElement.textContent = currentYear;
-}
+document.querySelectorAll('[data-year]').forEach((node) => {
+  node.textContent = new Date().getFullYear();
+});

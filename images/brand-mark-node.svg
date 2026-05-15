@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="Brand mark node network">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#2d6cdf"/>
+      <stop offset="100%" stop-color="#8ec5ff"/>
+    </linearGradient>
+  </defs>
+  <circle cx="32" cy="32" r="30" fill="url(#bg)"/>
+  <g stroke="#ffffff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" opacity="0.94">
+    <path d="M18 41 27 22 43 20 47 35 34 46 18 41z" fill="none"/>
+    <path d="M27 22 34 46"/>
+    <path d="M43 20 18 41"/>
+  </g>
+  <g fill="#ffffff">
+    <circle cx="18" cy="41" r="3.5"/>
+    <circle cx="27" cy="22" r="3.5"/>
+    <circle cx="43" cy="20" r="3.5"/>
+    <circle cx="47" cy="35" r="3.5"/>
+    <circle cx="34" cy="46" r="3.5"/>
+  </g>
+</svg>
