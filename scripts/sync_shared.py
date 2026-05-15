@@ -6,6 +6,7 @@ from pathlib import Path
 
 REPO = Path(__file__).resolve().parents[1]
 SITE_URL = 'https://www.adirbd.com'
+TODAY = '2026-05-15'
 PERSON_SCHEMA = {
     '@context': 'https://schema.org',
     '@type': 'Person',
@@ -256,6 +257,32 @@ def render_footer(lang: str) -> str:
 </footer>'''
 
 
+def render_sitemap() -> str:
+    lines = [
+        '<?xml version="1.0" encoding="UTF-8"?>',
+        '<?xml-stylesheet type="text/xsl" href="sitemap.xsl"?>',
+        '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"',
+        '        xmlns:xhtml="http://www.w3.org/1999/xhtml">',
+    ]
+    for meta in PAGES.values():
+        canonical = f'{SITE_URL}/{meta["slug"]}' if meta['slug'] else f'{SITE_URL}/'
+        lines.extend([
+            '  <url>',
+            f'    <loc>{canonical}</loc>',
+            f'    <lastmod>{TODAY}</lastmod>',
+            '    <changefreq>monthly</changefreq>',
+            f'    <priority>{"1.0" if canonical in (f"{SITE_URL}/", f"{SITE_URL}/he/") else "0.8"}</priority>',
+            f'    <xhtml:link rel="alternate" hreflang="en" href="{meta["en_href"]}"/>',
+            f'    <xhtml:link rel="alternate" hreflang="en-US" href="{meta["en_href"]}"/>',
+            f'    <xhtml:link rel="alternate" hreflang="he" href="{meta["he_href"]}"/>',
+            f'    <xhtml:link rel="alternate" hreflang="he-IL" href="{meta["he_href"]}"/>',
+            f'    <xhtml:link rel="alternate" hreflang="x-default" href="{meta["x_default"]}"/>',
+            '  </url>',
+        ])
+    lines.append('</urlset>')
+    return '\n'.join(lines) + '\n'
+
+
 def replace_section(text: str, start_tag: str, end_tag: str, replacement: str) -> str:
     start = text.index(start_tag)
     end = text.index(end_tag, start) + len(end_tag)
@@ -279,11 +306,24 @@ def sync_page(path_str: str, meta: dict[str, str]) -> bool:
     return False
 
 
+def write_if_changed(path: Path, content: str) -> bool:
+    old = path.read_text() if path.exists() else None
+    if old != content:
+        path.write_text(content)
+        return True
+    return False
+
+
 def main() -> int:
     changed = []
     for path_str, meta in PAGES.items():
         if sync_page(path_str, meta):
             changed.append(path_str)
+    sitemap = render_sitemap()
+    if write_if_changed(REPO / 'sitemap.xml', sitemap):
+        changed.append('sitemap.xml')
+    if write_if_changed(REPO / 'sitemap', sitemap):
+        changed.append('sitemap')
     if changed:
         print('Updated:')
         for item in changed:
