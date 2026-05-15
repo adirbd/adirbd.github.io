@@ -4,6 +4,10 @@ const themeToggle = document.querySelector('[data-theme-toggle]');
 const navToggle = document.querySelector('[data-nav-toggle]');
 const body = document.body;
 const storageKey = 'adirbd-theme';
+const isHebrew = (root.lang || '').toLowerCase().startsWith('he');
+const themeText = isHebrew
+  ? { light: 'בהיר', dark: 'כהה', toLight: 'מעבר למצב בהיר', toDark: 'מעבר למצב כהה' }
+  : { light: 'Light', dark: 'Dark', toLight: 'Switch to light mode', toDark: 'Switch to dark mode' };
 
 const getPreferredTheme = () => {
   const saved = localStorage.getItem(storageKey);
@@ -15,8 +19,8 @@ const setTheme = (theme) => {
   root.dataset.theme = theme;
   localStorage.setItem(storageKey, theme);
   if (themeToggle) {
-    themeToggle.setAttribute('aria-label', theme === 'dark' ? 'Switch to light mode' : 'Switch to dark mode');
-    themeToggle.querySelector('[data-theme-label]').textContent = theme === 'dark' ? 'Light' : 'Dark';
+    themeToggle.setAttribute('aria-label', theme === 'dark' ? themeText.toLight : themeText.toDark);
+    themeToggle.querySelector('[data-theme-label]').textContent = theme === 'dark' ? themeText.light : themeText.dark;
   }
 };
 
