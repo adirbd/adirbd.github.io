@@ -8,7 +8,7 @@ jobs:
   validate:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v5
         with:
           fetch-depth: 0 # sync_shared.py derives sitemap lastmod from git history
 
@@ -23,7 +23,7 @@ jobs:
       - name: Assets are real images under the size budget
         run: bash scripts/check_assets.sh
 
-      - uses: actions/setup-node@v4
+      - uses: actions/setup-node@v5
         with:
           node-version: 22
           cache: npm
