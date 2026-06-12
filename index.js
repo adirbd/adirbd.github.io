@@ -33,6 +33,12 @@ if (themeToggle) {
 }
 
 if (navToggle) {
+  const closeNav = () => {
+    if (!body.classList.contains('nav-open')) return;
+    body.classList.remove('nav-open');
+    navToggle.setAttribute('aria-expanded', 'false');
+  };
+
   navToggle.addEventListener('click', () => {
     const open = body.classList.toggle('nav-open');
     navToggle.setAttribute('aria-expanded', String(open));
@@ -42,9 +48,16 @@ if (navToggle) {
     if (!body.classList.contains('nav-open')) return;
     const insideMenu = event.target.closest('.nav-area') || event.target.closest('[data-nav-toggle]');
     if (!insideMenu) {
-      body.classList.remove('nav-open');
-      navToggle.setAttribute('aria-expanded', 'false');
+      closeNav();
     }
+  });
+
+  document.addEventListener('keydown', (event) => {
+    if (event.key === 'Escape') closeNav();
+  });
+
+  window.addEventListener('resize', () => {
+    if (window.matchMedia('(min-width: 921px)').matches) closeNav();
   });
 }
 

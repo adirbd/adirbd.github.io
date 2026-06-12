@@ -22,12 +22,14 @@
   --bg-strong: #ffffff;
   --surface-border: rgba(106, 132, 180, 0.18);
   --surface-shadow: 0 20px 50px rgba(33, 50, 86, 0.08);
+  --surface-shadow-hover: 0 28px 68px rgba(33, 50, 86, 0.14);
   --text: #1f2a44;
   --text-soft: #56637d;
   --heading: #172033;
   --accent: #2d6cdf;
   --accent-strong: #184db7;
   --accent-soft: rgba(45, 108, 223, 0.12);
+  --accent-sheen: rgba(255, 255, 255, 0.2);
   --divider: rgba(31, 42, 68, 0.09);
   --hero-glow: radial-gradient(circle at top, rgba(86, 145, 255, 0.14), transparent 45%);
   --max-width: 1160px;
@@ -44,12 +46,14 @@ html[data-theme='dark'] {
   --bg-strong: #121a2a;
   --surface-border: rgba(148, 180, 255, 0.16);
   --surface-shadow: 0 22px 56px rgba(2, 8, 20, 0.45);
+  --surface-shadow-hover: 0 30px 72px rgba(2, 8, 20, 0.58);
   --text: #d7def1;
   --text-soft: #98a8c9;
   --heading: #eef4ff;
   --accent: #79a8ff;
   --accent-strong: #a7c5ff;
   --accent-soft: rgba(121, 168, 255, 0.14);
+  --accent-sheen: rgba(255, 255, 255, 0.08);
   --divider: rgba(215, 222, 241, 0.08);
   --hero-glow: radial-gradient(circle at top, rgba(88, 137, 255, 0.18), transparent 50%);
 }
@@ -64,7 +68,26 @@ body {
   line-height: 1.65;
   transition: background-color 200ms ease, color 200ms ease;
 }
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  background:
+    radial-gradient(circle at 18% 6%, rgba(121, 168, 255, 0.08), transparent 28%),
+    radial-gradient(circle at 84% 0%, rgba(121, 168, 255, 0.06), transparent 22%);
+  opacity: 0.85;
+}
 body.nav-open { overflow: hidden; }
+body.nav-open::after {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background: rgba(3, 8, 18, 0.34);
+  backdrop-filter: blur(6px);
+  pointer-events: none;
+  z-index: 45;
+}
 a { color: inherit; text-decoration: none; }
 img { max-width: 100%; display: block; }
 button { font: inherit; }
@@ -108,7 +131,7 @@ button, a { -webkit-tap-highlight-color: transparent; }
   border-radius: 999px;
   display: block;
   background: linear-gradient(180deg, var(--accent), #b9d2ff);
-  box-shadow: none;
+  box-shadow: 0 0 0 1px var(--accent-sheen), 0 0 24px rgba(121, 168, 255, 0.28);
   flex: 0 0 3px;
 }
 .brand small {
@@ -123,6 +146,7 @@ button, a { -webkit-tap-highlight-color: transparent; }
   background: var(--bg-strong);
   color: var(--heading);
   box-shadow: var(--surface-shadow);
+  transition: transform 180ms ease, box-shadow 180ms ease, background-color 180ms ease;
 }
 
 .nav-area {
@@ -149,6 +173,7 @@ button, a { -webkit-tap-highlight-color: transparent; }
   border-radius: 999px;
   color: var(--text-soft);
   font-size: 0.96rem;
+  transition: background-color 180ms ease, color 180ms ease, transform 180ms ease, box-shadow 180ms ease;
 }
 .site-nav a:hover,
 .site-nav a[aria-current='page'] {
@@ -170,10 +195,12 @@ button, a { -webkit-tap-highlight-color: transparent; }
   min-height: 2.6rem;
   padding: 0.45rem 0.85rem;
   border-radius: 999px;
-  background: var(--bg-strong);
+  background: color-mix(in srgb, var(--bg-strong) 90%, transparent);
   border: 1px solid var(--surface-border);
   color: var(--heading);
   box-shadow: var(--surface-shadow);
+  backdrop-filter: blur(14px);
+  transition: transform 180ms ease, box-shadow 180ms ease, background-color 180ms ease, border-color 180ms ease;
 }
 .lang-switch { gap: 0.45rem; }
 .lang-switch .muted,
@@ -254,17 +281,22 @@ button, a { -webkit-tap-highlight-color: transparent; }
   border-radius: 999px;
   border: 1px solid transparent;
   font-weight: 600;
+  position: relative;
+  overflow: hidden;
+  transition: transform 180ms ease, box-shadow 180ms ease, border-color 180ms ease, background-color 180ms ease;
 }
 .button.primary {
-  background: linear-gradient(135deg, var(--accent), var(--accent-strong));
+  background:
+    linear-gradient(135deg, rgba(255, 255, 255, 0.12), transparent 45%),
+    linear-gradient(135deg, var(--accent), var(--accent-strong));
   color: white;
+  box-shadow: 0 18px 34px rgba(45, 108, 223, 0.22), inset 0 1px 0 rgba(255, 255, 255, 0.22);
 }
 .button.secondary {
-  background: transparent;
+  background: color-mix(in srgb, var(--bg-strong) 80%, transparent);
   border-color: var(--surface-border);
   color: var(--heading);
 }
-.button:hover { transform: translateY(-1px); }
 
 .hero-photo {
   padding: 1.1rem;
@@ -317,6 +349,44 @@ button, a { -webkit-tap-highlight-color: transparent; }
 }
 .surface-card {
   padding: 1.35rem;
+}
+.surface-card,
+.timeline-item,
+.note-card,
+.link-card,
+.contact-banner,
+.journeys-blueprint,
+.page-hero-band,
+.trip-card,
+.journeys-hero-grid article,
+.journeys-blueprint-grid > div,
+.contact-chip,
+.socials a {
+  position: relative;
+  overflow: hidden;
+  isolation: isolate;
+  transition: transform 180ms ease, box-shadow 180ms ease, border-color 180ms ease, background-color 180ms ease;
+}
+.surface-card::before,
+.timeline-item::before,
+.note-card::before,
+.link-card::before,
+.contact-banner::before,
+.journeys-blueprint::before,
+.page-hero-band::before,
+.trip-card::before,
+.journeys-hero-grid article::before,
+.journeys-blueprint-grid > div::before,
+.contact-chip::before,
+.socials a::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, var(--accent-sheen), transparent 30%);
+  opacity: 0;
+  transition: opacity 180ms ease;
+  pointer-events: none;
+  z-index: -1;
 }
 .surface-card h3,
 .timeline-item h3,
@@ -571,17 +641,23 @@ html[data-theme='dark'] .socials img {
   .nav-area {
     position: fixed;
     inset: calc(var(--header-height) + 0.35rem) 1rem auto;
+    z-index: 60;
+    width: min(100% - 2rem, 28rem);
+    max-height: calc(100vh - var(--header-height) - 1.5rem);
+    overflow: auto;
     display: grid;
     gap: 1rem;
     padding: 1rem;
-    background: var(--bg-strong);
+    background: color-mix(in srgb, var(--bg-strong) 88%, transparent);
     border: 1px solid var(--surface-border);
     box-shadow: var(--surface-shadow);
     border-radius: 24px;
     transform: translateY(-0.75rem);
     opacity: 0;
     pointer-events: none;
-    transition: opacity 180ms ease, transform 180ms ease;
+    backdrop-filter: blur(18px);
+    overscroll-behavior: contain;
+    transition: opacity 180ms ease, transform 180ms ease, box-shadow 180ms ease;
   }
   body.nav-open .nav-area {
     opacity: 1;
@@ -614,7 +690,9 @@ html[data-theme='dark'] .socials img {
   }
   .card-span-4,
   .card-span-5,
-  .card-span-7,
+  .card-span-7 {
+    grid-column: span 12;
+  }
 }
 
 @media (max-width: 720px) {
@@ -645,6 +723,74 @@ html[data-theme='dark'] .socials img {
     min-height: 220px;
   }
   .footer-inner { align-items: start; }
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .button:hover,
+  .button:focus-visible {
+    transform: translateY(-2px);
+    box-shadow: 0 22px 40px rgba(33, 50, 86, 0.16);
+  }
+
+  .button.primary:hover,
+  .button.primary:focus-visible {
+    box-shadow: 0 22px 42px rgba(45, 108, 223, 0.28), inset 0 1px 0 rgba(255, 255, 255, 0.3);
+  }
+
+  .site-nav a:hover,
+  .site-nav a:focus-visible,
+  .toggle:hover,
+  .toggle:focus-visible,
+  .lang-switch:hover,
+  .lang-switch:focus-visible,
+  .contact-chip:hover,
+  .contact-chip:focus-within,
+  .socials a:hover,
+  .socials a:focus-visible {
+    transform: translateY(-2px);
+    box-shadow: var(--surface-shadow-hover);
+    border-color: color-mix(in srgb, var(--accent) 32%, var(--surface-border));
+  }
+
+  .surface-card:hover,
+  .timeline-item:hover,
+  .note-card:hover,
+  .link-card:hover,
+  .contact-banner:hover,
+  .journeys-blueprint:hover,
+  .page-hero-band:hover,
+  .trip-card:hover,
+  .journeys-hero-grid article:hover,
+  .journeys-blueprint-grid > div:hover {
+    transform: translateY(-3px);
+    box-shadow: var(--surface-shadow-hover);
+    border-color: color-mix(in srgb, var(--accent) 24%, var(--surface-border));
+  }
+
+  .surface-card:hover::before,
+  .timeline-item:hover::before,
+  .note-card:hover::before,
+  .link-card:hover::before,
+  .contact-banner:hover::before,
+  .journeys-blueprint:hover::before,
+  .page-hero-band:hover::before,
+  .trip-card:hover::before,
+  .journeys-hero-grid article:hover::before,
+  .journeys-blueprint-grid > div:hover::before,
+  .contact-chip:hover::before,
+  .socials a:hover::before,
+  .button:hover::before {
+    opacity: 1;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    scroll-behavior: auto !important;
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+  }
 }
 
 
