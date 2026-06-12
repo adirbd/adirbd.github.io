@@ -18,6 +18,11 @@ const getPreferredTheme = () => {
 const setTheme = (theme) => {
   root.dataset.theme = theme;
   localStorage.setItem(storageKey, theme);
+  const themeColor = theme === 'dark' ? '#0d1320' : '#f6f8fc';
+  document.querySelectorAll('meta[name="theme-color"]').forEach((node) => {
+    node.setAttribute('content', themeColor);
+    node.removeAttribute('media');
+  });
   if (themeToggle) {
     themeToggle.setAttribute('aria-label', theme === 'dark' ? themeText.toLight : themeText.toDark);
     themeToggle.querySelector('[data-theme-label]').textContent = theme === 'dark' ? themeText.light : themeText.dark;

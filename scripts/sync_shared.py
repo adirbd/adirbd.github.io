@@ -2,11 +2,39 @@
 from __future__ import annotations
 
 import json
+import subprocess
+from datetime import date
 from pathlib import Path
 
 REPO = Path(__file__).resolve().parents[1]
 SITE_URL = 'https://www.adirbd.com'
-TODAY = '2026-05-15'
+# Applied before first paint so dark-mode visitors never flash light.
+THEME_BOOT_SCRIPT = (
+    "<script>(function(){try{var t=localStorage.getItem('adirbd-theme');"
+    "if(t!=='light'&&t!=='dark'){t=window.matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light';}"
+    "document.documentElement.dataset.theme=t;}catch(e){}})();</script>"
+)
+
+
+def absolute_url(href: str) -> str:
+    return href if href.startswith('http') else f'{SITE_URL}{href}'
+
+
+def git_lastmod(path_str: str) -> str:
+    dirty = subprocess.run(
+        ['git', 'status', '--porcelain', '--', path_str],
+        cwd=REPO, capture_output=True, text=True,
+    )
+    if dirty.stdout.strip():
+        # Uncommitted edits: assume they land today, so the committed
+        # sitemap matches what CI regenerates from the commit date.
+        return date.today().isoformat()
+    result = subprocess.run(
+        ['git', 'log', '-1', '--format=%cs', '--', path_str],
+        cwd=REPO, capture_output=True, text=True,
+    )
+    stamp = result.stdout.strip()
+    return stamp or date.today().isoformat()
 PERSON_SCHEMA = {
     '@context': 'https://schema.org',
     '@type': 'Person',
@@ -34,13 +62,14 @@ EN_NAV = [
     ('links.html', 'Links'),
     ('contact.html', 'Contact'),
 ]
+# Same reading order as EN_NAV; dir="rtl" already mirrors the visual layout.
 HE_NAV = [
-    ('/he/contact.html', 'יצירת קשר'),
-    ('/he/links.html', 'קישורים'),
-    ('/he/journeys.html', 'מסעות'),
-    ('/he/now.html', 'עכשיו'),
-    ('/he/work.html', 'עבודה'),
     ('/he/about.html', 'אודות'),
+    ('/he/work.html', 'עבודה'),
+    ('/he/now.html', 'עכשיו'),
+    ('/he/journeys.html', 'מסעות'),
+    ('/he/links.html', 'קישורים'),
+    ('/he/contact.html', 'יצירת קשר'),
 ]
 SOCIALS = [
     ('https://github.com/adirbd', 'GitHub', '/images/github.svg', 'GitHub'),
@@ -168,12 +197,13 @@ def render_head(meta: dict[str, str]) -> str:
   <meta name="description" content="{meta['description']}" />
   <meta name="robots" content="index,follow,max-image-preview:large,max-snippet:-1,max-video-preview:-1" />
   <link rel="canonical" href="{canonical}" />
-  
-  <link rel="alternate" hreflang="en" href="{meta['en_href']}" />
-  <link rel="alternate" hreflang="en-US" href="{meta['en_href']}" />
-  <link rel="alternate" hreflang="he" href="{meta['he_href']}" />
-  <link rel="alternate" hreflang="he-IL" href="{meta['he_href']}" />
-  <link rel="alternate" hreflang="x-default" href="{meta['x_default']}" />
+  <meta name="theme-color" content="#f6f8fc" media="(prefers-color-scheme: light)" />
+  <meta name="theme-color" content="#0d1320" media="(prefers-color-scheme: dark)" />
+  <link rel="alternate" hreflang="en" href="{absolute_url(meta['en_href'])}" />
+  <link rel="alternate" hreflang="en-US" href="{absolute_url(meta['en_href'])}" />
+  <link rel="alternate" hreflang="he" href="{absolute_url(meta['he_href'])}" />
+  <link rel="alternate" hreflang="he-IL" href="{absolute_url(meta['he_href'])}" />
+  <link rel="alternate" hreflang="x-default" href="{absolute_url(meta['x_default'])}" />
   <link rel="icon" type="image/svg+xml" href="{prefix}images/favicon-transit.svg" />
   <link rel="alternate icon" type="image/png" href="{prefix}images/favicon.png" />
   <meta property="og:type" content="website" />
@@ -185,13 +215,16 @@ def render_head(meta: dict[str, str]) -> str:
   <meta property="og:description" content="{meta['description']}" />
   <meta property="og:image" content="{SITE_URL}/images/og-image.png" />
   <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:site" content="@adirbd" />
+  <meta name="twitter:creator" content="@adirbd" />
   <meta name="twitter:title" content="{meta['title']}" />
   <meta name="twitter:description" content="{meta['description']}" />
   <meta name="twitter:image" content="{SITE_URL}/images/og-image.png" />
   <script type="application/ld+json">{json_script(PERSON_SCHEMA)}</script>
   <script type="application/ld+json">{json_script(webpage_schema)}</script>
-  <link rel="preload" href="{prefix}fonts/HKGrotesk-Regular.woff" as="font" type="font/woff" crossorigin />
-  <link rel="preload" href="{prefix}fonts/Jost-Regular.ttf" as="font" type="font/truetype" crossorigin />
+  {THEME_BOOT_SCRIPT}
+  <link rel="preload" href="{prefix}fonts/HKGrotesk-Regular.woff2" as="font" type="font/woff2" crossorigin />
+  <link rel="preload" href="{prefix}fonts/Jost-Regular.woff2" as="font" type="font/woff2" crossorigin />
   <link rel="stylesheet" href="{prefix}index.css" />
 </head>'''
 
@@ -233,13 +266,13 @@ def render_footer(lang: str) -> str:
         home = '/he/'
         about = '/he/about.html'
         contact = '/he/contact.html'
-        line = 'נבנה כך שיישאר פשוט, דו־לשוני וקל לתחזוקה.'
+        line = 'תל אביב · © <span data-year>2026</span> אדיר בן דוד'
         labels = ('בית', 'אודות', 'יצירת קשר')
     else:
         home = '/'
         about = '/about.html'
         contact = '/contact.html'
-        line = 'Built to stay simple, bilingual, and easy to maintain.'
+        line = 'Tel Aviv · © <span data-year>2026</span> Adir Ben David'
         labels = ('Home', 'About', 'Contact')
     socials = ''.join(
         f'<a href="{href}" target="_blank" rel="noopener noreferrer" aria-label="{aria}"><img src="{icon}" alt="{alt}"></a>'
@@ -264,19 +297,19 @@ def render_sitemap() -> str:
         '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"',
         '        xmlns:xhtml="http://www.w3.org/1999/xhtml">',
     ]
-    for meta in PAGES.values():
+    for path_str, meta in PAGES.items():
         canonical = f'{SITE_URL}/{meta["slug"]}' if meta['slug'] else f'{SITE_URL}/'
         lines.extend([
             '  <url>',
             f'    <loc>{canonical}</loc>',
-            f'    <lastmod>{TODAY}</lastmod>',
+            f'    <lastmod>{git_lastmod(path_str)}</lastmod>',
             '    <changefreq>monthly</changefreq>',
             f'    <priority>{"1.0" if canonical in (f"{SITE_URL}/", f"{SITE_URL}/he/") else "0.8"}</priority>',
-            f'    <xhtml:link rel="alternate" hreflang="en" href="{meta["en_href"]}"/>',
-            f'    <xhtml:link rel="alternate" hreflang="en-US" href="{meta["en_href"]}"/>',
-            f'    <xhtml:link rel="alternate" hreflang="he" href="{meta["he_href"]}"/>',
-            f'    <xhtml:link rel="alternate" hreflang="he-IL" href="{meta["he_href"]}"/>',
-            f'    <xhtml:link rel="alternate" hreflang="x-default" href="{meta["x_default"]}"/>',
+            f'    <xhtml:link rel="alternate" hreflang="en" href="{absolute_url(meta["en_href"])}"/>',
+            f'    <xhtml:link rel="alternate" hreflang="en-US" href="{absolute_url(meta["en_href"])}"/>',
+            f'    <xhtml:link rel="alternate" hreflang="he" href="{absolute_url(meta["he_href"])}"/>',
+            f'    <xhtml:link rel="alternate" hreflang="he-IL" href="{absolute_url(meta["he_href"])}"/>',
+            f'    <xhtml:link rel="alternate" hreflang="x-default" href="{absolute_url(meta["x_default"])}"/>',
             '  </url>',
         ])
     lines.append('</urlset>')

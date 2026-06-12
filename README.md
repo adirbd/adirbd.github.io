@@ -24,11 +24,22 @@ Bilingual (English/Hebrew) personal portfolio website.
 
 ## Maintenance
 
-Shared head/header/footer markup is synced with:
+Shared head/header/footer markup (and the sitemap) is synced with:
 
 ```bash
 python3 scripts/sync_shared.py
 ```
+
+Run it after editing any page; CI fails if pages drift from the script's output.
+
+Image assets are validated with:
+
+```bash
+bash scripts/check_assets.sh
+```
+
+This rejects files over 400KB and files whose extension doesn't match their
+real type (e.g. an HTML error page saved as `.jpg`).
 
 ## Validation
 
@@ -46,3 +57,11 @@ npm run test:e2e
 
 The Playwright config starts a local static server from the repository root. Set
 `BASE_URL` to override the default `http://127.0.0.1:8000`.
+
+## CI
+
+`.github/workflows/ci.yml` runs on every push and pull request:
+
+1. Sync drift check (`sync_shared.py` + clean `git diff`)
+2. Asset guard (`check_assets.sh`)
+3. Playwright smoke and link tests

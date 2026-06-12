@@ -3,14 +3,18 @@
   font-family: 'Hk Grotesk';
   font-style: normal;
   font-weight: 400;
-  src: url('./fonts/HKGrotesk-Regular.woff') format('woff');
+  font-display: swap;
+  src: url('./fonts/HKGrotesk-Regular.woff2') format('woff2'),
+       url('./fonts/HKGrotesk-Regular.woff') format('woff');
 }
 
 @font-face {
   font-family: 'Jost';
   font-style: normal;
   font-weight: 400;
-  src: url('./fonts/Jost-Regular.ttf') format('truetype');
+  font-display: swap;
+  src: url('./fonts/Jost-Regular.woff2') format('woff2'),
+       url('./fonts/Jost-Regular.ttf') format('truetype');
 }
 
 :root {
@@ -40,7 +44,10 @@
   --header-height: 86px;
 }
 
+html[data-theme='light'] { color-scheme: light; }
+
 html[data-theme='dark'] {
+  color-scheme: dark;
   --bg: #0d1320;
   --bg-elevated: rgba(17, 24, 39, 0.82);
   --bg-strong: #121a2a;

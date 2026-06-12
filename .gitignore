@@ -1,6 +1,8 @@
 node_modules/
 test-results/
 .playwright-libs/
+venv/
+.claude/
 
 # macOS
 .DS_Store
