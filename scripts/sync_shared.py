@@ -106,7 +106,7 @@ PAGES = {
     'journeys.html': {
         'lang': 'en', 'dir': 'ltr', 'home': '/', 'active': 'journeys.html', 'switch': '/he/journeys.html', 'switch_from': 'EN', 'switch_to': 'HE',
         'title': 'Journeys | Adir Ben David',
-        'description': 'A warmer future home for places, movement, selected photos, and travel notes by Adir Ben David.',
+        'description': 'Places, movement, and selected photos from trips by Adir Ben David — Japan, the Alps, Thailand, and more.',
         'slug': 'journeys.html', 'en_href': f'{SITE_URL}/journeys.html', 'he_href': '/he/journeys.html', 'x_default': f'{SITE_URL}/', 'locale': 'en_US', 'locale_alt': 'he_IL'
     },
     'links.html': {
@@ -148,7 +148,7 @@ PAGES = {
     'he/journeys.html': {
         'lang': 'he', 'dir': 'rtl', 'home': '/he/', 'active': '/he/journeys.html', 'switch': '/journeys.html', 'switch_from': 'HE', 'switch_to': 'EN',
         'title': 'מסעות | אדיר בן דוד',
-        'description': 'בית חם יותר למקומות, לתנועה, לתמונות נבחרות ולרשמי דרך של אדיר בן דוד.',
+        'description': 'מקומות, תנועה ותמונות נבחרות מהטיולים של אדיר בן דוד — יפן, האלפים, תאילנד ועוד.',
         'slug': 'he/journeys.html', 'en_href': '/journeys.html', 'he_href': f'{SITE_URL}/he/journeys.html', 'x_default': f'{SITE_URL}/', 'locale': 'he_IL', 'locale_alt': 'en_US'
     },
     'he/links.html': {
