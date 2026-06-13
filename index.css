@@ -486,12 +486,15 @@ button, a { -webkit-tap-highlight-color: transparent; }
   min-height: 420px;
 }
 .page-hero-portrait {
-  align-items: center;
-  justify-content: center;
+  align-self: start;
+  justify-self: center;
+  min-height: 0;
+  width: fit-content;
+  max-width: 100%;
 }
 .page-hero-portrait img {
   min-height: 0;
-  max-height: 560px;
+  max-height: 420px;
   width: auto;
   height: auto;
   max-width: 100%;

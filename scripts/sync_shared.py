@@ -2,12 +2,16 @@
 from __future__ import annotations
 
 import json
-import subprocess
-from datetime import date
 from pathlib import Path
 
 REPO = Path(__file__).resolve().parents[1]
 SITE_URL = 'https://www.adirbd.com'
+# Stable "last meaningfully updated" marker for the sitemap. Bump by hand
+# when the site changes substantively. Deliberately NOT derived from git
+# commit dates: the sitemap is committed in the same commit whose date it
+# would record, so a derived value can never match what CI regenerates
+# across a midnight boundary (it drifts and fails the sync check).
+LASTMOD = '2026-06-14'
 # Applied before first paint so dark-mode visitors never flash light.
 THEME_BOOT_SCRIPT = (
     "<script>(function(){try{var t=localStorage.getItem('adirbd-theme');"
@@ -20,21 +24,6 @@ def absolute_url(href: str) -> str:
     return href if href.startswith('http') else f'{SITE_URL}{href}'
 
 
-def git_lastmod(path_str: str) -> str:
-    dirty = subprocess.run(
-        ['git', 'status', '--porcelain', '--', path_str],
-        cwd=REPO, capture_output=True, text=True,
-    )
-    if dirty.stdout.strip():
-        # Uncommitted edits: assume they land today, so the committed
-        # sitemap matches what CI regenerates from the commit date.
-        return date.today().isoformat()
-    result = subprocess.run(
-        ['git', 'log', '-1', '--format=%cs', '--', path_str],
-        cwd=REPO, capture_output=True, text=True,
-    )
-    stamp = result.stdout.strip()
-    return stamp or date.today().isoformat()
 PERSON_SCHEMA = {
     '@context': 'https://schema.org',
     '@type': 'Person',
@@ -297,12 +286,12 @@ def render_sitemap() -> str:
         '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"',
         '        xmlns:xhtml="http://www.w3.org/1999/xhtml">',
     ]
-    for path_str, meta in PAGES.items():
+    for meta in PAGES.values():
         canonical = f'{SITE_URL}/{meta["slug"]}' if meta['slug'] else f'{SITE_URL}/'
         lines.extend([
             '  <url>',
             f'    <loc>{canonical}</loc>',
-            f'    <lastmod>{git_lastmod(path_str)}</lastmod>',
+            f'    <lastmod>{LASTMOD}</lastmod>',
             '    <changefreq>monthly</changefreq>',
             f'    <priority>{"1.0" if canonical in (f"{SITE_URL}/", f"{SITE_URL}/he/") else "0.8"}</priority>',
             f'    <xhtml:link rel="alternate" hreflang="en" href="{absolute_url(meta["en_href"])}"/>',
