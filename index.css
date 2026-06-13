@@ -485,6 +485,18 @@ button, a { -webkit-tap-highlight-color: transparent; }
 .page-hero-photo img {
   min-height: 420px;
 }
+.page-hero-portrait {
+  align-items: center;
+  justify-content: center;
+}
+.page-hero-portrait img {
+  min-height: 0;
+  max-height: 560px;
+  width: auto;
+  height: auto;
+  max-width: 100%;
+  object-fit: contain;
+}
 .page-hero-band {
   overflow: hidden;
   border-radius: var(--radius-xl);
