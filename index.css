@@ -497,10 +497,11 @@ button, a { -webkit-tap-highlight-color: transparent; }
   text-align: center;
 }
 .profile-cover {
-  height: 116px;
+  height: 112px;
   background:
-    radial-gradient(circle at 26% 22%, rgba(255, 255, 255, 0.28), transparent 58%),
-    linear-gradient(135deg, var(--accent), var(--accent-strong));
+    linear-gradient(135deg,
+      color-mix(in srgb, var(--accent) 18%, var(--bg-strong)),
+      color-mix(in srgb, var(--accent) 7%, var(--bg-strong)));
 }
 .profile-content {
   display: grid;
@@ -543,16 +544,14 @@ button, a { -webkit-tap-highlight-color: transparent; }
   height: 0.95rem;
   flex: 0 0 auto;
 }
-.profile-actions {
-  display: flex;
-  gap: 0.6rem;
+.profile-summary {
   width: 100%;
-  margin-top: 1.2rem;
-}
-.profile-actions .button {
-  flex: 1;
-  min-height: 2.7rem;
-  padding-inline: 0.8rem;
+  margin: 1.1rem 0 0;
+  padding-top: 1.1rem;
+  border-top: 1px solid var(--divider);
+  font-size: 0.98rem;
+  line-height: 1.55;
+  color: var(--text-soft);
 }
 .page-hero-band {
   overflow: hidden;
