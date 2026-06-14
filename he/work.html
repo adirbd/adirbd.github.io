@@ -33,20 +33,88 @@
   <script type="application/ld+json">{
       "@context": "https://schema.org",
       "@type": "Person",
+      "@id": "https://www.adirbd.com/#person",
       "name": "Adir Ben David",
       "alternateName": [
             "Adirbd",
             "אדיר בן דוד"
       ],
       "jobTitle": "DevOps Engineer",
+      "description": "Adir Ben David is a DevOps engineer at Check Point Software Technologies in Tel Aviv, working on the cloud side — building and managing infrastructure on AWS and Azure with Terraform, Terragrunt, and Crossplane, running Kubernetes across staging, production, and new regions, and building out observability with Grafana, VictoriaMetrics, and OpenTelemetry. He works on FedRAMP-compliant infrastructure and CI/CD, and co-led a migration of 1,000+ users to GitHub Enterprise. He joined Check Point in December 2019; before DevOps he led a six-person team that built and operated complex on-prem environments (servers, networking, firewalls, and ESXi virtualization) from 2021 to 2024. Earlier he was a Tier-2 networking engineer at Bezeq (2017-2019) working with multi-vendor Layer 2/3 networks, routers, and switches, and a communications network technician in the Communications and Computers Corps (Tikshuv) during military service (2014-2017). Having worked both on-prem data centers and the cloud shapes how he approaches systems.",
       "worksFor": {
             "@type": "Organization",
-            "name": "Check Point"
+            "name": "Check Point Software Technologies",
+            "url": "https://www.checkpoint.com/"
       },
+      "hasOccupation": {
+            "@type": "Occupation",
+            "name": "DevOps Engineer",
+            "occupationLocation": {
+                  "@type": "City",
+                  "name": "Tel Aviv"
+            },
+            "skills": "DevOps, AWS, Azure, Kubernetes, Terraform, Terragrunt, Crossplane, Helm, Docker, CI/CD, GitHub Actions, GitHub Enterprise, Infrastructure as Code, Linux, Bash, Python, observability, Grafana, OpenTelemetry, FedRAMP compliance, on-prem infrastructure, systems integration, virtualization (ESXi), firewalls, networking (Layer 2/3)"
+      },
+      "alumniOf": [
+            {
+                  "@type": "Organization",
+                  "name": "Bezeq"
+            },
+            {
+                  "@type": "Organization",
+                  "name": "Communications and Computers Corps (Tikshuv)"
+            }
+      ],
+      "hasCredential": [
+            {
+                  "@type": "EducationalOccupationalCredential",
+                  "name": "Check Point Certified Security Expert (CCSE)",
+                  "credentialCategory": "certificate",
+                  "recognizedBy": {
+                        "@type": "Organization",
+                        "name": "Check Point Software Technologies"
+                  }
+            },
+            {
+                  "@type": "EducationalOccupationalCredential",
+                  "name": "Check Point Certified Security Administrator (CCSA)",
+                  "credentialCategory": "certificate",
+                  "recognizedBy": {
+                        "@type": "Organization",
+                        "name": "Check Point Software Technologies"
+                  }
+            },
+            {
+                  "@type": "EducationalOccupationalCredential",
+                  "name": "Cisco Certified Network Professional (CCNP) Routing and Switching",
+                  "credentialCategory": "certificate",
+                  "recognizedBy": {
+                        "@type": "Organization",
+                        "name": "Cisco"
+                  }
+            },
+            {
+                  "@type": "EducationalOccupationalCredential",
+                  "name": "Cisco Certified Network Associate (CCNA) Routing and Switching",
+                  "credentialCategory": "certificate",
+                  "recognizedBy": {
+                        "@type": "Organization",
+                        "name": "Cisco"
+                  }
+            },
+            {
+                  "@type": "EducationalOccupationalCredential",
+                  "name": "Cisco Certified Entry Networking Technician (CCENT)",
+                  "credentialCategory": "certificate",
+                  "recognizedBy": {
+                        "@type": "Organization",
+                        "name": "Cisco"
+                  }
+            }
+      ],
       "address": {
             "@type": "PostalAddress",
-            "addressLocality": "Tel Aviv",
-            "addressCountry": "IL"
+            "addressLocality": "Tel Aviv"
       },
       "url": "https://www.adirbd.com/",
       "sameAs": [
@@ -59,18 +127,40 @@
       "knowsAbout": [
             "DevOps",
             "Infrastructure",
-            "Systems",
-            "Automation",
             "Cloud",
+            "AWS",
+            "Azure",
+            "On-premises infrastructure",
+            "Systems integration",
+            "Virtualization",
+            "Firewalls",
+            "Automation",
+            "CI/CD",
+            "GitHub Actions",
+            "Infrastructure as Code",
             "Kubernetes",
             "Terraform",
+            "Terragrunt",
+            "Crossplane",
+            "Helm",
+            "Docker",
+            "GitHub Enterprise",
+            "Linux",
+            "Bash",
+            "Python",
+            "Observability",
+            "Grafana",
+            "OpenTelemetry",
+            "FedRAMP compliance",
+            "Networking",
+            "Systems",
             "Transportation",
             "Urban systems"
       ]
 }</script>
   <script type="application/ld+json">{
       "@context": "https://schema.org",
-      "@type": "WebPage",
+      "@type": "ProfilePage",
       "url": "https://www.adirbd.com/he/work.html",
       "name": "עבודה | אדיר בן דוד",
       "inLanguage": "he",
@@ -79,6 +169,12 @@
             "@type": "WebSite",
             "url": "https://www.adirbd.com/",
             "name": "Adir Ben David"
+      },
+      "about": {
+            "@id": "https://www.adirbd.com/#person"
+      },
+      "mainEntity": {
+            "@id": "https://www.adirbd.com/#person"
       }
 }</script>
   <script>(function(){try{var t=localStorage.getItem('adirbd-theme');if(t!=='light'&&t!=='dark'){t=window.matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light';}document.documentElement.dataset.theme=t;}catch(e){}})();</script>
@@ -117,8 +213,8 @@
     <section class="page-intro page-hero-copy">
       <span class="eyebrow">עבודה</span>
       <h1>תשתיות, תפעול, ומערכות שצריכות להחזיק גם במציאות</h1>
-      <p class="subtitle">המסלול שלי עובר דרך DevOps, QA, הובלת צוותים, ורשתות — בסביבות שבהן אמינות, בהירות, ואחריות לאורך זמן חשובות יותר מרושם רגעי.</p>
-      <p class="lede">כיום אני עובד כמהנדס DevOps ב־Check Point, עם דגש על תשתיות מאובטחות, אוטומציה, CI/CD, ויכולת לספק בצורה עקבית. לפני כן הובלתי פעילות בדיקות מוכוונת לקוח, עבדתי באופן מעשי עם סביבות מוצר ומעבדה מורכבות, ובניתי בסיס חזק בעולמות הרשתות והתפעול.</p>
+      <p class="subtitle">המסלול שלי עובר מחדרי שרתים On-Prem ועד הענן — DevOps, אינטגרציית מערכות, הובלת צוותים, ורשתות, בסביבות שבהן אמינות ואחריות חשובות יותר מרושם רגעי.</p>
+      <p class="lede">כיום אני עובד כמהנדס DevOps ב־Check Point בצד הענן — תשתיות מאובטחות, אוטומציה, CI/CD, ואספקה עקבית. לפני כן עבדתי שנים עמוק בתשתיות On-Prem: בניתי ושילבתי סביבות מורכבות עם שרתים, רשתות, חומות אש ווירטואליזציה, והובלתי את הצוות שתפעל אותן. העבודה בשני הצדדים — חדרי שרתים פיזיים והענן — מעצבת את הדרך שבה אני חושב על מערכות.</p>
     </section>
     <div class="stack profile-column">
       <aside class="profile-card">
@@ -129,9 +225,9 @@
           <p class="profile-role">מהנדס DevOps · Check Point</p>
           <p class="profile-location">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21s-7-6.4-7-11a7 7 0 0 1 14 0c0 4.6-7 11-7 11z"/><circle cx="12" cy="10" r="2.6"/></svg>
-            תל אביב, ישראל
+            תל אביב
           </p>
-          <p class="profile-summary">מתמקד באמינות, בבהירות, ובהחלטות תשתית שמחזיקות לאורך זמן.</p>
+          <p class="profile-summary">תשתיות On-Prem וענן — מתמקד באמינות, בבהירות, ובהחלטות שמחזיקות לאורך זמן.</p>
         </div>
       </aside>
       <article class="note-card">
@@ -139,35 +235,104 @@
         <ul class="list-clean">
           <li><strong>יסודות מאובטחים.</strong> תשתיות ענן, שינויים עם מודעות לציות, ומערכות שעומדות בבדיקה יסודית.</li>
           <li><strong>תהליכי שחרור.</strong> CI/CD, תבניות חוזרות, ומסלולי שחרור שצוותים יכולים לסמוך עליהם ולחזור עליהם.</li>
-          <li><strong>הקשר תפעולי.</strong> QA, סביבות מעבדה, רשתות, ומה שקורה בפועל אחרי הפריסה.</li>
+          <li><strong>שני הצדדים.</strong> תשתיות On-Prem וענן, רשתות, ומה שקורה בפועל אחרי הפריסה.</li>
         </ul>
       </article>
     </div>
   </section>
   <section class="page-layout page-layout-tight">
     <div class="stack">
-      <article class="timeline-item">
-        <span class="kicker">כיום</span>
-        <h3>DevOps Engineer · Check Point</h3>
-        <p>אני עובד על תשתיות ענן מאובטחות, CI/CD, ותשתיות כקוד, עם דגש על עקביות, מוכנות לביקורת, ויכולת לגדול בלי להפוך לשברירי.</p>
+      <h2 class="section-title">ניסיון תעסוקתי</h2>
+      <article class="timeline-item timeline-group">
+        <span class="kicker">2019 – היום</span>
+        <h3>Check Point Software Technologies</h3>
+        <p class="meta">תל אביב-יפו · משרה מלאה · 3 תפקידים</p>
+        <div class="group-roles">
+          <div class="role">
+            <h4>DevOps Engineer</h4>
+            <span class="role-dates">אוקטובר 2024 – היום · היברידי</span>
+            <ul class="list-clean compact-list">
+              <li>בונה ומנהל תשתיות ענן ב־AWS (עיקרי) וב־Azure, מוקצות כקוד עם Terraform, Terragrunt ו־Crossplane לסביבות עקביות ועקיבות.</li>
+              <li>הקמתי ומתפעל אשכולות Kubernetes ל־staging, production ולאזורים חדשים, כולל אשכול ייעודי לניטור.</li>
+              <li>בונה יכולות ניטור ו־observability עם Grafana, VictoriaMetrics ו־OpenTelemetry — כולל GitHub Actions exporter שכתבתי כדי לזהות workflows תקועים או נכשלים.</li>
+              <li>השתתפתי בבנייה ובתפעול של תשתית תואמת FedRAMP, עם דגש על יסודות מאובטחים, אוטומציה ומוכנות לביקורת.</li>
+              <li>בניתי צינורות CI/CD ותבניות לשימוש חוזר שמסטנדרטים build, בדיקה ופריסה בין שירותים.</li>
+              <li>הובלתי יחד עם עמית מיגרציה של 1,000+ משתמשים ל־GitHub Enterprise, כולל ניהול, בקרות גישה ואכיפת מדיניות.</li>
+              <li>עבדתי עם צוותי פיתוח ואבטחה כדי ליישר שינויי תשתית עם דרישות ציות ותפעול.</li>
+            </ul>
+            <div class="tags"><span>AWS</span><span>Azure</span><span>Kubernetes</span><span>Terraform</span><span>Terragrunt</span><span>Crossplane</span><span>CI/CD</span><span>GitHub Actions</span><span>Observability</span><span>FedRAMP</span></div>
+          </div>
+          <div class="role">
+            <h4>COST Team Leader</h4>
+            <span class="role-dates">יולי 2021 – אוקטובר 2024</span>
+            <p>הובלתי את COST — צוות של 6 — שמאחורי הסביבות המורכבות בדמוי לקוח שבהן גרסאות מוצר חדשות נפרסו ואומתו לפני היציאה לשוק.</p>
+            <ul class="list-clean compact-list">
+              <li>אחראי על הבנייה, האינטגרציה והתפעול המלא של סביבות מוצר שלמות מקצה לקצה.</li>
+              <li>ניהלתי את המעבדה ואת מחזור החיים של הציוד — מעל 100 התקנים: שרתים, ראוטרים, מתגים, שרתי ESXi וחומות אש.</li>
+              <li>אחראי על פריסה והתקנה של גרסאות חדשות במכונות ייצור, כולל ניטור לאחר השדרוג.</li>
+              <li>תיאמתי עם צוותי פיתוח, QA והנהלה כדי ליישר את הסביבות עם מטרות המוצר.</li>
+              <li>הדרכתי חברי צוות בפיתוח מקצועי ואישי.</li>
+            </ul>
+            <div class="tags"><span>מנהיגות</span><span>תשתיות On-Prem</span><span>אינטגרציית מערכות</span><span>וירטואליזציה</span><span>תפעול מעבדה</span></div>
+          </div>
+          <div class="role">
+            <h4>COST QA Engineer</h4>
+            <span class="role-dates">דצמבר 2019 – יולי 2021</span>
+            <p>בניתי, שילבתי ופרסתי סביבות On-Prem מורכבות שדימו מערכים אמיתיים של לקוחות, במעבדה ובשטח.</p>
+            <ul class="list-clean compact-list">
+              <li>בניתי סביבות פיזיות ווירטואליות מקצה לקצה: שרתים, וירטואליזציה ב־ESXi, ראוטרים, מתגים וחומות אש.</li>
+              <li>שילבתי והגדרתי מערכות אבטחה: IPS, Threat Emulation, Threat Extraction, AV, Anti-Bot, QoS, HTTPS Inspection, DLP ו־IoT.</li>
+              <li>התקנתי ופרסתי גרסאות מוצר ואימתתי אותן בתנאי לקוח, כולל פעילויות בשטח.</li>
+              <li>פיתחתי כלי אוטומציה בעזרת Python, Jenkins ו־Docker.</li>
+            </ul>
+            <div class="tags"><span>אינטגרציית מערכות</span><span>תשתיות On-Prem</span><span>וירטואליזציה (ESXi)</span><span>רשתות</span><span>חומות אש</span><span>Python</span></div>
+          </div>
+        </div>
       </article>
       <article class="timeline-item">
-        <span class="kicker">לפני כן</span>
-        <h3>COST Team Leader · Check Point</h3>
-        <p>הובלתי צוות שהתמקד בבדיקות תרחישים מנקודת מבט לקוח, פריסות מוצר, ותפעול סביבת המעבדה — תוך עבודה צמודה עם פיתוח, QA, ומנהלים, ושמירה על סביבות מורכבות שממש אפשר לעבוד איתן.</p>
+        <span class="kicker">מאי 2017 – דצמבר 2019</span>
+        <h3>מהנדס רשתות, Tier 2 (מגזר עסקי אסטרטגי) · בזק</h3>
+        <p class="meta">משרה מלאה</p>
+        <p>תמיכת Tier 2 ללקוחות העסקיים של בזק — הגדרה וניהול של רשתות Layer 2/Layer 3 על ראוטרים, מתגים וחומות אש בעמוד השדרה של לקוחות הליבה.</p>
+        <ul class="list-clean compact-list">
+          <li>הגדרתי ופתרתי תקלות על חומרה מרובת ספקים: Cisco (Meraki/IOS), Juniper SSG/SRX, Check Point, Fortigate, Aruba, Technicolor, MRV, Alcatel ו־Ruckus.</li>
+          <li>שירתתי לקוחות בתחומי טלקום, בנקאות ופיננסים, ממשלה וביטחון, ותעשיות שירות.</li>
+        </ul>
+        <div class="tags"><span>רשתות L2/L3</span><span>ראוטרים ומתגים</span><span>חומות אש</span><span>מרובה ספקים</span></div>
       </article>
       <article class="timeline-item">
-        <span class="kicker">הבסיס המוקדם</span>
-        <h3>QA, רשתות, ומערכות שפוגשות שטח</h3>
-        <p>תפקידים מוקדמים יותר ב־QA, ברשתות תקשורת, ובמערכות צבאיות עיצבו את הדרך שבה אני חושב על מערכות: איכות קשורה ישירות לתפעול, ותשתית חשובה רק אם היא באמת מחזיקה בתנאי אמת.</p>
+        <span class="kicker">ינואר 2014 – ינואר 2017</span>
+        <h3>טכנאי רשתות תקשורת · צה"ל</h3>
+        <p class="meta">חיל התקשוב · שירות מלא</p>
+        <p>שירתתי בחיל התקשוב כחלק מצוות טכנאים שניהל רשתות Layer 2/Layer 3 המחוברות למערכות תצפית ומכ"ם.</p>
+        <ul class="list-clean compact-list">
+          <li>תמכתי ביחידות שדה ופתרתי תקלות רשת במהירות בתנאי אמת.</li>
+          <li>בניתי בסיס חזק בתשתיות רשת ובפתרון בעיות מעשי.</li>
+        </ul>
+        <div class="tags"><span>תשתיות רשת</span><span>פתרון תקלות</span></div>
       </article>
     </div>
     <aside class="stack">
       <article class="note-card">
+        <h3>במבט מהיר</h3>
+        <ul class="list-clean">
+          <li><strong>ב־Check Point Software Technologies</strong> מאז 2019</li>
+          <li><strong>למעלה מ־10 שנים</strong> בתשתיות — מ־On-Prem ועד הענן</li>
+          <li>הובלתי צוות של 6; מבוסס בתל אביב</li>
+        </ul>
+      </article>
+      <article class="note-card">
         <h3>תחומי ליבה</h3>
         <div class="tags">
-          <span>ענן</span><span>אוטומציה</span><span>CI/CD</span><span>תשתיות כקוד</span><span>Kubernetes</span><span>Terraform</span><span>GitHub Enterprise</span><span>רשתות</span>
+          <span>AWS</span><span>Azure</span><span>Kubernetes</span><span>Terraform</span><span>Terragrunt</span><span>Crossplane</span><span>Helm</span><span>Docker</span><span>CI/CD</span><span>GitHub Actions</span><span>GitHub Enterprise</span><span>Infrastructure as Code</span><span>Linux</span><span>Python</span><span>Bash</span><span>Grafana</span><span>OpenTelemetry</span><span>Observability</span><span>FedRAMP</span><span>רשתות (L2/L3)</span>
         </div>
+      </article>
+      <article class="note-card">
+        <h3>הסמכות</h3>
+        <ul class="list-clean">
+          <li><strong>Check Point</strong> — Certified Security Expert (CCSE), Certified Security Administrator (CCSA)</li>
+          <li><strong>Cisco</strong> — CCNP ו־CCNA Routing and Switching, CCENT</li>
+        </ul>
       </article>
       <article class="note-card">
         <h3>איך אני נוטה לעבוד</h3>

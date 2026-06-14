@@ -33,20 +33,88 @@
   <script type="application/ld+json">{
       "@context": "https://schema.org",
       "@type": "Person",
+      "@id": "https://www.adirbd.com/#person",
       "name": "Adir Ben David",
       "alternateName": [
             "Adirbd",
             "אדיר בן דוד"
       ],
       "jobTitle": "DevOps Engineer",
+      "description": "Adir Ben David is a DevOps engineer at Check Point Software Technologies in Tel Aviv, working on the cloud side — building and managing infrastructure on AWS and Azure with Terraform, Terragrunt, and Crossplane, running Kubernetes across staging, production, and new regions, and building out observability with Grafana, VictoriaMetrics, and OpenTelemetry. He works on FedRAMP-compliant infrastructure and CI/CD, and co-led a migration of 1,000+ users to GitHub Enterprise. He joined Check Point in December 2019; before DevOps he led a six-person team that built and operated complex on-prem environments (servers, networking, firewalls, and ESXi virtualization) from 2021 to 2024. Earlier he was a Tier-2 networking engineer at Bezeq (2017-2019) working with multi-vendor Layer 2/3 networks, routers, and switches, and a communications network technician in the Communications and Computers Corps (Tikshuv) during military service (2014-2017). Having worked both on-prem data centers and the cloud shapes how he approaches systems.",
       "worksFor": {
             "@type": "Organization",
-            "name": "Check Point"
+            "name": "Check Point Software Technologies",
+            "url": "https://www.checkpoint.com/"
       },
+      "hasOccupation": {
+            "@type": "Occupation",
+            "name": "DevOps Engineer",
+            "occupationLocation": {
+                  "@type": "City",
+                  "name": "Tel Aviv"
+            },
+            "skills": "DevOps, AWS, Azure, Kubernetes, Terraform, Terragrunt, Crossplane, Helm, Docker, CI/CD, GitHub Actions, GitHub Enterprise, Infrastructure as Code, Linux, Bash, Python, observability, Grafana, OpenTelemetry, FedRAMP compliance, on-prem infrastructure, systems integration, virtualization (ESXi), firewalls, networking (Layer 2/3)"
+      },
+      "alumniOf": [
+            {
+                  "@type": "Organization",
+                  "name": "Bezeq"
+            },
+            {
+                  "@type": "Organization",
+                  "name": "Communications and Computers Corps (Tikshuv)"
+            }
+      ],
+      "hasCredential": [
+            {
+                  "@type": "EducationalOccupationalCredential",
+                  "name": "Check Point Certified Security Expert (CCSE)",
+                  "credentialCategory": "certificate",
+                  "recognizedBy": {
+                        "@type": "Organization",
+                        "name": "Check Point Software Technologies"
+                  }
+            },
+            {
+                  "@type": "EducationalOccupationalCredential",
+                  "name": "Check Point Certified Security Administrator (CCSA)",
+                  "credentialCategory": "certificate",
+                  "recognizedBy": {
+                        "@type": "Organization",
+                        "name": "Check Point Software Technologies"
+                  }
+            },
+            {
+                  "@type": "EducationalOccupationalCredential",
+                  "name": "Cisco Certified Network Professional (CCNP) Routing and Switching",
+                  "credentialCategory": "certificate",
+                  "recognizedBy": {
+                        "@type": "Organization",
+                        "name": "Cisco"
+                  }
+            },
+            {
+                  "@type": "EducationalOccupationalCredential",
+                  "name": "Cisco Certified Network Associate (CCNA) Routing and Switching",
+                  "credentialCategory": "certificate",
+                  "recognizedBy": {
+                        "@type": "Organization",
+                        "name": "Cisco"
+                  }
+            },
+            {
+                  "@type": "EducationalOccupationalCredential",
+                  "name": "Cisco Certified Entry Networking Technician (CCENT)",
+                  "credentialCategory": "certificate",
+                  "recognizedBy": {
+                        "@type": "Organization",
+                        "name": "Cisco"
+                  }
+            }
+      ],
       "address": {
             "@type": "PostalAddress",
-            "addressLocality": "Tel Aviv",
-            "addressCountry": "IL"
+            "addressLocality": "Tel Aviv"
       },
       "url": "https://www.adirbd.com/",
       "sameAs": [
@@ -59,11 +127,33 @@
       "knowsAbout": [
             "DevOps",
             "Infrastructure",
-            "Systems",
-            "Automation",
             "Cloud",
+            "AWS",
+            "Azure",
+            "On-premises infrastructure",
+            "Systems integration",
+            "Virtualization",
+            "Firewalls",
+            "Automation",
+            "CI/CD",
+            "GitHub Actions",
+            "Infrastructure as Code",
             "Kubernetes",
             "Terraform",
+            "Terragrunt",
+            "Crossplane",
+            "Helm",
+            "Docker",
+            "GitHub Enterprise",
+            "Linux",
+            "Bash",
+            "Python",
+            "Observability",
+            "Grafana",
+            "OpenTelemetry",
+            "FedRAMP compliance",
+            "Networking",
+            "Systems",
             "Transportation",
             "Urban systems"
       ]
@@ -79,6 +169,9 @@
             "@type": "WebSite",
             "url": "https://www.adirbd.com/",
             "name": "Adir Ben David"
+      },
+      "about": {
+            "@id": "https://www.adirbd.com/#person"
       }
 }</script>
   <script>(function(){try{var t=localStorage.getItem('adirbd-theme');if(t!=='light'&&t!=='dark'){t=window.matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light';}document.documentElement.dataset.theme=t;}catch(e){}})();</script>
@@ -117,7 +210,7 @@
     <section class="page-intro page-hero-copy">
       <span class="eyebrow">מסעות</span>
       <h1>מקומות שנשארים</h1>
-      <p class="subtitle">פריים חזק אחד לכל מקום, והערות קצרות מתחת.</p>
+      <p class="subtitle">הרים, ערים, ומים חמים — המקומות שמוציאים אותי מהשגרה.</p>
       <p class="lede">יפן ברכבות, עונות שלג באלפים, ימים חמים בתאילנד — ומה שהכרטיס הבא יביא.</p>
     </section>
     <div class="journeys-hero-grid" aria-label="קולאז' פתיחה למסעות">
@@ -130,8 +223,8 @@
         <figcaption><strong>רומא</strong><span>שעת זהב מול הקולוסיאום.</span></figcaption>
       </article>
       <article>
-        <img src="/images/journeys/avoriaz-snow.jpg" alt="אדיר ליד שלט אבוריאז בשלג, רכבל מעל" loading="lazy" width="768" height="1024">
-        <figcaption><strong>אבוריאז</strong><span>עונת השלג באלפים.</span></figcaption>
+        <img src="/images/journeys/matterhorn-zermatt.jpg" alt="פסגת המטרהורן מצרמט" loading="lazy" width="768" height="1024">
+        <figcaption><strong>המטרהורן</strong><span>סנובורד בצרמט וצ'רוויניה.</span></figcaption>
       </article>
     </div>
   </section>
@@ -157,8 +250,12 @@
             <div class="meta-line">טוקיו · פוג'י · הביתה דרך רומא</div>
             <div class="tags"><span>עיר</span><span>רכבות</span><span>פוג'י</span><span>רומא</span></div>
             <details class="trip-details">
-              <summary>רגעים מהדרך</summary>
+              <summary>עוד תמונות ורשמים</summary>
               <div class="trip-details-inner">
+                <div class="trip-gallery-more">
+                  <div><img src="/images/journeys/fuji-lakeside.jpg" alt="אדיר על שפת אגם כשהר פוג'י מאחוריו" loading="lazy"></div>
+                  <div><img src="/images/journeys/rome-colosseum.jpg" alt="אדיר מול הקולוסיאום ברומא בשעת שקיעה" loading="lazy"></div>
+                </div>
                 <ul class="list-clean compact-list">
                   <li>מגדל טוקיו מקרוב — שלד כתום מול שמיים</li>
                   <li>הליכה ביער במבוק ומשאלה שנשארה במקדש</li>
@@ -172,28 +269,63 @@
 
         <article class="surface-card trip-card">
           <div class="trip-gallery trip-gallery-even">
-            <div><img src="/images/journeys/alpine-village.jpg" alt="אדיר ברחוב כפרי מושלג באלפים" loading="lazy"></div>
-            <div><img src="/images/journeys/avoriaz-snow.jpg" alt="אדיר ליד שלט אבוריאז בשלג, רכבל מעל" loading="lazy"></div>
-            <div><img src="/images/placeholders/snowboarding-halfpipe.jpg" alt="גולש סנובורד בהאפלייפ" loading="lazy"></div>
+            <div><img src="/images/journeys/snowboard-summit.jpg" alt="אדיר מרים את הסנובורד מעל הראש בשקיעה על ההר" loading="lazy"></div>
+            <div><img src="/images/journeys/snowboard-chairlift.jpg" alt="מבט מרכבל על מדרונות אבוריאז המושלגים" loading="lazy"></div>
+            <div><img src="/images/journeys/snowboard-valley.jpg" alt="סנובורד מונח מעל עמק וכפר מושלגים" loading="lazy"></div>
           </div>
           <div class="trip-copy">
             <div class="trip-headline">
               <div>
-                <span class="kicker">טיול עונתי</span>
-                <h3>טיול סנובורד · 2026</h3>
+                <span class="kicker">טיול סנובורד</span>
+                <h3>אבוריאז · 2026</h3>
               </div>
               <span class="trip-state trip-state-archive">הסתיים</span>
             </div>
-            <p class="trip-teaser">טיול שנבנה סביב הגלישה: רחובות כפריים מושלגים, רכבלים מעל הראש, וימי הרים מהמעלית הראשונה עד האור האחרון.</p>
-            <div class="meta-line">אבוריאז · עונת השלג באלפים</div>
-            <div class="tags"><span>שלג</span><span>תנועה</span><span>עונתי</span></div>
+            <p class="trip-teaser">טיול סנובורד באבוריאז שבאלפים הצרפתיים — רכבלים, מסלולים ארוכים, ואור הרים מהמעלית הראשונה עד האחרונה.</p>
+            <div class="meta-line">האלפים הצרפתיים · Portes du Soleil</div>
+            <div class="tags"><span>שלג</span><span>סנובורד</span><span>האלפים הצרפתיים</span></div>
+            <details class="trip-details">
+              <summary>עוד תמונות ורשמים</summary>
+              <div class="trip-details-inner">
+                <div class="trip-gallery-more">
+                  <div><img src="/images/journeys/avoriaz-sign.jpg" alt="שלט האייל של אבוריאז בשלג" loading="lazy"></div>
+                  <div><img src="/images/journeys/avoriaz-snow.jpg" alt="אדיר ליד שלט אבוריאז בשלג, רכבל מעל" loading="lazy"></div>
+                </div>
+                <ul class="list-clean compact-list">
+                  <li>מסלולים ארוכים לאורך ה־Portes du Soleil, מרכבל לרכבל.</li>
+                  <li>בקרים קרים, אחר־צהריים זהובים, ושלג על הבורד.</li>
+                </ul>
+              </div>
+            </details>
+          </div>
+        </article>
+
+        <article class="surface-card trip-card">
+          <div class="trip-gallery trip-gallery-even">
+            <div><img src="/images/journeys/matterhorn-zermatt.jpg" alt="פסגת המטרהורן מצרמט שבשווייץ" loading="lazy"></div>
+            <div><img src="/images/journeys/matterhorn-cervinia.jpg" alt="המטרהורן מעל המדרונות בצ'רוויניה שבאיטליה" loading="lazy"></div>
+            <div><img src="/images/journeys/alpine-village.jpg" alt="רחוב כפרי מושלג באלפים" loading="lazy"></div>
+          </div>
+          <div class="trip-copy">
+            <div class="trip-headline">
+              <div>
+                <span class="kicker">טיול סנובורד</span>
+                <h3>המטרהורן · 2025</h3>
+              </div>
+              <span class="trip-state trip-state-archive">הסתיים</span>
+            </div>
+            <p class="trip-teaser">גלישה על המטרהורן משני הצדדים — צרמט בשווייץ וצ'רוויניה באיטליה — מתחת לאחת הפסגות המזוהות ביותר באלפים.</p>
+            <div class="meta-line">צרמט וצ'רוויניה · שווייץ ואיטליה</div>
+            <div class="tags"><span>שלג</span><span>אלפים</span><span>מטרהורן</span></div>
             <details class="trip-details">
               <summary>רגעים מהדרך</summary>
               <div class="trip-details-inner">
-                <p>ימי גלישה, ערבים שקטים בכפר, ואוויר קר מהסוג שמסדר את הראש. עוד פריימים יגיעו אחרי עונת השלג הבאה.</p>
+                <ul class="list-clean compact-list">
+                  <li>אותה פסגה משתי מדינות — צרמט ביום אחד, צ'רוויניה למחרת.</li>
+                  <li>מסלולים רחבים בצד האיטלקי והנופים הקלאסיים מהצד השווייצרי.</li>
+                </ul>
               </div>
             </details>
-            <p class="photo-credit">תמונת ההאפלייפ: <a href="https://commons.wikimedia.org/wiki/File:Snowboarder_in_halfpipe.jpg" target="_blank" rel="noopener noreferrer">Snowboarder in halfpipe.jpg</a> דרך Picswiss / Roland Zumbühl (CC BY-SA 3.0).</p>
           </div>
         </article>
 
@@ -202,9 +334,6 @@
             <div><img src="/images/journeys/thailand-elephants.jpg" alt="אדיר מושיט יד לפיל על גדת נהר בתאילנד" loading="lazy"></div>
             <div><img src="/images/journeys/thailand-longtail.jpg" alt="אדיר על סירת לונגטייל בין צוקי גיר בתאילנד" loading="lazy"></div>
             <div><img src="/images/journeys/thailand-rice-bridge.jpg" alt="אדיר בידיים פתוחות על גשר במבוק מעל שדות אורז" loading="lazy"></div>
-            <div><img src="/images/journeys/thailand-waterfall.jpg" alt="אדיר מטפס על מפל בעזרת חבל, ג'ונגל מסביב" loading="lazy"></div>
-            <div><img src="/images/journeys/thailand-jetski.jpg" alt="אדיר על אופנוע ים במים כחולים" loading="lazy"></div>
-            <div><img src="/images/placeholders/thailand-wat-arun.jpg" alt="מקדש ואט ארון בבנגקוק בלילה" loading="lazy"></div>
           </div>
           <div class="trip-copy">
             <div class="trip-headline">
@@ -218,8 +347,12 @@
             <div class="meta-line">ימי ים · פילים · מפלים בג'ונגל</div>
             <div class="tags"><span>ים</span><span>מזג אוויר חם</span><span>ג'ונגל</span><span>פילים</span></div>
             <details class="trip-details">
-              <summary>רגעים מהדרך</summary>
+              <summary>עוד תמונות ורשמים</summary>
               <div class="trip-details-inner">
+                <div class="trip-gallery-more">
+                  <div><img src="/images/journeys/thailand-waterfall.jpg" alt="אדיר מטפס על מפל בעזרת חבל, ג'ונגל מסביב" loading="lazy"></div>
+                  <div><img src="/images/journeys/thailand-jetski.jpg" alt="אדיר על אופנוע ים במים כחולים" loading="lazy"></div>
+                </div>
                 <ul class="list-clean compact-list">
                   <li>סירת לונגטייל שמתפתלת בין צוקים ומים ירוקים</li>
                   <li>אחר־צהריים עם פילים על גדת הנהר</li>
@@ -229,7 +362,6 @@
                 </ul>
               </div>
             </details>
-            <p class="photo-credit">תמונת ואט ארון: <a href="https://commons.wikimedia.org/wiki/File:Wat_Arun_at_night.jpg" target="_blank" rel="noopener noreferrer">Wat Arun at night.jpg</a> מאת Radek Kucharski (CC BY 2.0).</p>
           </div>
         </article>
       </div>
@@ -237,7 +369,7 @@
     <aside class="stack">
       <article class="note-card">
         <h3>הבא על המפה</h3>
-        <p>עוד פריימים נכנסים לכאן אחרי כל טיול. התמונות הבודדות שעדיין לא שלי מקבלות קרדיט בכרטיס שלהן.</p>
+        <p>עוד פריימים נכנסים לכאן אחרי כל טיול — כל תמונה בעמוד הזה היא שלי.</p>
       </article>
     </aside>
   </section>

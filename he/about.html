@@ -33,20 +33,88 @@
   <script type="application/ld+json">{
       "@context": "https://schema.org",
       "@type": "Person",
+      "@id": "https://www.adirbd.com/#person",
       "name": "Adir Ben David",
       "alternateName": [
             "Adirbd",
             "אדיר בן דוד"
       ],
       "jobTitle": "DevOps Engineer",
+      "description": "Adir Ben David is a DevOps engineer at Check Point Software Technologies in Tel Aviv, working on the cloud side — building and managing infrastructure on AWS and Azure with Terraform, Terragrunt, and Crossplane, running Kubernetes across staging, production, and new regions, and building out observability with Grafana, VictoriaMetrics, and OpenTelemetry. He works on FedRAMP-compliant infrastructure and CI/CD, and co-led a migration of 1,000+ users to GitHub Enterprise. He joined Check Point in December 2019; before DevOps he led a six-person team that built and operated complex on-prem environments (servers, networking, firewalls, and ESXi virtualization) from 2021 to 2024. Earlier he was a Tier-2 networking engineer at Bezeq (2017-2019) working with multi-vendor Layer 2/3 networks, routers, and switches, and a communications network technician in the Communications and Computers Corps (Tikshuv) during military service (2014-2017). Having worked both on-prem data centers and the cloud shapes how he approaches systems.",
       "worksFor": {
             "@type": "Organization",
-            "name": "Check Point"
+            "name": "Check Point Software Technologies",
+            "url": "https://www.checkpoint.com/"
       },
+      "hasOccupation": {
+            "@type": "Occupation",
+            "name": "DevOps Engineer",
+            "occupationLocation": {
+                  "@type": "City",
+                  "name": "Tel Aviv"
+            },
+            "skills": "DevOps, AWS, Azure, Kubernetes, Terraform, Terragrunt, Crossplane, Helm, Docker, CI/CD, GitHub Actions, GitHub Enterprise, Infrastructure as Code, Linux, Bash, Python, observability, Grafana, OpenTelemetry, FedRAMP compliance, on-prem infrastructure, systems integration, virtualization (ESXi), firewalls, networking (Layer 2/3)"
+      },
+      "alumniOf": [
+            {
+                  "@type": "Organization",
+                  "name": "Bezeq"
+            },
+            {
+                  "@type": "Organization",
+                  "name": "Communications and Computers Corps (Tikshuv)"
+            }
+      ],
+      "hasCredential": [
+            {
+                  "@type": "EducationalOccupationalCredential",
+                  "name": "Check Point Certified Security Expert (CCSE)",
+                  "credentialCategory": "certificate",
+                  "recognizedBy": {
+                        "@type": "Organization",
+                        "name": "Check Point Software Technologies"
+                  }
+            },
+            {
+                  "@type": "EducationalOccupationalCredential",
+                  "name": "Check Point Certified Security Administrator (CCSA)",
+                  "credentialCategory": "certificate",
+                  "recognizedBy": {
+                        "@type": "Organization",
+                        "name": "Check Point Software Technologies"
+                  }
+            },
+            {
+                  "@type": "EducationalOccupationalCredential",
+                  "name": "Cisco Certified Network Professional (CCNP) Routing and Switching",
+                  "credentialCategory": "certificate",
+                  "recognizedBy": {
+                        "@type": "Organization",
+                        "name": "Cisco"
+                  }
+            },
+            {
+                  "@type": "EducationalOccupationalCredential",
+                  "name": "Cisco Certified Network Associate (CCNA) Routing and Switching",
+                  "credentialCategory": "certificate",
+                  "recognizedBy": {
+                        "@type": "Organization",
+                        "name": "Cisco"
+                  }
+            },
+            {
+                  "@type": "EducationalOccupationalCredential",
+                  "name": "Cisco Certified Entry Networking Technician (CCENT)",
+                  "credentialCategory": "certificate",
+                  "recognizedBy": {
+                        "@type": "Organization",
+                        "name": "Cisco"
+                  }
+            }
+      ],
       "address": {
             "@type": "PostalAddress",
-            "addressLocality": "Tel Aviv",
-            "addressCountry": "IL"
+            "addressLocality": "Tel Aviv"
       },
       "url": "https://www.adirbd.com/",
       "sameAs": [
@@ -59,18 +127,40 @@
       "knowsAbout": [
             "DevOps",
             "Infrastructure",
-            "Systems",
-            "Automation",
             "Cloud",
+            "AWS",
+            "Azure",
+            "On-premises infrastructure",
+            "Systems integration",
+            "Virtualization",
+            "Firewalls",
+            "Automation",
+            "CI/CD",
+            "GitHub Actions",
+            "Infrastructure as Code",
             "Kubernetes",
             "Terraform",
+            "Terragrunt",
+            "Crossplane",
+            "Helm",
+            "Docker",
+            "GitHub Enterprise",
+            "Linux",
+            "Bash",
+            "Python",
+            "Observability",
+            "Grafana",
+            "OpenTelemetry",
+            "FedRAMP compliance",
+            "Networking",
+            "Systems",
             "Transportation",
             "Urban systems"
       ]
 }</script>
   <script type="application/ld+json">{
       "@context": "https://schema.org",
-      "@type": "WebPage",
+      "@type": "ProfilePage",
       "url": "https://www.adirbd.com/he/about.html",
       "name": "אודות | אדיר בן דוד",
       "inLanguage": "he",
@@ -79,6 +169,12 @@
             "@type": "WebSite",
             "url": "https://www.adirbd.com/",
             "name": "Adir Ben David"
+      },
+      "about": {
+            "@id": "https://www.adirbd.com/#person"
+      },
+      "mainEntity": {
+            "@id": "https://www.adirbd.com/#person"
       }
 }</script>
   <script>(function(){try{var t=localStorage.getItem('adirbd-theme');if(t!=='light'&&t!=='dark'){t=window.matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light';}document.documentElement.dataset.theme=t;}catch(e){}})();</script>
@@ -117,8 +213,8 @@
     <section class="page-intro page-hero-copy">
       <span class="eyebrow">אודות</span>
       <h1>עבודה, סקרנות, והמערכות שמאחורי שתיהן</h1>
-      <p class="subtitle">מעניין אותי טכנולוגיה אמינה, חשיבה בהירה, ואיך מערכות גדולות באמת מתנהגות לאורך זמן.</p>
-      <p class="lede">מקצועית אני עובד ב־DevOps ותשתיות. אישית אני נמשך לתחבורה, מערכות עירוניות, תעופה, ותשתיות ציבוריות שבהן הנדסה, כלכלה ותועלת ארוכת טווח נפגשות.</p>
+      <p class="subtitle">הגרסה הקצרה: אני אוהב להבין איך דברים עובדים — ולמה חלקם מחזיקים לאורך זמן ואחרים פשוט לא.</p>
+      <p class="lede">הסקרנות הזו עוברת דרך העבודה שלי ב־DevOps, אבל לא נעצרת שם. אני נמשך לרכבות, נמלי תעופה, רחובות, והמערכות הציבוריות שרובם לא שמים לב אליהן — שם הנדסה, כלכלה ותועלת ארוכת טווח נפגשות.</p>
     </section>
     <aside class="hero-photo page-hero-photo">
       <img src="/images/profile-photo.webp" alt="תמונת פרופיל של אדיר בן דוד" width="1024" height="1536" fetchpriority="high" />

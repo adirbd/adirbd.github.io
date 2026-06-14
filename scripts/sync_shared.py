@@ -27,11 +27,49 @@ def absolute_url(href: str) -> str:
 PERSON_SCHEMA = {
     '@context': 'https://schema.org',
     '@type': 'Person',
+    '@id': f'{SITE_URL}/#person',
     'name': 'Adir Ben David',
     'alternateName': ['Adirbd', 'אדיר בן דוד'],
     'jobTitle': 'DevOps Engineer',
-    'worksFor': {'@type': 'Organization', 'name': 'Check Point'},
-    'address': {'@type': 'PostalAddress', 'addressLocality': 'Tel Aviv', 'addressCountry': 'IL'},
+    'description': (
+        'Adir Ben David is a DevOps engineer at Check Point Software Technologies in Tel Aviv, working on the '
+        'cloud side — building and managing infrastructure on AWS and Azure with Terraform, Terragrunt, and '
+        'Crossplane, running Kubernetes across staging, production, and new regions, and building out observability '
+        'with Grafana, VictoriaMetrics, and OpenTelemetry. He works on FedRAMP-compliant infrastructure and CI/CD, '
+        'and co-led a migration of 1,000+ users to GitHub Enterprise. He joined Check Point in December 2019; '
+        'before DevOps he led a six-person team that built and operated complex on-prem environments (servers, '
+        'networking, firewalls, and ESXi virtualization) from 2021 to 2024. Earlier he was a Tier-2 networking '
+        'engineer at Bezeq (2017-2019) working with multi-vendor Layer 2/3 networks, routers, and switches, and a '
+        'communications network technician in the Communications and Computers Corps (Tikshuv) during military '
+        'service (2014-2017). Having worked both on-prem data centers and the cloud shapes how he approaches systems.'
+    ),
+    'worksFor': {'@type': 'Organization', 'name': 'Check Point Software Technologies', 'url': 'https://www.checkpoint.com/'},
+    'hasOccupation': {
+        '@type': 'Occupation',
+        'name': 'DevOps Engineer',
+        'occupationLocation': {'@type': 'City', 'name': 'Tel Aviv'},
+        'skills': 'DevOps, AWS, Azure, Kubernetes, Terraform, Terragrunt, Crossplane, Helm, Docker, CI/CD, '
+                  'GitHub Actions, GitHub Enterprise, Infrastructure as Code, Linux, Bash, Python, observability, '
+                  'Grafana, OpenTelemetry, FedRAMP compliance, on-prem infrastructure, systems integration, '
+                  'virtualization (ESXi), firewalls, networking (Layer 2/3)',
+    },
+    'alumniOf': [
+        {'@type': 'Organization', 'name': 'Bezeq'},
+        {'@type': 'Organization', 'name': 'Communications and Computers Corps (Tikshuv)'},
+    ],
+    'hasCredential': [
+        {'@type': 'EducationalOccupationalCredential', 'name': 'Check Point Certified Security Expert (CCSE)',
+         'credentialCategory': 'certificate', 'recognizedBy': {'@type': 'Organization', 'name': 'Check Point Software Technologies'}},
+        {'@type': 'EducationalOccupationalCredential', 'name': 'Check Point Certified Security Administrator (CCSA)',
+         'credentialCategory': 'certificate', 'recognizedBy': {'@type': 'Organization', 'name': 'Check Point Software Technologies'}},
+        {'@type': 'EducationalOccupationalCredential', 'name': 'Cisco Certified Network Professional (CCNP) Routing and Switching',
+         'credentialCategory': 'certificate', 'recognizedBy': {'@type': 'Organization', 'name': 'Cisco'}},
+        {'@type': 'EducationalOccupationalCredential', 'name': 'Cisco Certified Network Associate (CCNA) Routing and Switching',
+         'credentialCategory': 'certificate', 'recognizedBy': {'@type': 'Organization', 'name': 'Cisco'}},
+        {'@type': 'EducationalOccupationalCredential', 'name': 'Cisco Certified Entry Networking Technician (CCENT)',
+         'credentialCategory': 'certificate', 'recognizedBy': {'@type': 'Organization', 'name': 'Cisco'}},
+    ],
+    'address': {'@type': 'PostalAddress', 'addressLocality': 'Tel Aviv'},
     'url': f'{SITE_URL}/',
     'sameAs': [
         'https://github.com/adirbd',
@@ -40,7 +78,13 @@ PERSON_SCHEMA = {
         'https://www.youtube.com/@adirbd',
         'https://x.com/adirbd',
     ],
-    'knowsAbout': ['DevOps', 'Infrastructure', 'Systems', 'Automation', 'Cloud', 'Kubernetes', 'Terraform', 'Transportation', 'Urban systems'],
+    'knowsAbout': [
+        'DevOps', 'Infrastructure', 'Cloud', 'AWS', 'Azure', 'On-premises infrastructure',
+        'Systems integration', 'Virtualization', 'Firewalls', 'Automation', 'CI/CD', 'GitHub Actions',
+        'Infrastructure as Code', 'Kubernetes', 'Terraform', 'Terragrunt', 'Crossplane', 'Helm', 'Docker',
+        'GitHub Enterprise', 'Linux', 'Bash', 'Python', 'Observability', 'Grafana', 'OpenTelemetry',
+        'FedRAMP compliance', 'Networking', 'Systems', 'Transportation', 'Urban systems',
+    ],
 }
 
 EN_NAV = [
@@ -75,13 +119,13 @@ PAGES = {
         'slug': '', 'en_href': f'{SITE_URL}/', 'he_href': '/he/', 'x_default': f'{SITE_URL}/', 'locale': 'en_US', 'locale_alt': 'he_IL'
     },
     'about.html': {
-        'lang': 'en', 'dir': 'ltr', 'home': '/', 'active': 'about.html', 'switch': '/he/about.html', 'switch_from': 'EN', 'switch_to': 'HE',
+        'lang': 'en', 'dir': 'ltr', 'home': '/', 'active': 'about.html', 'page_type': 'ProfilePage', 'switch': '/he/about.html', 'switch_from': 'EN', 'switch_to': 'HE',
         'title': 'About | Adir Ben David',
         'description': 'About Adir Ben David: DevOps, infrastructure, systems thinking, transportation, and public-scale curiosity.',
         'slug': 'about.html', 'en_href': f'{SITE_URL}/about.html', 'he_href': '/he/about.html', 'x_default': f'{SITE_URL}/', 'locale': 'en_US', 'locale_alt': 'he_IL'
     },
     'work.html': {
-        'lang': 'en', 'dir': 'ltr', 'home': '/', 'active': 'work.html', 'switch': '/he/work.html', 'switch_from': 'EN', 'switch_to': 'HE',
+        'lang': 'en', 'dir': 'ltr', 'home': '/', 'active': 'work.html', 'page_type': 'ProfilePage', 'switch': '/he/work.html', 'switch_from': 'EN', 'switch_to': 'HE',
         'title': 'Work | Adir Ben David',
         'description': 'Professional experience, working style, and systems-minded infrastructure work by Adir Ben David.',
         'slug': 'work.html', 'en_href': f'{SITE_URL}/work.html', 'he_href': '/he/work.html', 'x_default': f'{SITE_URL}/', 'locale': 'en_US', 'locale_alt': 'he_IL'
@@ -117,13 +161,13 @@ PAGES = {
         'slug': 'he/', 'en_href': '/', 'he_href': f'{SITE_URL}/he/', 'x_default': '/', 'locale': 'he_IL', 'locale_alt': 'en_US'
     },
     'he/about.html': {
-        'lang': 'he', 'dir': 'rtl', 'home': '/he/', 'active': '/he/about.html', 'switch': '/about.html', 'switch_from': 'HE', 'switch_to': 'EN',
+        'lang': 'he', 'dir': 'rtl', 'home': '/he/', 'active': '/he/about.html', 'page_type': 'ProfilePage', 'switch': '/about.html', 'switch_from': 'HE', 'switch_to': 'EN',
         'title': 'אודות | אדיר בן דוד',
         'description': 'על אדיר בן דוד: DevOps, תשתיות, חשיבה מערכתית, תחבורה וסקרנות בקנה מידה ציבורי.',
         'slug': 'he/about.html', 'en_href': '/about.html', 'he_href': f'{SITE_URL}/he/about.html', 'x_default': f'{SITE_URL}/', 'locale': 'he_IL', 'locale_alt': 'en_US'
     },
     'he/work.html': {
-        'lang': 'he', 'dir': 'rtl', 'home': '/he/', 'active': '/he/work.html', 'switch': '/work.html', 'switch_from': 'HE', 'switch_to': 'EN',
+        'lang': 'he', 'dir': 'rtl', 'home': '/he/', 'active': '/he/work.html', 'page_type': 'ProfilePage', 'switch': '/work.html', 'switch_from': 'HE', 'switch_to': 'EN',
         'title': 'עבודה | אדיר בן דוד',
         'description': 'ניסיון מקצועי, סגנון עבודה וחשיבה מערכתית של אדיר בן דוד.',
         'slug': 'he/work.html', 'en_href': '/work.html', 'he_href': f'{SITE_URL}/he/work.html', 'x_default': f'{SITE_URL}/', 'locale': 'he_IL', 'locale_alt': 'en_US'
@@ -172,13 +216,16 @@ def render_head(meta: dict[str, str]) -> str:
     canonical = f'{SITE_URL}/{meta["slug"]}' if meta['slug'] else f'{SITE_URL}/'
     webpage_schema = {
         '@context': 'https://schema.org',
-        '@type': 'WebPage',
+        '@type': meta.get('page_type', 'WebPage'),
         'url': canonical,
         'name': meta['title'],
         'inLanguage': meta['lang'],
         'description': meta['description'],
         'isPartOf': {'@type': 'WebSite', 'url': f'{SITE_URL}/', 'name': 'Adir Ben David'},
+        'about': {'@id': f'{SITE_URL}/#person'},
     }
+    if webpage_schema['@type'] == 'ProfilePage':
+        webpage_schema['mainEntity'] = {'@id': f'{SITE_URL}/#person'}
     return f'''<head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />

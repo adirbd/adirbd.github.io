@@ -33,20 +33,88 @@
   <script type="application/ld+json">{
       "@context": "https://schema.org",
       "@type": "Person",
+      "@id": "https://www.adirbd.com/#person",
       "name": "Adir Ben David",
       "alternateName": [
             "Adirbd",
             "אדיר בן דוד"
       ],
       "jobTitle": "DevOps Engineer",
+      "description": "Adir Ben David is a DevOps engineer at Check Point Software Technologies in Tel Aviv, working on the cloud side — building and managing infrastructure on AWS and Azure with Terraform, Terragrunt, and Crossplane, running Kubernetes across staging, production, and new regions, and building out observability with Grafana, VictoriaMetrics, and OpenTelemetry. He works on FedRAMP-compliant infrastructure and CI/CD, and co-led a migration of 1,000+ users to GitHub Enterprise. He joined Check Point in December 2019; before DevOps he led a six-person team that built and operated complex on-prem environments (servers, networking, firewalls, and ESXi virtualization) from 2021 to 2024. Earlier he was a Tier-2 networking engineer at Bezeq (2017-2019) working with multi-vendor Layer 2/3 networks, routers, and switches, and a communications network technician in the Communications and Computers Corps (Tikshuv) during military service (2014-2017). Having worked both on-prem data centers and the cloud shapes how he approaches systems.",
       "worksFor": {
             "@type": "Organization",
-            "name": "Check Point"
+            "name": "Check Point Software Technologies",
+            "url": "https://www.checkpoint.com/"
       },
+      "hasOccupation": {
+            "@type": "Occupation",
+            "name": "DevOps Engineer",
+            "occupationLocation": {
+                  "@type": "City",
+                  "name": "Tel Aviv"
+            },
+            "skills": "DevOps, AWS, Azure, Kubernetes, Terraform, Terragrunt, Crossplane, Helm, Docker, CI/CD, GitHub Actions, GitHub Enterprise, Infrastructure as Code, Linux, Bash, Python, observability, Grafana, OpenTelemetry, FedRAMP compliance, on-prem infrastructure, systems integration, virtualization (ESXi), firewalls, networking (Layer 2/3)"
+      },
+      "alumniOf": [
+            {
+                  "@type": "Organization",
+                  "name": "Bezeq"
+            },
+            {
+                  "@type": "Organization",
+                  "name": "Communications and Computers Corps (Tikshuv)"
+            }
+      ],
+      "hasCredential": [
+            {
+                  "@type": "EducationalOccupationalCredential",
+                  "name": "Check Point Certified Security Expert (CCSE)",
+                  "credentialCategory": "certificate",
+                  "recognizedBy": {
+                        "@type": "Organization",
+                        "name": "Check Point Software Technologies"
+                  }
+            },
+            {
+                  "@type": "EducationalOccupationalCredential",
+                  "name": "Check Point Certified Security Administrator (CCSA)",
+                  "credentialCategory": "certificate",
+                  "recognizedBy": {
+                        "@type": "Organization",
+                        "name": "Check Point Software Technologies"
+                  }
+            },
+            {
+                  "@type": "EducationalOccupationalCredential",
+                  "name": "Cisco Certified Network Professional (CCNP) Routing and Switching",
+                  "credentialCategory": "certificate",
+                  "recognizedBy": {
+                        "@type": "Organization",
+                        "name": "Cisco"
+                  }
+            },
+            {
+                  "@type": "EducationalOccupationalCredential",
+                  "name": "Cisco Certified Network Associate (CCNA) Routing and Switching",
+                  "credentialCategory": "certificate",
+                  "recognizedBy": {
+                        "@type": "Organization",
+                        "name": "Cisco"
+                  }
+            },
+            {
+                  "@type": "EducationalOccupationalCredential",
+                  "name": "Cisco Certified Entry Networking Technician (CCENT)",
+                  "credentialCategory": "certificate",
+                  "recognizedBy": {
+                        "@type": "Organization",
+                        "name": "Cisco"
+                  }
+            }
+      ],
       "address": {
             "@type": "PostalAddress",
-            "addressLocality": "Tel Aviv",
-            "addressCountry": "IL"
+            "addressLocality": "Tel Aviv"
       },
       "url": "https://www.adirbd.com/",
       "sameAs": [
@@ -59,11 +127,33 @@
       "knowsAbout": [
             "DevOps",
             "Infrastructure",
-            "Systems",
-            "Automation",
             "Cloud",
+            "AWS",
+            "Azure",
+            "On-premises infrastructure",
+            "Systems integration",
+            "Virtualization",
+            "Firewalls",
+            "Automation",
+            "CI/CD",
+            "GitHub Actions",
+            "Infrastructure as Code",
             "Kubernetes",
             "Terraform",
+            "Terragrunt",
+            "Crossplane",
+            "Helm",
+            "Docker",
+            "GitHub Enterprise",
+            "Linux",
+            "Bash",
+            "Python",
+            "Observability",
+            "Grafana",
+            "OpenTelemetry",
+            "FedRAMP compliance",
+            "Networking",
+            "Systems",
             "Transportation",
             "Urban systems"
       ]
@@ -79,6 +169,9 @@
             "@type": "WebSite",
             "url": "https://www.adirbd.com/",
             "name": "Adir Ben David"
+      },
+      "about": {
+            "@id": "https://www.adirbd.com/#person"
       }
 }</script>
   <script>(function(){try{var t=localStorage.getItem('adirbd-theme');if(t!=='light'&&t!=='dark'){t=window.matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light';}document.documentElement.dataset.theme=t;}catch(e){}})();</script>
@@ -117,7 +210,7 @@
     <section class="page-intro page-hero-copy">
       <span class="eyebrow">Journeys</span>
       <h1>Places that stayed with me</h1>
-      <p class="subtitle">One strong frame per place, short notes underneath.</p>
+      <p class="subtitle">Mountains, cities, and warm water — the places that pull me out of routine.</p>
       <p class="lede">Japan by rail, snow seasons in the Alps, warm days in Thailand — and whatever the next ticket turns out to be.</p>
     </section>
     <div class="journeys-hero-grid" aria-label="Journeys preview collage">
@@ -130,8 +223,8 @@
         <figcaption><strong>Rome</strong><span>Golden hour at the Colosseum.</span></figcaption>
       </article>
       <article>
-        <img src="/images/journeys/avoriaz-snow.jpg" alt="Adir beside the Avoriaz sign in the snow, chairlift overhead" loading="lazy" width="768" height="1024">
-        <figcaption><strong>Avoriaz</strong><span>Snow season in the Alps.</span></figcaption>
+        <img src="/images/journeys/matterhorn-zermatt.jpg" alt="The Matterhorn seen from Zermatt" loading="lazy" width="768" height="1024">
+        <figcaption><strong>The Matterhorn</strong><span>Snowboarding Zermatt &amp; Cervinia.</span></figcaption>
       </article>
     </div>
   </section>
@@ -157,8 +250,12 @@
             <div class="meta-line">Tokyo · Fuji · home via Rome</div>
             <div class="tags"><span>City</span><span>Rail</span><span>Fuji</span><span>Rome</span></div>
             <details class="trip-details">
-              <summary>Trip notes</summary>
+              <summary>More photos &amp; notes</summary>
               <div class="trip-details-inner">
+                <div class="trip-gallery-more">
+                  <div><img src="/images/journeys/fuji-lakeside.jpg" alt="Adir at a lakeside with Mount Fuji behind him" loading="lazy"></div>
+                  <div><img src="/images/journeys/rome-colosseum.jpg" alt="Adir in front of the Colosseum in Rome at golden hour" loading="lazy"></div>
+                </div>
                 <ul class="list-clean compact-list">
                   <li>Tokyo Tower up close — orange lattice against the sky</li>
                   <li>A bamboo-grove walk and a wish left at a shrine</li>
@@ -172,28 +269,63 @@
 
         <article class="surface-card trip-card">
           <div class="trip-gallery trip-gallery-even">
-            <div><img src="/images/journeys/alpine-village.jpg" alt="Adir on a snow-covered alpine village street" loading="lazy"></div>
-            <div><img src="/images/journeys/avoriaz-snow.jpg" alt="Adir beside the Avoriaz sign in the snow, chairlift overhead" loading="lazy"></div>
-            <div><img src="/images/placeholders/snowboarding-halfpipe.jpg" alt="Snowboarder riding a halfpipe" loading="lazy"></div>
+            <div><img src="/images/journeys/snowboard-summit.jpg" alt="Adir holding his snowboard overhead at sunset on the mountain" loading="lazy"></div>
+            <div><img src="/images/journeys/snowboard-chairlift.jpg" alt="View from a chairlift over the snowy Avoriaz slopes" loading="lazy"></div>
+            <div><img src="/images/journeys/snowboard-valley.jpg" alt="A snowboard resting above a snowy alpine valley and village" loading="lazy"></div>
           </div>
           <div class="trip-copy">
             <div class="trip-headline">
               <div>
-                <span class="kicker">Seasonal trip</span>
-                <h3>Snowboard Trip · 2026</h3>
+                <span class="kicker">Snowboard trip</span>
+                <h3>Avoriaz · 2026</h3>
               </div>
               <span class="trip-state trip-state-archive">Completed</span>
             </div>
-            <p class="trip-teaser">A trip built around riding: snow-covered village streets, chairlifts overhead, and mountain days from first lift to last light.</p>
-            <div class="meta-line">Avoriaz · snow season in the Alps</div>
-            <div class="tags"><span>Snow</span><span>Movement</span><span>Seasonal</span></div>
+            <p class="trip-teaser">A snowboard trip in Avoriaz, in the French Alps — chairlifts, long runs, and mountain light from first lift to last.</p>
+            <div class="meta-line">French Alps · Portes du Soleil</div>
+            <div class="tags"><span>Snow</span><span>Snowboard</span><span>French Alps</span></div>
+            <details class="trip-details">
+              <summary>More photos &amp; notes</summary>
+              <div class="trip-details-inner">
+                <div class="trip-gallery-more">
+                  <div><img src="/images/journeys/avoriaz-sign.jpg" alt="The Avoriaz deer sign in the snow" loading="lazy"></div>
+                  <div><img src="/images/journeys/avoriaz-snow.jpg" alt="Adir beside the Avoriaz sign in the snow, chairlift overhead" loading="lazy"></div>
+                </div>
+                <ul class="list-clean compact-list">
+                  <li>Long groomers across the Portes du Soleil, lift to lift.</li>
+                  <li>Cold mornings, golden afternoons, snow on the board.</li>
+                </ul>
+              </div>
+            </details>
+          </div>
+        </article>
+
+        <article class="surface-card trip-card">
+          <div class="trip-gallery trip-gallery-even">
+            <div><img src="/images/journeys/matterhorn-zermatt.jpg" alt="The Matterhorn seen from Zermatt, Switzerland" loading="lazy"></div>
+            <div><img src="/images/journeys/matterhorn-cervinia.jpg" alt="The Matterhorn above the slopes at Cervinia, Italy" loading="lazy"></div>
+            <div><img src="/images/journeys/alpine-village.jpg" alt="A snow-covered alpine village street" loading="lazy"></div>
+          </div>
+          <div class="trip-copy">
+            <div class="trip-headline">
+              <div>
+                <span class="kicker">Snowboard trip</span>
+                <h3>The Matterhorn · 2025</h3>
+              </div>
+              <span class="trip-state trip-state-archive">Completed</span>
+            </div>
+            <p class="trip-teaser">Riding the Matterhorn from both sides — Zermatt in Switzerland and Cervinia in Italy — under one of the most recognizable peaks in the Alps.</p>
+            <div class="meta-line">Zermatt &amp; Cervinia · Switzerland &amp; Italy</div>
+            <div class="tags"><span>Snow</span><span>Alps</span><span>Matterhorn</span></div>
             <details class="trip-details">
               <summary>Trip notes</summary>
               <div class="trip-details-inner">
-                <p>Riding days, quiet village evenings, and the kind of cold air that resets the head. More frames will land here after the next snow season.</p>
+                <ul class="list-clean compact-list">
+                  <li>The same peak from two countries — Zermatt one day, Cervinia the next.</li>
+                  <li>Wide Italian-side cruisers and the classic Swiss-side views.</li>
+                </ul>
               </div>
             </details>
-            <p class="photo-credit">Halfpipe photo: <a href="https://commons.wikimedia.org/wiki/File:Snowboarder_in_halfpipe.jpg" target="_blank" rel="noopener noreferrer">Snowboarder in halfpipe.jpg</a> via Picswiss / Roland Zumbühl (CC BY-SA 3.0).</p>
           </div>
         </article>
 
@@ -202,9 +334,6 @@
             <div><img src="/images/journeys/thailand-elephants.jpg" alt="Adir reaching out to an elephant by a river in Thailand" loading="lazy"></div>
             <div><img src="/images/journeys/thailand-longtail.jpg" alt="Adir on a longtail boat between limestone cliffs in Thailand" loading="lazy"></div>
             <div><img src="/images/journeys/thailand-rice-bridge.jpg" alt="Adir with arms spread on a bamboo bridge over rice paddies" loading="lazy"></div>
-            <div><img src="/images/journeys/thailand-waterfall.jpg" alt="Adir climbing a waterfall by rope, jungle all around" loading="lazy"></div>
-            <div><img src="/images/journeys/thailand-jetski.jpg" alt="Adir on a jet ski in clear blue water" loading="lazy"></div>
-            <div><img src="/images/placeholders/thailand-wat-arun.jpg" alt="Wat Arun temple in Bangkok at night" loading="lazy"></div>
           </div>
           <div class="trip-copy">
             <div class="trip-headline">
@@ -218,8 +347,12 @@
             <div class="meta-line">Sea days · elephants · jungle waterfalls</div>
             <div class="tags"><span>Sea</span><span>Warm weather</span><span>Jungle</span><span>Elephants</span></div>
             <details class="trip-details">
-              <summary>Trip notes</summary>
+              <summary>More photos &amp; notes</summary>
               <div class="trip-details-inner">
+                <div class="trip-gallery-more">
+                  <div><img src="/images/journeys/thailand-waterfall.jpg" alt="Adir climbing a waterfall by rope, jungle all around" loading="lazy"></div>
+                  <div><img src="/images/journeys/thailand-jetski.jpg" alt="Adir on a jet ski in clear blue water" loading="lazy"></div>
+                </div>
                 <ul class="list-clean compact-list">
                   <li>A longtail boat weaving between cliffs and green water</li>
                   <li>An afternoon with elephants at the river</li>
@@ -229,7 +362,6 @@
                 </ul>
               </div>
             </details>
-            <p class="photo-credit">Wat Arun photo: <a href="https://commons.wikimedia.org/wiki/File:Wat_Arun_at_night.jpg" target="_blank" rel="noopener noreferrer">Wat Arun at night.jpg</a> by Radek Kucharski (CC BY 2.0).</p>
           </div>
         </article>
       </div>
@@ -237,7 +369,7 @@
     <aside class="stack">
       <article class="note-card">
         <h3>Next on the map</h3>
-        <p>More frames land here after each trip. The few photos that aren't mine yet are credited on their cards.</p>
+        <p>More frames land here after each trip — every photo on this page is my own.</p>
       </article>
     </aside>
   </section>
