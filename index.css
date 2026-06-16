@@ -1061,20 +1061,22 @@ html[data-theme='dark'] .trip-state-archive {
 
 .trip-gallery-more {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
-  gap: 0.5rem;
+  grid-template-columns: repeat(auto-fit, minmax(0, 1fr));
+  gap: 0.4rem;
   margin-bottom: 1rem;
 }
 .trip-gallery-more > div {
-  min-height: 190px;
   overflow: hidden;
   border-radius: 14px;
+  aspect-ratio: 4 / 5;
 }
 .trip-gallery-more img,
 .trip-gallery-more video {
   width: 100%;
   height: 100%;
   object-fit: cover;
+  object-position: center 30%;
+  display: block;
 }
 .trip-details-inner > .trip-gallery-more:last-child {
   margin-bottom: 0;
@@ -1127,26 +1129,25 @@ html[data-theme='dark'] .trip-state-archive {
   }
 }
 
+/* Mosaic: one big frame + two stacked, filling the strip edge-to-edge
+   (no gaps), like the hero collage. object-position favours faces. */
 .trip-gallery {
   display: grid;
-  grid-template-columns: 1.25fr 0.75fr 0.75fr;
-  gap: 0.35rem;
-  padding: 0.35rem;
+  grid-template-columns: 1.4fr 1fr;
+  grid-template-rows: repeat(2, 1fr);
+  gap: 0.4rem;
+  padding: 0.4rem;
   background: var(--bg-strong);
-}
-
-.trip-gallery.trip-gallery-even {
-  grid-template-columns: repeat(3, 1fr);
+  min-height: 480px;
 }
 
 .trip-gallery > div {
-  min-height: 240px;
   overflow: hidden;
   border-radius: 14px;
 }
 
 .trip-gallery > div:first-child {
-  min-height: 300px;
+  grid-row: 1 / span 2;
 }
 
 .trip-gallery img,
@@ -1154,6 +1155,7 @@ html[data-theme='dark'] .trip-state-archive {
   width: 100%;
   height: 100%;
   object-fit: cover;
+  object-position: center 30%;
   display: block;
 }
 
@@ -1168,15 +1170,7 @@ html[data-theme='dark'] .trip-state-archive {
 }
 
 @media (max-width: 720px) {
-  .trip-gallery,
-  .trip-gallery.trip-gallery-even {
-    grid-template-columns: 1fr;
-  }
-
-  .trip-gallery > div,
-  .trip-gallery > div:first-child {
-    min-height: 210px;
-  }
+  .trip-gallery { min-height: 380px; }
 
   .journeys-blueprint,
   .journeys-blueprint-grid > div {
