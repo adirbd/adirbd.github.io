@@ -41,6 +41,23 @@ bash scripts/check_assets.sh
 This rejects oversized files (images > 400KB, videos > 3MB) and files whose
 extension doesn't match their real type (e.g. an HTML error page saved as `.jpg`).
 
+## Trip albums
+
+Each trip on the Journeys page has its own album page under `/trips/<slug>.html`
+(and `/he/trips/<slug>.html`). Both the album pages and the preview cards on the
+Journeys index are **generated** from the `TRIPS` list in
+`scripts/sync_shared.py` — they are not hand-edited.
+
+To add or change a trip:
+
+1. Add the photos to `images/journeys/` (compress them; see the asset guard).
+2. Add or edit the trip's entry in `TRIPS` (bilingual title/teaser/intro, cover,
+   and an ordered `sections` list of `story` / `photo` / `clip` blocks).
+3. Run `python3 scripts/sync_shared.py`.
+
+This writes the EN + HE album pages, the Journeys preview cards (between the
+`<!-- TRIPS:START -->` / `<!-- TRIPS:END -->` markers), and the sitemap entries.
+
 ## Short video clips in Journeys
 
 A trip gallery cell can hold a short looping clip instead of a photo. Clips are

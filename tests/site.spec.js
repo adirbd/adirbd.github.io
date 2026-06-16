@@ -13,6 +13,14 @@ const pages = [
   '/he/journeys.html',
   '/he/links.html',
   '/he/contact.html',
+  '/trips/japan.html',
+  '/trips/avoriaz.html',
+  '/trips/matterhorn.html',
+  '/trips/thailand.html',
+  '/he/trips/japan.html',
+  '/he/trips/avoriaz.html',
+  '/he/trips/matterhorn.html',
+  '/he/trips/thailand.html',
 ];
 
 const isSkippableHref = (href) =>
