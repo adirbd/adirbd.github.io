@@ -622,7 +622,7 @@ button, a { -webkit-tap-highlight-color: transparent; }
   color: rgba(244, 248, 255, 0.82);
   font-size: 0.92rem;
 }
-.stack { display: grid; gap: 1rem; }
+.stack { display: grid; gap: 1rem; align-content: start; }
 .section-title {
   margin: 0 0 0.2rem;
   font-family: var(--font-heading);
