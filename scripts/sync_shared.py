@@ -87,8 +87,10 @@ PERSON_SCHEMA = {
     ],
 }
 
+# Nav order is the site's story arc: work (credibility) -> now (momentum)
+# -> journeys (personality) -> links (presence) -> contact (the close).
+# The "about" page was merged into the home page (the brand link).
 EN_NAV = [
-    ('about.html', 'About'),
     ('work.html', 'Work'),
     ('now.html', 'Now'),
     ('journeys.html', 'Journeys'),
@@ -97,7 +99,6 @@ EN_NAV = [
 ]
 # Same reading order as EN_NAV; dir="rtl" already mirrors the visual layout.
 HE_NAV = [
-    ('/he/about.html', 'אודות'),
     ('/he/work.html', 'עבודה'),
     ('/he/now.html', 'עכשיו'),
     ('/he/journeys.html', 'מסעות'),
@@ -113,19 +114,13 @@ SOCIALS = [
 ]
 PAGES = {
     'index.html': {
-        'lang': 'en', 'dir': 'ltr', 'home': '/', 'active': 'index.html', 'switch': '/he/', 'switch_from': 'EN', 'switch_to': 'HE',
+        'lang': 'en', 'dir': 'ltr', 'home': '/', 'active': 'index.html', 'page_type': 'ProfilePage', 'switch': '/he/', 'switch_from': 'EN', 'switch_to': 'HE',
         'title': 'Adir Ben David (Adirbd)',
         'description': 'Personal website of Adir Ben David — DevOps engineer focused on practical infrastructure, systems thinking, and long-term value.',
         'slug': '', 'en_href': f'{SITE_URL}/', 'he_href': '/he/', 'x_default': f'{SITE_URL}/', 'locale': 'en_US', 'locale_alt': 'he_IL'
     },
-    'about.html': {
-        'lang': 'en', 'dir': 'ltr', 'home': '/', 'active': 'about.html', 'page_type': 'ProfilePage', 'switch': '/he/about.html', 'switch_from': 'EN', 'switch_to': 'HE',
-        'title': 'About | Adir Ben David',
-        'description': 'About Adir Ben David: DevOps, infrastructure, systems thinking, transportation, and public-scale curiosity.',
-        'slug': 'about.html', 'en_href': f'{SITE_URL}/about.html', 'he_href': '/he/about.html', 'x_default': f'{SITE_URL}/', 'locale': 'en_US', 'locale_alt': 'he_IL'
-    },
     'work.html': {
-        'lang': 'en', 'dir': 'ltr', 'home': '/', 'active': 'work.html', 'page_type': 'ProfilePage', 'switch': '/he/work.html', 'switch_from': 'EN', 'switch_to': 'HE',
+        'lang': 'en', 'dir': 'ltr', 'home': '/', 'active': 'work.html', 'switch': '/he/work.html', 'switch_from': 'EN', 'switch_to': 'HE',
         'title': 'Work | Adir Ben David',
         'description': 'Professional experience, working style, and systems-minded infrastructure work by Adir Ben David.',
         'slug': 'work.html', 'en_href': f'{SITE_URL}/work.html', 'he_href': '/he/work.html', 'x_default': f'{SITE_URL}/', 'locale': 'en_US', 'locale_alt': 'he_IL'
@@ -155,19 +150,13 @@ PAGES = {
         'slug': 'contact.html', 'en_href': f'{SITE_URL}/contact.html', 'he_href': '/he/contact.html', 'x_default': f'{SITE_URL}/', 'locale': 'en_US', 'locale_alt': 'he_IL'
     },
     'he/index.html': {
-        'lang': 'he', 'dir': 'rtl', 'home': '/he/', 'active': '/he/index.html', 'switch': '/', 'switch_from': 'HE', 'switch_to': 'EN',
+        'lang': 'he', 'dir': 'rtl', 'home': '/he/', 'active': '/he/index.html', 'page_type': 'ProfilePage', 'switch': '/', 'switch_from': 'HE', 'switch_to': 'EN',
         'title': 'אדיר בן דוד (Adirbd)',
         'description': 'האתר האישי של אדיר בן דוד — DevOps, תשתיות, חשיבה מערכתית ועניין במערכות גדולות לאורך זמן.',
         'slug': 'he/', 'en_href': '/', 'he_href': f'{SITE_URL}/he/', 'x_default': '/', 'locale': 'he_IL', 'locale_alt': 'en_US'
     },
-    'he/about.html': {
-        'lang': 'he', 'dir': 'rtl', 'home': '/he/', 'active': '/he/about.html', 'page_type': 'ProfilePage', 'switch': '/about.html', 'switch_from': 'HE', 'switch_to': 'EN',
-        'title': 'אודות | אדיר בן דוד',
-        'description': 'על אדיר בן דוד: DevOps, תשתיות, חשיבה מערכתית, תחבורה וסקרנות בקנה מידה ציבורי.',
-        'slug': 'he/about.html', 'en_href': '/about.html', 'he_href': f'{SITE_URL}/he/about.html', 'x_default': f'{SITE_URL}/', 'locale': 'he_IL', 'locale_alt': 'en_US'
-    },
     'he/work.html': {
-        'lang': 'he', 'dir': 'rtl', 'home': '/he/', 'active': '/he/work.html', 'page_type': 'ProfilePage', 'switch': '/work.html', 'switch_from': 'HE', 'switch_to': 'EN',
+        'lang': 'he', 'dir': 'rtl', 'home': '/he/', 'active': '/he/work.html', 'switch': '/work.html', 'switch_from': 'HE', 'switch_to': 'EN',
         'title': 'עבודה | אדיר בן דוד',
         'description': 'ניסיון מקצועי, סגנון עבודה וחשיבה מערכתית של אדיר בן דוד.',
         'slug': 'he/work.html', 'en_href': '/work.html', 'he_href': f'{SITE_URL}/he/work.html', 'x_default': f'{SITE_URL}/', 'locale': 'he_IL', 'locale_alt': 'en_US'
@@ -300,16 +289,16 @@ def render_header(meta: dict[str, str]) -> str:
 def render_footer(lang: str) -> str:
     if lang == 'he':
         home = '/he/'
-        about = '/he/about.html'
+        work = '/he/work.html'
         contact = '/he/contact.html'
         line = 'תל אביב · © <span data-year>2026</span> אדיר בן דוד'
-        labels = ('בית', 'אודות', 'יצירת קשר')
+        labels = ('בית', 'עבודה', 'יצירת קשר')
     else:
         home = '/'
-        about = '/about.html'
+        work = '/work.html'
         contact = '/contact.html'
         line = 'Tel Aviv · © <span data-year>2026</span> Adir Ben David'
-        labels = ('Home', 'About', 'Contact')
+        labels = ('Home', 'Work', 'Contact')
     socials = ''.join(
         f'<a href="{href}" target="_blank" rel="noopener noreferrer" aria-label="{aria}"><img src="{icon}" alt="{alt}"></a>'
         for href, aria, icon, alt in SOCIALS
@@ -320,7 +309,7 @@ def render_footer(lang: str) -> str:
       <strong>Adir Ben David</strong>
       <div class="muted">{line}</div>
     </div>
-    <nav class="footer-nav"><a href="{home}">{labels[0]}</a><a href="{about}">{labels[1]}</a><a href="{contact}">{labels[2]}</a></nav>
+    <nav class="footer-nav"><a href="{home}">{labels[0]}</a><a href="{work}">{labels[1]}</a><a href="{contact}">{labels[2]}</a></nav>
     <div class="socials">{socials}</div>
   </div>
 </footer>'''

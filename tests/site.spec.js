@@ -2,14 +2,12 @@ const { test, expect } = require('@playwright/test');
 
 const pages = [
   '/',
-  '/about.html',
   '/work.html',
   '/now.html',
   '/journeys.html',
   '/links.html',
   '/contact.html',
   '/he/',
-  '/he/about.html',
   '/he/work.html',
   '/he/now.html',
   '/he/journeys.html',
