@@ -91,6 +91,7 @@ PERSON_SCHEMA = {
 # -> journeys (personality) -> links (presence) -> contact (the close).
 # The "about" page was merged into the home page (the brand link).
 EN_NAV = [
+    ('/', 'Home'),
     ('work.html', 'Work'),
     ('now.html', 'Now'),
     ('journeys.html', 'Journeys'),
@@ -99,6 +100,7 @@ EN_NAV = [
 ]
 # Same reading order as EN_NAV; dir="rtl" already mirrors the visual layout.
 HE_NAV = [
+    ('/he/', 'בית'),
     ('/he/work.html', 'עבודה'),
     ('/he/now.html', 'עכשיו'),
     ('/he/journeys.html', 'מסעות'),
@@ -114,7 +116,7 @@ SOCIALS = [
 ]
 PAGES = {
     'index.html': {
-        'lang': 'en', 'dir': 'ltr', 'home': '/', 'active': 'index.html', 'page_type': 'ProfilePage', 'switch': '/he/', 'switch_from': 'EN', 'switch_to': 'HE',
+        'lang': 'en', 'dir': 'ltr', 'home': '/', 'active': '/', 'page_type': 'ProfilePage', 'switch': '/he/', 'switch_from': 'EN', 'switch_to': 'HE',
         'title': 'Adir Ben David (Adirbd)',
         'description': 'Personal website of Adir Ben David — DevOps engineer focused on practical infrastructure, systems thinking, and long-term value.',
         'slug': '', 'en_href': f'{SITE_URL}/', 'he_href': '/he/', 'x_default': f'{SITE_URL}/', 'locale': 'en_US', 'locale_alt': 'he_IL'
@@ -150,7 +152,7 @@ PAGES = {
         'slug': 'contact.html', 'en_href': f'{SITE_URL}/contact.html', 'he_href': '/he/contact.html', 'x_default': f'{SITE_URL}/', 'locale': 'en_US', 'locale_alt': 'he_IL'
     },
     'he/index.html': {
-        'lang': 'he', 'dir': 'rtl', 'home': '/he/', 'active': '/he/index.html', 'page_type': 'ProfilePage', 'switch': '/', 'switch_from': 'HE', 'switch_to': 'EN',
+        'lang': 'he', 'dir': 'rtl', 'home': '/he/', 'active': '/he/', 'page_type': 'ProfilePage', 'switch': '/', 'switch_from': 'HE', 'switch_to': 'EN',
         'title': 'אדיר בן דוד (Adirbd)',
         'description': 'האתר האישי של אדיר בן דוד — DevOps, תשתיות, חשיבה מערכתית ועניין במערכות גדולות לאורך זמן.',
         'slug': 'he/', 'en_href': '/', 'he_href': f'{SITE_URL}/he/', 'x_default': '/', 'locale': 'he_IL', 'locale_alt': 'en_US'
