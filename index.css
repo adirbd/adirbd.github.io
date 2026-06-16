@@ -1134,11 +1134,13 @@ html[data-theme='dark'] .trip-state-archive {
 .trip-gallery {
   display: grid;
   grid-template-columns: 1.4fr 1fr;
-  grid-template-rows: repeat(2, 1fr);
+  grid-template-rows: repeat(2, minmax(0, 1fr));
   gap: 0.4rem;
   padding: 0.4rem;
   background: var(--bg-strong);
-  min-height: 480px;
+  /* ~9:10 so the two stacked cells land at ~3:4 — the shape of the
+     portrait photos — so cover barely crops the subject. */
+  aspect-ratio: 9 / 10;
 }
 
 .trip-gallery > div {
@@ -1170,8 +1172,6 @@ html[data-theme='dark'] .trip-state-archive {
 }
 
 @media (max-width: 720px) {
-  .trip-gallery { min-height: 380px; }
-
   .journeys-blueprint,
   .journeys-blueprint-grid > div {
     padding: 1.1rem;
