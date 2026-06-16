@@ -11,7 +11,7 @@ SITE_URL = 'https://www.adirbd.com'
 # commit dates: the sitemap is committed in the same commit whose date it
 # would record, so a derived value can never match what CI regenerates
 # across a midnight boundary (it drifts and fails the sync check).
-LASTMOD = '2026-06-14'
+LASTMOD = '2026-06-17'
 # Applied before first paint so dark-mode visitors never flash light.
 THEME_BOOT_SCRIPT = (
     "<script>(function(){try{var t=localStorage.getItem('adirbd-theme');"
