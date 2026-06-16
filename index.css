@@ -1070,7 +1070,8 @@ html[data-theme='dark'] .trip-state-archive {
   overflow: hidden;
   border-radius: 14px;
 }
-.trip-gallery-more img {
+.trip-gallery-more img,
+.trip-gallery-more video {
   width: 100%;
   height: 100%;
   object-fit: cover;
@@ -1148,10 +1149,12 @@ html[data-theme='dark'] .trip-state-archive {
   min-height: 300px;
 }
 
-.trip-gallery img {
+.trip-gallery img,
+.trip-gallery video {
   width: 100%;
   height: 100%;
   object-fit: cover;
+  display: block;
 }
 
 @media (max-width: 920px) {

@@ -69,3 +69,22 @@ if (navToggle) {
 document.querySelectorAll('[data-year]').forEach((node) => {
   node.textContent = new Date().getFullYear();
 });
+
+// Short gallery clips: load and play only while on screen, and only if the
+// visitor is OK with motion. Until then they show their poster and cost nothing.
+const clips = document.querySelectorAll('video[data-clip]');
+const motionOK = !window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+if (clips.length && motionOK && 'IntersectionObserver' in window) {
+  const io = new IntersectionObserver((entries) => {
+    for (const entry of entries) {
+      const video = entry.target;
+      if (entry.isIntersecting) {
+        if (video.preload !== 'auto') video.preload = 'auto';
+        video.play().catch(() => {});
+      } else {
+        video.pause();
+      }
+    }
+  }, { threshold: 0.25 });
+  clips.forEach((video) => io.observe(video));
+}

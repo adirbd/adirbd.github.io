@@ -38,8 +38,39 @@ Image assets are validated with:
 bash scripts/check_assets.sh
 ```
 
-This rejects files over 400KB and files whose extension doesn't match their
-real type (e.g. an HTML error page saved as `.jpg`).
+This rejects oversized files (images > 400KB, videos > 3MB) and files whose
+extension doesn't match their real type (e.g. an HTML error page saved as `.jpg`).
+
+## Short video clips in Journeys
+
+A trip gallery cell can hold a short looping clip instead of a photo. Clips are
+muted, loop, and only download + play once they scroll into view (handled by
+`index.js`); under `prefers-reduced-motion` they stay paused on their poster.
+
+Drop-in markup (replace an image `<div>` in a `.trip-gallery`):
+
+```html
+<div>
+  <video data-clip muted loop playsinline preload="none"
+         poster="/images/journeys/CLIP-poster.jpg" width="768" height="1024">
+    <source src="/images/journeys/CLIP.webm" type="video/webm" />
+    <source src="/images/journeys/CLIP.mp4" type="video/mp4" />
+  </video>
+</div>
+```
+
+Encode a source clip (needs `ffmpeg`; keep it ~10–15s, 720p, **no audio**):
+
+```bash
+# MP4 (H.264) — universal fallback
+ffmpeg -i in.mov -t 15 -an -vf "scale=-2:720" -c:v libx264 -profile:v main -crf 28 -movflags +faststart images/journeys/CLIP.mp4
+# WebM (VP9) — smaller, modern browsers
+ffmpeg -i in.mov -t 15 -an -vf "scale=-2:720" -c:v libvpx-vp9 -crf 34 -b:v 0 images/journeys/CLIP.webm
+# Poster (first frame), then compress like any photo
+ffmpeg -i in.mov -vframes 1 -q:v 3 images/journeys/CLIP-poster.jpg
+```
+
+Keep each clip under the 3MB asset-guard cap.
 
 ## Validation
 
