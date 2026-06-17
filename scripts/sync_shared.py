@@ -368,7 +368,7 @@ TRIPS = [
              'cap_en': 'The Nintendo Museum, just outside Kyoto.', 'cap_he': 'מוזיאון נינטנדו, ממש מחוץ לקיוטו.'},
             {'type': 'photo', 'src': 'japan-nintendo-controllers.jpg', 'w': 619, 'h': 1100,
              'alt_en': 'Giant plush Wii and N64 controllers at the Nintendo Museum', 'alt_he': 'בקרי Wii ו־N64 ענקיים מבד במוזיאון נינטנדו',
-             'cap_en': 'Oversized Wii and N64 controllers you actually play with.', 'cap_he': 'שלטי Wii ו־N64 ענקיים שאפשר באמת לשחק בהם.'},
+             'cap_en': 'Giant plush Wii and N64 controllers from the museum gift shop.', 'cap_he': 'שלטי Wii ו־N64 ענקיים מבד מחנות המזכרות של המוזיאון.'},
             {'type': 'story', 'en': 'Then Tokyo — fast, loud, and easy to love. Tokyo Tower up close, and a written wish left at a shrine.',
              'he': 'אחר כך טוקיו — מהירה, רועשת וקל להתאהב בה. מגדל טוקיו מקרוב, ומשאלה כתובה שהשארתי במקדש.'},
             {'type': 'photo', 'src': 'tokyo-tower.jpg', 'w': 768, 'h': 1024,
