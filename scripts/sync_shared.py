@@ -666,8 +666,6 @@ def render_sitemap() -> str:
             '  <url>',
             f'    <loc>{canonical}</loc>',
             f'    <lastmod>{LASTMOD}</lastmod>',
-            '    <changefreq>monthly</changefreq>',
-            f'    <priority>{"1.0" if canonical in (f"{SITE_URL}/", f"{SITE_URL}/he/") else "0.8"}</priority>',
             f'    <xhtml:link rel="alternate" hreflang="en" href="{absolute_url(meta["en_href"])}"/>',
             f'    <xhtml:link rel="alternate" hreflang="en-US" href="{absolute_url(meta["en_href"])}"/>',
             f'    <xhtml:link rel="alternate" hreflang="he" href="{absolute_url(meta["he_href"])}"/>',
