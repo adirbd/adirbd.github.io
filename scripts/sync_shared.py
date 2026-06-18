@@ -95,8 +95,7 @@ EN_NAV = [
     ('work.html', 'Work'),
     ('now.html', 'Now'),
     ('journeys.html', 'Journeys'),
-    ('links.html', 'Links'),
-    ('contact.html', 'Contact'),
+    ('connect.html', 'Connect'),
 ]
 # Same reading order as EN_NAV; dir="rtl" already mirrors the visual layout.
 HE_NAV = [
@@ -104,8 +103,7 @@ HE_NAV = [
     ('/he/work.html', 'עבודה'),
     ('/he/now.html', 'עכשיו'),
     ('/he/journeys.html', 'מסעות'),
-    ('/he/links.html', 'קישורים'),
-    ('/he/contact.html', 'יצירת קשר'),
+    ('/he/connect.html', 'קשר'),
 ]
 SOCIALS = [
     ('https://github.com/adirbd', 'GitHub', '/images/github.svg', 'GitHub'),
@@ -139,17 +137,11 @@ PAGES = {
         'description': 'Places, movement, and selected photos from trips by Adir Ben David — Japan, the Alps, Thailand, and more.',
         'slug': 'journeys.html', 'en_href': f'{SITE_URL}/journeys.html', 'he_href': '/he/journeys.html', 'x_default': f'{SITE_URL}/', 'locale': 'en_US', 'locale_alt': 'he_IL'
     },
-    'links.html': {
-        'lang': 'en', 'dir': 'ltr', 'home': '/', 'active': 'links.html', 'switch': '/he/links.html', 'switch_from': 'EN', 'switch_to': 'HE',
-        'title': 'Links | Adir Ben David',
-        'description': 'Useful links and public profiles for Adir Ben David.',
-        'slug': 'links.html', 'en_href': f'{SITE_URL}/links.html', 'he_href': '/he/links.html', 'x_default': f'{SITE_URL}/', 'locale': 'en_US', 'locale_alt': 'he_IL'
-    },
-    'contact.html': {
-        'lang': 'en', 'dir': 'ltr', 'home': '/', 'active': 'contact.html', 'switch': '/he/contact.html', 'switch_from': 'EN', 'switch_to': 'HE',
-        'title': 'Contact | Adir Ben David',
-        'description': 'Contact Adir Ben David for collaboration, ideas, or professional conversations.',
-        'slug': 'contact.html', 'en_href': f'{SITE_URL}/contact.html', 'he_href': '/he/contact.html', 'x_default': f'{SITE_URL}/', 'locale': 'en_US', 'locale_alt': 'he_IL'
+    'connect.html': {
+        'lang': 'en', 'dir': 'ltr', 'home': '/', 'active': 'connect.html', 'switch': '/he/connect.html', 'switch_from': 'EN', 'switch_to': 'HE',
+        'title': 'Connect | Adir Ben David',
+        'description': 'Reach Adir Ben David — on GitHub, LinkedIn, X, Instagram, YouTube, or by email — for collaboration, ideas, or a thoughtful hello.',
+        'slug': 'connect.html', 'en_href': f'{SITE_URL}/connect.html', 'he_href': '/he/connect.html', 'x_default': f'{SITE_URL}/', 'locale': 'en_US', 'locale_alt': 'he_IL'
     },
     'he/index.html': {
         'lang': 'he', 'dir': 'rtl', 'home': '/he/', 'active': '/he/', 'page_type': 'ProfilePage', 'switch': '/', 'switch_from': 'HE', 'switch_to': 'EN',
@@ -175,17 +167,11 @@ PAGES = {
         'description': 'מקומות, תנועה ותמונות נבחרות מהטיולים של אדיר בן דוד — יפן, האלפים, תאילנד ועוד.',
         'slug': 'he/journeys.html', 'en_href': '/journeys.html', 'he_href': f'{SITE_URL}/he/journeys.html', 'x_default': f'{SITE_URL}/', 'locale': 'he_IL', 'locale_alt': 'en_US'
     },
-    'he/links.html': {
-        'lang': 'he', 'dir': 'rtl', 'home': '/he/', 'active': '/he/links.html', 'switch': '/links.html', 'switch_from': 'HE', 'switch_to': 'EN',
-        'title': 'קישורים | אדיר בן דוד',
-        'description': 'קישורים שימושיים ופרופילים ציבוריים של אדיר בן דוד.',
-        'slug': 'he/links.html', 'en_href': '/links.html', 'he_href': f'{SITE_URL}/he/links.html', 'x_default': f'{SITE_URL}/', 'locale': 'he_IL', 'locale_alt': 'en_US'
-    },
-    'he/contact.html': {
-        'lang': 'he', 'dir': 'rtl', 'home': '/he/', 'active': '/he/contact.html', 'switch': '/contact.html', 'switch_from': 'HE', 'switch_to': 'EN',
-        'title': 'יצירת קשר | אדיר בן דוד',
-        'description': 'צרו קשר עם אדיר בן דוד לשיתופי פעולה, רעיונות או שיחות מקצועיות.',
-        'slug': 'he/contact.html', 'en_href': '/contact.html', 'he_href': f'{SITE_URL}/he/contact.html', 'x_default': f'{SITE_URL}/', 'locale': 'he_IL', 'locale_alt': 'en_US'
+    'he/connect.html': {
+        'lang': 'he', 'dir': 'rtl', 'home': '/he/', 'active': '/he/connect.html', 'switch': '/connect.html', 'switch_from': 'HE', 'switch_to': 'EN',
+        'title': 'קשר | אדיר בן דוד',
+        'description': 'איך ליצור קשר עם אדיר בן דוד — ב־GitHub, LinkedIn, X, Instagram, YouTube או באימייל — לשיתופי פעולה, רעיונות או סתם שלום.',
+        'slug': 'he/connect.html', 'en_href': '/connect.html', 'he_href': f'{SITE_URL}/he/connect.html', 'x_default': f'{SITE_URL}/', 'locale': 'he_IL', 'locale_alt': 'en_US'
     },
 }
 
@@ -304,15 +290,15 @@ def render_footer(lang: str) -> str:
     if lang == 'he':
         home = '/he/'
         work = '/he/work.html'
-        contact = '/he/contact.html'
+        contact = '/he/connect.html'
         line = 'תל אביב · © <span data-year>2026</span> אדיר בן דוד'
-        labels = ('בית', 'עבודה', 'יצירת קשר')
+        labels = ('בית', 'עבודה', 'קשר')
     else:
         home = '/'
         work = '/work.html'
-        contact = '/contact.html'
+        contact = '/connect.html'
         line = 'Tel Aviv · © <span data-year>2026</span> Adir Ben David'
-        labels = ('Home', 'Work', 'Contact')
+        labels = ('Home', 'Work', 'Connect')
     socials = ''.join(
         f'<a href="{href}" target="_blank" rel="noopener noreferrer" aria-label="{aria}"><img src="{icon}" alt="{alt}"></a>'
         for href, aria, icon, alt in SOCIALS
