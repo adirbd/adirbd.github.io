@@ -75,6 +75,7 @@ PERSON_SCHEMA = {
         'https://github.com/adirbd',
         'https://www.linkedin.com/in/adirbd/',
         'https://www.instagram.com/adirbd/',
+        'https://www.facebook.com/adirbd/',
         'https://www.youtube.com/@adirbd',
         'https://x.com/adirbd',
     ],
@@ -103,13 +104,14 @@ HE_NAV = [
     ('/he/work.html', 'עבודה'),
     ('/he/now.html', 'עכשיו'),
     ('/he/journeys.html', 'מסעות'),
-    ('/he/connect.html', 'קשר'),
+    ('/he/connect.html', 'בואו נדבר'),
 ]
 SOCIALS = [
     ('https://github.com/adirbd', 'GitHub', '/images/github.svg', 'GitHub'),
     ('https://www.linkedin.com/in/adirbd/', 'LinkedIn', '/images/linkedin.svg', 'LinkedIn'),
     ('https://x.com/adirbd', 'X', '/images/twitter.svg', 'X'),
     ('https://www.instagram.com/adirbd/', 'Instagram', '/images/instagram.svg', 'Instagram'),
+    ('https://www.facebook.com/adirbd/', 'Facebook', '/images/facebook.svg', 'Facebook'),
     ('https://www.youtube.com/@adirbd', 'YouTube', '/images/youtube.svg', 'YouTube'),
 ]
 PAGES = {
@@ -169,7 +171,7 @@ PAGES = {
     },
     'he/connect.html': {
         'lang': 'he', 'dir': 'rtl', 'home': '/he/', 'active': '/he/connect.html', 'switch': '/connect.html', 'switch_from': 'HE', 'switch_to': 'EN',
-        'title': 'קשר | אדיר בן דוד',
+        'title': 'בואו נדבר | אדיר בן דוד',
         'description': 'איך ליצור קשר עם אדיר בן דוד — ב־GitHub, LinkedIn, X, Instagram, YouTube או באימייל — לשיתופי פעולה, רעיונות או סתם שלום.',
         'slug': 'he/connect.html', 'en_href': '/connect.html', 'he_href': f'{SITE_URL}/he/connect.html', 'x_default': f'{SITE_URL}/', 'locale': 'he_IL', 'locale_alt': 'en_US'
     },
@@ -292,7 +294,7 @@ def render_footer(lang: str) -> str:
         work = '/he/work.html'
         contact = '/he/connect.html'
         line = 'תל אביב · © <span data-year>2026</span> אדיר בן דוד'
-        labels = ('בית', 'עבודה', 'קשר')
+        labels = ('בית', 'עבודה', 'בואו נדבר')
     else:
         home = '/'
         work = '/work.html'
