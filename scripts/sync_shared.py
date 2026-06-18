@@ -289,18 +289,16 @@ def render_header(meta: dict[str, str]) -> str:
 
 
 def render_footer(lang: str) -> str:
-    if lang == 'he':
-        home = '/he/'
-        work = '/he/work.html'
-        contact = '/he/connect.html'
-        line = 'תל אביב · © <span data-year>2026</span> אדיר בן דוד'
-        labels = ('בית', 'עבודה', 'בואו נדבר')
-    else:
-        home = '/'
-        work = '/work.html'
-        contact = '/connect.html'
-        line = 'Tel Aviv · © <span data-year>2026</span> Adir Ben David'
-        labels = ('Home', 'Work', 'Connect')
+    is_he = lang == 'he'
+    line = ('תל אביב · © <span data-year>2026</span> אדיר בן דוד' if is_he
+            else 'Tel Aviv · © <span data-year>2026</span> Adir Ben David')
+    # Footer mirrors the full primary nav (absolute hrefs so it resolves from
+    # subdirectory pages like /trips/ too).
+    nav_items = HE_NAV if is_he else EN_NAV
+    footer_nav = ''.join(
+        f'<a href="{h if h.startswith("/") else f"/{h}"}">{label}</a>'
+        for h, label in nav_items
+    )
     socials = ''.join(
         f'<a href="{href}" target="_blank" rel="noopener noreferrer" aria-label="{aria}"><img src="{icon}" alt="{alt}"></a>'
         for href, aria, icon, alt in SOCIALS
@@ -311,7 +309,7 @@ def render_footer(lang: str) -> str:
       <strong>Adir Ben David</strong>
       <div class="muted">{line}</div>
     </div>
-    <nav class="footer-nav"><a href="{home}">{labels[0]}</a><a href="{work}">{labels[1]}</a><a href="{contact}">{labels[2]}</a></nav>
+    <nav class="footer-nav">{footer_nav}</nav>
     <div class="socials">{socials}</div>
   </div>
 </footer>'''
