@@ -45,7 +45,7 @@ PERSON_SCHEMA = {
     'jobTitle': 'DevOps Engineer',
     'description': (
         'Adir Ben David is a DevOps engineer at Check Point Software Technologies in Tel Aviv, working on the '
-        'cloud side — building and managing infrastructure on AWS and Azure with Terraform, Terragrunt, and '
+        'cloud side, building and managing infrastructure on AWS and Azure with Terraform, Terragrunt, and '
         'Crossplane, running Kubernetes across staging, production, and new regions, and building out observability '
         'with Grafana, VictoriaMetrics, and OpenTelemetry. He works on FedRAMP-compliant infrastructure and CI/CD, '
         'and co-led a migration of 1,000+ users to GitHub Enterprise. He joined Check Point in December 2019; '
@@ -132,7 +132,7 @@ PAGES = {
     'index.html': {
         'lang': 'en', 'dir': 'ltr', 'home': '/', 'active': '/', 'page_type': 'ProfilePage', 'switch': '/he/', 'switch_from': 'EN', 'switch_to': 'HE',
         'title': 'Adir Ben David (Adirbd)',
-        'description': 'Adir Ben David — DevOps engineer at Check Point, and a systems thinker drawn to transportation, cities, and how public money turns into things that last.',
+        'description': 'Adir Ben David is a DevOps engineer at Check Point, and a systems thinker drawn to transportation, cities, and how public money turns into things that last.',
         'slug': '', 'en_href': f'{SITE_URL}/', 'he_href': '/he/', 'x_default': f'{SITE_URL}/', 'locale': 'en_US', 'locale_alt': 'he_IL'
     },
     'work.html': {
@@ -144,25 +144,25 @@ PAGES = {
     'now.html': {
         'lang': 'en', 'dir': 'ltr', 'home': '/', 'active': 'now.html', 'switch': '/he/now.html', 'switch_from': 'EN', 'switch_to': 'HE',
         'title': 'Now | Adir Ben David',
-        'description': 'What Adir Ben David is building lately — AI projects, a self-hosted home server, and a Home Assistant smart home — plus an ongoing interest in transit and cities.',
+        'description': 'What Adir Ben David is building lately: AI projects, a self-hosted home server, and a Home Assistant smart home, plus an ongoing interest in transit and cities.',
         'slug': 'now.html', 'en_href': f'{SITE_URL}/now.html', 'he_href': '/he/now.html', 'x_default': f'{SITE_URL}/', 'locale': 'en_US', 'locale_alt': 'he_IL'
     },
     'journeys.html': {
         'lang': 'en', 'dir': 'ltr', 'home': '/', 'active': 'journeys.html', 'switch': '/he/journeys.html', 'switch_from': 'EN', 'switch_to': 'HE',
         'title': 'Journeys | Adir Ben David',
-        'description': 'Places, movement, and selected photos from trips by Adir Ben David — Japan, the Alps, Thailand, and more.',
+        'description': 'Places, movement, and selected photos from trips by Adir Ben David: Japan, the Alps, Thailand, and more.',
         'slug': 'journeys.html', 'en_href': f'{SITE_URL}/journeys.html', 'he_href': '/he/journeys.html', 'x_default': f'{SITE_URL}/', 'locale': 'en_US', 'locale_alt': 'he_IL'
     },
     'connect.html': {
         'lang': 'en', 'dir': 'ltr', 'home': '/', 'active': 'connect.html', 'switch': '/he/connect.html', 'switch_from': 'EN', 'switch_to': 'HE',
         'title': 'Connect | Adir Ben David',
-        'description': 'Reach Adir Ben David — on LinkedIn, Instagram, Facebook, X, YouTube, GitHub, Wikipedia, or by email — for collaboration, ideas, or a thoughtful hello.',
+        'description': 'Reach Adir Ben David on LinkedIn, Instagram, Facebook, X, YouTube, GitHub, Wikipedia, or by email, for collaboration, ideas, or a thoughtful hello.',
         'slug': 'connect.html', 'en_href': f'{SITE_URL}/connect.html', 'he_href': '/he/connect.html', 'x_default': f'{SITE_URL}/', 'locale': 'en_US', 'locale_alt': 'he_IL'
     },
     'he/index.html': {
         'lang': 'he', 'dir': 'rtl', 'home': '/he/', 'active': '/he/', 'page_type': 'ProfilePage', 'switch': '/', 'switch_from': 'HE', 'switch_to': 'EN',
         'title': 'אדיר בן דוד (Adirbd)',
-        'description': 'אדיר בן דוד — מהנדס DevOps ב־Check Point ואיש מערכות שמתעניין בתחבורה, בערים ובאופן שבו כסף ציבורי הופך למשהו שמחזיק לאורך זמן.',
+        'description': 'אדיר בן דוד, מהנדס DevOps ב־Check Point ואיש מערכות שמתעניין בתחבורה, בערים ובאופן שבו כסף ציבורי הופך למשהו שמחזיק לאורך זמן.',
         'slug': 'he/', 'en_href': '/', 'he_href': f'{SITE_URL}/he/', 'x_default': '/', 'locale': 'he_IL', 'locale_alt': 'en_US'
     },
     'he/work.html': {
@@ -174,19 +174,19 @@ PAGES = {
     'he/now.html': {
         'lang': 'he', 'dir': 'rtl', 'home': '/he/', 'active': '/he/now.html', 'switch': '/now.html', 'switch_from': 'HE', 'switch_to': 'EN',
         'title': 'עכשיו | אדיר בן דוד',
-        'description': 'מה אדיר בן דוד בונה לאחרונה — פרויקטים עם AI, שרת ביתי עצמאי ובית חכם מבוסס Home Assistant, לצד עניין מתמשך בתחבורה ובערים.',
+        'description': 'מה אדיר בן דוד בונה לאחרונה: פרויקטים עם AI, שרת ביתי עצמאי ובית חכם מבוסס Home Assistant, לצד עניין מתמשך בתחבורה ובערים.',
         'slug': 'he/now.html', 'en_href': '/now.html', 'he_href': f'{SITE_URL}/he/now.html', 'x_default': f'{SITE_URL}/', 'locale': 'he_IL', 'locale_alt': 'en_US'
     },
     'he/journeys.html': {
         'lang': 'he', 'dir': 'rtl', 'home': '/he/', 'active': '/he/journeys.html', 'switch': '/journeys.html', 'switch_from': 'HE', 'switch_to': 'EN',
         'title': 'מסעות | אדיר בן דוד',
-        'description': 'מקומות, תנועה ותמונות נבחרות מהטיולים של אדיר בן דוד — יפן, האלפים, תאילנד ועוד.',
+        'description': 'מקומות, תנועה ותמונות נבחרות מהטיולים של אדיר בן דוד: יפן, האלפים, תאילנד ועוד.',
         'slug': 'he/journeys.html', 'en_href': '/journeys.html', 'he_href': f'{SITE_URL}/he/journeys.html', 'x_default': f'{SITE_URL}/', 'locale': 'he_IL', 'locale_alt': 'en_US'
     },
     'he/connect.html': {
         'lang': 'he', 'dir': 'rtl', 'home': '/he/', 'active': '/he/connect.html', 'switch': '/connect.html', 'switch_from': 'HE', 'switch_to': 'EN',
         'title': 'בואו נדבר | אדיר בן דוד',
-        'description': 'איך ליצור קשר עם אדיר בן דוד — ב־LinkedIn, Instagram, Facebook, X, YouTube, GitHub, ויקיפדיה או באימייל — לשיתופי פעולה, רעיונות או סתם שלום.',
+        'description': 'איך ליצור קשר עם אדיר בן דוד: ב־LinkedIn, Instagram, Facebook, X, YouTube, GitHub, ויקיפדיה או באימייל, לשיתופי פעולה, רעיונות או סתם שלום.',
         'slug': 'he/connect.html', 'en_href': '/connect.html', 'he_href': f'{SITE_URL}/he/connect.html', 'x_default': f'{SITE_URL}/', 'locale': 'he_IL', 'locale_alt': 'en_US'
     },
 }
@@ -342,18 +342,18 @@ TRIPS = [
         'title_en': 'Japan', 'title_he': 'יפן',
         'meta_en': 'Osaka · Nara · Kyoto · Tokyo · Fuji', 'meta_he': 'אוסקה · נארה · קיוטו · טוקיו · פוג\'י',
         'tags_en': ['Rail', 'City', 'Fuji', 'Rome'], 'tags_he': ['רכבות', 'עיר', 'פוג\'י', 'רומא'],
-        'teaser_en': 'A long rail loop through Osaka, Nara, Kyoto and Tokyo, out to the lakes under Mount Fuji — and a Rome finale before the flight home.',
-        'teaser_he': 'מסע ארוך ברכבות דרך אוסקה, נארה, קיוטו וטוקיו, ומשם לאגמים שמתחת להר פוג\'י — וסיום ברומא לפני הטיסה הביתה.',
+        'teaser_en': 'A long rail loop through Osaka, Nara, Kyoto and Tokyo, out to the lakes under Mount Fuji, then a Rome finale before the flight home.',
+        'teaser_he': 'מסע ארוך ברכבות דרך אוסקה, נארה, קיוטו וטוקיו, ומשם לאגמים שמתחת להר פוג\'י, וסיום ברומא לפני הטיסה הביתה.',
         'cover': 'japan-fuji-blossoms.jpg', 'cover_w': 768, 'cover_h': 1024,
         'cover_alt_en': 'Mount Fuji rising above cherry blossoms',
         'cover_alt_he': 'הר פוג\'י מעל פריחת הדובדבן',
-        'intro_en': 'Japan was a long loop by rail — Osaka, Nara, Kyoto, Tokyo, and the lakes under Mount Fuji — and it ended, unexpectedly, with a layover in Rome on the way home.',
-        'intro_he': 'יפן היה מסע ארוך ברכבות — אוסקה, נארה, קיוטו, טוקיו, והאגמים שמתחת להר פוג\'י — והוא הסתיים, באופן לא צפוי, בעצירת ביניים ברומא בדרך הביתה.',
+        'intro_en': 'Japan was a long loop by rail: Osaka, Nara, Kyoto, Tokyo, and the lakes under Mount Fuji. It ended, unexpectedly, with a layover in Rome on the way home.',
+        'intro_he': 'יפן היה מסע ארוך ברכבות: אוסקה, נארה, קיוטו, טוקיו, והאגמים שמתחת להר פוג\'י. הוא הסתיים, באופן לא צפוי, בעצירת ביניים ברומא בדרך הביתה.',
         # Photos run in travel order: Kyoto -> Tokyo -> Fuji -> Rome. Osaka and
         # Nara photos will be added at the front when they arrive.
         'sections': [
-            {'type': 'story', 'en': 'After Osaka and Nara, Kyoto slowed things down — the bamboo paths of Arashiyama, a good bowl of ramen, and a detour to the Nintendo Museum just outside the city.',
-             'he': 'אחרי אוסקה ונארה, קיוטו האטה את הקצב — שבילי הבמבוק של אראשיאמה, קערת ראמן טובה, וקפיצה למוזיאון נינטנדו ממש מחוץ לעיר.'},
+            {'type': 'story', 'en': 'After Osaka and Nara, Kyoto slowed things down: the bamboo paths of Arashiyama, a good bowl of ramen, and a detour to the Nintendo Museum just outside the city.',
+             'he': 'אחרי אוסקה ונארה, קיוטו האטה את הקצב: שבילי הבמבוק של אראשיאמה, קערת ראמן טובה, וקפיצה למוזיאון נינטנדו ממש מחוץ לעיר.'},
             {'type': 'photo', 'src': 'bamboo-grove.jpg', 'w': 768, 'h': 1024,
              'alt_en': 'Adir walking through a towering bamboo grove', 'alt_he': 'אדיר הולך בשביל בתוך יער במבוק',
              'cap_en': 'Walking through the bamboo at Arashiyama.', 'cap_he': 'הליכה בין הבמבוק באראשיאמה.'},
@@ -369,16 +369,16 @@ TRIPS = [
             {'type': 'photo', 'src': 'japan-nintendo-controllers.jpg', 'w': 619, 'h': 1100,
              'alt_en': 'Giant plush Wii and N64 controllers at the Nintendo Museum', 'alt_he': 'בקרי Wii ו־N64 ענקיים מבד במוזיאון נינטנדו',
              'cap_en': 'Giant plush Wii and N64 controllers from the museum gift shop.', 'cap_he': 'שלטי Wii ו־N64 ענקיים מבד מחנות המזכרות של המוזיאון.'},
-            {'type': 'story', 'en': 'Then Tokyo — fast, loud, and easy to love. Tokyo Tower up close, and a written wish left at a shrine.',
-             'he': 'אחר כך טוקיו — מהירה, רועשת וקל להתאהב בה. מגדל טוקיו מקרוב, ומשאלה כתובה שהשארתי במקדש.'},
+            {'type': 'story', 'en': 'Then Tokyo: fast, loud, and easy to love. Tokyo Tower up close, and a written wish left at a shrine.',
+             'he': 'אחר כך טוקיו: מהירה, רועשת וקל להתאהב בה. מגדל טוקיו מקרוב, ומשאלה כתובה שהשארתי במקדש.'},
             {'type': 'photo', 'src': 'tokyo-tower.jpg', 'w': 768, 'h': 1024,
              'alt_en': 'Adir below the orange lattice of Tokyo Tower', 'alt_he': 'אדיר מתחת לשלד הכתום של מגדל טוקיו',
              'cap_en': 'Under the orange lattice of Tokyo Tower.', 'cap_he': 'מתחת לשלד הכתום של מגדל טוקיו.'},
             {'type': 'photo', 'src': 'shrine-wish.jpg', 'w': 619, 'h': 1100,
              'alt_en': 'Adir holding a written wish envelope at a shrine in Tokyo', 'alt_he': 'אדיר מחזיק מעטפת משאלה במקדש בטוקיו',
              'cap_en': 'A written wish at a Tokyo shrine.', 'cap_he': 'משאלה כתובה במקדש בטוקיו.'},
-            {'type': 'story', 'en': 'Out to Mount Fuji — the little Fujikyu line, a clear day by Lake Kawaguchi, and the Chureito pagoda above the blossoms.',
-             'he': 'ומשם להר פוג\'י — קו הפוג\'יקיו הקטן, יום בהיר על שפת אגם קוואגוצ\'י, ופגודת צ\'וריטו מעל הפריחה.'},
+            {'type': 'story', 'en': 'Out to Mount Fuji: the little Fujikyu line, a clear day by Lake Kawaguchi, and the Chureito pagoda above the blossoms.',
+             'he': 'ומשם להר פוג\'י: קו הפוג\'יקיו הקטן, יום בהיר על שפת אגם קוואגוצ\'י, ופגודת צ\'וריטו מעל הפריחה.'},
             {'type': 'clip', 'src': 'japan-rail.mp4', 'poster': 'japan-rail-poster.jpg', 'w': 540, 'h': 960,
              'alt_en': 'An orange Mt Fuji line train arriving at a platform', 'alt_he': 'רכבת כתומה של קו הר פוג\'י נכנסת לתחנה',
              'cap_en': 'Waiting on the platform for the Fujikyu line.', 'cap_he': 'ממתין על הרציף לרכבת הפוג\'יקיו.'},
@@ -388,8 +388,8 @@ TRIPS = [
             {'type': 'photo', 'src': 'japan-pagoda.jpg', 'w': 360, 'h': 480,
              'alt_en': 'The Chureito pagoda framed by cherry blossoms', 'alt_he': 'פגודת צ\'וריטו ממוסגרת בפריחת דובדבן',
              'cap_en': 'The Chureito pagoda, framed by cherry blossoms.', 'cap_he': 'פגודת צ\'וריטו, ממוסגרת בפריחת דובדבן.'},
-            {'type': 'story', 'en': 'The flight home routed through Rome, so the trip ended at the Colosseum at golden hour — an unplanned last chapter.',
-             'he': 'הטיסה הביתה עברה דרך רומא, אז הטיול הסתיים מול הקולוסיאום בשעת הזהב — פרק אחרון לא מתוכנן.'},
+            {'type': 'story', 'en': 'The flight home routed through Rome, so the trip ended at the Colosseum at golden hour, an unplanned last chapter.',
+             'he': 'הטיסה הביתה עברה דרך רומא, אז הטיול הסתיים מול הקולוסיאום בשעת הזהב, פרק אחרון לא מתוכנן.'},
             {'type': 'photo', 'src': 'rome-colosseum.jpg', 'w': 768, 'h': 1024,
              'alt_en': 'Adir in front of the Colosseum in Rome at golden hour', 'alt_he': 'אדיר מול הקולוסיאום ברומא בשעת שקיעה',
              'cap_en': 'Golden hour at the Colosseum, Rome.', 'cap_he': 'שעת הזהב מול הקולוסיאום, רומא.'},
@@ -402,13 +402,13 @@ TRIPS = [
         'title_en': 'Avoriaz', 'title_he': 'אבוריאז',
         'meta_en': 'French Alps · Portes du Soleil', 'meta_he': 'האלפים הצרפתיים · Portes du Soleil',
         'tags_en': ['Snow', 'Snowboard', 'French Alps'], 'tags_he': ['שלג', 'סנובורד', 'האלפים הצרפתיים'],
-        'teaser_en': 'A snowboard trip in Avoriaz, in the French Alps — chairlifts, long runs, and mountain light from first lift to last.',
-        'teaser_he': 'טיול סנובורד באבוריאז שבאלפים הצרפתיים — רכבלים, מסלולים ארוכים, ואור הרים מהרכבל הראשון עד האחרון.',
+        'teaser_en': 'A snowboard trip in Avoriaz, in the French Alps. Chairlifts, long runs, and mountain light from first lift to last.',
+        'teaser_he': 'טיול סנובורד באבוריאז שבאלפים הצרפתיים. רכבלים, מסלולים ארוכים, ואור הרים מהרכבל הראשון עד האחרון.',
         'cover': 'snowboard-valley.jpg', 'cover_w': 1024, 'cover_h': 768,
         'cover_alt_en': 'A snowboard resting above a snowy alpine valley and village',
         'cover_alt_he': 'סנובורד מונח מעל עמק וכפר מושלגים',
-        'intro_en': 'A week on the snow in Avoriaz, up in the French Alps — part of the huge Portes du Soleil area that spills across into Switzerland.',
-        'intro_he': 'שבוע על השלג באבוריאז, גבוה באלפים הצרפתיים — חלק מאזור Portes du Soleil הענק שנמתח עד שווייץ.',
+        'intro_en': 'A week on the snow in Avoriaz, up in the French Alps, part of the huge Portes du Soleil area that spills across into Switzerland.',
+        'intro_he': 'שבוע על השלג באבוריאז, גבוה באלפים הצרפתיים, חלק מאזור Portes du Soleil הענק שנמתח עד שווייץ.',
         'sections': [
             {'type': 'photo', 'src': 'snowboard-chairlift.jpg', 'w': 768, 'h': 1024,
              'alt_en': 'View from a chairlift over the snowy Avoriaz slopes', 'alt_he': 'מבט מרכבל על מדרונות אבוריאז המושלגים',
@@ -433,13 +433,13 @@ TRIPS = [
         'title_en': 'The Matterhorn', 'title_he': 'המטרהורן',
         'meta_en': 'Zermatt & Cervinia · Switzerland & Italy', 'meta_he': 'צרמט וצ\'רוויניה · שווייץ ואיטליה',
         'tags_en': ['Snow', 'Alps', 'Matterhorn'], 'tags_he': ['שלג', 'אלפים', 'מטרהורן'],
-        'teaser_en': 'Riding the Matterhorn from both sides — Zermatt in Switzerland and Cervinia in Italy — under one of the most recognizable peaks in the Alps.',
-        'teaser_he': 'גלישה על המטרהורן משני הצדדים — צרמט בשווייץ וצ\'רוויניה באיטליה — מתחת לאחת הפסגות המזוהות ביותר באלפים.',
+        'teaser_en': 'Riding the Matterhorn from both sides, Zermatt in Switzerland and Cervinia in Italy, under one of the most recognizable peaks in the Alps.',
+        'teaser_he': 'גלישה על המטרהורן משני הצדדים, צרמט בשווייץ וצ\'רוויניה באיטליה, מתחת לאחת הפסגות המזוהות ביותר באלפים.',
         'cover': 'matterhorn-zermatt.jpg', 'cover_w': 768, 'cover_h': 1024,
         'cover_alt_en': 'The Matterhorn seen from Zermatt, Switzerland',
         'cover_alt_he': 'פסגת המטרהורן מצרמט שבשווייץ',
-        'intro_en': 'Riding the Matterhorn from both sides — Zermatt in Switzerland and Cervinia in Italy — under one of the most recognizable peaks in the Alps. You can cross the border mid-mountain and ride down into a different country for lunch.',
-        'intro_he': 'גלישה על המטרהורן משני הצדדים — צרמט בשווייץ וצ\'רוויניה באיטליה — מתחת לאחת הפסגות המוכרות באלפים. אפשר לחצות את הגבול באמצע ההר ולגלוש למדינה אחרת בשביל ארוחת צהריים.',
+        'intro_en': 'Riding the Matterhorn from both sides, Zermatt in Switzerland and Cervinia in Italy, under one of the most recognizable peaks in the Alps. You can cross the border mid-mountain and ride down into a different country for lunch.',
+        'intro_he': 'גלישה על המטרהורן משני הצדדים, צרמט בשווייץ וצ\'רוויניה באיטליה, מתחת לאחת הפסגות המוכרות באלפים. אפשר לחצות את הגבול באמצע ההר ולגלוש למדינה אחרת בשביל ארוחת צהריים.',
         'sections': [
             {'type': 'photo', 'src': 'matterhorn-zermatt.jpg', 'w': 768, 'h': 1024,
              'alt_en': 'The Matterhorn seen from Zermatt, Switzerland', 'alt_he': 'פסגת המטרהורן מצרמט שבשווייץ',
@@ -459,17 +459,17 @@ TRIPS = [
         'title_en': 'Thailand', 'title_he': 'תאילנד',
         'meta_en': 'Chiang Mai · Pai · the islands · Bangkok', 'meta_he': 'צ\'יאנג מאי · פאי · האיים · בנגקוק',
         'tags_en': ['Jungle', 'Islands', 'Warm weather', 'Elephants'], 'tags_he': ['ג\'ונגל', 'איים', 'מזג אוויר חם', 'פילים'],
-        'teaser_en': 'The green, misty north around Chiang Mai and Pai, then the southern islands, ending in Bangkok — a warm, easy pace the whole way.',
-        'teaser_he': 'הצפון הירוק והערפילי סביב צ\'יאנג מאי ופאי, ואז האיים בדרום, וסיום בבנגקוק — בקצב חמים ונינוח לכל אורך הדרך.',
+        'teaser_en': 'The green, misty north around Chiang Mai and Pai, then the southern islands, ending in Bangkok. A warm, easy pace the whole way.',
+        'teaser_he': 'הצפון הירוק והערפילי סביב צ\'יאנג מאי ופאי, ואז האיים בדרום, וסיום בבנגקוק. קצב חמים ונינוח לכל אורך הדרך.',
         'cover': 'thailand-longtail.jpg', 'cover_w': 880, 'cover_h': 1100,
         'cover_alt_en': 'Adir on a longtail boat between limestone cliffs in Thailand',
         'cover_alt_he': 'אדיר על סירת לונגטייל בין צוקי גיר בתאילנד',
-        'intro_en': 'Thailand was really two trips in one — the green, misty north around Chiang Mai and Pai, then the southern islands, winding up in Bangkok before the flight home.',
-        'intro_he': 'תאילנד הייתה שני טיולים באחד — הצפון הירוק והערפילי סביב צ\'יאנג מאי ופאי, ואז האיים בדרום, וסיום בבנגקוק לפני הטיסה הביתה.',
+        'intro_en': 'Thailand was really two trips in one: the green, misty north around Chiang Mai and Pai, then the southern islands, winding up in Bangkok before the flight home.',
+        'intro_he': 'תאילנד הייתה שני טיולים באחד: הצפון הירוק והערפילי סביב צ\'יאנג מאי ופאי, ואז האיים בדרום, וסיום בבנגקוק לפני הטיסה הביתה.',
         # Travel order: north (Chiang Mai -> Pai -> Chiang Mai) -> southern islands -> Bangkok.
         'sections': [
-            {'type': 'story', 'en': 'It started up north — Chiang Mai first, with a morning with elephants and a waterfall you climb by rope, then a run up to Pai for the rice fields.',
-             'he': 'זה התחיל בצפון — קודם צ\'יאנג מאי, עם בוקר ליד פילים ומפל שמטפסים עליו עם חבל, ואז קפיצה לפאי בשביל שדות האורז.'},
+            {'type': 'story', 'en': 'It started up north in Chiang Mai, with a morning with elephants and a waterfall you climb by rope, then a run up to Pai for the rice fields.',
+             'he': 'זה התחיל בצפון, קודם צ\'יאנג מאי, עם בוקר ליד פילים ומפל שמטפסים עליו עם חבל, ואז קפיצה לפאי בשביל שדות האורז.'},
             {'type': 'photo', 'src': 'thailand-waterfall.jpg', 'w': 886, 'h': 886,
              'alt_en': 'Adir climbing a waterfall by rope, jungle all around', 'alt_he': 'אדיר מטפס על מפל בעזרת חבל, ג\'ונגל מסביב',
              'cap_en': 'Climbing the Sticky Waterfalls near Chiang Mai.', 'cap_he': 'טיפוס על מפלי הדבק ליד צ\'יאנג מאי.'},
@@ -479,8 +479,8 @@ TRIPS = [
             {'type': 'photo', 'src': 'thailand-rice-bridge.jpg', 'w': 768, 'h': 1024,
              'alt_en': 'Adir with arms spread on a bamboo bridge over rice paddies in Pai', 'alt_he': 'אדיר בידיים פתוחות על גשר במבוק מעל שדות אורז בפאי',
              'cap_en': 'The bamboo bridge over the rice fields in Pai.', 'cap_he': 'גשר הבמבוק מעל שדות האורז בפאי.'},
-            {'type': 'story', 'en': 'Then south to the islands — Ko Tao, Phuket, and Koh Phi Phi: blue water, limestone cliffs, and long days on and around the sea.',
-             'he': 'ואז דרומה לאיים — קו טאו, פוקט וקו פי פי: מים כחולים, צוקי גיר, וימים ארוכים על הים ולצדו.'},
+            {'type': 'story', 'en': 'Then south to the islands of Ko Tao, Phuket, and Koh Phi Phi: blue water, limestone cliffs, and long days on and around the sea.',
+             'he': 'ואז דרומה לאיים, קו טאו, פוקט וקו פי פי: מים כחולים, צוקי גיר, וימים ארוכים על הים ולצדו.'},
             {'type': 'photo', 'src': 'thailand-jetski.jpg', 'w': 619, 'h': 1100,
              'alt_en': 'Adir on a jet ski in clear blue water by an island', 'alt_he': 'אדיר על אופנוע ים במים כחולים ליד אי',
              'cap_en': 'Jet ski off the islands.', 'cap_he': 'אופנוע ים מול האיים.'},
