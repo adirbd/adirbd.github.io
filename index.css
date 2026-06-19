@@ -458,6 +458,10 @@ button, a { -webkit-tap-highlight-color: transparent; }
   border-radius: 16px;
   border: 1px solid var(--surface-border);
   background: var(--bg-strong);
+  filter: brightness(0) saturate(100%) invert(18%) sepia(16%) saturate(705%) hue-rotate(183deg) brightness(96%) contrast(92%);
+}
+html[data-theme='dark'] .link-card-icon {
+  filter: brightness(0) saturate(100%) invert(92%) sepia(7%) saturate(527%) hue-rotate(186deg) brightness(101%) contrast(90%);
 }
 .link-card-head p {
   margin-top: 0.2rem;
