@@ -278,6 +278,9 @@ def render_header(meta: dict[str, str]) -> str:
     theme_label = 'מעבר למצב בהיר או כהה' if is_he else 'Toggle theme'
     theme_text = 'כהה' if is_he else 'Dark'
     switch_lang = 'en' if is_he else 'he'
+    # Show the language you'll switch TO, in its own script — no "from → to".
+    switch_name = 'English' if is_he else 'עברית'
+    switch_aria = 'מעבר לאנגלית' if is_he else 'Switch to Hebrew'
     return f'''<header class="site-header">
   <div class="site-shell header-inner">
     <a class="brand" href="{meta['home']}">
@@ -294,7 +297,7 @@ def render_header(meta: dict[str, str]) -> str:
         </ul>
       </nav>
       <div class="header-tools">
-        <a class="lang-switch" href="{meta['switch']}" hreflang="{switch_lang}" lang="{switch_lang}"><span class="muted">{meta['switch_from']}</span><span>→</span><strong>{meta['switch_to']}</strong></a>
+        <a class="lang-switch" href="{meta['switch']}" hreflang="{switch_lang}" lang="{switch_lang}" aria-label="{switch_aria}">{switch_name}</a>
         <button class="toggle" type="button" data-theme-toggle aria-label="{theme_label}"><span>◐</span><span data-theme-label>{theme_text}</span></button>
       </div>
     </div>
