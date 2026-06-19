@@ -524,29 +524,87 @@ button, a { -webkit-tap-highlight-color: transparent; }
   box-shadow: var(--surface-shadow);
   text-align: center;
 }
-.profile-cover {
-  height: 112px;
-  background:
-    linear-gradient(135deg,
-      color-mix(in srgb, var(--accent) 18%, var(--bg-strong)),
-      color-mix(in srgb, var(--accent) 7%, var(--bg-strong)));
-}
 .profile-content {
   display: grid;
   justify-items: center;
   gap: 0.3rem;
-  padding: 0 1.6rem 1.7rem;
+  padding: 0.2rem 1.6rem 1.7rem;
 }
-.profile-avatar {
-  width: 156px;
-  height: 156px;
-  margin-top: -78px;
+/* Rounded-panel breakout: cutout portrait stands on a blue panel, head
+   breaks above the panel's top edge. The disc top sits below the neck so the
+   whole face clears it. A soft accent glow sits behind. */
+.profile-solo {
+  margin: 0;
+  text-align: center;
+}
+.profile-portrait {
+  position: relative;
+  height: 390px;
+  margin: 0 0 0.5rem;
+}
+.profile-portrait::before {
+  content: '';
+  position: absolute;
+  left: 50%;
+  top: 56%;
+  transform: translate(-50%, -50%);
+  width: 82%;
+  height: 80%;
   border-radius: 50%;
-  object-fit: cover;
-  object-position: 50% 8%;
-  border: 5px solid var(--bg-strong);
-  background: var(--bg-strong);
+  background: radial-gradient(closest-side, color-mix(in srgb, var(--accent) 42%, transparent), transparent 70%);
+  filter: blur(32px);
+  z-index: 0;
+  pointer-events: none;
+}
+.profile-panel {
+  position: absolute;
+  left: 50%;
+  bottom: 0;
+  transform: translateX(-50%);
+  width: 286px;
+  height: 246px;
+  z-index: 1;
+  border-radius: var(--radius-lg);
+  background: linear-gradient(160deg, #2a5bd0, #16306e);
   box-shadow: var(--surface-shadow);
+}
+.profile-cut {
+  position: absolute;
+  left: 50%;
+  bottom: 0;
+  transform: translateX(-50%);
+  height: 100%;
+  width: auto;
+  max-width: none;
+  z-index: 2;
+  filter: drop-shadow(0 10px 18px rgba(8, 18, 42, 0.25));
+  transition: opacity 220ms ease;
+}
+/* Pure-CSS shirt toggle: the radios (#po-white / #po-black) cross-fade the two
+   stacked cutouts — no JS, so it works whenever the stylesheet is loaded. */
+.cut-white { opacity: 1; }
+.cut-black { opacity: 0; }
+#po-black:checked ~ .profile-solo .cut-white { opacity: 0; }
+#po-black:checked ~ .profile-solo .cut-black { opacity: 1; }
+.avatar-toggle {
+  display: inline-flex;
+  gap: 0.45rem;
+  margin-top: 0.7rem;
+}
+.avatar-toggle .swatch {
+  width: 1.1rem;
+  height: 1.1rem;
+  border-radius: 50%;
+  border: 1px solid var(--surface-border);
+  padding: 0;
+  cursor: pointer;
+  transition: transform 150ms ease, box-shadow 150ms ease;
+}
+.avatar-toggle .swatch-white { background: #f4f6fb; }
+.avatar-toggle .swatch-black { background: #1b1f27; }
+#po-white:checked ~ .profile-solo .swatch-white,
+#po-black:checked ~ .profile-solo .swatch-black {
+  box-shadow: 0 0 0 2px var(--bg-strong), 0 0 0 4px var(--accent);
 }
 .profile-name {
   margin: 0.7rem 0 0;
