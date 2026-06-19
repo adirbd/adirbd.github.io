@@ -462,6 +462,29 @@ button, a { -webkit-tap-highlight-color: transparent; }
 .link-card-head p {
   margin-top: 0.2rem;
 }
+.now-head {
+  display: flex;
+  align-items: center;
+  gap: 0.85rem;
+}
+.now-icon {
+  width: 2.6rem;
+  height: 2.6rem;
+  flex: 0 0 2.6rem;
+  display: grid;
+  place-items: center;
+  border-radius: 14px;
+  border: 1px solid color-mix(in srgb, var(--accent) 32%, var(--surface-border));
+  background: color-mix(in srgb, var(--accent) 12%, var(--bg-strong));
+  color: var(--accent-strong);
+}
+.now-icon svg {
+  width: 1.45rem;
+  height: 1.45rem;
+}
+.timeline-item:hover .now-icon {
+  background: color-mix(in srgb, var(--accent) 20%, var(--bg-strong));
+}
 .surface-card .link-row,
 .link-row {
   margin-top: 1rem;

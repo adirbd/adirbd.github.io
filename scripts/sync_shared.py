@@ -78,6 +78,7 @@ PERSON_SCHEMA = {
         'https://www.facebook.com/adirbd/',
         'https://www.youtube.com/@adirbd',
         'https://x.com/adirbd',
+        'https://en.wikipedia.org/wiki/User:Adirbd',
     ],
     'knowsAbout': [
         'DevOps', 'Infrastructure', 'Cloud', 'AWS', 'Azure', 'On-premises infrastructure',
@@ -107,18 +108,19 @@ HE_NAV = [
     ('/he/connect.html', 'בואו נדבר'),
 ]
 SOCIALS = [
-    ('https://github.com/adirbd', 'GitHub', '/images/github.svg', 'GitHub'),
     ('https://www.linkedin.com/in/adirbd/', 'LinkedIn', '/images/linkedin.svg', 'LinkedIn'),
-    ('https://x.com/adirbd', 'X', '/images/twitter.svg', 'X'),
     ('https://www.instagram.com/adirbd/', 'Instagram', '/images/instagram.svg', 'Instagram'),
     ('https://www.facebook.com/adirbd/', 'Facebook', '/images/facebook.svg', 'Facebook'),
+    ('https://x.com/adirbd', 'X', '/images/twitter.svg', 'X'),
     ('https://www.youtube.com/@adirbd', 'YouTube', '/images/youtube.svg', 'YouTube'),
+    ('https://github.com/adirbd', 'GitHub', '/images/github.svg', 'GitHub'),
+    ('https://en.wikipedia.org/wiki/User:Adirbd', 'Wikipedia', '/images/wikipedia.svg', 'Wikipedia'),
 ]
 PAGES = {
     'index.html': {
         'lang': 'en', 'dir': 'ltr', 'home': '/', 'active': '/', 'page_type': 'ProfilePage', 'switch': '/he/', 'switch_from': 'EN', 'switch_to': 'HE',
         'title': 'Adir Ben David (Adirbd)',
-        'description': 'Personal website of Adir Ben David — DevOps engineer focused on practical infrastructure, systems thinking, and long-term value.',
+        'description': 'Adir Ben David — DevOps engineer at Check Point, and a systems thinker drawn to transportation, cities, and how public money turns into things that last.',
         'slug': '', 'en_href': f'{SITE_URL}/', 'he_href': '/he/', 'x_default': f'{SITE_URL}/', 'locale': 'en_US', 'locale_alt': 'he_IL'
     },
     'work.html': {
@@ -130,7 +132,7 @@ PAGES = {
     'now.html': {
         'lang': 'en', 'dir': 'ltr', 'home': '/', 'active': 'now.html', 'switch': '/he/now.html', 'switch_from': 'EN', 'switch_to': 'HE',
         'title': 'Now | Adir Ben David',
-        'description': 'A current snapshot of work, interests, and attention right now.',
+        'description': 'What Adir Ben David is building lately — AI projects, a self-hosted home server, and a Home Assistant smart home — plus an ongoing interest in transit and cities.',
         'slug': 'now.html', 'en_href': f'{SITE_URL}/now.html', 'he_href': '/he/now.html', 'x_default': f'{SITE_URL}/', 'locale': 'en_US', 'locale_alt': 'he_IL'
     },
     'journeys.html': {
@@ -142,13 +144,13 @@ PAGES = {
     'connect.html': {
         'lang': 'en', 'dir': 'ltr', 'home': '/', 'active': 'connect.html', 'switch': '/he/connect.html', 'switch_from': 'EN', 'switch_to': 'HE',
         'title': 'Connect | Adir Ben David',
-        'description': 'Reach Adir Ben David — on GitHub, LinkedIn, X, Instagram, YouTube, or by email — for collaboration, ideas, or a thoughtful hello.',
+        'description': 'Reach Adir Ben David — on LinkedIn, Instagram, Facebook, X, YouTube, GitHub, Wikipedia, or by email — for collaboration, ideas, or a thoughtful hello.',
         'slug': 'connect.html', 'en_href': f'{SITE_URL}/connect.html', 'he_href': '/he/connect.html', 'x_default': f'{SITE_URL}/', 'locale': 'en_US', 'locale_alt': 'he_IL'
     },
     'he/index.html': {
         'lang': 'he', 'dir': 'rtl', 'home': '/he/', 'active': '/he/', 'page_type': 'ProfilePage', 'switch': '/', 'switch_from': 'HE', 'switch_to': 'EN',
         'title': 'אדיר בן דוד (Adirbd)',
-        'description': 'האתר האישי של אדיר בן דוד — DevOps, תשתיות, חשיבה מערכתית ועניין במערכות גדולות לאורך זמן.',
+        'description': 'אדיר בן דוד — מהנדס DevOps ב־Check Point ואיש מערכות שמתעניין בתחבורה, בערים ובאופן שבו כסף ציבורי הופך למשהו שמחזיק לאורך זמן.',
         'slug': 'he/', 'en_href': '/', 'he_href': f'{SITE_URL}/he/', 'x_default': '/', 'locale': 'he_IL', 'locale_alt': 'en_US'
     },
     'he/work.html': {
@@ -160,7 +162,7 @@ PAGES = {
     'he/now.html': {
         'lang': 'he', 'dir': 'rtl', 'home': '/he/', 'active': '/he/now.html', 'switch': '/now.html', 'switch_from': 'HE', 'switch_to': 'EN',
         'title': 'עכשיו | אדיר בן דוד',
-        'description': 'צילום מצב עדכני של עבודה, תחומי עניין ומה תופס את תשומת הלב עכשיו.',
+        'description': 'מה אדיר בן דוד בונה לאחרונה — פרויקטים עם AI, שרת ביתי עצמאי ובית חכם מבוסס Home Assistant, לצד עניין מתמשך בתחבורה ובערים.',
         'slug': 'he/now.html', 'en_href': '/now.html', 'he_href': f'{SITE_URL}/he/now.html', 'x_default': f'{SITE_URL}/', 'locale': 'he_IL', 'locale_alt': 'en_US'
     },
     'he/journeys.html': {
@@ -172,7 +174,7 @@ PAGES = {
     'he/connect.html': {
         'lang': 'he', 'dir': 'rtl', 'home': '/he/', 'active': '/he/connect.html', 'switch': '/connect.html', 'switch_from': 'HE', 'switch_to': 'EN',
         'title': 'בואו נדבר | אדיר בן דוד',
-        'description': 'איך ליצור קשר עם אדיר בן דוד — ב־GitHub, LinkedIn, X, Instagram, YouTube או באימייל — לשיתופי פעולה, רעיונות או סתם שלום.',
+        'description': 'איך ליצור קשר עם אדיר בן דוד — ב־LinkedIn, Instagram, Facebook, X, YouTube, GitHub, ויקיפדיה או באימייל — לשיתופי פעולה, רעיונות או סתם שלום.',
         'slug': 'he/connect.html', 'en_href': '/connect.html', 'he_href': f'{SITE_URL}/he/connect.html', 'x_default': f'{SITE_URL}/', 'locale': 'he_IL', 'locale_alt': 'en_US'
     },
 }
