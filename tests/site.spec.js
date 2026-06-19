@@ -79,6 +79,26 @@ test.describe('site pages', () => {
     }
   });
 
+  test('valid JSON-LD and SEO basics on every page', async ({ page }) => {
+    for (const path of pages) {
+      await page.goto(path);
+
+      const blocks = await page.$$eval('script[type="application/ld+json"]', (nodes) =>
+        nodes.map((n) => n.textContent),
+      );
+      expect(blocks.length, `expected JSON-LD on ${path}`).toBeGreaterThan(0);
+      for (const block of blocks) {
+        expect(() => JSON.parse(block), `expected valid JSON-LD on ${path}`).not.toThrow();
+      }
+
+      await expect(page.locator('h1'), `expected exactly one <h1> on ${path}`).toHaveCount(1);
+
+      const desc = await page.getAttribute('meta[name="description"]', 'content');
+      expect(desc, `expected meta description on ${path}`).toBeTruthy();
+      expect(desc.trim().length, `expected non-empty description on ${path}`).toBeGreaterThan(20);
+    }
+  });
+
   test('internal links resolve across the site', async ({ page, request }) => {
     for (const path of pages) {
       await page.goto(path);
