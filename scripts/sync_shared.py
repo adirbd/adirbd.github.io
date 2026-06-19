@@ -278,8 +278,8 @@ def render_header(meta: dict[str, str]) -> str:
     theme_label = 'מעבר למצב בהיר או כהה' if is_he else 'Toggle theme'
     theme_text = 'כהה' if is_he else 'Dark'
     switch_lang = 'en' if is_he else 'he'
-    # Show the language you'll switch TO, in its own script — no "from → to".
-    switch_name = 'English' if is_he else 'עברית'
+    # Show just the language code you'll switch TO (EN page -> HE, HE page -> EN).
+    switch_name = meta['switch_to']
     switch_aria = 'מעבר לאנגלית' if is_he else 'Switch to Hebrew'
     return f'''<header class="site-header">
   <div class="site-shell header-inner">
