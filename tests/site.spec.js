@@ -68,6 +68,17 @@ test.describe('site pages', () => {
     await expect(page.locator('body')).not.toHaveClass(/nav-open/);
   });
 
+  test('no horizontal overflow at mobile width', async ({ page }) => {
+    await page.setViewportSize({ width: 390, height: 844 });
+    for (const path of pages) {
+      await page.goto(path);
+      const overflow = await page.evaluate(
+        () => document.documentElement.scrollWidth - document.documentElement.clientWidth,
+      );
+      expect(overflow, `expected ${path} to have no horizontal overflow at 390px`).toBeLessThanOrEqual(1);
+    }
+  });
+
   test('internal links resolve across the site', async ({ page, request }) => {
     for (const path of pages) {
       await page.goto(path);
