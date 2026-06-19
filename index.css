@@ -236,7 +236,6 @@ button, a { -webkit-tap-highlight-color: transparent; }
   align-items: stretch;
 }
 .hero-copy,
-.hero-photo,
 .surface-card,
 .page-intro,
 .contact-banner,
@@ -319,17 +318,33 @@ button, a { -webkit-tap-highlight-color: transparent; }
 }
 
 .hero-photo {
-  padding: 1.1rem;
-  display: flex;
-  flex-direction: column;
-  gap: 1rem;
+  position: relative;
+  overflow: hidden;
+  padding: 0;
+  border-radius: var(--radius-xl);
+  min-height: 460px;
+  /* Duotone backdrop: the photo blends onto this and dissolves into the page
+     at the bottom (theme-aware) for a cinematic, "looking out" hero. Shadow
+     stop is a deep blue (not black) so dark photo areas don't read as black. */
+  background: linear-gradient(160deg, #2147a6, #14275c);
 }
 .hero-photo img {
+  position: absolute;
+  inset: 0;
   width: 100%;
   height: 100%;
-  max-height: 480px;
   object-fit: cover;
-  border-radius: calc(var(--radius-xl) - 8px);
+  object-position: center 35%;
+  mix-blend-mode: luminosity;
+  filter: grayscale(1) contrast(1.02) brightness(1.14);
+  opacity: 0.95;
+}
+.hero-photo::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: linear-gradient(to bottom, transparent 45%, var(--bg) 99%);
 }
 .photo-note {
   display: flex;
@@ -833,7 +848,6 @@ html[data-theme='dark'] .socials img {
   .header-inner { min-height: 74px; }
   .hero { padding-top: 2.4rem; }
   .hero-copy,
-  .hero-photo,
   .page-intro,
   .page-hero-band,
   .surface-card,
