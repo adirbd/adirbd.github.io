@@ -99,6 +99,22 @@ test.describe('site pages', () => {
     }
   });
 
+  test('no skipped heading levels', async ({ page }) => {
+    for (const path of pages) {
+      await page.goto(path);
+      const levels = await page.$$eval('h1,h2,h3,h4,h5,h6', (nodes) =>
+        nodes.map((n) => Number(n.tagName[1])),
+      );
+      let prev = 0;
+      for (const lvl of levels) {
+        if (prev) {
+          expect(lvl, `expected no heading-level skip (after h${prev}) on ${path}`).toBeLessThanOrEqual(prev + 1);
+        }
+        prev = lvl;
+      }
+    }
+  });
+
   test('internal links resolve across the site', async ({ page, request }) => {
     for (const path of pages) {
       await page.goto(path);

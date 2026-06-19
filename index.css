@@ -426,6 +426,7 @@ button, a { -webkit-tap-highlight-color: transparent; }
 .surface-card h3,
 .timeline-item h3,
 .note-card h3,
+.note-card h2,
 .link-card h3 {
   margin: 0;
   font-family: var(--font-heading);
