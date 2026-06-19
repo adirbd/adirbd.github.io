@@ -1,11 +1,23 @@
 #!/usr/bin/env python3
 from __future__ import annotations
 
+import hashlib
 import json
 from pathlib import Path
 
 REPO = Path(__file__).resolve().parents[1]
 SITE_URL = 'https://www.adirbd.com'
+
+
+def _asset_ver(name: str) -> str:
+    """Short content hash so browsers refetch index.css/js after any change
+    (cache-busting). Changes to those files re-version every page on sync."""
+    path = REPO / name
+    return hashlib.md5(path.read_bytes()).hexdigest()[:8] if path.exists() else '1'
+
+
+CSS_VER = _asset_ver('index.css')
+JS_VER = _asset_ver('index.js')
 # Stable "last meaningfully updated" marker for the sitemap. Bump by hand
 # when the site changes substantively. Deliberately NOT derived from git
 # commit dates: the sitemap is committed in the same commit whose date it
@@ -248,7 +260,7 @@ def render_head(meta: dict[str, str]) -> str:
   {THEME_BOOT_SCRIPT}
   <link rel="preload" href="{prefix}fonts/HKGrotesk-Regular.woff2" as="font" type="font/woff2" crossorigin />
   <link rel="preload" href="{prefix}fonts/Jost-Regular.woff2" as="font" type="font/woff2" crossorigin />
-  <link rel="stylesheet" href="{prefix}index.css" />
+  <link rel="stylesheet" href="{prefix}index.css?v={CSS_VER}" />
 </head>'''
 
 
@@ -597,7 +609,7 @@ def render_album_page(trip: dict, lang: str) -> str:
 
 {render_footer(meta['lang'])}
 
-<script src="{prefix}index.js" defer></script>
+<script src="{prefix}index.js?v={JS_VER}" defer></script>
 </body>
 </html>
 '''
