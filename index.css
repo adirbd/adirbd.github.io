@@ -318,7 +318,10 @@ button, a { -webkit-tap-highlight-color: transparent; }
 
 .hero-photo {
   position: relative;
-  overflow: hidden;
+  /* No overflow:hidden — a rounded overflow clip leaves a faint dark
+     compositor seam at the corners (visible at 1x/2x DPR). Instead the
+     children are rounded directly with border-radius:inherit, which
+     composites cleanly against the page. */
   padding: 0;
   border-radius: var(--radius-xl);
   min-height: 460px;
@@ -330,17 +333,18 @@ button, a { -webkit-tap-highlight-color: transparent; }
   inset: 0;
   width: 100%;
   height: 100%;
+  border-radius: inherit;
   object-fit: cover;
   object-position: center 35%;
-  /* Blue duotone via CSS filter rather than mix-blend-mode: a rounded
-     overflow clip on a *blended* layer leaves a thin dark edge seam at the
-     corners, but a filtered layer composites cleanly. */
+  /* Blue duotone via CSS filter rather than mix-blend-mode (a blended layer
+     also seams at a rounded clip); filters composite cleanly. */
   filter: grayscale(1) sepia(1) hue-rotate(185deg) saturate(1.8) brightness(1.1);
 }
 .hero-photo::after {
   content: '';
   position: absolute;
   inset: 0;
+  border-radius: inherit;
   pointer-events: none;
   background: linear-gradient(to bottom, transparent 45%, var(--bg) 99%);
 }
