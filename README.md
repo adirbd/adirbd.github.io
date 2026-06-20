@@ -31,6 +31,9 @@ python3 scripts/sync_shared.py
 ```
 
 Run it after editing any page; CI fails if pages drift from the script's output.
+It also appends a content-hash query to the asset links (`index.css?v=…`,
+`index.js?v=…`) so browsers fetch the latest CSS/JS after a change; the version
+updates automatically whenever those files change.
 
 Image assets are validated with:
 
@@ -58,36 +61,31 @@ To add or change a trip:
 This writes the EN + HE album pages, the Journeys preview cards (between the
 `<!-- TRIPS:START -->` / `<!-- TRIPS:END -->` markers), and the sitemap entries.
 
-## Short video clips in Journeys
+## Video clips in albums
 
-A trip gallery cell can hold a short looping clip instead of a photo. Clips are
-muted, loop, and only download + play once they scroll into view (handled by
-`index.js`); under `prefers-reduced-motion` they stay paused on their poster.
+A trip's `sections` can hold a short looping clip instead of a photo — a
+`{'type': 'clip', ...}` block with `src` (an `.mp4` in `images/journeys/`),
+`poster`, `w`/`h`, and bilingual `alt`/`cap`. The generator emits a muted,
+looping `<video preload="none">` that only downloads and plays once it scrolls
+into view (`index.js`); under `prefers-reduced-motion` it stays on its poster.
 
-Drop-in markup (replace an image `<div>` in a `.trip-gallery`):
-
-```html
-<div>
-  <video data-clip muted loop playsinline preload="none"
-         poster="/images/journeys/CLIP-poster.jpg" width="768" height="1024">
-    <source src="/images/journeys/CLIP.webm" type="video/webm" />
-    <source src="/images/journeys/CLIP.mp4" type="video/mp4" />
-  </video>
-</div>
-```
-
-Encode a source clip (needs `ffmpeg`; keep it ~10–15s, 720p, **no audio**):
+Encode a source clip to a muted, web-friendly MP4 (needs `ffmpeg`; keep it short
+and under the 3MB asset-guard cap), then grab a poster frame:
 
 ```bash
-# MP4 (H.264) — universal fallback
-ffmpeg -i in.mov -t 15 -an -vf "scale=-2:720" -c:v libx264 -profile:v main -crf 28 -movflags +faststart images/journeys/CLIP.mp4
-# WebM (VP9) — smaller, modern browsers
-ffmpeg -i in.mov -t 15 -an -vf "scale=-2:720" -c:v libvpx-vp9 -crf 34 -b:v 0 images/journeys/CLIP.webm
-# Poster (first frame), then compress like any photo
-ffmpeg -i in.mov -vframes 1 -q:v 3 images/journeys/CLIP-poster.jpg
+# Portrait clip → 720 wide (use scale=960:-2 for a landscape clip)
+ffmpeg -i in.mov -an -vf "scale=720:-2,fps=30" -c:v libx264 -profile:v main \
+  -crf 30 -preset veryfast -movflags +faststart -pix_fmt yuv420p \
+  images/journeys/CLIP.mp4
+# Poster frame — size-checked like any image (< 400KB)
+ffmpeg -ss 1 -i in.mov -frames:v 1 -vf "scale=720:-2" -q:v 5 \
+  images/journeys/CLIP-poster.jpg
 ```
 
-Keep each clip under the 3MB asset-guard cap.
+Match the source's native width where possible (phone clips are usually 720px
+wide) so the clip stays sharp at the column width. Then reference `CLIP.mp4` /
+`CLIP-poster.jpg` from a `clip` block in `TRIPS` and run
+`python3 scripts/sync_shared.py`.
 
 ## Validation
 
