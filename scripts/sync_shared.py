@@ -144,7 +144,7 @@ PAGES = {
     'now.html': {
         'lang': 'en', 'dir': 'ltr', 'home': '/', 'active': 'now.html', 'switch': '/he/now.html', 'switch_from': 'EN', 'switch_to': 'HE',
         'title': 'Now | Adir Ben David',
-        'description': 'What Adir Ben David is building lately: AI projects, a self-hosted home server, and a Home Assistant smart home, plus an ongoing interest in transit and cities.',
+        'description': 'What Adir Ben David is currently building and into: AI projects, a self-hosted home server, and a Home Assistant smart home, plus a long-standing interest in transit and cities.',
         'slug': 'now.html', 'en_href': f'{SITE_URL}/now.html', 'he_href': '/he/now.html', 'x_default': f'{SITE_URL}/', 'locale': 'en_US', 'locale_alt': 'he_IL'
     },
     'journeys.html': {
@@ -174,7 +174,7 @@ PAGES = {
     'he/now.html': {
         'lang': 'he', 'dir': 'rtl', 'home': '/he/', 'active': '/he/now.html', 'switch': '/now.html', 'switch_from': 'HE', 'switch_to': 'EN',
         'title': 'עכשיו | אדיר בן דוד',
-        'description': 'מה אדיר בן דוד בונה לאחרונה: פרויקטים עם AI, שרת ביתי עצמאי ובית חכם מבוסס Home Assistant, לצד עניין מתמשך בתחבורה ובערים.',
+        'description': 'במה אדיר בן דוד עוסק עכשיו: פרויקטים עם AI, שרת ביתי עצמאי ובית חכם מבוסס Home Assistant, לצד עניין מתמשך בתחבורה ובערים.',
         'slug': 'he/now.html', 'en_href': '/now.html', 'he_href': f'{SITE_URL}/he/now.html', 'x_default': f'{SITE_URL}/', 'locale': 'he_IL', 'locale_alt': 'en_US'
     },
     'he/journeys.html': {
