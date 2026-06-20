@@ -223,7 +223,6 @@ button, a { -webkit-tap-highlight-color: transparent; }
   transition: transform 180ms ease, box-shadow 180ms ease, background-color 180ms ease, border-color 180ms ease;
 }
 .lang-switch { gap: 0.45rem; }
-.lang-switch .muted,
 .toggle .muted { color: var(--text-soft); }
 
 .hero {
@@ -495,9 +494,6 @@ html[data-theme='dark'] .link-card-icon {
   color: var(--accent-strong);
   font-weight: 600;
 }
-.card-span-4 { grid-column: span 4; }
-.card-span-5 { grid-column: span 5; }
-.card-span-7 { grid-column: span 7; }
 
 .page-intro {
   margin-top: 3.2rem;
@@ -539,20 +535,6 @@ html[data-theme='dark'] .link-card-icon {
 }
 .profile-column {
   align-self: start;
-}
-.profile-card {
-  overflow: hidden;
-  border-radius: var(--radius-xl);
-  border: 1px solid var(--surface-border);
-  background: var(--bg-elevated);
-  box-shadow: var(--surface-shadow);
-  text-align: center;
-}
-.profile-content {
-  display: grid;
-  justify-items: center;
-  gap: 0.3rem;
-  padding: 0.2rem 1.6rem 1.7rem;
 }
 /* Rounded-panel breakout: cutout portrait stands on a blue panel, head
    breaks above the panel's top edge. The disc top sits below the neck so the
@@ -629,39 +611,6 @@ html[data-theme='dark'] .link-card-icon {
 #po-white:checked ~ .profile-solo .swatch-white,
 #po-black:checked ~ .profile-solo .swatch-black {
   box-shadow: 0 0 0 2px var(--bg-strong), 0 0 0 4px var(--accent);
-}
-.profile-name {
-  margin: 0.7rem 0 0;
-  font-family: var(--font-heading);
-  font-size: 1.55rem;
-  color: var(--heading);
-}
-.profile-role {
-  margin: 0;
-  font-weight: 600;
-  color: var(--text);
-}
-.profile-location {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.4rem;
-  margin: 0.15rem 0 0;
-  font-size: 0.95rem;
-  color: var(--text-soft);
-}
-.profile-location svg {
-  width: 0.95rem;
-  height: 0.95rem;
-  flex: 0 0 auto;
-}
-.profile-summary {
-  width: 100%;
-  margin: 1.1rem 0 0;
-  padding-top: 1.1rem;
-  border-top: 1px solid var(--divider);
-  font-size: 0.98rem;
-  line-height: 1.55;
-  color: var(--text-soft);
 }
 .page-hero-band {
   overflow: hidden;
@@ -917,11 +866,6 @@ html[data-theme='dark'] .socials img {
   .journeys-hero-grid article:first-child {
     grid-column: 1 / span 2;
     grid-row: auto;
-  }
-  .card-span-4,
-  .card-span-5,
-  .card-span-7 {
-    grid-column: span 12;
   }
 }
 
