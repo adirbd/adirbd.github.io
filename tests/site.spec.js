@@ -116,6 +116,16 @@ test.describe('site pages', () => {
     }
   });
 
+  test('sitemap.xml lists every content page', async ({ request }) => {
+    const res = await request.get('/sitemap.xml');
+    expect(res.status(), 'sitemap.xml should be served').toBeLessThan(400);
+    const xml = await res.text();
+    const SITE = 'https://www.adirbd.com';
+    for (const path of pages) {
+      expect(xml, `sitemap should list ${SITE}${path}`).toContain(`<loc>${SITE}${path}</loc>`);
+    }
+  });
+
   test('valid JSON-LD and SEO basics on every page', async ({ page }) => {
     for (const path of pages) {
       await page.goto(path);
