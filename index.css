@@ -414,13 +414,8 @@ main:focus { outline: none; }
 .timeline-item,
 .note-card,
 .link-card,
-.contact-banner,
-.journeys-blueprint,
-.page-hero-band,
 .trip-card,
 .journeys-hero-grid article,
-.journeys-blueprint-grid > div,
-.contact-chip,
 .socials a {
   position: relative;
   overflow: hidden;
@@ -431,13 +426,8 @@ main:focus { outline: none; }
 .timeline-item::before,
 .note-card::before,
 .link-card::before,
-.contact-banner::before,
-.journeys-blueprint::before,
-.page-hero-band::before,
 .trip-card::before,
 .journeys-hero-grid article::before,
-.journeys-blueprint-grid > div::before,
-.contact-chip::before,
 .socials a::before {
   content: '';
   position: absolute;
@@ -462,8 +452,7 @@ main:focus { outline: none; }
 .timeline-item p,
 .note-card p,
 .link-card p,
-.page-intro p,
-.contact-banner p { margin: 0.8rem 0 0; }
+.page-intro p { margin: 0.8rem 0 0; }
 .surface-card .meta,
 .timeline-item .meta,
 .note-card .meta,
