@@ -99,6 +99,25 @@ test.describe('site pages', () => {
     }
   });
 
+  test('external links are secure (https + rel=noopener on _blank)', async ({ page }) => {
+    for (const path of pages) {
+      await page.goto(path);
+      const links = await page.$$eval('a[href]', (anchors) =>
+        anchors.map((a) => ({
+          href: a.getAttribute('href'),
+          target: a.getAttribute('target'),
+          rel: a.getAttribute('rel') || '',
+        })),
+      );
+      for (const { href, target, rel } of links) {
+        expect(href.startsWith('http://'), `insecure http:// link on ${path}: ${href}`).toBe(false);
+        if (target === '_blank') {
+          expect(rel, `target=_blank without rel=noopener on ${path}: ${href}`).toContain('noopener');
+        }
+      }
+    }
+  });
+
   test('no skipped heading levels', async ({ page }) => {
     for (const path of pages) {
       await page.goto(path);
