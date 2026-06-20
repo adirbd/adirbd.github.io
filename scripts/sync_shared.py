@@ -466,9 +466,9 @@ TRIPS = [
         'tags_en': ['Jungle', 'Islands', 'Warm weather', 'Elephants'], 'tags_he': ['ג\'ונגל', 'איים', 'מזג אוויר חם', 'פילים'],
         'teaser_en': 'The green, misty north around Chiang Mai and Pai, then the southern islands, ending in Bangkok. A warm, easy pace the whole way.',
         'teaser_he': 'הצפון הירוק והערפילי סביב צ\'יאנג מאי ופאי, ואז האיים בדרום, וסיום בבנגקוק. קצב חמים ונינוח לכל אורך הדרך.',
-        'cover': 'thailand-longtail.jpg', 'cover_w': 880, 'cover_h': 1100,
-        'cover_alt_en': 'Adir on a longtail boat between limestone cliffs in Thailand',
-        'cover_alt_he': 'אדיר על סירת לונגטייל בין צוקי גיר בתאילנד',
+        'cover': 'thailand-kohtao-viewpoint.jpg', 'cover_w': 1024, 'cover_h': 1280,
+        'cover_alt_en': 'A high viewpoint over a turquoise bay with green hills on Ko Tao',
+        'cover_alt_he': 'תצפית גבוהה מעל מפרץ טורקיז עם גבעות ירוקות בקו טאו',
         'intro_en': 'Thailand was really two trips in one: the green, misty north around Chiang Mai and Pai, then the southern islands, winding up in Bangkok before the flight home.',
         'intro_he': 'תאילנד הייתה שני טיולים באחד: הצפון הירוק והערפילי סביב צ\'יאנג מאי ופאי, ואז האיים בדרום, וסיום בבנגקוק לפני הטיסה הביתה.',
         # Travel order: north (Chiang Mai -> Pai -> Chiang Mai) -> southern islands -> Bangkok.
