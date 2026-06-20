@@ -937,14 +937,21 @@ html[data-theme='dark'] .socials img {
 .trip-grid {
   display: grid;
   gap: 1rem;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
 }
 
 .journeys-overview {
   padding-top: 1.25rem;
 }
 
+/* Journeys index has no sidebar: let the trip gallery use the full width. */
 .journeys-layout {
   align-items: start;
+  grid-template-columns: minmax(0, 1fr);
+}
+
+@media (max-width: 720px) {
+  .trip-grid { grid-template-columns: 1fr; }
 }
 
 .trip-card {
