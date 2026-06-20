@@ -201,7 +201,11 @@ PAGES = {
 
 
 def json_script(data: dict) -> str:
-    return json.dumps(data, ensure_ascii=False, indent=6)
+    # Escape the characters that could otherwise break out of the surrounding
+    # <script type="application/ld+json"> element (e.g. a literal "</script>"
+    # in a value). The \uXXXX forms are valid JSON and parse identically.
+    return (json.dumps(data, ensure_ascii=False, indent=6)
+            .replace('<', '\\u003c').replace('>', '\\u003e').replace('&', '\\u0026'))
 
 
 def render_nav(items: list[tuple[str, str]], active: str) -> str:
