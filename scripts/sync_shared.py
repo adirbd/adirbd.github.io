@@ -224,6 +224,11 @@ def render_head(meta: dict[str, str]) -> str:
     canonical = f'{SITE_URL}/{meta["slug"]}' if meta['slug'] else f'{SITE_URL}/'
     og_image = absolute_url(meta.get('og_image', '/images/og-image.png'))
     og_image_alt = meta.get('og_image_alt', 'Adir Ben David')
+    # Default share image (og-image.png) is 1200x630; album pages override with
+    # their cover, whose real dimensions come through the meta dict.
+    og_image_w = meta.get('og_image_w', 1200)
+    og_image_h = meta.get('og_image_h', 630)
+    og_image_type = 'image/png' if og_image.lower().endswith('.png') else 'image/jpeg'
     webpage_schema = {
         '@context': 'https://schema.org',
         '@type': meta.get('page_type', 'WebPage'),
@@ -263,6 +268,9 @@ def render_head(meta: dict[str, str]) -> str:
   <meta property="og:description" content="{e(meta['description'])}" />
   <meta property="og:image" content="{og_image}" />
   <meta property="og:image:alt" content="{e(og_image_alt)}" />
+  <meta property="og:image:width" content="{og_image_w}" />
+  <meta property="og:image:height" content="{og_image_h}" />
+  <meta property="og:image:type" content="{og_image_type}" />
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:site" content="@adirbd" />
   <meta name="twitter:creator" content="@adirbd" />
@@ -745,6 +753,7 @@ def album_meta(trip: dict, lang: str) -> dict[str, str]:
         'locale': 'he_IL' if is_he else 'en_US', 'locale_alt': 'en_US' if is_he else 'he_IL',
         'og_image': f'{IMG}/{trip["cover"]}',
         'og_image_alt': trip['cover_alt_he'] if is_he else trip['cover_alt_en'],
+        'og_image_w': trip['cover_w'], 'og_image_h': trip['cover_h'],
     }
 
 
@@ -947,7 +956,28 @@ def write_if_changed(path: Path, content: str) -> bool:
     return False
 
 
+# Keys every trip must define so BOTH the album page and the journeys preview
+# card render. Without this check a trip missing, say, 'state_en' builds its
+# album fine but throws a cryptic KeyError when journeys.html regenerates.
+_REQUIRED_TRIP_KEYS = (
+    'slug', 'dates', 'title_en', 'title_he', 'kicker_en', 'kicker_he',
+    'state_en', 'state_he', 'teaser_en', 'teaser_he', 'meta_en', 'meta_he',
+    'intro_en', 'intro_he', 'cover', 'cover_w', 'cover_h',
+    'cover_alt_en', 'cover_alt_he', 'tags_en', 'tags_he', 'sections',
+)
+
+
+def validate_trips() -> None:
+    for trip in TRIPS:
+        missing = [k for k in _REQUIRED_TRIP_KEYS if k not in trip]
+        if missing:
+            slug = trip.get('slug', '<no slug>')
+            raise ValueError(
+                f"trip {slug!r} is missing required key(s): {', '.join(missing)}")
+
+
 def main() -> int:
+    validate_trips()
     changed = []
     for path_str, meta in PAGES.items():
         if sync_page(path_str, meta):

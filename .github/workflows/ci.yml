@@ -9,8 +9,6 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v5
-        with:
-          fetch-depth: 0 # sync_shared.py derives sitemap lastmod from git history
 
       - name: Shared markup is in sync
         run: |
