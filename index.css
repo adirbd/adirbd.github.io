@@ -322,9 +322,7 @@ button, a { -webkit-tap-highlight-color: transparent; }
   padding: 0;
   border-radius: var(--radius-xl);
   min-height: 460px;
-  /* Duotone backdrop: the photo blends onto this and dissolves into the page
-     at the bottom (theme-aware) for a cinematic, "looking out" hero. Shadow
-     stop is a deep blue (not black) so dark photo areas don't read as black. */
+  /* Deep-blue placeholder shown only while the photo loads. */
   background: linear-gradient(160deg, #2147a6, #14275c);
 }
 .hero-photo img {
@@ -334,9 +332,10 @@ button, a { -webkit-tap-highlight-color: transparent; }
   height: 100%;
   object-fit: cover;
   object-position: center 35%;
-  mix-blend-mode: luminosity;
-  filter: grayscale(1) contrast(1.02) brightness(1.14);
-  opacity: 0.95;
+  /* Blue duotone via CSS filter rather than mix-blend-mode: a rounded
+     overflow clip on a *blended* layer leaves a thin dark edge seam at the
+     corners, but a filtered layer composites cleanly. */
+  filter: grayscale(1) sepia(1) hue-rotate(185deg) saturate(1.8) brightness(1.1);
 }
 .hero-photo::after {
   content: '';
