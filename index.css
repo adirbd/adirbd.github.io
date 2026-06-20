@@ -119,6 +119,29 @@ button, a { -webkit-tap-highlight-color: transparent; }
   margin: 0 auto;
 }
 
+/* Keyboard skip link: hidden until focused, then slides in at the top so
+   keyboard/screen-reader users can jump past the nav straight to <main>. */
+.skip-link {
+  position: absolute;
+  inset-inline-start: 0.85rem;
+  inset-block-start: 0.7rem;
+  z-index: 200;
+  transform: translateY(-180%);
+  padding: 0.55rem 0.95rem;
+  border-radius: 999px;
+  background: var(--accent-strong);
+  color: #fff;
+  font-weight: 600;
+  box-shadow: var(--surface-shadow);
+  transition: transform 160ms ease;
+}
+.skip-link:focus-visible {
+  transform: translateY(0);
+  outline: 2px solid var(--bg-strong);
+  outline-offset: 2px;
+}
+main:focus { outline: none; }
+
 .site-header {
   position: sticky;
   top: 0;

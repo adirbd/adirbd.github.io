@@ -281,7 +281,9 @@ def render_header(meta: dict[str, str]) -> str:
     # Show just the language code you'll switch TO (EN page -> HE, HE page -> EN).
     switch_name = meta['switch_to']
     switch_aria = 'מעבר לאנגלית' if is_he else 'Switch to Hebrew'
+    skip_text = 'דלג לתוכן' if is_he else 'Skip to content'
     return f'''<header class="site-header">
+  <a class="skip-link" href="#main">{skip_text}</a>
   <div class="site-shell header-inner">
     <a class="brand" href="{meta['home']}">
       <span class="brand-mark" aria-hidden="true"></span>
@@ -575,7 +577,7 @@ def render_album_main(trip: dict, lang: str) -> str:
     flush_run()
     sections_html = '\n'.join(blocks)
 
-    return f'''<main class="site-shell album">
+    return f'''<main id="main" tabindex="-1" class="site-shell album">
   <a class="album-back" href="{journeys_href}">{arrow} {back}</a>
   <header class="album-hero">
     <div class="album-hero-media">
