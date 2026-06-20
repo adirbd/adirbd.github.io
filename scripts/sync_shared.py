@@ -2,11 +2,19 @@
 from __future__ import annotations
 
 import hashlib
+import html
 import json
 from pathlib import Path
 
 REPO = Path(__file__).resolve().parents[1]
 SITE_URL = 'https://www.adirbd.com'
+
+
+def e(value: object) -> str:
+    """HTML-escape a value for safe interpolation into element text or a
+    double-quoted attribute (escapes & < > " '). Use for every dynamic,
+    user-facing string; do NOT use inside JSON-LD (json.dumps escapes that)."""
+    return html.escape(str(value), quote=True)
 
 
 def _asset_ver(name: str) -> str:
@@ -200,7 +208,7 @@ def render_nav(items: list[tuple[str, str]], active: str) -> str:
     rendered = []
     for href, label in items:
         current = ' aria-current="page"' if href == active else ''
-        rendered.append(f'<li><a href="{href}"{current}>{label}</a></li>')
+        rendered.append(f'<li><a href="{href}"{current}>{e(label)}</a></li>')
     return ''.join(rendered)
 
 
@@ -229,8 +237,8 @@ def render_head(meta: dict[str, str]) -> str:
     return f'''<head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>{meta['title']}</title>
-  <meta name="description" content="{meta['description']}" />
+  <title>{e(meta['title'])}</title>
+  <meta name="description" content="{e(meta['description'])}" />
   <meta name="robots" content="index,follow,max-image-preview:large,max-snippet:-1,max-video-preview:-1" />
   <link rel="canonical" href="{canonical}" />
   <meta name="theme-color" content="#f6f8fc" media="(prefers-color-scheme: light)" />
@@ -247,17 +255,17 @@ def render_head(meta: dict[str, str]) -> str:
   <meta property="og:site_name" content="Adir Ben David" />
   <meta property="og:locale" content="{meta['locale']}" />
   <meta property="og:locale:alternate" content="{meta['locale_alt']}" />
-  <meta property="og:title" content="{meta['title']}" />
-  <meta property="og:description" content="{meta['description']}" />
+  <meta property="og:title" content="{e(meta['title'])}" />
+  <meta property="og:description" content="{e(meta['description'])}" />
   <meta property="og:image" content="{og_image}" />
-  <meta property="og:image:alt" content="{og_image_alt}" />
+  <meta property="og:image:alt" content="{e(og_image_alt)}" />
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:site" content="@adirbd" />
   <meta name="twitter:creator" content="@adirbd" />
-  <meta name="twitter:title" content="{meta['title']}" />
-  <meta name="twitter:description" content="{meta['description']}" />
+  <meta name="twitter:title" content="{e(meta['title'])}" />
+  <meta name="twitter:description" content="{e(meta['description'])}" />
   <meta name="twitter:image" content="{og_image}" />
-  <meta name="twitter:image:alt" content="{og_image_alt}" />
+  <meta name="twitter:image:alt" content="{e(og_image_alt)}" />
   <script type="application/ld+json">{json_script(PERSON_SCHEMA)}</script>
   <script type="application/ld+json">{json_script(webpage_schema)}</script>
   {THEME_BOOT_SCRIPT}
@@ -318,11 +326,11 @@ def render_footer(lang: str) -> str:
     # subdirectory pages like /trips/ too).
     nav_items = HE_NAV if is_he else EN_NAV
     footer_nav = ''.join(
-        f'<a href="{h if h.startswith("/") else f"/{h}"}">{label}</a>'
+        f'<a href="{h if h.startswith("/") else f"/{h}"}">{e(label)}</a>'
         for h, label in nav_items
     )
     socials = ''.join(
-        f'<a href="{href}" target="_blank" rel="noopener noreferrer" aria-label="{aria}"><img src="{icon}" alt="{alt}"></a>'
+        f'<a href="{href}" target="_blank" rel="noopener noreferrer" aria-label="{e(aria)}"><img src="{icon}" alt="{e(alt)}"></a>'
         for href, aria, icon, alt in SOCIALS
     )
     return f'''<footer class="site-footer">
@@ -737,7 +745,7 @@ def album_meta(trip: dict, lang: str) -> dict[str, str]:
 
 
 def render_tags(tags: list[str]) -> str:
-    return ''.join(f'<span>{t}</span>' for t in tags)
+    return ''.join(f'<span>{e(t)}</span>' for t in tags)
 
 
 def render_album_main(trip: dict, lang: str) -> str:
@@ -753,8 +761,8 @@ def render_album_main(trip: dict, lang: str) -> str:
     tags = render_tags(trip['tags_he'] if is_he else trip['tags_en'])
 
     def figure(s: dict) -> str:
-        alt = s['alt_he'] if is_he else s['alt_en']
-        cap = s['cap_he'] if is_he else s['cap_en']
+        alt = e(s['alt_he'] if is_he else s['alt_en'])
+        cap = e(s['cap_he'] if is_he else s['cap_en'])
         if s['type'] == 'clip':
             media = (f'<video data-clip muted loop playsinline preload="none" '
                      f'poster="{IMG}/{s["poster"]}" width="{s["w"]}" height="{s["h"]}" '
@@ -784,7 +792,7 @@ def render_album_main(trip: dict, lang: str) -> str:
     for s in trip['sections']:
         if s['type'] == 'story':
             flush_run()
-            text = s['he'] if is_he else s['en']
+            text = e(s['he'] if is_he else s['en'])
             blocks.append(f'      <section class="album-story">\n        <p>{text}</p>\n      </section>')
         else:
             run.append(s)
@@ -795,13 +803,13 @@ def render_album_main(trip: dict, lang: str) -> str:
   <a class="album-back" href="{journeys_href}">{arrow} {back}</a>
   <header class="album-hero">
     <div class="album-hero-media">
-      <img src="{IMG}/{trip['cover']}" alt="{cover_alt}" width="{trip['cover_w']}" height="{trip['cover_h']}" fetchpriority="high">
+      <img src="{IMG}/{trip['cover']}" alt="{e(cover_alt)}" width="{trip['cover_w']}" height="{trip['cover_h']}" fetchpriority="high">
     </div>
     <div class="album-hero-copy">
-      <span class="kicker">{kicker}</span>
-      <h1>{title} · {trip['dates']}</h1>
-      <p class="album-intro">{intro}</p>
-      <div class="meta-line">{meta_line}</div>
+      <span class="kicker">{e(kicker)}</span>
+      <h1>{e(title)} · {e(trip['dates'])}</h1>
+      <p class="album-intro">{e(intro)}</p>
+      <div class="meta-line">{e(meta_line)}</div>
       <div class="tags">{tags}</div>
     </div>
   </header>
@@ -851,19 +859,19 @@ def render_trip_previews(lang: str) -> str:
         cls = 'surface-card trip-card trip-card-featured' if trip.get('featured') else 'surface-card trip-card'
         open_label = f'{title} {trip["dates"]}'
         cards.append(f'''        <article class="{cls}">
-          <a class="trip-cover" href="{href}" aria-label="{open_label}">
-            <img src="{IMG}/{trip['cover']}" alt="{cover_alt}" loading="lazy" decoding="async" width="{trip['cover_w']}" height="{trip['cover_h']}">
+          <a class="trip-cover" href="{href}" aria-label="{e(open_label)}">
+            <img src="{IMG}/{trip['cover']}" alt="{e(cover_alt)}" loading="lazy" decoding="async" width="{trip['cover_w']}" height="{trip['cover_h']}">
           </a>
           <div class="trip-copy">
             <div class="trip-headline">
               <div>
-                <span class="kicker">{kicker}</span>
-                <h3>{title} · {trip['dates']}</h3>
+                <span class="kicker">{e(kicker)}</span>
+                <h3>{e(title)} · {e(trip['dates'])}</h3>
               </div>
-              <span class="trip-state trip-state-archive">{state}</span>
+              <span class="trip-state trip-state-archive">{e(state)}</span>
             </div>
-            <p class="trip-teaser">{teaser}</p>
-            <div class="meta-line">{meta_line}</div>
+            <p class="trip-teaser">{e(teaser)}</p>
+            <div class="meta-line">{e(meta_line)}</div>
             <div class="tags">{tags}</div>
             <a class="trip-album-link" href="{href}">{view} <span aria-hidden="true">{arrow}</span></a>
           </div>
@@ -896,22 +904,26 @@ def render_sitemap() -> str:
     return '\n'.join(lines) + '\n'
 
 
-def replace_section(text: str, start_tag: str, end_tag: str, replacement: str) -> str:
-    start = text.index(start_tag)
-    end = text.index(end_tag, start) + len(end_tag)
-    return text[:start] + replacement + text[end:]
+def replace_section(text: str, start_tag: str, end_tag: str, replacement: str, where: str = '') -> str:
+    start = text.find(start_tag)
+    if start == -1:
+        raise ValueError(f'marker {start_tag!r} not found in {where or "page"}')
+    end = text.find(end_tag, start)
+    if end == -1:
+        raise ValueError(f'closing marker {end_tag!r} not found after {start_tag!r} in {where or "page"}')
+    return text[:start] + replacement + text[end + len(end_tag):]
 
 
 def sync_page(path_str: str, meta: dict[str, str]) -> bool:
     path = REPO / path_str
     original = path.read_text()
-    updated = replace_section(original, '<head>', '</head>', render_head(meta))
-    updated = replace_section(updated, '<header class="site-header">', '</header>', render_header(meta))
-    updated = replace_section(updated, '<footer class="site-footer">', '</footer>', render_footer(meta['lang']))
+    updated = replace_section(original, '<head>', '</head>', render_head(meta), where=path_str)
+    updated = replace_section(updated, '<header class="site-header">', '</header>', render_header(meta), where=path_str)
+    updated = replace_section(updated, '<footer class="site-footer">', '</footer>', render_footer(meta['lang']), where=path_str)
     if path_str in ('journeys.html', 'he/journeys.html'):
         previews = render_trip_previews(meta['lang'])
         block = f'<!-- TRIPS:START -->\n{previews}\n        <!-- TRIPS:END -->'
-        updated = replace_section(updated, '<!-- TRIPS:START -->', '<!-- TRIPS:END -->', block)
+        updated = replace_section(updated, '<!-- TRIPS:START -->', '<!-- TRIPS:END -->', block, where=path_str)
     html_open = f'<html lang="{meta["lang"]}" dir="{meta["dir"]}">'
     for line in original.splitlines():
         if line.startswith('<html '):
@@ -946,8 +958,6 @@ def main() -> int:
     sitemap = render_sitemap()
     if write_if_changed(REPO / 'sitemap.xml', sitemap):
         changed.append('sitemap.xml')
-    if write_if_changed(REPO / 'sitemap', sitemap):
-        changed.append('sitemap')
     if changed:
         print('Updated:')
         for item in changed:

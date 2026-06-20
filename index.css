@@ -370,16 +370,6 @@ main:focus { outline: none; }
   pointer-events: none;
   background: linear-gradient(to bottom, transparent 45%, var(--bg) 99%);
 }
-.photo-note {
-  display: flex;
-  justify-content: space-between;
-  gap: 1rem;
-  padding: 0 0.2rem;
-  font-size: 0.95rem;
-  color: var(--text-soft);
-}
-.photo-note strong { color: var(--heading); display: block; }
-
 .section {
   padding: 1rem 0 4.5rem;
 }
@@ -400,11 +390,6 @@ main:focus { outline: none; }
   margin: 0;
   color: var(--text-soft);
   max-width: 36rem;
-}
-.card-grid {
-  display: grid;
-  grid-template-columns: repeat(12, minmax(0, 1fr));
-  gap: 1rem;
 }
 .surface-card {
   padding: 1.35rem;
@@ -531,21 +516,12 @@ html[data-theme='dark'] .link-card-icon {
   grid-template-columns: minmax(0, 1.05fr) minmax(320px, 0.95fr);
   align-items: stretch;
 }
-.page-hero-banner {
-  grid-template-columns: minmax(0, 1fr);
-}
 .page-hero-journeys {
   grid-template-columns: minmax(0, 0.95fr) minmax(320px, 1.05fr);
   align-items: stretch;
 }
 .page-hero-copy {
   margin-top: 0;
-}
-.page-hero-photo {
-  min-height: 100%;
-}
-.page-hero-photo img {
-  min-height: 420px;
 }
 .profile-column {
   align-self: start;
@@ -625,21 +601,6 @@ html[data-theme='dark'] .link-card-icon {
 #po-white:checked ~ .profile-solo .swatch-white,
 #po-black:checked ~ .profile-solo .swatch-black {
   box-shadow: 0 0 0 2px var(--bg-strong), 0 0 0 4px var(--accent);
-}
-.hero-stats {
-  display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 1rem;
-}
-.page-hero-split .hero-stats {
-  grid-column: 1 / -1;
-}
-.hero-stat {
-  padding: 1.2rem;
-}
-.hero-stat p {
-  margin-top: 0.45rem;
-  color: var(--text-soft);
 }
 .journeys-hero-grid {
   display: grid;
@@ -836,9 +797,6 @@ html[data-theme='dark'] .socials img {
   .page-layout,
   .page-hero-split,
   .page-hero-journeys { grid-template-columns: 1fr; }
-  .hero-stats {
-    grid-template-columns: 1fr;
-  }
   .journeys-hero-grid {
     grid-template-columns: 1fr 1fr;
     grid-template-rows: repeat(2, minmax(220px, 1fr));
@@ -862,8 +820,6 @@ html[data-theme='dark'] .socials img {
   .link-card { padding: 1.15rem; border-radius: 20px; }
   .section { padding-bottom: 3.4rem; }
   .section-heading { align-items: start; flex-direction: column; }
-  .photo-note { flex-direction: column; }
-  .page-hero-photo img { min-height: 320px; }
   .journeys-hero-grid {
     grid-template-columns: 1fr;
     grid-template-rows: none;
@@ -940,10 +896,6 @@ html[data-theme='dark'] .socials img {
   grid-template-columns: repeat(2, minmax(0, 1fr));
 }
 
-.journeys-overview {
-  padding-top: 1.25rem;
-}
-
 /* Journeys index has no sidebar: let the trip gallery use the full width. */
 .journeys-layout {
   align-items: start;
@@ -983,7 +935,6 @@ html[data-theme='dark'] .socials img {
   color: var(--text);
 }
 
-.trip-link,
 .trip-state {
   flex-shrink: 0;
   display: inline-flex;
@@ -996,10 +947,6 @@ html[data-theme='dark'] .socials img {
   border: 1px solid var(--surface-border);
   background: var(--bg-strong);
   color: var(--accent-strong);
-}
-
-.trip-state-planned {
-  background: rgba(45, 108, 223, 0.1);
 }
 
 .trip-state-archive {
@@ -1021,16 +968,6 @@ html[data-theme='dark'] .trip-state-archive {
   padding-top: 0.7rem;
 }
 
-.ordered-clean {
-  list-style: decimal;
-  padding-inline-start: 1.25rem;
-}
-
-.ordered-clean li {
-  border-top: 0;
-  padding-top: 0;
-}
-
 .trip-copy .meta-line {
   color: var(--text-soft);
   font-size: 0.95rem;
@@ -1039,18 +976,6 @@ html[data-theme='dark'] .trip-state-archive {
 
 .trip-copy .tags {
   margin-top: 0.85rem;
-}
-
-.photo-credit {
-  margin-top: 1rem;
-  font-size: 0.82rem;
-  color: var(--text-soft);
-}
-
-.photo-credit a {
-  color: var(--accent-strong);
-  text-decoration: underline;
-  text-underline-offset: 0.14em;
 }
 
 @media (max-width: 720px) {
