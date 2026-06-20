@@ -68,6 +68,31 @@ test.describe('site pages', () => {
     await expect(page.locator('body')).not.toHaveClass(/nav-open/);
   });
 
+  test('album media is complete (dims + alt, lazy imgs, poster+source clips)', async ({ page }) => {
+    const albums = pages.filter((p) => p.includes('/trips/'));
+    for (const path of albums) {
+      await page.goto(path);
+      const imgs = await page.$$eval('.album-figure img', (els) =>
+        els.map((e) => ({ w: e.getAttribute('width'), h: e.getAttribute('height'), alt: e.getAttribute('alt'), loading: e.getAttribute('loading') })),
+      );
+      expect(imgs.length, `expected album figures on ${path}`).toBeGreaterThan(0);
+      for (const im of imgs) {
+        expect(Boolean(im.w && im.h), `gallery img needs width+height on ${path}`).toBe(true);
+        expect((im.alt || '').length, `gallery img needs alt on ${path}`).toBeGreaterThan(3);
+        expect(im.loading, `gallery img should be lazy on ${path}`).toBe('lazy');
+      }
+      const vids = await page.$$eval('.album-figure video', (els) =>
+        els.map((e) => ({ poster: e.getAttribute('poster'), w: e.getAttribute('width'), h: e.getAttribute('height'), src: e.querySelector('source')?.getAttribute('src'), label: e.getAttribute('aria-label') })),
+      );
+      for (const v of vids) {
+        expect(Boolean(v.poster), `clip needs poster on ${path}`).toBe(true);
+        expect(Boolean(v.src), `clip needs <source> on ${path}`).toBe(true);
+        expect(Boolean(v.w && v.h), `clip needs width+height on ${path}`).toBe(true);
+        expect((v.label || '').length, `clip needs aria-label on ${path}`).toBeGreaterThan(3);
+      }
+    }
+  });
+
   test('no horizontal overflow at mobile width', async ({ page }) => {
     await page.setViewportSize({ width: 390, height: 844 });
     for (const path of pages) {
