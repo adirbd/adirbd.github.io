@@ -211,6 +211,7 @@ def render_head(meta: dict[str, str]) -> str:
     prefix = '../' * meta['slug'].count('/') or './'
     canonical = f'{SITE_URL}/{meta["slug"]}' if meta['slug'] else f'{SITE_URL}/'
     og_image = absolute_url(meta.get('og_image', '/images/og-image.png'))
+    og_image_alt = meta.get('og_image_alt', 'Adir Ben David')
     webpage_schema = {
         '@context': 'https://schema.org',
         '@type': meta.get('page_type', 'WebPage'),
@@ -249,12 +250,14 @@ def render_head(meta: dict[str, str]) -> str:
   <meta property="og:title" content="{meta['title']}" />
   <meta property="og:description" content="{meta['description']}" />
   <meta property="og:image" content="{og_image}" />
+  <meta property="og:image:alt" content="{og_image_alt}" />
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:site" content="@adirbd" />
   <meta name="twitter:creator" content="@adirbd" />
   <meta name="twitter:title" content="{meta['title']}" />
   <meta name="twitter:description" content="{meta['description']}" />
   <meta name="twitter:image" content="{og_image}" />
+  <meta name="twitter:image:alt" content="{og_image_alt}" />
   <script type="application/ld+json">{json_script(PERSON_SCHEMA)}</script>
   <script type="application/ld+json">{json_script(webpage_schema)}</script>
   {THEME_BOOT_SCRIPT}
@@ -729,6 +732,7 @@ def album_meta(trip: dict, lang: str) -> dict[str, str]:
         'slug': slug, 'en_href': en_href, 'he_href': he_href, 'x_default': en_href,
         'locale': 'he_IL' if is_he else 'en_US', 'locale_alt': 'en_US' if is_he else 'he_IL',
         'og_image': f'{IMG}/{trip["cover"]}',
+        'og_image_alt': trip['cover_alt_he'] if is_he else trip['cover_alt_en'],
     }
 
 

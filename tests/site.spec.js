@@ -161,6 +161,18 @@ test.describe('site pages', () => {
     }
   });
 
+  test('every page has an og:image with a non-empty og:image:alt', async ({ page }) => {
+    for (const path of pages) {
+      await page.goto(path);
+      const img = await page.getAttribute('meta[property="og:image"]', 'content');
+      expect(img, `expected og:image on ${path}`).toBeTruthy();
+      const alt = await page.getAttribute('meta[property="og:image:alt"]', 'content');
+      expect((alt || '').trim().length, `expected non-empty og:image:alt on ${path}`).toBeGreaterThan(3);
+      const talt = await page.getAttribute('meta[name="twitter:image:alt"]', 'content');
+      expect((talt || '').trim().length, `expected non-empty twitter:image:alt on ${path}`).toBeGreaterThan(3);
+    }
+  });
+
   test('external links are secure (https + rel=noopener on _blank)', async ({ page }) => {
     for (const path of pages) {
       await page.goto(path);
