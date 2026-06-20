@@ -1,65 +1,90 @@
-/* -----------------------------------------
-  Have focus outline only for keyboard users 
- ---------------------------------------- */
 
-const handleFirstTab = (e) => {
-  if(e.key === 'Tab') {
-    document.body.classList.add('user-is-tabbing')
+const root = document.documentElement;
+const themeToggle = document.querySelector('[data-theme-toggle]');
+const navToggle = document.querySelector('[data-nav-toggle]');
+const body = document.body;
+const storageKey = 'adirbd-theme';
+const isHebrew = (root.lang || '').toLowerCase().startsWith('he');
+const themeText = isHebrew
+  ? { light: 'בהיר', dark: 'כהה', toLight: 'מעבר למצב בהיר', toDark: 'מעבר למצב כהה' }
+  : { light: 'Light', dark: 'Dark', toLight: 'Switch to light mode', toDark: 'Switch to dark mode' };
 
-    window.removeEventListener('keydown', handleFirstTab)
-    window.addEventListener('mousedown', handleMouseDownOnce)
+const getPreferredTheme = () => {
+  const saved = localStorage.getItem(storageKey);
+  if (saved === 'light' || saved === 'dark') return saved;
+  return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+};
+
+const setTheme = (theme) => {
+  root.dataset.theme = theme;
+  localStorage.setItem(storageKey, theme);
+  const themeColor = theme === 'dark' ? '#0d1320' : '#f6f8fc';
+  document.querySelectorAll('meta[name="theme-color"]').forEach((node) => {
+    node.setAttribute('content', themeColor);
+    node.removeAttribute('media');
+  });
+  if (themeToggle) {
+    themeToggle.setAttribute('aria-label', theme === 'dark' ? themeText.toLight : themeText.toDark);
+    themeToggle.querySelector('[data-theme-label]').textContent = theme === 'dark' ? themeText.light : themeText.dark;
   }
+};
 
+setTheme(getPreferredTheme());
+
+if (themeToggle) {
+  themeToggle.addEventListener('click', () => {
+    setTheme(root.dataset.theme === 'dark' ? 'light' : 'dark');
+  });
 }
 
-const handleMouseDownOnce = () => {
-  document.body.classList.remove('user-is-tabbing')
-
-  window.removeEventListener('mousedown', handleMouseDownOnce)
-  window.addEventListener('keydown', handleFirstTab)
-}
-
-window.addEventListener('keydown', handleFirstTab)
-
-const backToTopButton = document.querySelector(".back-to-top");
-let isBackToTopRendered = false;
-
-if (backToTopButton) {
-  let alterStyles = (isBackToTopRendered) => {
-    backToTopButton.style.visibility = isBackToTopRendered ? "visible" : "hidden";
-    backToTopButton.style.opacity = isBackToTopRendered ? 1 : 0;
-    backToTopButton.style.transform = isBackToTopRendered
-      ? "scale(1)"
-      : "scale(0)";
+if (navToggle) {
+  const closeNav = () => {
+    if (!body.classList.contains('nav-open')) return;
+    body.classList.remove('nav-open');
+    navToggle.setAttribute('aria-expanded', 'false');
   };
 
-  // Debounce function for scroll events
-  let scrollTimeout;
-  const handleScroll = () => {
-    if (scrollTimeout) {
-      window.cancelAnimationFrame(scrollTimeout);
+  navToggle.addEventListener('click', () => {
+    const open = body.classList.toggle('nav-open');
+    navToggle.setAttribute('aria-expanded', String(open));
+  });
+
+  document.addEventListener('click', (event) => {
+    if (!body.classList.contains('nav-open')) return;
+    const insideMenu = event.target.closest('.nav-area') || event.target.closest('[data-nav-toggle]');
+    if (!insideMenu) {
+      closeNav();
     }
-    scrollTimeout = window.requestAnimationFrame(() => {
-      if (window.scrollY > 700) {
-        if (!isBackToTopRendered) {
-          isBackToTopRendered = true;
-          alterStyles(isBackToTopRendered);
-        }
-      } else {
-        if (isBackToTopRendered) {
-          isBackToTopRendered = false;
-          alterStyles(isBackToTopRendered);
-        }
-      }
-    });
-  };
+  });
 
-  window.addEventListener("scroll", handleScroll, { passive: true });
+  document.addEventListener('keydown', (event) => {
+    if (event.key === 'Escape') closeNav();
+  });
+
+  window.addEventListener('resize', () => {
+    if (window.matchMedia('(min-width: 921px)').matches) closeNav();
+  });
 }
 
-// Set current year in footer
-const currentYear = new Date().getFullYear();
-const yearElement = document.getElementById('current-year');
-if (yearElement) {
-  yearElement.textContent = currentYear;
+document.querySelectorAll('[data-year]').forEach((node) => {
+  node.textContent = new Date().getFullYear();
+});
+
+// Short gallery clips: load and play only while on screen, and only if the
+// visitor is OK with motion. Until then they show their poster and cost nothing.
+const clips = document.querySelectorAll('video[data-clip]');
+const motionOK = !window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+if (clips.length && motionOK && 'IntersectionObserver' in window) {
+  const io = new IntersectionObserver((entries) => {
+    for (const entry of entries) {
+      const video = entry.target;
+      if (entry.isIntersecting) {
+        if (video.preload !== 'auto') video.preload = 'auto';
+        video.play().catch(() => {});
+      } else {
+        video.pause();
+      }
+    }
+  }, { threshold: 0.25 });
+  clips.forEach((video) => io.observe(video));
 }
