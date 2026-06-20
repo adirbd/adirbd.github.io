@@ -104,6 +104,18 @@ test.describe('site pages', () => {
     }
   });
 
+  test('album gallery collapses to one column on mobile', async ({ page }) => {
+    await page.setViewportSize({ width: 390, height: 844 });
+    for (const path of pages.filter((p) => p.includes('/trips/'))) {
+      await page.goto(path);
+      const gallery = page.locator('.album-gallery').first();
+      if (await gallery.count()) {
+        const cols = await gallery.evaluate((el) => getComputedStyle(el).columnCount);
+        expect(cols, `expected single-column album gallery on mobile for ${path}`).toBe('1');
+      }
+    }
+  });
+
   test('valid JSON-LD and SEO basics on every page', async ({ page }) => {
     for (const path of pages) {
       await page.goto(path);
