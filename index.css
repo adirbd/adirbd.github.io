@@ -260,7 +260,6 @@ main:focus { outline: none; }
 .hero-copy,
 .surface-card,
 .page-intro,
-.contact-banner,
 .timeline-item,
 .note-card,
 .link-card {
@@ -627,20 +626,6 @@ html[data-theme='dark'] .link-card-icon {
 #po-black:checked ~ .profile-solo .swatch-black {
   box-shadow: 0 0 0 2px var(--bg-strong), 0 0 0 4px var(--accent);
 }
-.page-hero-band {
-  overflow: hidden;
-  border-radius: var(--radius-xl);
-  border: 1px solid var(--surface-border);
-  box-shadow: var(--surface-shadow);
-  min-height: 280px;
-  background: var(--bg-strong);
-}
-.page-hero-band img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  display: block;
-}
 .hero-stats {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
@@ -741,8 +726,7 @@ html[data-theme='dark'] .link-card-icon {
 }
 .timeline-item,
 .note-card,
-.link-card,
-.contact-banner { padding: 1.35rem; }
+.link-card { padding: 1.35rem; }
 .list-clean {
   list-style: none;
   padding: 0;
@@ -773,24 +757,6 @@ html[data-theme='dark'] .link-card-icon {
   background: var(--accent-soft);
   color: var(--accent-strong);
   font-size: 0.87rem;
-}
-.contact-banner {
-  display: grid;
-  gap: 0.95rem;
-}
-.contact-details {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.7rem;
-}
-.contact-chip {
-  display: inline-flex;
-  gap: 0.5rem;
-  align-items: center;
-  padding: 0.55rem 0.8rem;
-  border-radius: 999px;
-  border: 1px solid var(--surface-border);
-  background: var(--bg-strong);
 }
 
 .site-footer {
@@ -890,13 +856,10 @@ html[data-theme='dark'] .socials img {
   .hero { padding-top: 2.4rem; }
   .hero-copy,
   .page-intro,
-  .page-hero-band,
   .surface-card,
   .timeline-item,
   .note-card,
-  .link-card,
-  .contact-banner { padding: 1.15rem; border-radius: 20px; }
-  .page-hero-band { padding: 0; }
+  .link-card { padding: 1.15rem; border-radius: 20px; }
   .section { padding-bottom: 3.4rem; }
   .section-heading { align-items: start; flex-direction: column; }
   .photo-note { flex-direction: column; }
@@ -931,8 +894,6 @@ html[data-theme='dark'] .socials img {
   .toggle:focus-visible,
   .lang-switch:hover,
   .lang-switch:focus-visible,
-  .contact-chip:hover,
-  .contact-chip:focus-within,
   .socials a:hover,
   .socials a:focus-visible {
     transform: translateY(-2px);
@@ -944,12 +905,8 @@ html[data-theme='dark'] .socials img {
   .timeline-item:hover,
   .note-card:hover,
   .link-card:hover,
-  .contact-banner:hover,
-  .journeys-blueprint:hover,
-  .page-hero-band:hover,
   .trip-card:hover,
-  .journeys-hero-grid article:hover,
-  .journeys-blueprint-grid > div:hover {
+  .journeys-hero-grid article:hover {
     transform: translateY(-3px);
     box-shadow: var(--surface-shadow-hover);
     border-color: color-mix(in srgb, var(--accent) 24%, var(--surface-border));
@@ -959,13 +916,8 @@ html[data-theme='dark'] .socials img {
   .timeline-item:hover::before,
   .note-card:hover::before,
   .link-card:hover::before,
-  .contact-banner:hover::before,
-  .journeys-blueprint:hover::before,
-  .page-hero-band:hover::before,
   .trip-card:hover::before,
   .journeys-hero-grid article:hover::before,
-  .journeys-blueprint-grid > div:hover::before,
-  .contact-chip:hover::before,
   .socials a:hover::before,
   .button:hover::before {
     opacity: 1;
@@ -989,42 +941,6 @@ html[data-theme='dark'] .socials img {
 
 .journeys-overview {
   padding-top: 1.25rem;
-}
-
-.journeys-blueprint {
-  padding: 1.4rem;
-}
-
-.journeys-blueprint h2 {
-  margin: 0;
-  font-family: var(--font-heading);
-  color: var(--heading);
-  font-size: clamp(1.6rem, 2.5vw, 2.2rem);
-}
-
-.journeys-blueprint-grid {
-  display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 1rem;
-  margin-top: 1.1rem;
-}
-
-.journeys-blueprint-grid > div {
-  padding: 1rem;
-  border-radius: var(--radius-md);
-  background: color-mix(in srgb, var(--bg-strong) 80%, transparent);
-  border: 1px solid var(--surface-border);
-}
-
-.journeys-blueprint-grid h3 {
-  margin: 0;
-  font-family: var(--font-heading);
-  color: var(--heading);
-  font-size: 1.08rem;
-}
-
-.journeys-blueprint-grid p {
-  margin: 0.6rem 0 0;
 }
 
 .journeys-layout {
@@ -1297,18 +1213,7 @@ html[data-theme='dark'] .trip-state-archive {
 }
 
 @media (max-width: 920px) {
-  .journeys-blueprint-grid {
-    grid-template-columns: 1fr;
-  }
-
   .trip-headline {
     flex-direction: column;
-  }
-}
-
-@media (max-width: 720px) {
-  .journeys-blueprint,
-  .journeys-blueprint-grid > div {
-    padding: 1.1rem;
   }
 }
