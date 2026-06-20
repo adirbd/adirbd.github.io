@@ -161,6 +161,18 @@ test.describe('site pages', () => {
     }
   });
 
+  test('pages load with no console errors or failed requests', async ({ page }) => {
+    const problems = [];
+    page.on('console', (m) => { if (m.type() === 'error') problems.push(`console: ${m.text()}`); });
+    page.on('pageerror', (e) => problems.push(`pageerror: ${e.message}`));
+    page.on('requestfailed', (r) => problems.push(`requestfailed: ${r.url()}`));
+    page.on('response', (r) => { if (r.status() >= 400) problems.push(`http ${r.status()}: ${r.url()}`); });
+    for (const path of pages) {
+      await page.goto(path, { waitUntil: 'networkidle' });
+    }
+    expect(problems, `runtime problems: ${JSON.stringify(problems, null, 2)}`).toEqual([]);
+  });
+
   test('every page has an og:image with a non-empty og:image:alt', async ({ page }) => {
     for (const path of pages) {
       await page.goto(path);
