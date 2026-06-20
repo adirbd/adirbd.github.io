@@ -140,7 +140,7 @@ PAGES = {
     'index.html': {
         'lang': 'en', 'dir': 'ltr', 'home': '/', 'active': '/', 'page_type': 'ProfilePage', 'switch': '/he/', 'switch_from': 'EN', 'switch_to': 'HE',
         'title': 'Adir Ben David (Adirbd)',
-        'description': 'Adir Ben David is a DevOps engineer at Check Point, and a systems thinker drawn to transportation, cities, and how public money turns into things that last.',
+        'description': 'Adir Ben David is a DevOps engineer at Check Point, drawn to the bigger picture: how cities, transport, and public money turn into things that last.',
         'slug': '', 'en_href': f'{SITE_URL}/', 'he_href': '/he/', 'x_default': f'{SITE_URL}/', 'locale': 'en_US', 'locale_alt': 'he_IL'
     },
     'work.html': {
@@ -170,7 +170,7 @@ PAGES = {
     'he/index.html': {
         'lang': 'he', 'dir': 'rtl', 'home': '/he/', 'active': '/he/', 'page_type': 'ProfilePage', 'switch': '/', 'switch_from': 'HE', 'switch_to': 'EN',
         'title': 'אדיר בן דוד (Adirbd)',
-        'description': 'אדיר בן דוד, מהנדס DevOps ב־Check Point ואיש מערכות שמתעניין בתחבורה, בערים ובאופן שבו כסף ציבורי הופך למשהו שמחזיק לאורך זמן.',
+        'description': 'אדיר בן דוד, מהנדס DevOps ב־Check Point, עם עין על התמונה הגדולה: איך ערים, תחבורה וכסף ציבורי הופכים למשהו שמחזיק לאורך זמן.',
         'slug': 'he/', 'en_href': '/', 'he_href': f'{SITE_URL}/he/', 'x_default': '/', 'locale': 'he_IL', 'locale_alt': 'en_US'
     },
     'he/work.html': {
