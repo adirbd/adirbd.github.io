@@ -1,4 +1,7 @@
 const { test, expect } = require('@playwright/test');
+const fs = require('fs');
+const crypto = require('crypto');
+const path = require('path');
 
 const pages = [
   '/',
@@ -66,6 +69,18 @@ test.describe('site pages', () => {
 
     await page.keyboard.press('Escape');
     await expect(page.locator('body')).not.toHaveClass(/nav-open/);
+  });
+
+  test('no duplicate journey media files', () => {
+    const dir = path.join(__dirname, '..', 'images', 'journeys');
+    const files = fs.readdirSync(dir).filter((f) => /\.(jpg|jpeg|png|webp|mp4)$/i.test(f));
+    const byHash = {};
+    for (const f of files) {
+      const h = crypto.createHash('md5').update(fs.readFileSync(path.join(dir, f))).digest('hex');
+      (byHash[h] = byHash[h] || []).push(f);
+    }
+    const dups = Object.values(byHash).filter((g) => g.length > 1);
+    expect(dups, `duplicate journey media: ${JSON.stringify(dups)}`).toEqual([]);
   });
 
   test('album media is complete (dims + alt, lazy imgs, poster+source clips)', async ({ page }) => {
