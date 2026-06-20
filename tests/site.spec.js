@@ -195,6 +195,26 @@ test.describe('site pages', () => {
     }
   });
 
+  test('text colors meet WCAG AA contrast in both themes', async ({ page }) => {
+    await page.goto('/');
+    const lin = (c) => { c /= 255; return c <= 0.03928 ? c / 12.92 : ((c + 0.055) / 1.055) ** 2.4; };
+    const lum = (hex) => { const h = hex.replace('#', ''); const [r, g, b] = [0, 2, 4].map((i) => parseInt(h.slice(i, i + 2), 16)); return 0.2126 * lin(r) + 0.7152 * lin(g) + 0.0722 * lin(b); };
+    const ratio = (a, b) => { const la = lum(a), lb = lum(b); return (Math.max(la, lb) + 0.05) / (Math.min(la, lb) + 0.05); };
+    for (const theme of ['light', 'dark']) {
+      await page.evaluate((t) => { document.documentElement.dataset.theme = t; }, theme);
+      const v = await page.evaluate(() => {
+        const s = getComputedStyle(document.documentElement);
+        const g = (n) => s.getPropertyValue(n).trim();
+        return { text: g('--text'), soft: g('--text-soft'), heading: g('--heading'), bg: g('--bg'), strong: g('--bg-strong') };
+      });
+      for (const fg of [v.text, v.soft, v.heading]) {
+        for (const bg of [v.bg, v.strong]) {
+          expect(ratio(fg, bg), `${theme}: ${fg} on ${bg} should meet AA`).toBeGreaterThanOrEqual(4.5);
+        }
+      }
+    }
+  });
+
   test('internal links resolve across the site', async ({ page, request }) => {
     for (const path of pages) {
       await page.goto(path);
