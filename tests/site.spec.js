@@ -118,6 +118,20 @@ test.describe('site pages', () => {
     }
   });
 
+  test('skip-to-content link targets a real main on every page', async ({ page }) => {
+    for (const path of pages) {
+      await page.goto(path);
+      const skip = page.locator('a.skip-link[href="#main"]');
+      await expect(skip, `expected a skip link on ${path}`).toHaveCount(1);
+      await expect(page.locator('main#main'), `expected <main id=main> on ${path}`).toHaveCount(1);
+    }
+    // first Tab focuses the skip link (it must be the first focusable element)
+    await page.goto('/');
+    await page.keyboard.press('Tab');
+    const cls = await page.evaluate(() => document.activeElement.className);
+    expect(cls).toContain('skip-link');
+  });
+
   test('no skipped heading levels', async ({ page }) => {
     for (const path of pages) {
       await page.goto(path);
