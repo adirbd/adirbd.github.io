@@ -139,8 +139,8 @@ SOCIALS = [
 PAGES = {
     'index.html': {
         'lang': 'en', 'dir': 'ltr', 'home': '/', 'active': '/', 'page_type': 'ProfilePage', 'switch': '/he/', 'switch_from': 'EN', 'switch_to': 'HE',
-        'title': 'Adir Ben David - Work, projects, and contact',
-        'description': 'A place to explore my work, projects, useful links, and easy ways to get in touch.',
+        'title': 'Adir Ben David | Work, journeys & in between',
+        'description': 'Explore my work in DevOps and infrastructure, the things I build, the cities and systems I care about, my journeys, and easy ways to get in touch.',
         'slug': '', 'en_href': f'{SITE_URL}/', 'he_href': '/he/', 'x_default': f'{SITE_URL}/', 'locale': 'en_US', 'locale_alt': 'he_IL'
     },
     'work.html': {
@@ -169,8 +169,8 @@ PAGES = {
     },
     'he/index.html': {
         'lang': 'he', 'dir': 'rtl', 'home': '/he/', 'active': '/he/', 'page_type': 'ProfilePage', 'switch': '/', 'switch_from': 'HE', 'switch_to': 'EN',
-        'title': 'אדיר בן דוד - עבודה, פרויקטים ויצירת קשר',
-        'description': 'מקום להכיר את העבודה, הפרויקטים והדרך שלי, למצוא קישורים שימושיים וליצור קשר בקלות.',
+        'title': 'אדיר בן דוד | עבודה, מסעות ומה שביניהם',
+        'description': 'העבודה שלי ב־DevOps ובתשתיות, הדברים שאני בונה, הערים והמערכות שמעניינות אותי, המסעות שלי, ודרכים קלות ליצור קשר.',
         'slug': 'he/', 'en_href': '/', 'he_href': f'{SITE_URL}/he/', 'x_default': '/', 'locale': 'he_IL', 'locale_alt': 'en_US'
     },
     'he/work.html': {
