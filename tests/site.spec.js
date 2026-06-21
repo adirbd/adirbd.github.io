@@ -141,6 +141,16 @@ test.describe('site pages', () => {
     }
   });
 
+  test('legacy compatibility URLs stay healthy', async ({ request }) => {
+    const heLegacy = await request.get('/he.html');
+    expect(heLegacy.status(), 'legacy he.html should not 404').toBeLessThan(400);
+    expect(await heLegacy.text(), 'legacy he.html should point to canonical /he/').toContain('/he/');
+
+    const oldProfile = await request.get('/images/profile-photo.webp');
+    expect(oldProfile.status(), 'legacy profile-photo.webp should remain reachable').toBeLessThan(400);
+    expect(oldProfile.headers()['content-type'] || '').toContain('image/webp');
+  });
+
   test('valid JSON-LD and SEO basics on every page', async ({ page }) => {
     for (const path of pages) {
       await page.goto(path);
