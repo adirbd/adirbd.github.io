@@ -4,6 +4,7 @@ from __future__ import annotations
 import hashlib
 import html
 import json
+import re
 from pathlib import Path
 
 REPO = Path(__file__).resolve().parents[1]
@@ -31,7 +32,9 @@ JS_VER = _asset_ver('index.js')
 # commit dates: the sitemap is committed in the same commit whose date it
 # would record, so a derived value can never match what CI regenerates
 # across a midnight boundary (it drifts and fails the sync check).
-LASTMOD = '2026-06-17'
+LASTMOD = '2026-07-03'
+# When the site first went live (first commit) — used as ProfilePage dateCreated.
+SITE_CREATED = '2026-01-03'
 # Applied before first paint so dark-mode visitors never flash light.
 THEME_BOOT_SCRIPT = (
     "<script>(function(){try{var t=localStorage.getItem('adirbd-theme');"
@@ -61,7 +64,7 @@ PERSON_SCHEMA = {
         'networking, firewalls, and ESXi virtualization) from 2021 to 2024. Earlier he was a Tier-2 networking '
         'engineer at Bezeq (2017-2019) working with multi-vendor Layer 2/3 networks, routers, and switches, and a '
         'communications network technician in the Communications and Computers Corps (Tikshuv) during military '
-        'service (2014-2017). Having worked both on-prem data centers and the cloud shapes how he approaches systems.'
+        'service (2014-2017). Having worked in both on-prem data centers and the cloud shapes how he approaches systems.'
     ),
     'worksFor': {'@type': 'Organization', 'name': 'Check Point Software Technologies', 'url': 'https://www.checkpoint.com/'},
     'hasOccupation': {
@@ -90,6 +93,7 @@ PERSON_SCHEMA = {
          'credentialCategory': 'certificate', 'recognizedBy': {'@type': 'Organization', 'name': 'Cisco'}},
     ],
     'address': {'@type': 'PostalAddress', 'addressLocality': 'Tel Aviv'},
+    'image': f'{SITE_URL}/images/adir-hero.jpg',
     'url': f'{SITE_URL}/',
     'sameAs': [
         'https://github.com/adirbd',
@@ -128,13 +132,13 @@ HE_NAV = [
     ('/he/connect.html', 'בואו נדבר'),
 ]
 SOCIALS = [
-    ('https://www.linkedin.com/in/adirbd/', 'LinkedIn', '/images/linkedin.svg', 'LinkedIn'),
-    ('https://www.instagram.com/adirbd/', 'Instagram', '/images/instagram.svg', 'Instagram'),
-    ('https://www.facebook.com/adirbd/', 'Facebook', '/images/facebook.svg', 'Facebook'),
-    ('https://x.com/adirbd', 'X', '/images/twitter.svg', 'X'),
-    ('https://www.youtube.com/@adirbd', 'YouTube', '/images/youtube.svg', 'YouTube'),
-    ('https://github.com/adirbd', 'GitHub', '/images/github.svg', 'GitHub'),
-    ('https://en.wikipedia.org/wiki/User:Adirbd', 'Wikipedia', '/images/wikipedia.svg', 'Wikipedia'),
+    ('https://www.linkedin.com/in/adirbd/', 'LinkedIn', '/images/linkedin.svg'),
+    ('https://www.instagram.com/adirbd/', 'Instagram', '/images/instagram.svg'),
+    ('https://www.facebook.com/adirbd/', 'Facebook', '/images/facebook.svg'),
+    ('https://x.com/adirbd', 'X', '/images/twitter.svg'),
+    ('https://www.youtube.com/@adirbd', 'YouTube', '/images/youtube.svg'),
+    ('https://github.com/adirbd', 'GitHub', '/images/github.svg'),
+    ('https://en.wikipedia.org/wiki/User:Adirbd', 'Wikipedia', '/images/wikipedia.svg'),
 ]
 PAGES = {
     'index.html': {
@@ -146,26 +150,26 @@ PAGES = {
     'work.html': {
         'lang': 'en', 'dir': 'ltr', 'home': '/', 'active': 'work.html', 'switch': '/he/work.html', 'switch_from': 'EN', 'switch_to': 'HE',
         'title': 'Work | Adir Ben David',
-        'description': 'Professional experience, working style, and systems-minded infrastructure work by Adir Ben David.',
-        'slug': 'work.html', 'en_href': f'{SITE_URL}/work.html', 'he_href': '/he/work.html', 'x_default': f'{SITE_URL}/', 'locale': 'en_US', 'locale_alt': 'he_IL'
+        'description': "Adir Ben David's professional experience: DevOps and cloud infrastructure at Check Point, with years of on-prem server rooms and networking behind it.",
+        'slug': 'work.html', 'en_href': f'{SITE_URL}/work.html', 'he_href': '/he/work.html', 'x_default': f'{SITE_URL}/work.html', 'locale': 'en_US', 'locale_alt': 'he_IL'
     },
     'now.html': {
         'lang': 'en', 'dir': 'ltr', 'home': '/', 'active': 'now.html', 'switch': '/he/now.html', 'switch_from': 'EN', 'switch_to': 'HE',
         'title': 'Now | Adir Ben David',
-        'description': 'What Adir Ben David is currently building and into: AI projects, a self-hosted home server, and a Home Assistant smart home, plus a long-standing interest in transit and cities.',
-        'slug': 'now.html', 'en_href': f'{SITE_URL}/now.html', 'he_href': '/he/now.html', 'x_default': f'{SITE_URL}/', 'locale': 'en_US', 'locale_alt': 'he_IL'
+        'description': 'What Adir Ben David is building now: AI projects, a self-hosted home server, a Home Assistant smart home, and a long-standing interest in transit and cities.',
+        'slug': 'now.html', 'en_href': f'{SITE_URL}/now.html', 'he_href': '/he/now.html', 'x_default': f'{SITE_URL}/now.html', 'locale': 'en_US', 'locale_alt': 'he_IL'
     },
     'journeys.html': {
         'lang': 'en', 'dir': 'ltr', 'home': '/', 'active': 'journeys.html', 'switch': '/he/journeys.html', 'switch_from': 'EN', 'switch_to': 'HE',
         'title': 'Journeys | Adir Ben David',
-        'description': 'Places, movement, and selected photos from trips by Adir Ben David: Japan, the Alps, Thailand, and more.',
-        'slug': 'journeys.html', 'en_href': f'{SITE_URL}/journeys.html', 'he_href': '/he/journeys.html', 'x_default': f'{SITE_URL}/', 'locale': 'en_US', 'locale_alt': 'he_IL'
+        'description': 'Travel albums from Adir Ben David: Japan by rail, snowboard trips in the Alps, Thailand north to south, and more.',
+        'slug': 'journeys.html', 'en_href': f'{SITE_URL}/journeys.html', 'he_href': '/he/journeys.html', 'x_default': f'{SITE_URL}/journeys.html', 'locale': 'en_US', 'locale_alt': 'he_IL'
     },
     'connect.html': {
         'lang': 'en', 'dir': 'ltr', 'home': '/', 'active': 'connect.html', 'switch': '/he/connect.html', 'switch_from': 'EN', 'switch_to': 'HE',
         'title': 'Connect | Adir Ben David',
-        'description': 'Reach Adir Ben David on LinkedIn, Instagram, Facebook, X, YouTube, GitHub, Wikipedia, or by email, for collaboration, ideas, or a thoughtful hello.',
-        'slug': 'connect.html', 'en_href': f'{SITE_URL}/connect.html', 'he_href': '/he/connect.html', 'x_default': f'{SITE_URL}/', 'locale': 'en_US', 'locale_alt': 'he_IL'
+        'description': 'Reach Adir Ben David on LinkedIn, Instagram, Facebook, X, YouTube, GitHub, Wikipedia, or by email — for collaboration, ideas, or a thoughtful hello.',
+        'slug': 'connect.html', 'en_href': f'{SITE_URL}/connect.html', 'he_href': '/he/connect.html', 'x_default': f'{SITE_URL}/connect.html', 'locale': 'en_US', 'locale_alt': 'he_IL'
     },
     'he/index.html': {
         'lang': 'he', 'dir': 'rtl', 'home': '/he/', 'active': '/he/', 'page_type': 'ProfilePage', 'switch': '/', 'switch_from': 'HE', 'switch_to': 'EN',
@@ -177,25 +181,25 @@ PAGES = {
         'lang': 'he', 'dir': 'rtl', 'home': '/he/', 'active': '/he/work.html', 'switch': '/work.html', 'switch_from': 'HE', 'switch_to': 'EN',
         'title': 'עבודה | אדיר בן דוד',
         'description': 'ניסיון מקצועי, סגנון עבודה וחשיבה מערכתית של אדיר בן דוד.',
-        'slug': 'he/work.html', 'en_href': '/work.html', 'he_href': f'{SITE_URL}/he/work.html', 'x_default': f'{SITE_URL}/', 'locale': 'he_IL', 'locale_alt': 'en_US'
+        'slug': 'he/work.html', 'en_href': '/work.html', 'he_href': f'{SITE_URL}/he/work.html', 'x_default': f'{SITE_URL}/work.html', 'locale': 'he_IL', 'locale_alt': 'en_US'
     },
     'he/now.html': {
         'lang': 'he', 'dir': 'rtl', 'home': '/he/', 'active': '/he/now.html', 'switch': '/now.html', 'switch_from': 'HE', 'switch_to': 'EN',
         'title': 'עכשיו | אדיר בן דוד',
-        'description': 'במה אדיר בן דוד עוסק עכשיו: פרויקטים עם AI, שרת ביתי עצמאי ובית חכם מבוסס Home Assistant, לצד עניין מתמשך בתחבורה ובערים.',
-        'slug': 'he/now.html', 'en_href': '/now.html', 'he_href': f'{SITE_URL}/he/now.html', 'x_default': f'{SITE_URL}/', 'locale': 'he_IL', 'locale_alt': 'en_US'
+        'description': 'במה אדיר בן דוד עוסק עכשיו: פרויקטים עם AI, שרת ביתי ובית חכם מבוסס Home Assistant, לצד עניין מתמשך בתחבורה ובערים.',
+        'slug': 'he/now.html', 'en_href': '/now.html', 'he_href': f'{SITE_URL}/he/now.html', 'x_default': f'{SITE_URL}/now.html', 'locale': 'he_IL', 'locale_alt': 'en_US'
     },
     'he/journeys.html': {
         'lang': 'he', 'dir': 'rtl', 'home': '/he/', 'active': '/he/journeys.html', 'switch': '/journeys.html', 'switch_from': 'HE', 'switch_to': 'EN',
         'title': 'מסעות | אדיר בן דוד',
-        'description': 'מקומות, תנועה ותמונות נבחרות מהטיולים של אדיר בן דוד: יפן, האלפים, תאילנד ועוד.',
-        'slug': 'he/journeys.html', 'en_href': '/journeys.html', 'he_href': f'{SITE_URL}/he/journeys.html', 'x_default': f'{SITE_URL}/', 'locale': 'he_IL', 'locale_alt': 'en_US'
+        'description': 'אלבומי טיולים של אדיר בן דוד: יפן ברכבות, סנובורד באלפים, תאילנד מהצפון לדרום, ועוד.',
+        'slug': 'he/journeys.html', 'en_href': '/journeys.html', 'he_href': f'{SITE_URL}/he/journeys.html', 'x_default': f'{SITE_URL}/journeys.html', 'locale': 'he_IL', 'locale_alt': 'en_US'
     },
     'he/connect.html': {
         'lang': 'he', 'dir': 'rtl', 'home': '/he/', 'active': '/he/connect.html', 'switch': '/connect.html', 'switch_from': 'HE', 'switch_to': 'EN',
         'title': 'בואו נדבר | אדיר בן דוד',
         'description': 'איך ליצור קשר עם אדיר בן דוד: ב־LinkedIn, Instagram, Facebook, X, YouTube, GitHub, ויקיפדיה או באימייל, לשיתופי פעולה, רעיונות או סתם שלום.',
-        'slug': 'he/connect.html', 'en_href': '/connect.html', 'he_href': f'{SITE_URL}/he/connect.html', 'x_default': f'{SITE_URL}/', 'locale': 'he_IL', 'locale_alt': 'en_US'
+        'slug': 'he/connect.html', 'en_href': '/connect.html', 'he_href': f'{SITE_URL}/he/connect.html', 'x_default': f'{SITE_URL}/connect.html', 'locale': 'he_IL', 'locale_alt': 'en_US'
     },
 }
 
@@ -236,13 +240,23 @@ def render_head(meta: dict[str, str]) -> str:
         'name': meta['title'],
         'inLanguage': meta['lang'],
         'description': meta['description'],
-        'isPartOf': {'@type': 'WebSite', 'url': f'{SITE_URL}/', 'name': 'Adir Ben David'},
+        'isPartOf': {'@type': 'WebSite', '@id': f'{SITE_URL}/#website', 'url': f'{SITE_URL}/', 'name': 'Adir Ben David'},
         'about': {'@id': f'{SITE_URL}/#person'},
     }
     if webpage_schema['@type'] == 'ProfilePage':
         webpage_schema['mainEntity'] = {'@id': f'{SITE_URL}/#person'}
+        webpage_schema['dateCreated'] = SITE_CREATED
+        webpage_schema['dateModified'] = LASTMOD
     if meta.get('og_image'):
         webpage_schema['primaryImageOfPage'] = {'@type': 'ImageObject', 'url': og_image}
+    # The two home pages are profiles, not generic websites, in Open Graph terms.
+    if meta.get('page_type') == 'ProfilePage':
+        og_type = ('<meta property="og:type" content="profile" />\n'
+                   '  <meta property="profile:first_name" content="Adir" />\n'
+                   '  <meta property="profile:last_name" content="Ben David" />\n'
+                   '  <meta property="profile:username" content="adirbd" />')
+    else:
+        og_type = '<meta property="og:type" content="website" />'
     return f'''<head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -259,7 +273,7 @@ def render_head(meta: dict[str, str]) -> str:
   <link rel="alternate" hreflang="x-default" href="{absolute_url(meta['x_default'])}" />
   <link rel="icon" type="image/svg+xml" href="{prefix}images/favicon-transit.svg" />
   <link rel="alternate icon" type="image/png" href="{prefix}images/favicon.png" />
-  <meta property="og:type" content="website" />
+  {og_type}
   <meta property="og:url" content="{canonical}" />
   <meta property="og:site_name" content="Adir Ben David" />
   <meta property="og:locale" content="{meta['locale']}" />
@@ -297,7 +311,9 @@ def render_header(meta: dict[str, str]) -> str:
         nav_items = [(h if h.startswith('/') else f'/{h}', label) for h, label in nav_items]
     nav = render_nav(nav_items, meta['active'])
     nav_label = 'ראשי' if is_he else 'Primary'
-    nav_toggle_label = 'פתח ניווט' if is_he else 'Open navigation'
+    # State-neutral name: aria-expanded carries open/closed, so the label must
+    # not say "Open" (an open menu would announce "Open navigation, expanded").
+    nav_toggle_label = 'תפריט' if is_he else 'Menu'
     theme_label = 'מעבר למצב בהיר או כהה' if is_he else 'Toggle theme'
     theme_text = 'כהה' if is_he else 'Dark'
     switch_lang = 'en' if is_he else 'he'
@@ -312,17 +328,17 @@ def render_header(meta: dict[str, str]) -> str:
       <span class="brand-mark" aria-hidden="true"></span>
       <span>Adir Ben David</span>
     </a>
-    <button class="nav-toggle" data-nav-toggle aria-expanded="false" aria-label="{nav_toggle_label}">
+    <button class="nav-toggle" data-nav-toggle aria-expanded="false" aria-controls="site-menu" aria-label="{nav_toggle_label}">
       ☰
     </button>
-    <div class="nav-area">
+    <div class="nav-area" id="site-menu">
       <nav class="site-nav" aria-label="{nav_label}">
         <ul>
           {nav}
         </ul>
       </nav>
       <div class="header-tools">
-        <a class="lang-switch" href="{meta['switch']}" hreflang="{switch_lang}" lang="{switch_lang}" aria-label="{switch_aria}">{switch_name}</a>
+        <a class="lang-switch" href="{meta['switch']}" hreflang="{switch_lang}" aria-label="{switch_aria}"><span lang="{switch_lang}">{switch_name}</span></a>
         <button class="toggle" type="button" data-theme-toggle aria-label="{theme_label}"><span>◐</span><span data-theme-label>{theme_text}</span></button>
       </div>
     </div>
@@ -341,9 +357,12 @@ def render_footer(lang: str) -> str:
         f'<a href="{h if h.startswith("/") else f"/{h}"}">{e(label)}</a>'
         for h, label in nav_items
     )
+    # rel="me" marks these as this domain's own profiles (IndieWeb identity);
+    # alt="" because the anchor's aria-label already names the link — a non-empty
+    # alt makes screen readers announce every icon twice.
     socials = ''.join(
-        f'<a href="{href}" target="_blank" rel="noopener noreferrer" aria-label="{e(aria)}"><img src="{icon}" alt="{e(alt)}"></a>'
-        for href, aria, icon, alt in SOCIALS
+        f'<a href="{href}" target="_blank" rel="me noopener noreferrer" aria-label="{e(aria)}"><img src="{icon}" alt=""></a>'
+        for href, aria, icon in SOCIALS
     )
     return f'''<footer class="site-footer">
   <div class="site-shell footer-inner">
@@ -366,17 +385,17 @@ TRIPS = [
     {
         'slug': 'japan', 'dates': '2026', 'featured': True,
         'state_en': 'Completed', 'state_he': 'הסתיים',
-        'kicker_en': 'Completed journey', 'kicker_he': 'מסע שהושלם',
+        'kicker_en': 'Rail journey', 'kicker_he': 'מסע רכבות',
         'title_en': 'Japan', 'title_he': 'יפן',
         'meta_en': 'Osaka · Nara · Kyoto · Tokyo · Fuji', 'meta_he': 'אוסקה · נארה · קיוטו · טוקיו · פוג\'י',
         'tags_en': ['Rail', 'City', 'Fuji', 'Rome'], 'tags_he': ['רכבות', 'עיר', 'פוג\'י', 'רומא'],
-        'teaser_en': 'A long rail loop through Osaka, Nara, Kyoto and Tokyo, out to the lakes under Mount Fuji, then a Rome finale before the flight home.',
+        'teaser_en': 'A long rail loop through Osaka, Nara, Kyoto, and Tokyo, out to the lakes under Mount Fuji, then a Rome finale before the flight home.',
         'teaser_he': 'מסע ארוך ברכבות דרך אוסקה, נארה, קיוטו וטוקיו, ומשם לאגמים שמתחת להר פוג\'י, וסיום ברומא לפני הטיסה הביתה.',
         'cover': 'japan-fuji-blossoms.jpg', 'cover_w': 768, 'cover_h': 1024,
         'cover_alt_en': 'Mount Fuji rising above cherry blossoms',
         'cover_alt_he': 'הר פוג\'י מעל פריחת הדובדבן',
         'intro_en': 'Japan was a long loop by rail: Osaka, Nara, Kyoto, Tokyo, and the lakes under Mount Fuji. It ended, unexpectedly, with a layover in Rome on the way home.',
-        'intro_he': 'יפן היה מסע ארוך ברכבות: אוסקה, נארה, קיוטו, טוקיו, והאגמים שמתחת להר פוג\'י. הוא הסתיים, באופן לא צפוי, בעצירת ביניים ברומא בדרך הביתה.',
+        'intro_he': 'יפן הייתה מסע ארוך ברכבות: אוסקה, נארה, קיוטו, טוקיו, והאגמים שמתחת להר פוג\'י. המסע הסתיים, באופן לא צפוי, בעצירת ביניים ברומא בדרך הביתה.',
         # Photos run in travel order: Kyoto -> Tokyo -> Fuji -> Rome. Osaka and
         # Nara photos will be added at the front when they arrive.
         'sections': [
@@ -395,7 +414,7 @@ TRIPS = [
              'alt_en': 'The Nintendo Museum entrance', 'alt_he': 'הכניסה למוזיאון נינטנדו',
              'cap_en': 'The Nintendo Museum, just outside Kyoto.', 'cap_he': 'מוזיאון נינטנדו, ממש מחוץ לקיוטו.'},
             {'type': 'photo', 'src': 'japan-nintendo-controllers.jpg', 'w': 619, 'h': 1100,
-             'alt_en': 'Giant plush Wii and N64 controllers at the Nintendo Museum', 'alt_he': 'בקרי Wii ו־N64 ענקיים מבד במוזיאון נינטנדו',
+             'alt_en': 'Two waist-high plush Wii remotes beside a giant gray plush N64 controller on a white display table', 'alt_he': 'שני שלטי Wii ענקיים מבד לצד שלט N64 ענק על שולחן תצוגה לבן',
              'cap_en': 'Giant plush Wii and N64 controllers from the museum gift shop.', 'cap_he': 'שלטי Wii ו־N64 ענקיים מבד מחנות המזכרות של המוזיאון.'},
             {'type': 'story', 'en': 'Then Tokyo: fast, loud, and easy to love. Tokyo Tower up close, and a written wish left at a shrine.',
              'he': 'אחר כך טוקיו: מהירה, רועשת וקל להתאהב בה. מגדל טוקיו מקרוב, ומשאלה כתובה שהשארתי במקדש.'},
@@ -408,13 +427,13 @@ TRIPS = [
             {'type': 'story', 'en': 'Out to Mount Fuji: the little Fujikyu line, a clear day by Lake Kawaguchi, and the Chureito pagoda above the blossoms.',
              'he': 'ומשם להר פוג\'י: קו הפוג\'יקיו הקטן, יום בהיר על שפת אגם קוואגוצ\'י, ופגודת צ\'וריטו מעל הפריחה.'},
             {'type': 'clip', 'src': 'japan-rail.mp4', 'poster': 'japan-rail-poster.jpg', 'w': 540, 'h': 960,
-             'alt_en': 'An orange Mt Fuji line train arriving at a platform', 'alt_he': 'רכבת כתומה של קו הר פוג\'י נכנסת לתחנה',
+             'alt_en': 'An orange Fujikyu line train arriving at the platform', 'alt_he': 'רכבת כתומה של קו הפוג\'יקיו נכנסת לתחנה',
              'cap_en': 'Waiting on the platform for the Fujikyu line.', 'cap_he': 'ממתין על הרציף לרכבת הפוג\'יקיו.'},
             {'type': 'photo', 'src': 'fuji-lakeside.jpg', 'w': 768, 'h': 1024,
              'alt_en': 'Adir at a lakeside with Mount Fuji behind him', 'alt_he': 'אדיר על שפת אגם כשהר פוג\'י מאחוריו',
-             'cap_en': 'A clear day across Lake Kawaguchi from Mount Fuji.', 'cap_he': 'יום בהיר מעבר לאגם קוואגוצ\'י מול הר פוג\'י.'},
+             'cap_en': 'A clear day by Lake Kawaguchi, Mount Fuji across the water.', 'cap_he': 'יום בהיר מעבר לאגם קוואגוצ\'י מול הר פוג\'י.'},
             {'type': 'photo', 'src': 'japan-pagoda.jpg', 'w': 360, 'h': 480,
-             'alt_en': 'The Chureito pagoda framed by cherry blossoms', 'alt_he': 'פגודת צ\'וריטו ממוסגרת בפריחת דובדבן',
+             'alt_en': 'Looking up at the five-story vermilion Chureito pagoda against a deep blue sky, cherry-blossom branches overhead', 'alt_he': 'מבט מלמטה אל פגודת צ\'וריטו האדומה על רקע שמיים כחולים, ענפי פריחת דובדבן מעל',
              'cap_en': 'The Chureito pagoda, framed by cherry blossoms.', 'cap_he': 'פגודת צ\'וריטו, ממוסגרת בפריחת דובדבן.'},
             {'type': 'story', 'en': 'The flight home routed through Rome, so the trip ended at the Colosseum at golden hour, an unplanned last chapter.',
              'he': 'הטיסה הביתה עברה דרך רומא, אז הטיול הסתיים מול הקולוסיאום בשעת הזהב, פרק אחרון לא מתוכנן.'},
@@ -430,12 +449,12 @@ TRIPS = [
         'title_en': 'Avoriaz', 'title_he': 'אבוריאז',
         'meta_en': 'French Alps · Portes du Soleil', 'meta_he': 'האלפים הצרפתיים · Portes du Soleil',
         'tags_en': ['Snow', 'Snowboard', 'French Alps'], 'tags_he': ['שלג', 'סנובורד', 'האלפים הצרפתיים'],
-        'teaser_en': 'A snowboard trip in Avoriaz, in the French Alps. Chairlifts, long runs, and mountain light from first lift to last.',
-        'teaser_he': 'טיול סנובורד באבוריאז שבאלפים הצרפתיים. רכבלים, מסלולים ארוכים, ואור הרים מהרכבל הראשון עד האחרון.',
+        'teaser_en': 'A week on the snow: chairlifts, long runs, and mountain light from first lift to last.',
+        'teaser_he': 'שבוע על השלג: רכבלים, מסלולים ארוכים, ואור הרים מהרכבל הראשון עד האחרון.',
         'cover': 'snowboard-valley.jpg', 'cover_w': 1024, 'cover_h': 768,
         'cover_alt_en': 'A snowboard resting above a snowy alpine valley and village',
         'cover_alt_he': 'סנובורד מונח מעל עמק וכפר מושלגים',
-        'intro_en': 'A week on the snow in Avoriaz, up in the French Alps, part of the huge Portes du Soleil area that spills across into Switzerland.',
+        'intro_en': 'A week on the snow in Avoriaz, up in the French Alps, part of the huge Portes du Soleil area that spills over the border into Switzerland.',
         'intro_he': 'שבוע על השלג באבוריאז, גבוה באלפים הצרפתיים, חלק מאזור Portes du Soleil הענק שנמתח עד שווייץ.',
         'sections': [
             {'type': 'photo', 'src': 'snowboard-chairlift.jpg', 'w': 768, 'h': 1024,
@@ -461,13 +480,13 @@ TRIPS = [
         'title_en': 'The Matterhorn', 'title_he': 'המטרהורן',
         'meta_en': 'Zermatt & Cervinia · Switzerland & Italy', 'meta_he': 'צרמט וצ\'רוויניה · שווייץ ואיטליה',
         'tags_en': ['Snow', 'Alps', 'Matterhorn'], 'tags_he': ['שלג', 'אלפים', 'מטרהורן'],
-        'teaser_en': 'Riding the Matterhorn from both sides, Zermatt in Switzerland and Cervinia in Italy, under one of the most recognizable peaks in the Alps.',
-        'teaser_he': 'גלישה על המטרהורן משני הצדדים, צרמט בשווייץ וצ\'רוויניה באיטליה, מתחת לאחת הפסגות המזוהות ביותר באלפים.',
+        'teaser_en': 'Riding both sides of the border, Zermatt in Switzerland and Cervinia in Italy, under one of the most recognizable peaks in the Alps.',
+        'teaser_he': 'גלישה משני צידי הגבול, צרמט בשווייץ וצ\'רוויניה באיטליה, מתחת לאחת הפסגות המוכרות ביותר באלפים.',
         'cover': 'matterhorn-zermatt.jpg', 'cover_w': 768, 'cover_h': 1024,
         'cover_alt_en': 'The Matterhorn seen from Zermatt, Switzerland',
         'cover_alt_he': 'פסגת המטרהורן מצרמט שבשווייץ',
-        'intro_en': 'Riding the Matterhorn from both sides, Zermatt in Switzerland and Cervinia in Italy, under one of the most recognizable peaks in the Alps. You can cross the border mid-mountain and ride down into a different country for lunch.',
-        'intro_he': 'גלישה על המטרהורן משני הצדדים, צרמט בשווייץ וצ\'רוויניה באיטליה, מתחת לאחת הפסגות המוכרות באלפים. אפשר לחצות את הגבול באמצע ההר ולגלוש למדינה אחרת בשביל ארוחת צהריים.',
+        'intro_en': 'Riding both sides of the border, Zermatt in Switzerland and Cervinia in Italy, under one of the most recognizable peaks in the Alps. You can cross over mid-mountain and ride down into a different country for lunch.',
+        'intro_he': 'גלישה משני צידי הגבול, צרמט בשווייץ וצ\'רוויניה באיטליה, מתחת לאחת הפסגות המוכרות ביותר באלפים. אפשר לחצות באמצע ההר ולגלוש למדינה אחרת בשביל ארוחת צהריים.',
         'sections': [
             {'type': 'photo', 'src': 'matterhorn-zermatt.jpg', 'w': 768, 'h': 1024,
              'alt_en': 'The Matterhorn seen from Zermatt, Switzerland', 'alt_he': 'פסגת המטרהורן מצרמט שבשווייץ',
@@ -477,27 +496,27 @@ TRIPS = [
              'cap_en': 'The same peak above Cervinia, Italy.', 'cap_he': 'אותה פסגה מעל צ\'רוויניה, איטליה.'},
             {'type': 'photo', 'src': 'alpine-village.jpg', 'w': 768, 'h': 1024,
              'alt_en': 'A snow-covered alpine village street', 'alt_he': 'רחוב כפרי מושלג באלפים',
-             'cap_en': 'A snowed-in village street at the bottom.', 'cap_he': 'רחוב כפרי מושלג למטה.'},
+             'cap_en': 'A snowy village street at the bottom.', 'cap_he': 'רחוב כפרי מושלג למטה.'},
         ],
     },
     {
         'slug': 'thailand', 'dates': '2024',
         'state_en': 'Completed', 'state_he': 'הסתיים',
-        'kicker_en': 'Completed trip', 'kicker_he': 'טיול שהושלם',
+        'kicker_en': 'North-to-south trip', 'kicker_he': 'טיול מהצפון לדרום',
         'title_en': 'Thailand', 'title_he': 'תאילנד',
         'meta_en': 'Chiang Mai · Chiang Rai · Pai · islands · Bangkok', 'meta_he': 'צ\'יאנג מאי · צ\'יאנג ראי · פאי · האיים · בנגקוק',
         'tags_en': ['Jungle', 'Islands', 'Warm weather', 'Elephants'], 'tags_he': ['ג\'ונגל', 'איים', 'מזג אוויר חם', 'פילים'],
         'teaser_en': 'The green, misty north around Chiang Mai and Pai, then the southern islands, ending in Bangkok. A warm, easy pace the whole way.',
-        'teaser_he': 'הצפון הירוק והערפילי סביב צ\'יאנג מאי ופאי, ואז האיים בדרום, וסיום בבנגקוק. קצב חמים ונינוח לכל אורך הדרך.',
+        'teaser_he': 'הצפון הירוק והערפילי סביב צ\'יאנג מאי ופאי, ואז האיים בדרום, וסיום בבנגקוק. אווירה חמימה וקצב נינוח לכל אורך הדרך.',
         'cover': 'thailand-kohtao-viewpoint.jpg', 'cover_w': 1024, 'cover_h': 1280,
-        'cover_alt_en': 'A high viewpoint over a turquoise bay with green hills on Ko Tao',
+        'cover_alt_en': 'A high viewpoint over a turquoise bay with green hills on Koh Tao',
         'cover_alt_he': 'תצפית גבוהה מעל מפרץ טורקיז עם גבעות ירוקות בקו טאו',
         'intro_en': 'Thailand was really two trips in one: the green, misty north around Chiang Mai and Pai, then the southern islands, winding up in Bangkok before the flight home.',
         'intro_he': 'תאילנד הייתה שני טיולים באחד: הצפון הירוק והערפילי סביב צ\'יאנג מאי ופאי, ואז האיים בדרום, וסיום בבנגקוק לפני הטיסה הביתה.',
         # Travel order: north (Chiang Mai -> Pai -> Chiang Mai) -> southern islands -> Bangkok.
         'sections': [
-            {'type': 'story', 'en': 'It started up north around Chiang Mai: buzzing night markets, a morning with elephants, white-water rafting, jungle waterfalls and a hill-tribe village, plus a side trip up to the tea hills of Chiang Rai.',
-             'he': 'זה התחיל בצפון, סביב צ\'יאנג מאי: שווקי לילה שוקקים, בוקר ליד פילים, רפטינג, מפלים בג\'ונגל וכפר שבטי, ובנוסף קפיצה צפונה לגבעות התה של צ\'יאנג ראי.'},
+            {'type': 'story', 'en': 'It started up north around Chiang Mai: buzzing night markets, a morning with elephants, white-water rafting, jungle waterfalls, and a hill-tribe village.',
+             'he': 'זה התחיל בצפון, סביב צ\'יאנג מאי: שווקי לילה שוקקים, בוקר ליד פילים, רפטינג, מפלים בג\'ונגל וכפר של שבטי ההרים.'},
             {'type': 'photo', 'src': 'thailand-night-market.jpg', 'w': 960, 'h': 1280,
              'alt_en': 'The lit Chill Square sign over the Anusarn night market in Chiang Mai', 'alt_he': 'שלט Chill Square מואר מעל שוק הלילה אנוסארן בצ\'יאנג מאי',
              'cap_en': 'Chill Square at the Anusarn night market, Chiang Mai.', 'cap_he': 'Chill Square בשוק הלילה אנוסארן, צ\'יאנג מאי.'},
@@ -511,18 +530,18 @@ TRIPS = [
              'alt_en': 'A GoPro view from a raft splashing through river rapids', 'alt_he': 'מבט גו-פרו מתוך רפסודה חוצה אשדות נהר',
              'cap_en': 'White-water rafting down a river near Chiang Mai.', 'cap_he': 'רפטינג במורד נהר ליד צ\'יאנג מאי.'},
             {'type': 'story', 'en': 'The days swung between adrenaline and calm: rafting and waterfalls one minute, a village loom or a quiet tea hillside the next.',
-             'he': 'הימים התנדנדו בין אדרנלין לרוגע: רפטינג ומפלים ברגע אחד, נול בכפר או מדרון תה שקט ברגע הבא.'},
+             'he': 'הימים נעו בין אדרנלין לרוגע: רפטינג ומפלים ברגע אחד, נול בכפר או מדרון תה שקט ברגע הבא.'},
             {'type': 'photo', 'src': 'thailand-bua-tong.jpg', 'w': 900, 'h': 1200,
-             'alt_en': 'Water running over the limestone Bua Tong sticky waterfalls in the jungle', 'alt_he': 'מים זורמים על מפלי הדבק בואה טונג בג\'ונגל',
-             'cap_en': 'The Bua Tong "sticky" waterfalls you can walk straight up.', 'cap_he': 'מפלי הדבק בואה טונג שאפשר לטפס עליהם ישר למעלה.'},
+             'alt_en': 'Water running over the limestone Bua Tong sticky waterfalls in the jungle', 'alt_he': 'מים זורמים על מפלי בואה טונג ה"דביקים" בג\'ונגל',
+             'cap_en': 'The Bua Tong "sticky" waterfalls you can walk straight up.', 'cap_he': 'מפלי בואה טונג ה"דביקים", שאפשר לטפס עליהם ישר למעלה.'},
             {'type': 'photo', 'src': 'thailand-waterfall.jpg', 'w': 886, 'h': 886,
              'alt_en': 'Adir climbing a waterfall by rope, jungle all around', 'alt_he': 'אדיר מטפס על מפל בעזרת חבל, ג\'ונגל מסביב',
              'cap_en': 'Climbing them by rope.', 'cap_he': 'טיפוס עליהם בעזרת חבל.'},
             {'type': 'photo', 'src': 'thailand-longneck.jpg', 'w': 720, 'h': 1280,
              'alt_en': 'A Kayan woman with brass neck rings weaving at a loom in a village', 'alt_he': 'אישה מבני קאיאן עם טבעות צוואר מפליז אורגת בנול בכפר',
-             'cap_en': 'A Kayan weaver at a hill-tribe village near Chiang Mai.', 'cap_he': 'אורגת מבני קאיאן בכפר שבטי ליד צ\'יאנג מאי.'},
+             'cap_en': 'A Kayan weaver at a hill-tribe village near Chiang Mai.', 'cap_he': 'אורגת מבני קאיאן בכפר של שבטי ההרים ליד צ\'יאנג מאי.'},
             {'type': 'story', 'en': 'Then up to Chiang Rai for a day of temples and color: a hillside tea estate, the red pagoda and giant white Guan Yin of Wat Huay Pla Kang, and a night market glowing pink. The drive even threw in a steaming roadside hot spring and a temple the monkeys had taken over.',
-             'he': 'ואז צפונה לצ\'יאנג ראי, ליום של מקדשים וצבע: מטע תה על מדרון, הפגודה האדומה ופסל הגואן יין הלבן הענק של ואט הואי פלא קאנג, ושוק לילה שזוהר בוורוד. הדרך אפילו זרקה פנימה מעיין חם מהביל ומקדש שהקופים השתלטו עליו.'},
+             'he': 'ואז צפונה לצ\'יאנג ראי, ליום של מקדשים וצבע: מטע תה על מדרון, הפגודה האדומה ופסל הגואן יין הלבן הענק של ואט הואי פלא קאנג, ושוק לילה שזוהר בוורוד. ובדרך חיכו לנו גם מעיין חם מהביל ומקדש שהקופים השתלטו עליו.'},
             {'type': 'photo', 'src': 'thailand-tea.jpg', 'w': 1200, 'h': 900,
              'alt_en': 'Rolling rows of tea bushes at a plantation in Chiang Rai', 'alt_he': 'שורות מתפתלות של שיחי תה במטע בצ\'יאנג ראי',
              'cap_en': 'The Choui Fong tea plantation up in Chiang Rai.', 'cap_he': 'מטע התה צ\'וי פונג בצ\'יאנג ראי.'},
@@ -553,7 +572,7 @@ TRIPS = [
              'alt_en': 'A troop of macaques roaming the ground at a roadside temple', 'alt_he': 'להקת קופי מקוק משוטטת על הקרקע במקדש בצד הדרך',
              'cap_en': 'Macaques running the show at a roadside temple.', 'cap_he': 'קופי מקוק מנהלים את המקום במקדש בצד הדרך.'},
             {'type': 'story', 'en': 'Then a run up to Pai, slower and greener: rice fields, a misty valley, a rainy walking street, and a scooter ride out to a steaming hot spring.',
-             'he': 'ואז קפיצה לפאי, איטית וירוקה יותר: שדות אורז, עמק ערפילי, רחוב מטיילים גשום, ונסיעה על קטנוע אל מעיין חם מהביל.'},
+             'he': 'ואז קפיצה לפאי, עיירה איטית וירוקה יותר: שדות אורז, עמק ערפילי, רחוב מטיילים גשום, ונסיעה על קטנוע אל מעיין חם מהביל.'},
             {'type': 'photo', 'src': 'thailand-rice-bridge.jpg', 'w': 768, 'h': 1024,
              'alt_en': 'Adir with arms spread on a bamboo bridge over rice paddies in Pai', 'alt_he': 'אדיר בידיים פתוחות על גשר במבוק מעל שדות אורז בפאי',
              'cap_en': 'The bamboo bridge over the rice fields in Pai.', 'cap_he': 'גשר הבמבוק מעל שדות האורז בפאי.'},
@@ -561,7 +580,7 @@ TRIPS = [
              'alt_en': 'A green, misty valley and hills seen from a hillside balcony above Pai', 'alt_he': 'עמק ירוק וערפילי וגבעות, נראים ממרפסת על מדרון מעל פאי',
              'cap_en': 'A misty valley view from a hillside spot above Pai.', 'cap_he': 'נוף עמק ערפילי ממקום על מדרון מעל פאי.'},
             {'type': 'photo', 'src': 'thailand-pai-street.jpg', 'w': 960, 'h': 1280,
-             'alt_en': 'A wet Pai walking street lined with hanging paper lanterns under grey skies', 'alt_he': 'רחוב המטיילים הרטוב של פאי עם פנסי נייר תלויים תחת שמיים אפורים',
+             'alt_en': 'A wet Pai walking street lined with hanging paper lanterns under gray skies', 'alt_he': 'רחוב המטיילים הרטוב של פאי עם פנסי נייר תלויים תחת שמיים אפורים',
              'cap_en': "Pai's walking street in the rain.", 'cap_he': 'רחוב המטיילים של פאי בגשם.'},
             {'type': 'photo', 'src': 'thailand-pai-scooter.jpg', 'w': 960, 'h': 1280,
              'alt_en': 'Adir on a white Honda Click scooter parked under a carport in Pai', 'alt_he': 'אדיר על קטנוע הונדה קליק לבן חונה תחת סככה בפאי',
@@ -581,23 +600,23 @@ TRIPS = [
              'alt_en': 'Buckets of marigolds, roses, and dyed chrysanthemums with jasmine garlands at a Thai flower market', 'alt_he': 'דליים של ציפורני חתול, ורדים וחרציות צבועות עם זרי יסמין בשוק פרחים תאילנדי',
              'cap_en': 'A flower and garland stall at the market.', 'cap_he': 'דוכן פרחים וזרים בשוק.'},
             {'type': 'story', 'en': 'Then south to the islands, starting with a short flight into Koh Samui\'s little garden airport.',
-             'he': 'ואז דרומה לאיים, שמתחילים בטיסה קצרה לשדה התעופה הקטן והירוק של קו סמוי.'},
+             'he': 'ואז דרומה לאיים: בהתחלה טיסה קצרה לשדה התעופה הקטן והירוק של קו סמוי.'},
             {'type': 'clip', 'src': 'thailand-samui-aerial.mp4', 'poster': 'thailand-samui-aerial-poster.jpg', 'w': 540, 'h': 960,
              'alt_en': 'Aerial view from a plane window of a green headland and turquoise sea at Koh Samui', 'alt_he': 'מבט אווירי מחלון מטוס על לשון יבשה ירוקה וים טורקיז בקו סמוי',
              'cap_en': 'Coming in over Koh Samui.', 'cap_he': 'מתקרבים מעל קו סמוי.'},
             {'type': 'photo', 'src': 'thailand-samui-airport.jpg', 'w': 665, 'h': 1182,
              'alt_en': 'The orange Samui Airport sign in a tropical garden', 'alt_he': 'שלט שדה התעופה הכתום של קו סמוי בגן טרופי',
              'cap_en': "Koh Samui's open-air garden airport.", 'cap_he': 'שדה התעופה הפתוח והירוק של קו סמוי.'},
-            {'type': 'story', 'en': 'A ferry over to Ko Tao, then island time: a climb to a viewpoint over a turquoise bay, palms down to the water, a sunset swim, fresh coconuts, and a fire show on the beach after dark.',
-             'he': 'מעבורת לקו טאו, ואז זמן אי: טיפוס לתצפית מעל מפרץ טורקיז, דקלים עד המים, שחייה בשקיעה, קוקוסים טריים, ומופע אש על החוף אחרי רדת החשכה.'},
+            {'type': 'story', 'en': 'A ferry over to Koh Tao, then island time: a climb to a viewpoint over a turquoise bay, palms down to the water, a sunset swim, fresh coconuts, and a fire show on the beach after dark.',
+             'he': 'מעבורת לקו טאו, ומשם הקצב של האי: טיפוס לתצפית מעל מפרץ טורקיז, דקלים עד המים, שחייה בשקיעה, קוקוסים טריים, ומופע אש על החוף אחרי רדת החשכה.'},
             {'type': 'photo', 'src': 'thailand-kohtao-viewpoint.jpg', 'w': 1024, 'h': 1280,
-             'alt_en': 'A high viewpoint over a turquoise bay with green hills and resorts on Ko Tao', 'alt_he': 'תצפית גבוהה מעל מפרץ טורקיז עם גבעות ירוקות ובתי נופש בקו טאו',
-             'cap_en': 'A viewpoint over a turquoise bay on Ko Tao.', 'cap_he': 'תצפית מעל מפרץ טורקיז בקו טאו.'},
+             'alt_en': 'A high viewpoint over a turquoise bay with green hills and resorts on Koh Tao', 'alt_he': 'תצפית גבוהה מעל מפרץ טורקיז עם גבעות ירוקות ובתי נופש בקו טאו',
+             'cap_en': 'A viewpoint over a turquoise bay on Koh Tao.', 'cap_he': 'תצפית מעל מפרץ טורקיז בקו טאו.'},
             {'type': 'photo', 'src': 'thailand-kohtao-palms.jpg', 'w': 720, 'h': 1280,
-             'alt_en': 'Tall coconut palms framing a turquoise bay on Ko Tao', 'alt_he': 'דקלי קוקוס גבוהים ממסגרים מפרץ טורקיז בקו טאו',
+             'alt_en': 'Tall coconut palms framing a turquoise bay on Koh Tao', 'alt_he': 'דקלי קוקוס גבוהים ממסגרים מפרץ טורקיז בקו טאו',
              'cap_en': 'Palms running down to the water.', 'cap_he': 'דקלים יורדים עד המים.'},
             {'type': 'photo', 'src': 'thailand-kohtao-sunset.jpg', 'w': 720, 'h': 1280,
-             'alt_en': 'Sunset over the sea with longtail boats and swimmers off a Ko Tao beach', 'alt_he': 'שקיעה מעל הים עם סירות לונגטייל ומתרחצים מול חוף בקו טאו',
+             'alt_en': 'Sunset over the sea with longtail boats and swimmers off a Koh Tao beach', 'alt_he': 'שקיעה מעל הים עם סירות לונגטייל ומתרחצים מול חוף בקו טאו',
              'cap_en': 'A sunset swim off the beach.', 'cap_he': 'שחייה בשקיעה מול החוף.'},
             {'type': 'photo', 'src': 'thailand-kohtao-coconut.jpg', 'w': 720, 'h': 1280,
              'alt_en': 'Adir smiling at a beach restaurant with a fresh young coconut and a green smoothie', 'alt_he': 'אדיר מחייך במסעדת חוף עם קוקוס צעיר טרי ושייק ירוק',
@@ -605,28 +624,28 @@ TRIPS = [
             {'type': 'clip', 'src': 'thailand-kohtao-fire.mp4', 'poster': 'thailand-kohtao-fire-poster.jpg', 'w': 720, 'h': 1280,
              'alt_en': 'Fire dancers spinning flaming poi on a beach at night while a crowd watches', 'alt_he': 'רקדני אש מסובבים כדורי אש על החוף בלילה בעוד קהל צופה',
              'cap_en': 'A fire show on the beach after dark.', 'cap_he': 'מופע אש על החוף אחרי רדת החשכה.'},
-            {'type': 'story', 'en': 'Ko Tao had a boat day in it too: out by longtail to snorkel among the granite boulders and pull up on quiet beaches, then sunset drinks at a hilltop bar.',
+            {'type': 'story', 'en': 'Koh Tao had a boat day in it too: out by longtail to snorkel among the granite boulders and pull up on quiet beaches, then sunset drinks at a hilltop bar.',
              'he': 'בקו טאו היה גם יום סירה: יציאה בלונגטייל לשנורקל בין סלעי הגרניט ועצירה בחופים שקטים, ואז דרינקים בשקיעה בבר על הגבעה.'},
             {'type': 'photo', 'src': 'thailand-kohtao-boattrip.jpg', 'w': 720, 'h': 1280,
-             'alt_en': 'Adir and a friend on a red longtail boat at a wooden pier under a moody sky on Ko Tao', 'alt_he': 'אדיר וחבר על סירת לונגטייל אדומה ברציף עץ תחת שמיים מעוננים בקו טאו',
-             'cap_en': 'Heading out on a boat trip from Ko Tao.', 'cap_he': 'יוצאים לטיול סירה מקו טאו.'},
+             'alt_en': 'Adir and a friend on a red longtail boat at a wooden pier under a moody sky on Koh Tao', 'alt_he': 'אדיר וחבר על סירת לונגטייל אדומה ברציף עץ תחת שמיים מעוננים בקו טאו',
+             'cap_en': 'Heading out on a boat trip from Koh Tao.', 'cap_he': 'יוצאים לטיול סירה מקו טאו.'},
             {'type': 'photo', 'src': 'thailand-kohtao-boat-beach.jpg', 'w': 768, 'h': 1024,
              'alt_en': 'View from a boat of a palm-backed beach in clear shallow turquoise water', 'alt_he': 'מבט מהסירה על חוף מוקף דקלים במים רדודים, צלולים וטורקיז',
              'cap_en': 'Pulling up to a quiet beach.', 'cap_he': 'עוגנים מול חוף שקט.'},
             {'type': 'photo', 'src': 'thailand-kohtao-snorkel.jpg', 'w': 720, 'h': 1280,
-             'alt_en': 'A beach with big granite boulders and snorkellers in turquoise water on Ko Tao', 'alt_he': 'חוף עם סלעי גרניט גדולים ושנורקלרים במים טורקיז בקו טאו',
-             'cap_en': 'Snorkelling among the granite boulders.', 'cap_he': 'שנורקל בין סלעי הגרניט.'},
+             'alt_en': 'A beach with big granite boulders and snorkelers in turquoise water on Koh Tao', 'alt_he': 'חוף עם סלעי גרניט גדולים ושנורקלרים במים טורקיז בקו טאו',
+             'cap_en': 'Snorkeling among the granite boulders.', 'cap_he': 'שנורקל בין סלעי הגרניט.'},
             {'type': 'clip', 'src': 'thailand-kohtao-bar.mp4', 'poster': 'thailand-kohtao-bar-poster.jpg', 'w': 960, 'h': 540,
-             'alt_en': 'A pink and orange sunset over the sea and jungle from a hilltop bar on Ko Tao', 'alt_he': 'שקיעה ורודה וכתומה מעל הים והג\'ונגל מבר על גבעה בקו טאו',
+             'alt_en': 'A pink and orange sunset over the sea and jungle from a hilltop bar on Koh Tao', 'alt_he': 'שקיעה ורודה וכתומה מעל הים והג\'ונגל מבר על גבעה בקו טאו',
              'cap_en': 'Sunset from a hilltop bar.', 'cap_he': 'שקיעה מבר על הגבעה.'},
-            {'type': 'story', 'en': 'Back on Ko Samui, the day was all jet skis: a tour out across a calm green bay, opening it up on the open water, and dinner to finish.',
-             'he': 'בחזרה בקו סמוי, היום היה כולו אופנועי ים: סיור על פני מפרץ ירוק ורגוע, פתיחת גז על המים הפתוחים, וארוחת ערב לסיום.'},
+            {'type': 'story', 'en': 'Back on Koh Samui, the day was all jet skis: a tour out across a calm green bay, opening it up further out, and dinner to finish.',
+             'he': 'בחזרה בקו סמוי חיכה יום שכולו אופנועי ים: סיור במפרץ ירוק ורגוע, פתיחת גז רחוק מהחוף, וארוחת ערב לסיום.'},
             {'type': 'photo', 'src': 'thailand-samui-jetski-group.jpg', 'w': 1182, 'h': 666,
-             'alt_en': 'A group lined up on a row of jet skis in a calm green bay off Ko Samui', 'alt_he': 'קבוצה על שורת אופנועי ים במפרץ ירוק ורגוע מול קו סמוי',
-             'cap_en': 'The jet ski tour lined up off Ko Samui.', 'cap_he': 'סיור אופנועי הים מסודר בשורה מול קו סמוי.'},
+             'alt_en': 'A group lined up on a row of jet skis in a calm green bay off Koh Samui', 'alt_he': 'קבוצה על שורת אופנועי ים במפרץ ירוק ורגוע מול קו סמוי',
+             'cap_en': 'The jet ski tour lined up off Koh Samui.', 'cap_he': 'סיור אופנועי הים מסודר בשורה מול קו סמוי.'},
             {'type': 'photo', 'src': 'thailand-jetski.jpg', 'w': 619, 'h': 1100,
-             'alt_en': 'Adir on a jet ski in clear blue water by Ko Samui', 'alt_he': 'אדיר על אופנוע ים במים כחולים ליד קו סמוי',
-             'cap_en': 'Out on the water off Ko Samui.', 'cap_he': 'על המים מול קו סמוי.'},
+             'alt_en': 'Adir on a jet ski in clear blue water by Koh Samui', 'alt_he': 'אדיר על אופנוע ים במים כחולים ליד קו סמוי',
+             'cap_en': 'Out on the water off Koh Samui.', 'cap_he': 'על המים מול קו סמוי.'},
             {'type': 'photo', 'src': 'thailand-samui-jetski-solo.jpg', 'w': 666, 'h': 1182,
              'alt_en': 'Adir riding a jet ski fast across open blue water with spray flying', 'alt_he': 'אדיר דוהר על אופנוע ים על מים כחולים פתוחים, התזה עפה',
              'cap_en': 'Opening it up on the open water.', 'cap_he': 'פותח גז על המים הפתוחים.'},
@@ -634,7 +653,7 @@ TRIPS = [
              'alt_en': 'Adir smiling over fresh coconuts at a restaurant table at night', 'alt_he': 'אדיר מחייך מעל קוקוסים טריים בשולחן מסעדה בלילה',
              'cap_en': 'Dinner and fresh coconuts.', 'cap_he': 'ארוחת ערב וקוקוסים טריים.'},
             {'type': 'story', 'en': 'Then over to Phuket, the big-island version of all this: driving everywhere, long beaches, and even a water park.',
-             'he': 'ואז לפוקט, הגרסה של האי הגדול לכל זה: נסיעות לכל מקום, חופים ארוכים, ואפילו פארק מים.'},
+             'he': 'ואז לפוקט — כל זה, בגרסה של אי גדול: נסיעות לכל מקום, חופים ארוכים, ואפילו פארק מים.'},
             {'type': 'photo', 'src': 'thailand-phuket-driving.jpg', 'w': 720, 'h': 1280,
              'alt_en': 'View from inside a car driving down a Phuket road at golden hour', 'alt_he': 'מבט מתוך רכב נוסע בכביש בפוקט בשעת הזהב',
              'cap_en': 'Driving around Phuket.', 'cap_he': 'נסיעה ברחבי פוקט.'},
@@ -648,9 +667,9 @@ TRIPS = [
              'alt_en': 'A big wave pool with rock formations and slides at a Phuket water park', 'alt_he': 'בריכת גלים גדולה עם תצורות סלע ומגלשות בפארק מים בפוקט',
              'cap_en': 'The wave pool at a Phuket water park.', 'cap_he': 'בריכת הגלים בפארק מים בפוקט.'},
             {'type': 'story', 'en': 'A day out into Phang Nga Bay: a speedboat through the limestone karsts, kayaking under the cliffs, and a roadside fruit stop.',
-             'he': 'יום בשייט אל מפרץ פאנג נגה: סירת מהירות בין צוקי הגיר, קייאקים מתחת למצוקים, ועצירת פירות בצד הדרך.'},
+             'he': 'יום שייט במפרץ פאנג נגה: סירה מהירה בין צוקי הגיר, קייאקים מתחת למצוקים, ועצירת פירות בצד הדרך.'},
             {'type': 'photo', 'src': 'thailand-phangnga-boat.jpg', 'w': 720, 'h': 1280,
-             'alt_en': 'View from a speedboat of limestone cliffs and a floating village in Phang Nga Bay', 'alt_he': 'מבט מסירת מהירות על צוקי גיר וכפר צף במפרץ פאנג נגה',
+             'alt_en': 'View from a speedboat of limestone cliffs and a floating village in Phang Nga Bay', 'alt_he': 'מבט מסירה מהירה על צוקי גיר וכפר צף במפרץ פאנג נגה',
              'cap_en': 'Into Phang Nga Bay by speedboat.', 'cap_he': 'אל מפרץ פאנג נגה בסירת מהירות.'},
             {'type': 'photo', 'src': 'thailand-phangnga-kayak.jpg', 'w': 768, 'h': 1024,
              'alt_en': 'Tall limestone karsts rising from green water in Phang Nga Bay, seen from a kayak', 'alt_he': 'צוקי גיר גבוהים מתנשאים ממים ירוקים במפרץ פאנג נגה, ממבט קייאק',
@@ -685,7 +704,7 @@ TRIPS = [
              'cap_en': 'Kayaks on the beach at Phi Phi.', 'cap_he': 'קייאקים על החוף בפי פי.'},
             {'type': 'clip', 'src': 'thailand-phiphi-beach.mp4', 'poster': 'thailand-phiphi-beach-poster.jpg', 'w': 720, 'h': 960,
              'alt_en': 'Longtail boats moored along a Phi Phi beach under cloudy cliffs', 'alt_he': 'סירות לונגטייל עוגנות לאורך חוף בפי פי תחת מצוקים מעוננים',
-             'cap_en': 'A quiet stretch of Phi Phi beach.', 'cap_he': 'מתחם חוף שקט בפי פי.'},
+             'cap_en': 'A quiet stretch of Phi Phi beach.', 'cap_he': 'רצועת חוף שקטה בפי פי.'},
             {'type': 'story', 'en': 'And the rest of it: coconuts on the walking street, lanterns over the lanes at night, and a fire show on the beach.',
              'he': 'וכל השאר: קוקוסים ברחוב המטיילים, פנסים מעל הסמטאות בלילה, ומופע אש על החוף.'},
             {'type': 'photo', 'src': 'thailand-phiphi-coconut.jpg', 'w': 768, 'h': 1024,
@@ -698,7 +717,7 @@ TRIPS = [
              'alt_en': 'A fire performer making a flaming heart with poi on a Phi Phi beach at night', 'alt_he': 'אמן אש יוצר לב להבות עם כדורי אש על חוף בפי פי בלילה',
              'cap_en': 'A fire show on the beach.', 'cap_he': 'מופע אש על החוף.'},
             {'type': 'story', 'en': 'The last stretch was Bangkok, a loud, sprawling city to land in after weeks of beaches and mountains.',
-             'he': 'הקטע האחרון היה בנגקוק, עיר רועשת ומשתרעת לנחות בה אחרי שבועות של חופים והרים.'},
+             'he': 'הקטע האחרון היה בנגקוק: עיר רועשת וענקית, נחיתה חדה אחרי שבועות של חופים והרים.'},
             {'type': 'photo', 'src': 'thailand-bangkok-aerial.jpg', 'w': 720, 'h': 1280,
              'alt_en': "View of Bangkok's outskirts and an AirAsia wingtip from the plane window on approach", 'alt_he': 'מבט על פאתי בנגקוק וכנף מטוס של AirAsia מחלון המטוס בזמן הגישה לנחיתה',
              'cap_en': 'Coming back into Bangkok from the islands.', 'cap_he': 'חוזרים לבנגקוק מהאיים.'},
@@ -715,7 +734,7 @@ TRIPS = [
              'he': 'לומפיני הוא פיסת ירוק בלב המגדלים, והוורנים מטיילים בו כמו בבית.'},
             {'type': 'photo', 'src': 'thailand-bangkok-skyline.jpg', 'w': 1024, 'h': 768,
              'alt_en': 'Bangkok skyline over a stadium and rail tracks, towers fading into haze', 'alt_he': 'קו הרקיע של בנגקוק מעל אצטדיון ומסילות, מגדלים נמוגים באובך',
-             'cap_en': 'The city stacked up, all the way to the horizon.', 'cap_he': 'העיר נערמת עד האופק.'},
+             'cap_en': 'The city stacked up, all the way to the horizon.', 'cap_he': 'העיר נמשכת עד האופק.'},
             {'type': 'photo', 'src': 'thailand-bangkok-iconsiam.jpg', 'w': 720, 'h': 1280,
              'alt_en': 'Colorful light installations reflected in water by the ICONSIAM riverside at night', 'alt_he': 'מיצגי אור צבעוניים משתקפים במים ליד אייקונסיאם על גדת הנהר בלילה',
              'cap_en': 'ICONSIAM lit up along the river at night.', 'cap_he': 'אייקונסיאם מואר לאורך הנהר בלילה.'},
@@ -777,7 +796,10 @@ def render_album_main(trip: dict, lang: str) -> str:
         alt = e(s['alt_he'] if is_he else s['alt_en'])
         cap = e(s['cap_he'] if is_he else s['cap_en'])
         if s['type'] == 'clip':
-            media = (f'<video data-clip muted loop playsinline preload="none" '
+            # controls: autoplaying, looping motion needs a pause mechanism
+            # (WCAG 2.2.2), and it's the only way reduced-motion visitors —
+            # whose clips never autoplay — can watch the clip at all.
+            media = (f'<video data-clip controls muted loop playsinline preload="none" '
                      f'poster="{IMG}/{s["poster"]}" width="{s["w"]}" height="{s["h"]}" '
                      f'aria-label="{alt}"><source src="{IMG}/{s["src"]}" type="video/mp4" /></video>')
             cls = 'album-figure album-figure-clip'
@@ -813,7 +835,7 @@ def render_album_main(trip: dict, lang: str) -> str:
     sections_html = '\n'.join(blocks)
 
     return f'''<main id="main" tabindex="-1" class="site-shell album">
-  <a class="album-back" href="{journeys_href}">{arrow} {back}</a>
+  <a class="album-back" href="{journeys_href}"><span aria-hidden="true">{arrow}</span> {back}</a>
   <header class="album-hero">
     <div class="album-hero-media">
       <img src="{IMG}/{trip['cover']}" alt="{e(cover_alt)}" width="{trip['cover_w']}" height="{trip['cover_h']}" fetchpriority="high">
@@ -829,7 +851,7 @@ def render_album_main(trip: dict, lang: str) -> str:
   <div class="album-body">
 {sections_html}
   </div>
-  <a class="album-back album-back-end" href="{journeys_href}">{arrow} {back}</a>
+  <a class="album-back album-back-end" href="{journeys_href}"><span aria-hidden="true">{arrow}</span> {back}</a>
 </main>'''
 
 
@@ -933,6 +955,13 @@ def sync_page(path_str: str, meta: dict[str, str]) -> bool:
     updated = replace_section(original, '<head>', '</head>', render_head(meta), where=path_str)
     updated = replace_section(updated, '<header class="site-header">', '</header>', render_header(meta), where=path_str)
     updated = replace_section(updated, '<footer class="site-footer">', '</footer>', render_footer(meta['lang']), where=path_str)
+    # Version the body script tag too — the head's CSS link is generated, but
+    # this tag lives in hand-edited markup, so stamp it here (idempotent).
+    updated = re.sub(
+        r'<script src="(\.{1,2}/)index\.js[^"]*" defer></script>',
+        f'<script src="\\g<1>index.js?v={JS_VER}" defer></script>',
+        updated,
+    )
     if path_str in ('journeys.html', 'he/journeys.html'):
         previews = render_trip_previews(meta['lang'])
         block = f'<!-- TRIPS:START -->\n{previews}\n        <!-- TRIPS:END -->'
@@ -942,6 +971,23 @@ def sync_page(path_str: str, meta: dict[str, str]) -> bool:
         if line.startswith('<html '):
             updated = updated.replace(line, html_open, 1)
             break
+    if updated != original:
+        path.write_text(updated)
+        return True
+    return False
+
+
+def sync_404() -> bool:
+    """Keep 404.html's theme-boot script and CSS version in step with the rest
+    of the site (it is otherwise hand-maintained and used to drift silently)."""
+    path = REPO / '404.html'
+    original = path.read_text()
+    updated = replace_section(original, '<script>', '</script>', THEME_BOOT_SCRIPT, where='404.html')
+    updated = re.sub(
+        r'<link rel="stylesheet" href="/index\.css[^"]*" />',
+        f'<link rel="stylesheet" href="/index.css?v={CSS_VER}" />',
+        updated,
+    )
     if updated != original:
         path.write_text(updated)
         return True
@@ -989,6 +1035,8 @@ def main() -> int:
             target.parent.mkdir(parents=True, exist_ok=True)
             if write_if_changed(target, render_album_page(trip, lang)):
                 changed.append(meta['slug'])
+    if sync_404():
+        changed.append('404.html')
     sitemap = render_sitemap()
     if write_if_changed(REPO / 'sitemap.xml', sitemap):
         changed.append('sitemap.xml')

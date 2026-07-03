@@ -399,7 +399,7 @@ main:focus { outline: none; }
 .note-card,
 .link-card,
 .trip-card,
-.journeys-hero-grid article,
+.journeys-hero-grid figure,
 .socials a {
   position: relative;
   overflow: hidden;
@@ -411,7 +411,7 @@ main:focus { outline: none; }
 .note-card::before,
 .link-card::before,
 .trip-card::before,
-.journeys-hero-grid article::before,
+.journeys-hero-grid figure::before,
 .socials a::before {
   content: '';
   position: absolute;
@@ -602,6 +602,18 @@ html[data-theme='dark'] .link-card-icon {
 #po-black:checked ~ .profile-solo .swatch-black {
   box-shadow: 0 0 0 2px var(--bg-strong), 0 0 0 4px var(--accent);
 }
+/* The radios are sr-only, so keyboard focus must show on the visible swatch. */
+#po-white:focus-visible ~ .profile-solo .swatch-white,
+#po-black:focus-visible ~ .profile-solo .swatch-black {
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
+}
+.portrait-fieldset {
+  border: 0;
+  padding: 0;
+  margin: 0;
+  min-width: 0;
+}
 .journeys-hero-grid {
   display: grid;
   grid-template-columns: 1.3fr 0.85fr;
@@ -609,15 +621,16 @@ html[data-theme='dark'] .link-card-icon {
   gap: 0.55rem;
   min-height: 440px;
 }
-.journeys-hero-grid article {
+.journeys-hero-grid figure {
   position: relative;
   overflow: hidden;
   min-height: 0;
+  margin: 0; /* figure carries UA default margins that would break the grid */
   border-radius: var(--radius-xl);
   border: 1px solid var(--surface-border);
   box-shadow: var(--surface-shadow);
 }
-.journeys-hero-grid article:first-child {
+.journeys-hero-grid figure:first-child {
   grid-row: 1 / span 2;
 }
 .journeys-hero-grid img {
@@ -776,13 +789,18 @@ html[data-theme='dark'] .socials img {
     transform: translateY(-0.75rem);
     opacity: 0;
     pointer-events: none;
+    /* visibility removes the closed menu from the tab order and the
+       accessibility tree; the delayed transition keeps the fade-out. */
+    visibility: hidden;
     backdrop-filter: blur(18px);
     overscroll-behavior: contain;
-    transition: opacity 180ms ease, transform 180ms ease, box-shadow 180ms ease;
+    transition: opacity 180ms ease, transform 180ms ease, box-shadow 180ms ease, visibility 0s 180ms;
   }
   body.nav-open .nav-area {
     opacity: 1;
     pointer-events: auto;
+    visibility: visible;
+    transition-delay: 0s;
     transform: translateY(0);
   }
   .site-nav ul,
@@ -802,7 +820,7 @@ html[data-theme='dark'] .socials img {
     grid-template-rows: repeat(2, minmax(220px, 1fr));
     min-height: 0;
   }
-  .journeys-hero-grid article:first-child {
+  .journeys-hero-grid figure:first-child {
     grid-column: 1 / span 2;
     grid-row: auto;
   }
@@ -824,8 +842,8 @@ html[data-theme='dark'] .socials img {
     grid-template-columns: 1fr;
     grid-template-rows: none;
   }
-  .journeys-hero-grid article,
-  .journeys-hero-grid article:first-child {
+  .journeys-hero-grid figure,
+  .journeys-hero-grid figure:first-child {
     grid-column: auto;
     min-height: 220px;
   }
@@ -862,7 +880,7 @@ html[data-theme='dark'] .socials img {
   .note-card:hover,
   .link-card:hover,
   .trip-card:hover,
-  .journeys-hero-grid article:hover {
+  .journeys-hero-grid figure:hover {
     transform: translateY(-3px);
     box-shadow: var(--surface-shadow-hover);
     border-color: color-mix(in srgb, var(--accent) 24%, var(--surface-border));
@@ -873,7 +891,7 @@ html[data-theme='dark'] .socials img {
   .note-card:hover::before,
   .link-card:hover::before,
   .trip-card:hover::before,
-  .journeys-hero-grid article:hover::before,
+  .journeys-hero-grid figure:hover::before,
   .socials a:hover::before,
   .button:hover::before {
     opacity: 1;
@@ -993,6 +1011,12 @@ html[data-theme='dark'] .trip-state-archive {
 }
 .trip-card-featured .trip-cover {
   aspect-ratio: 16 / 9;
+}
+/* .trip-card clips overflow, so the default outside outline would be cut off
+   on three sides — draw the focus ring inside the cover instead. */
+.trip-cover:focus-visible {
+  outline: 3px solid var(--accent);
+  outline-offset: -3px;
 }
 .trip-cover img {
   width: 100%;

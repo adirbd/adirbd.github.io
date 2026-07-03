@@ -24,6 +24,8 @@ const pages = [
   '/he/trips/thailand.html',
 ];
 
+const SITE_URL = 'https://www.adirbd.com';
+
 const isSkippableHref = (href) =>
   !href ||
   href.startsWith('#') ||
@@ -177,10 +179,59 @@ test.describe('site pages', () => {
     page.on('pageerror', (e) => problems.push(`pageerror: ${e.message}`));
     page.on('requestfailed', (r) => problems.push(`requestfailed: ${r.url()}`));
     page.on('response', (r) => { if (r.status() >= 400) problems.push(`http ${r.status()}: ${r.url()}`); });
-    for (const path of pages) {
+    for (const path of [...pages, '/404.html']) {
       await page.goto(path, { waitUntil: 'networkidle' });
     }
     expect(problems, `runtime problems: ${JSON.stringify(problems, null, 2)}`).toEqual([]);
+  });
+
+  test('hreflang alternates resolve locally and are reciprocal', async ({ request }) => {
+    const altsOf = (html) => {
+      const out = {};
+      const re = /<link rel="alternate" hreflang="([^"]+)" href="([^"]+)" \/>/g;
+      let m;
+      while ((m = re.exec(html))) out[m[1]] = m[2];
+      return out;
+    };
+    for (const pagePath of pages) {
+      const html = await (await request.get(pagePath)).text();
+      const alts = altsOf(html);
+      for (const lang of ['en', 'en-US', 'he', 'he-IL', 'x-default']) {
+        expect(alts[lang], `expected hreflang=${lang} on ${pagePath}`).toBeTruthy();
+      }
+      for (const [lang, href] of Object.entries(alts)) {
+        const local = href.replace(SITE_URL, '') || '/';
+        const res = await request.get(local);
+        expect(res.status(), `hreflang ${lang} -> ${href} from ${pagePath} should resolve`).toBeLessThan(400);
+      }
+      // The Hebrew alternate must point back at the same English URL (and itself).
+      const heHtml = await (await request.get(alts.he.replace(SITE_URL, ''))).text();
+      const heAlts = altsOf(heHtml);
+      expect(heAlts.en, `he alternate of ${pagePath} should point back to the same en URL`).toBe(alts.en);
+      expect(heAlts.he, `he alternate of ${pagePath} should self-reference`).toBe(alts.he);
+    }
+  });
+
+  test('css/js references carry the current content-hash version', async ({ request }) => {
+    const hashOf = (name) =>
+      crypto.createHash('md5').update(fs.readFileSync(path.join(__dirname, '..', name))).digest('hex').slice(0, 8);
+    const cssVer = hashOf('index.css');
+    const jsVer = hashOf('index.js');
+    for (const pagePath of [...pages, '/404.html']) {
+      const html = await (await request.get(pagePath)).text();
+      expect(html, `stylesheet on ${pagePath} should carry ?v=${cssVer}`).toContain(`index.css?v=${cssVer}`);
+      if (pagePath !== '/404.html') {
+        expect(html, `script on ${pagePath} should carry ?v=${jsVer}`).toContain(`index.js?v=${jsVer}`);
+      }
+    }
+  });
+
+  test('canonical URL matches the page path', async ({ page }) => {
+    for (const pagePath of pages) {
+      await page.goto(pagePath);
+      const canonical = await page.getAttribute('link[rel="canonical"]', 'href');
+      expect(canonical, `canonical on ${pagePath}`).toBe(`${SITE_URL}${pagePath}`);
+    }
   });
 
   test('every page has an og:image with a non-empty og:image:alt', async ({ page }) => {

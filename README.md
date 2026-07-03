@@ -32,8 +32,9 @@ python3 scripts/sync_shared.py
 
 Run it after editing any page; CI fails if pages drift from the script's output.
 It also appends a content-hash query to the asset links (`index.css?v=…`,
-`index.js?v=…`) so browsers fetch the latest CSS/JS after a change; the version
-updates automatically whenever those files change.
+`index.js?v=…`) on every page so browsers fetch the latest CSS/JS after a
+change; the version updates automatically whenever those files change. The 404
+page's theme-boot script and stylesheet link are kept in sync too.
 
 Image assets are validated with:
 

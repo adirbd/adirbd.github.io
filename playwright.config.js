@@ -10,7 +10,7 @@ module.exports = defineConfig({
   webServer: {
     command: `python3 -m http.server ${port || 8000} --bind ${hostname || '127.0.0.1'} -d .`,
     url: baseURL,
-    reuseExistingServer: true,
+    reuseExistingServer: !process.env.CI,
     timeout: 120000,
   },
   use: {
