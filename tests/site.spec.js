@@ -24,6 +24,8 @@ const pages = [
   '/he/trips/thailand.html',
 ];
 
+const SITE_URL = 'https://www.adirbd.com';
+
 const isSkippableHref = (href) =>
   !href ||
   href.startsWith('#') ||
@@ -177,10 +179,98 @@ test.describe('site pages', () => {
     page.on('pageerror', (e) => problems.push(`pageerror: ${e.message}`));
     page.on('requestfailed', (r) => problems.push(`requestfailed: ${r.url()}`));
     page.on('response', (r) => { if (r.status() >= 400) problems.push(`http ${r.status()}: ${r.url()}`); });
-    for (const path of pages) {
+    for (const path of [...pages, '/404.html']) {
       await page.goto(path, { waitUntil: 'networkidle' });
     }
     expect(problems, `runtime problems: ${JSON.stringify(problems, null, 2)}`).toEqual([]);
+  });
+
+  test('hreflang alternates resolve locally and are reciprocal', async ({ request }) => {
+    const altsOf = (html) => {
+      const out = {};
+      const re = /<link rel="alternate" hreflang="([^"]+)" href="([^"]+)" \/>/g;
+      let m;
+      while ((m = re.exec(html))) out[m[1]] = m[2];
+      return out;
+    };
+    for (const pagePath of pages) {
+      const html = await (await request.get(pagePath)).text();
+      const alts = altsOf(html);
+      for (const lang of ['en', 'en-US', 'he', 'he-IL', 'x-default']) {
+        expect(alts[lang], `expected hreflang=${lang} on ${pagePath}`).toBeTruthy();
+      }
+      for (const [lang, href] of Object.entries(alts)) {
+        const local = href.replace(SITE_URL, '') || '/';
+        const res = await request.get(local);
+        expect(res.status(), `hreflang ${lang} -> ${href} from ${pagePath} should resolve`).toBeLessThan(400);
+      }
+      // The Hebrew alternate must point back at the same English URL (and itself).
+      const heHtml = await (await request.get(alts.he.replace(SITE_URL, ''))).text();
+      const heAlts = altsOf(heHtml);
+      expect(heAlts.en, `he alternate of ${pagePath} should point back to the same en URL`).toBe(alts.en);
+      expect(heAlts.he, `he alternate of ${pagePath} should self-reference`).toBe(alts.he);
+    }
+  });
+
+  test('css/js references carry the current content-hash version', async ({ request }) => {
+    const hashOf = (name) =>
+      crypto.createHash('md5').update(fs.readFileSync(path.join(__dirname, '..', name))).digest('hex').slice(0, 8);
+    const cssVer = hashOf('index.css');
+    const jsVer = hashOf('index.js');
+    for (const pagePath of [...pages, '/404.html']) {
+      const html = await (await request.get(pagePath)).text();
+      expect(html, `stylesheet on ${pagePath} should carry ?v=${cssVer}`).toContain(`index.css?v=${cssVer}`);
+      if (pagePath !== '/404.html') {
+        expect(html, `script on ${pagePath} should carry ?v=${jsVer}`).toContain(`index.js?v=${jsVer}`);
+      }
+    }
+  });
+
+  test('sitemap lists every album image for Google Images', async ({ page, request }) => {
+    const xml = await (await request.get('/sitemap.xml')).text();
+    expect(xml, 'sitemap should declare the image namespace').toContain(
+      'xmlns:image="http://www.google.com/schemas/sitemap-image/1.1"',
+    );
+    for (const pagePath of pages.filter((p) => p.includes('/trips/'))) {
+      await page.goto(pagePath);
+      const media = await page.$$eval('.album-hero-media img, .album-figure img, .album-figure video', (els) =>
+        els.map((el) => (el.tagName === 'VIDEO' ? el.getAttribute('poster') : el.getAttribute('src'))),
+      );
+      expect(media.length, `expected album media on ${pagePath}`).toBeGreaterThan(0);
+      for (const src of media) {
+        expect(xml, `sitemap should list ${src} (shown on ${pagePath})`).toContain(
+          `<image:loc>${SITE_URL}${src}</image:loc>`,
+        );
+      }
+    }
+  });
+
+  test('album pages carry ImageGallery JSON-LD covering all their media', async ({ page }) => {
+    for (const pagePath of pages.filter((p) => p.includes('/trips/'))) {
+      await page.goto(pagePath);
+      const blocks = await page.$$eval('script[type="application/ld+json"]', (nodes) =>
+        nodes.map((n) => n.textContent),
+      );
+      const gallery = blocks.map((b) => JSON.parse(b)).find((b) => b['@type'] === 'ImageGallery');
+      expect(gallery, `expected ImageGallery JSON-LD on ${pagePath}`).toBeTruthy();
+      expect(Array.isArray(gallery.hasPart), `expected hasPart images on ${pagePath}`).toBe(true);
+      for (const img of gallery.hasPart) {
+        expect(img['@type']).toBe('ImageObject');
+        expect(img.contentUrl, `ImageObject needs contentUrl on ${pagePath}`).toContain(`${SITE_URL}/images/journeys/`);
+        expect(Boolean(img.width && img.height), `ImageObject needs dims on ${pagePath}`).toBe(true);
+      }
+      // Every photo/clip figure must be represented (cover may merge with a photo).
+      const figures = await page.$$eval('.album-figure img, .album-figure video', (els) => els.length);
+      expect(gallery.hasPart.length, `hasPart should cover the album media on ${pagePath}`).toBeGreaterThanOrEqual(figures);
+    }
+  });
+
+  test('canonical URL matches the page path', async ({ page }) => {
+    for (const pagePath of pages) {
+      await page.goto(pagePath);
+      const canonical = await page.getAttribute('link[rel="canonical"]', 'href');
+      expect(canonical, `canonical on ${pagePath}`).toBe(`${SITE_URL}${pagePath}`);
+    }
   });
 
   test('every page has an og:image with a non-empty og:image:alt', async ({ page }) => {

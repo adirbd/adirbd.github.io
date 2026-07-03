@@ -13,7 +13,7 @@
   <link rel="alternate" hreflang="en-US" href="https://www.adirbd.com/work.html" />
   <link rel="alternate" hreflang="he" href="https://www.adirbd.com/he/work.html" />
   <link rel="alternate" hreflang="he-IL" href="https://www.adirbd.com/he/work.html" />
-  <link rel="alternate" hreflang="x-default" href="https://www.adirbd.com/" />
+  <link rel="alternate" hreflang="x-default" href="https://www.adirbd.com/work.html" />
   <link rel="icon" type="image/svg+xml" href="../images/favicon-transit.svg" />
   <link rel="alternate icon" type="image/png" href="../images/favicon.png" />
   <meta property="og:type" content="website" />
@@ -45,7 +45,7 @@
             "אדיר בן דוד"
       ],
       "jobTitle": "DevOps Engineer",
-      "description": "Adir Ben David is a DevOps engineer at Check Point Software Technologies in Tel Aviv, working on the cloud side, building and managing infrastructure on AWS and Azure with Terraform, Terragrunt, and Crossplane, running Kubernetes across staging, production, and new regions, and building out observability with Grafana, VictoriaMetrics, and OpenTelemetry. He works on FedRAMP-compliant infrastructure and CI/CD, and co-led a migration of 1,000+ users to GitHub Enterprise. He joined Check Point in December 2019; before DevOps he led a six-person team that built and operated complex on-prem environments (servers, networking, firewalls, and ESXi virtualization) from 2021 to 2024. Earlier he was a Tier-2 networking engineer at Bezeq (2017-2019) working with multi-vendor Layer 2/3 networks, routers, and switches, and a communications network technician in the Communications and Computers Corps (Tikshuv) during military service (2014-2017). Having worked both on-prem data centers and the cloud shapes how he approaches systems.",
+      "description": "Adir Ben David is a DevOps engineer at Check Point Software Technologies in Tel Aviv, working on the cloud side, building and managing infrastructure on AWS and Azure with Terraform, Terragrunt, and Crossplane, running Kubernetes across staging, production, and new regions, and building out observability with Grafana, VictoriaMetrics, and OpenTelemetry. He works on FedRAMP-compliant infrastructure and CI/CD, and co-led a migration of 1,000+ users to GitHub Enterprise. He joined Check Point in December 2019; before DevOps he led a six-person team that built and operated complex on-prem environments (servers, networking, firewalls, and ESXi virtualization) from 2021 to 2024. Earlier he was a Tier-2 networking engineer at Bezeq (2017-2019) working with multi-vendor Layer 2/3 networks, routers, and switches, and a communications network technician in the Communications and Computers Corps (Tikshuv) during military service (2014-2017). Having worked in both on-prem data centers and the cloud shapes how he approaches systems.",
       "worksFor": {
             "@type": "Organization",
             "name": "Check Point Software Technologies",
@@ -121,6 +121,7 @@
             "@type": "PostalAddress",
             "addressLocality": "Tel Aviv"
       },
+      "image": "https://www.adirbd.com/images/adir-hero.jpg",
       "url": "https://www.adirbd.com/",
       "sameAs": [
             "https://github.com/adirbd",
@@ -174,6 +175,7 @@
       "description": "ניסיון מקצועי, סגנון עבודה וחשיבה מערכתית של אדיר בן דוד.",
       "isPartOf": {
             "@type": "WebSite",
+            "@id": "https://www.adirbd.com/#website",
             "url": "https://www.adirbd.com/",
             "name": "Adir Ben David"
       },
@@ -184,7 +186,7 @@
   <script>(function(){try{var t=localStorage.getItem('adirbd-theme');if(t!=='light'&&t!=='dark'){t=window.matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light';}document.documentElement.dataset.theme=t;}catch(e){}})();</script>
   <link rel="preload" href="../fonts/HKGrotesk-Regular.woff2" as="font" type="font/woff2" crossorigin />
   <link rel="preload" href="../fonts/Jost-Regular.woff2" as="font" type="font/woff2" crossorigin />
-  <link rel="stylesheet" href="../index.css?v=8848cd24" />
+  <link rel="stylesheet" href="../index.css?v=5d35b21e" />
 </head>
 <body>
 
@@ -195,17 +197,17 @@
       <span class="brand-mark" aria-hidden="true"></span>
       <span>Adir Ben David</span>
     </a>
-    <button class="nav-toggle" data-nav-toggle aria-expanded="false" aria-label="פתח ניווט">
+    <button class="nav-toggle" data-nav-toggle aria-expanded="false" aria-controls="site-menu" aria-label="תפריט">
       ☰
     </button>
-    <div class="nav-area">
+    <div class="nav-area" id="site-menu">
       <nav class="site-nav" aria-label="ראשי">
         <ul>
           <li><a href="/he/">בית</a></li><li><a href="/he/work.html" aria-current="page">עבודה</a></li><li><a href="/he/now.html">עכשיו</a></li><li><a href="/he/journeys.html">מסעות</a></li><li><a href="/he/connect.html">בואו נדבר</a></li>
         </ul>
       </nav>
       <div class="header-tools">
-        <a class="lang-switch" href="/work.html" hreflang="en" lang="en" aria-label="מעבר לאנגלית">EN</a>
+        <a class="lang-switch" href="/work.html" hreflang="en" aria-label="מעבר לאנגלית"><span lang="en">EN</span></a>
         <button class="toggle" type="button" data-theme-toggle aria-label="מעבר למצב בהיר או כהה"><span>◐</span><span data-theme-label>כהה</span></button>
       </div>
     </div>
@@ -219,26 +221,29 @@
       <span class="eyebrow">עבודה</span>
       <h1>תשתיות, מקצה לקצה</h1>
       <p class="subtitle">מחדרי שרתים On-Prem ועד הענן: DevOps, אינטגרציית מערכות, הובלת צוותים ורשתות. מה שהכי חשוב לי זה אמינות ואחריות, החלקים שמתגלים הרבה אחרי ההשקה.</p>
-      <p class="lede">כיום אני עובד כמהנדס DevOps ב־Check Point בצד הענן, עם תשתיות מאובטחות, אוטומציה, CI/CD ואספקה עקבית. לפני כן עבדתי שנים עמוק בתשתיות On-Prem: בניתי ושילבתי סביבות מורכבות עם שרתים, רשתות, חומות אש ווירטואליזציה, והובלתי את הצוות שתפעל אותן. העבודה בשני הצדדים, חדרי שרתים פיזיים והענן, מעצבת את הדרך שבה אני חושב על מערכות.</p>
+      <p class="lede">כיום אני עובד כמהנדס DevOps ב־Check Point בצד הענן, עם תשתיות מאובטחות, אוטומציה, CI/CD ותהליכי שחרור עקביים. לפני כן עבדתי שנים עמוק בתשתיות On-Prem: בניתי ושילבתי סביבות מורכבות עם שרתים, רשתות, חומות אש ווירטואליזציה, והובלתי את הצוות שתיפעל אותן. העבודה בשני הצדדים, חדרי שרתים פיזיים והענן, מעצבת את הדרך שבה אני חושב על מערכות.</p>
     </section>
     <div class="stack profile-column">
-      <input class="sr-only" type="radio" name="portrait" id="po-white" checked />
-      <input class="sr-only" type="radio" name="portrait" id="po-black" />
-      <figure class="profile-solo">
-        <div class="profile-portrait">
-          <div class="profile-panel" aria-hidden="true"></div>
-          <img class="profile-cut cut-white" src="/images/adir-portrait.webp" alt="אדיר בן דוד, תמונת פורטרט מקצועית" width="600" height="905" fetchpriority="high" />
-          <img class="profile-cut cut-black" src="/images/adir-portrait-black.webp" alt="" aria-hidden="true" width="600" height="905" />
-        </div>
-        <div class="avatar-toggle" role="group" aria-label="החלפת תמונה">
-          <label class="swatch swatch-white" for="po-white" aria-label="חולצה לבנה"></label>
-          <label class="swatch swatch-black" for="po-black" aria-label="חולצה שחורה"></label>
-        </div>
-      </figure>
+      <fieldset class="portrait-fieldset">
+        <legend class="sr-only">החלפת תמונת פורטרט</legend>
+        <input class="sr-only" type="radio" name="portrait" id="po-white" checked />
+        <input class="sr-only" type="radio" name="portrait" id="po-black" />
+        <figure class="profile-solo">
+          <div class="profile-portrait">
+            <div class="profile-panel" aria-hidden="true"></div>
+            <img class="profile-cut cut-white" src="/images/adir-portrait.webp" alt="אדיר בן דוד, תמונת פורטרט מקצועית" width="600" height="905" fetchpriority="high" />
+            <img class="profile-cut cut-black" src="/images/adir-portrait-black.webp" alt="" aria-hidden="true" width="600" height="905" />
+          </div>
+          <div class="avatar-toggle">
+            <label class="swatch swatch-white" for="po-white" aria-label="חולצה לבנה"></label>
+            <label class="swatch swatch-black" for="po-black" aria-label="חולצה שחורה"></label>
+          </div>
+        </figure>
+      </fieldset>
       <article class="note-card">
         <h2>במה אני מתמקד</h2>
         <ul class="list-clean">
-          <li><strong>יסודות מאובטחים.</strong> תשתיות ענן, שינויים עם מודעות לציות, ומערכות שעומדות בבדיקה יסודית.</li>
+          <li><strong>יסודות מאובטחים.</strong> תשתיות ענן, שינויים שמביאים בחשבון דרישות רגולציה, ומערכות שעומדות בביקורת.</li>
           <li><strong>תהליכי שחרור.</strong> CI/CD, תבניות חוזרות, ומסלולי שחרור שצוותים יכולים לסמוך עליהם ולחזור עליהם.</li>
           <li><strong>שני הצדדים.</strong> תשתיות On-Prem וענן, רשתות, ומה שקורה בפועל אחרי הפריסה.</li>
         </ul>
@@ -257,26 +262,26 @@
             <h4>DevOps Engineer</h4>
             <span class="role-dates">אוקטובר 2024 – היום · היברידי</span>
             <ul class="list-clean compact-list">
-              <li>בונה ומנהל תשתיות ענן ב־AWS (עיקרי) וב־Azure, מוקצות כקוד עם Terraform, Terragrunt ו־Crossplane לסביבות עקביות ועקיבות.</li>
-              <li>הקמתי ומתפעל אשכולות Kubernetes ל־staging, production ולאזורים חדשים, כולל אשכול ייעודי לניטור.</li>
+              <li>בונה ומנהל תשתיות ענן ב־AWS (עיקרי) וב־Azure, מנוהלות כקוד עם Terraform, Terragrunt ו־Crossplane, לסביבות עקביות שקל לשחזר ולעקוב אחריהן.</li>
+              <li>הקמתי ומתפעל קלאסטרים של Kubernetes ל־staging, ל־production ולאזורים חדשים, כולל קלאסטר ייעודי לניטור.</li>
               <li>בונה יכולות ניטור ו־observability עם Grafana, VictoriaMetrics ו־OpenTelemetry, כולל GitHub Actions exporter שכתבתי כדי לזהות workflows תקועים או נכשלים.</li>
               <li>השתתפתי בבנייה ובתפעול של תשתית תואמת FedRAMP, עם דגש על יסודות מאובטחים, אוטומציה ומוכנות לביקורת.</li>
-              <li>בניתי צינורות CI/CD ותבניות לשימוש חוזר שמאחדים תהליכי build, בדיקה ופריסה בין שירותים.</li>
-              <li>הובלתי יחד עם עמית מיגרציה של 1,000+ משתמשים ל־GitHub Enterprise, כולל ניהול, בקרות גישה ואכיפת מדיניות.</li>
-              <li>עבדתי עם צוותי פיתוח ואבטחה כדי ליישר שינויי תשתית עם דרישות ציות ותפעול.</li>
+              <li>בניתי פייפליינים של CI/CD ותבניות לשימוש חוזר שמאחדים תהליכי build, בדיקה ופריסה בין שירותים.</li>
+              <li>הובלתי במשותף מיגרציה של 1,000+ משתמשים ל־GitHub Enterprise, כולל ניהול, בקרות גישה ואכיפת מדיניות.</li>
+              <li>עבדתי עם צוותי פיתוח ואבטחה כדי להתאים שינויי תשתית לדרישות רגולציה ותפעול.</li>
             </ul>
             <div class="tags"><span>AWS</span><span>Azure</span><span>Kubernetes</span><span>Terraform</span><span>Terragrunt</span><span>Crossplane</span><span>CI/CD</span><span>GitHub Actions</span><span>Observability</span><span>FedRAMP</span></div>
           </div>
           <div class="role">
             <h4>COST Team Leader</h4>
             <span class="role-dates">יולי 2021 – אוקטובר 2024</span>
-            <p>הובלתי את COST, צוות של 6, שמאחורי הסביבות המורכבות בדמוי לקוח שבהן גרסאות מוצר חדשות נפרסו ואומתו לפני היציאה לשוק.</p>
+            <p>הובלתי את COST, צוות של שישה שאחראי על סביבות מורכבות שמדמות לקוחות אמיתיים, שבהן נפרסו ואומתו גרסאות מוצר חדשות לפני היציאה לשוק.</p>
             <ul class="list-clean compact-list">
               <li>אחראי על הבנייה, האינטגרציה והתפעול המלא של סביבות מוצר שלמות מקצה לקצה.</li>
               <li>ניהלתי את המעבדה ואת מחזור החיים של הציוד, מעל 100 התקנים: שרתים, ראוטרים, מתגים, שרתי ESXi וחומות אש.</li>
               <li>אחראי על פריסה והתקנה של גרסאות חדשות במכונות ייצור, כולל ניטור לאחר השדרוג.</li>
-              <li>תיאמתי עם צוותי פיתוח, QA והנהלה כדי ליישר את הסביבות עם מטרות המוצר.</li>
-              <li>הדרכתי חברי צוות בפיתוח מקצועי ואישי.</li>
+              <li>תיאמתי עם צוותי פיתוח, QA והנהלה כדי להתאים את הסביבות ליעדי המוצר.</li>
+              <li>ליוויתי חברי צוות בהתפתחות המקצועית והאישית שלהם.</li>
             </ul>
             <div class="tags"><span>מנהיגות</span><span>תשתיות On-Prem</span><span>אינטגרציית מערכות</span><span>וירטואליזציה</span><span>תפעול מעבדה</span></div>
           </div>
@@ -298,10 +303,10 @@
         <span class="kicker">מאי 2017 – דצמבר 2019</span>
         <h3>מהנדס רשתות, Tier 2 (מגזר עסקי אסטרטגי) · בזק</h3>
         <p class="meta">משרה מלאה</p>
-        <p>תמיכת Tier 2 ללקוחות העסקיים של בזק: הגדרה וניהול של רשתות Layer 2/Layer 3 על ראוטרים, מתגים וחומות אש בעמוד השדרה של לקוחות הליבה.</p>
+        <p>תמיכת Tier 2 ללקוחות העסקיים של בזק: הגדרה וניהול של רשתות Layer 2/Layer 3 על ראוטרים, מתגים וחומות אש ברשתות הליבה של הלקוחות האסטרטגיים.</p>
         <ul class="list-clean compact-list">
           <li>הגדרתי ופתרתי תקלות על חומרה מרובת ספקים: Cisco (Meraki/IOS), Juniper SSG/SRX, Check Point, Fortigate, Aruba, Technicolor, MRV, Alcatel ו־Ruckus.</li>
-          <li>שירתתי לקוחות בתחומי טלקום, בנקאות ופיננסים, ממשלה וביטחון, ותעשיות שירות.</li>
+          <li>עבדתי מול לקוחות מתחומי הטלקום, הבנקאות והפיננסים, הממשלה והביטחון ותעשיות השירות.</li>
         </ul>
         <div class="tags"><span>רשתות L2/L3</span><span>ראוטרים ומתגים</span><span>חומות אש</span><span>מרובה ספקים</span></div>
       </article>
@@ -323,7 +328,7 @@
         <ul class="list-clean">
           <li><strong>ב־Check Point Software Technologies</strong> מאז 2019</li>
           <li><strong>למעלה מ־10 שנים</strong> בתשתיות, מ־On-Prem ועד הענן</li>
-          <li>הובלתי צוות של 6; מבוסס בתל אביב</li>
+          <li>הובלתי צוות של שישה; גר ועובד בתל אביב</li>
         </ul>
       </article>
       <article class="note-card">
@@ -347,7 +352,7 @@
         <ul class="list-clean">
           <li>לתרגם דרישות לתשתיות מאובטחות ועקביות</li>
           <li>לייצר סטנדרטיזציה שמאפשרת לצוותים לזוז מהר בלי לאלתר כל פעם מחדש</li>
-          <li>להסתכל גם על התפעול, ההעברה, ומה שקורה אחרי העלייה לאוויר</li>
+          <li>להסתכל גם על התפעול, על המסירה הלאה לצוותים, ועל מה שקורה אחרי העלייה לאוויר</li>
         </ul>
       </article>
     </aside>
@@ -362,10 +367,10 @@
       <div class="muted">תל אביב · © <span data-year>2026</span> אדיר בן דוד</div>
     </div>
     <nav class="footer-nav"><a href="/he/">בית</a><a href="/he/work.html">עבודה</a><a href="/he/now.html">עכשיו</a><a href="/he/journeys.html">מסעות</a><a href="/he/connect.html">בואו נדבר</a></nav>
-    <div class="socials"><a href="https://www.linkedin.com/in/adirbd/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn"><img src="/images/linkedin.svg" alt="LinkedIn"></a><a href="https://www.instagram.com/adirbd/" target="_blank" rel="noopener noreferrer" aria-label="Instagram"><img src="/images/instagram.svg" alt="Instagram"></a><a href="https://www.facebook.com/adirbd/" target="_blank" rel="noopener noreferrer" aria-label="Facebook"><img src="/images/facebook.svg" alt="Facebook"></a><a href="https://x.com/adirbd" target="_blank" rel="noopener noreferrer" aria-label="X"><img src="/images/twitter.svg" alt="X"></a><a href="https://www.youtube.com/@adirbd" target="_blank" rel="noopener noreferrer" aria-label="YouTube"><img src="/images/youtube.svg" alt="YouTube"></a><a href="https://github.com/adirbd" target="_blank" rel="noopener noreferrer" aria-label="GitHub"><img src="/images/github.svg" alt="GitHub"></a><a href="https://en.wikipedia.org/wiki/User:Adirbd" target="_blank" rel="noopener noreferrer" aria-label="Wikipedia"><img src="/images/wikipedia.svg" alt="Wikipedia"></a></div>
+    <div class="socials"><a href="https://www.linkedin.com/in/adirbd/" target="_blank" rel="me noopener noreferrer" aria-label="LinkedIn"><img src="/images/linkedin.svg" alt=""></a><a href="https://www.instagram.com/adirbd/" target="_blank" rel="me noopener noreferrer" aria-label="Instagram"><img src="/images/instagram.svg" alt=""></a><a href="https://www.facebook.com/adirbd/" target="_blank" rel="me noopener noreferrer" aria-label="Facebook"><img src="/images/facebook.svg" alt=""></a><a href="https://x.com/adirbd" target="_blank" rel="me noopener noreferrer" aria-label="X"><img src="/images/twitter.svg" alt=""></a><a href="https://www.youtube.com/@adirbd" target="_blank" rel="me noopener noreferrer" aria-label="YouTube"><img src="/images/youtube.svg" alt=""></a><a href="https://github.com/adirbd" target="_blank" rel="me noopener noreferrer" aria-label="GitHub"><img src="/images/github.svg" alt=""></a><a href="https://en.wikipedia.org/wiki/User:Adirbd" target="_blank" rel="me noopener noreferrer" aria-label="Wikipedia"><img src="/images/wikipedia.svg" alt=""></a></div>
   </div>
 </footer>
 
-<script src="../index.js" defer></script>
+<script src="../index.js?v=0584cbf6" defer></script>
 </body>
 </html>

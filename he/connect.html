@@ -13,7 +13,7 @@
   <link rel="alternate" hreflang="en-US" href="https://www.adirbd.com/connect.html" />
   <link rel="alternate" hreflang="he" href="https://www.adirbd.com/he/connect.html" />
   <link rel="alternate" hreflang="he-IL" href="https://www.adirbd.com/he/connect.html" />
-  <link rel="alternate" hreflang="x-default" href="https://www.adirbd.com/" />
+  <link rel="alternate" hreflang="x-default" href="https://www.adirbd.com/connect.html" />
   <link rel="icon" type="image/svg+xml" href="../images/favicon-transit.svg" />
   <link rel="alternate icon" type="image/png" href="../images/favicon.png" />
   <meta property="og:type" content="website" />
@@ -45,7 +45,7 @@
             "אדיר בן דוד"
       ],
       "jobTitle": "DevOps Engineer",
-      "description": "Adir Ben David is a DevOps engineer at Check Point Software Technologies in Tel Aviv, working on the cloud side, building and managing infrastructure on AWS and Azure with Terraform, Terragrunt, and Crossplane, running Kubernetes across staging, production, and new regions, and building out observability with Grafana, VictoriaMetrics, and OpenTelemetry. He works on FedRAMP-compliant infrastructure and CI/CD, and co-led a migration of 1,000+ users to GitHub Enterprise. He joined Check Point in December 2019; before DevOps he led a six-person team that built and operated complex on-prem environments (servers, networking, firewalls, and ESXi virtualization) from 2021 to 2024. Earlier he was a Tier-2 networking engineer at Bezeq (2017-2019) working with multi-vendor Layer 2/3 networks, routers, and switches, and a communications network technician in the Communications and Computers Corps (Tikshuv) during military service (2014-2017). Having worked both on-prem data centers and the cloud shapes how he approaches systems.",
+      "description": "Adir Ben David is a DevOps engineer at Check Point Software Technologies in Tel Aviv, working on the cloud side, building and managing infrastructure on AWS and Azure with Terraform, Terragrunt, and Crossplane, running Kubernetes across staging, production, and new regions, and building out observability with Grafana, VictoriaMetrics, and OpenTelemetry. He works on FedRAMP-compliant infrastructure and CI/CD, and co-led a migration of 1,000+ users to GitHub Enterprise. He joined Check Point in December 2019; before DevOps he led a six-person team that built and operated complex on-prem environments (servers, networking, firewalls, and ESXi virtualization) from 2021 to 2024. Earlier he was a Tier-2 networking engineer at Bezeq (2017-2019) working with multi-vendor Layer 2/3 networks, routers, and switches, and a communications network technician in the Communications and Computers Corps (Tikshuv) during military service (2014-2017). Having worked in both on-prem data centers and the cloud shapes how he approaches systems.",
       "worksFor": {
             "@type": "Organization",
             "name": "Check Point Software Technologies",
@@ -121,6 +121,7 @@
             "@type": "PostalAddress",
             "addressLocality": "Tel Aviv"
       },
+      "image": "https://www.adirbd.com/images/adir-hero.jpg",
       "url": "https://www.adirbd.com/",
       "sameAs": [
             "https://github.com/adirbd",
@@ -174,6 +175,7 @@
       "description": "איך ליצור קשר עם אדיר בן דוד: ב־LinkedIn, Instagram, Facebook, X, YouTube, GitHub, ויקיפדיה או באימייל, לשיתופי פעולה, רעיונות או סתם שלום.",
       "isPartOf": {
             "@type": "WebSite",
+            "@id": "https://www.adirbd.com/#website",
             "url": "https://www.adirbd.com/",
             "name": "Adir Ben David"
       },
@@ -184,7 +186,7 @@
   <script>(function(){try{var t=localStorage.getItem('adirbd-theme');if(t!=='light'&&t!=='dark'){t=window.matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light';}document.documentElement.dataset.theme=t;}catch(e){}})();</script>
   <link rel="preload" href="../fonts/HKGrotesk-Regular.woff2" as="font" type="font/woff2" crossorigin />
   <link rel="preload" href="../fonts/Jost-Regular.woff2" as="font" type="font/woff2" crossorigin />
-  <link rel="stylesheet" href="../index.css?v=8848cd24" />
+  <link rel="stylesheet" href="../index.css?v=5d35b21e" />
 </head>
 <body>
 
@@ -195,17 +197,17 @@
       <span class="brand-mark" aria-hidden="true"></span>
       <span>Adir Ben David</span>
     </a>
-    <button class="nav-toggle" data-nav-toggle aria-expanded="false" aria-label="פתח ניווט">
+    <button class="nav-toggle" data-nav-toggle aria-expanded="false" aria-controls="site-menu" aria-label="תפריט">
       ☰
     </button>
-    <div class="nav-area">
+    <div class="nav-area" id="site-menu">
       <nav class="site-nav" aria-label="ראשי">
         <ul>
           <li><a href="/he/">בית</a></li><li><a href="/he/work.html">עבודה</a></li><li><a href="/he/now.html">עכשיו</a></li><li><a href="/he/journeys.html">מסעות</a></li><li><a href="/he/connect.html" aria-current="page">בואו נדבר</a></li>
         </ul>
       </nav>
       <div class="header-tools">
-        <a class="lang-switch" href="/connect.html" hreflang="en" lang="en" aria-label="מעבר לאנגלית">EN</a>
+        <a class="lang-switch" href="/connect.html" hreflang="en" aria-label="מעבר לאנגלית"><span lang="en">EN</span></a>
         <button class="toggle" type="button" data-theme-toggle aria-label="מעבר למצב בהיר או כהה"><span>◐</span><span data-theme-label>כהה</span></button>
       </div>
     </div>
@@ -218,98 +220,98 @@
     <span class="eyebrow">בואו נדבר</span>
     <h1>איפה למצוא אותי</h1>
     <p class="subtitle">הודעה באחת הפלטפורמות בדרך כלל מהירה יותר מאימייל. בחרו מה שנוח.</p>
-    <p class="lede">קוד, עבודה, עדכונים, תמונות, וידאו, או סתם שלום. גם אימייל כאן, לכל דבר שדורש קצת יותר הקשר.</p>
+    <p class="lede">קוד, עבודה, עדכונים, תמונות, וידאו, או סתם שלום. יש כאן גם אימייל, לכל מה שצריך קצת יותר רקע.</p>
   </section>
   <section class="page-layout">
     <div class="stack">
       <h2 class="sr-only">דרכים ליצירת קשר</h2>
       <article class="link-card">
         <div class="link-card-head">
-          <img class="link-card-icon" src="/images/linkedin.svg" alt="LinkedIn" />
+          <img class="link-card-icon" src="/images/linkedin.svg" alt="" />
           <div>
             <h3>LinkedIn</h3>
             <p class="meta">רקע מקצועי וניסיון</p>
           </div>
         </div>
         <p>ניסיון, תפקידים ותמונת מצב מקצועית סטנדרטית למי שמחפש קודם כול את זה.</p>
-        <a class="link-row" href="https://www.linkedin.com/in/adirbd/" target="_blank" rel="noopener noreferrer">linkedin.com/in/adirbd ←</a>
+        <a class="link-row" href="https://www.linkedin.com/in/adirbd/" target="_blank" rel="noopener noreferrer">linkedin.com/in/adirbd <span aria-hidden="true">←</span></a>
       </article>
       <article class="link-card">
         <div class="link-card-head">
-          <img class="link-card-icon" src="/images/instagram.svg" alt="Instagram" />
+          <img class="link-card-icon" src="/images/instagram.svg" alt="" />
           <div>
             <h3>Instagram</h3>
             <p class="meta">תמונות ורגעים ויזואליים</p>
           </div>
         </div>
-        <p>זרם קליל ויותר ויזואלי של מקומות, רגעים ודברים שעדיף להראות מאשר להסביר.</p>
-        <a class="link-row" href="https://www.instagram.com/adirbd/" target="_blank" rel="noopener noreferrer">instagram.com/adirbd ←</a>
+        <p>פיד קליל וויזואלי יותר: מקומות, רגעים ודברים שעדיף להראות מאשר להסביר.</p>
+        <a class="link-row" href="https://www.instagram.com/adirbd/" target="_blank" rel="noopener noreferrer">instagram.com/adirbd <span aria-hidden="true">←</span></a>
       </article>
       <article class="link-card">
         <div class="link-card-head">
-          <img class="link-card-icon" src="/images/facebook.svg" alt="Facebook" />
+          <img class="link-card-icon" src="/images/facebook.svg" alt="" />
           <div>
             <h3>Facebook</h3>
-            <p class="meta">עדכונים אישיים ולהישאר בקשר</p>
+            <p class="meta">עדכונים אישיים ושמירה על קשר</p>
           </div>
         </div>
-        <p>פיד אישי יותר, עם עדכוני חיים ומקום נוח להגיד שלום או להישאר בקשר.</p>
-        <a class="link-row" href="https://www.facebook.com/adirbd/" target="_blank" rel="noopener noreferrer">facebook.com/adirbd ←</a>
+        <p>פיד אישי יותר, עם עדכונים מהחיים ומקום נוח להגיד שלום או לשמור על קשר.</p>
+        <a class="link-row" href="https://www.facebook.com/adirbd/" target="_blank" rel="noopener noreferrer">facebook.com/adirbd <span aria-hidden="true">←</span></a>
       </article>
       <article class="link-card">
         <div class="link-card-head">
-          <img class="link-card-icon" src="/images/twitter.svg" alt="X" />
+          <img class="link-card-icon" src="/images/twitter.svg" alt="" />
           <div>
             <h3>X</h3>
             <p class="meta">מחשבות קצרות ועדכונים פומביים</p>
           </div>
         </div>
         <p>פוסטים קצרים, תגובות מהירות, ודברים שלפעמים שווה לשתף בזמן אמת.</p>
-        <a class="link-row" href="https://x.com/adirbd" target="_blank" rel="noopener noreferrer">x.com/adirbd ←</a>
+        <a class="link-row" href="https://x.com/adirbd" target="_blank" rel="noopener noreferrer">x.com/adirbd <span aria-hidden="true">←</span></a>
       </article>
       <article class="link-card">
         <div class="link-card-head">
-          <img class="link-card-icon" src="/images/youtube.svg" alt="YouTube" />
+          <img class="link-card-icon" src="/images/youtube.svg" alt="" />
           <div>
             <h3>YouTube</h3>
             <p class="meta">וידאו ותוכן ארוך יותר</p>
           </div>
         </div>
         <p>לסרטונים, רעיונות מוקלטים וכל דבר שעובד טוב יותר עם קול, תנועה או קצת יותר זמן.</p>
-        <a class="link-row" href="https://www.youtube.com/@adirbd" target="_blank" rel="noopener noreferrer">youtube.com/@adirbd ←</a>
+        <a class="link-row" href="https://www.youtube.com/@adirbd" target="_blank" rel="noopener noreferrer">youtube.com/@adirbd <span aria-hidden="true">←</span></a>
       </article>
       <article class="link-card">
         <div class="link-card-head">
-          <img class="link-card-icon" src="/images/github.svg" alt="GitHub" />
+          <img class="link-card-icon" src="/images/github.svg" alt="" />
           <div>
             <h3>GitHub</h3>
             <p class="meta">קוד, תשתיות וניסויים</p>
           </div>
         </div>
-        <p>המקום הכי טוב לראות איך אני בונה, עושה אוטומציה ומתקדם דרך עבודה טכנית בפועל.</p>
-        <a class="link-row" href="https://github.com/adirbd" target="_blank" rel="noopener noreferrer">github.com/adirbd ←</a>
+        <p>המקום הכי טוב לראות מה אני בונה, מה אני הופך לאוטומטי ואיך זה נראה בעבודה אמיתית.</p>
+        <a class="link-row" href="https://github.com/adirbd" target="_blank" rel="noopener noreferrer">github.com/adirbd <span aria-hidden="true">←</span></a>
       </article>
       <article class="link-card">
         <div class="link-card-head">
-          <img class="link-card-icon" src="/images/wikipedia.svg" alt="ויקיפדיה" />
+          <img class="link-card-icon" src="/images/wikipedia.svg" alt="" />
           <div>
             <h3>ויקיפדיה</h3>
             <p class="meta">עריכות ותרומות</p>
           </div>
         </div>
         <p>הפינה שלי בוויקיפדיה: עריכות, תרומות, ומדי פעם צלילה לעומק שיצאה קצת משליטה.</p>
-        <a class="link-row" href="https://en.wikipedia.org/wiki/User:Adirbd" target="_blank" rel="noopener noreferrer">en.wikipedia.org/wiki/User:Adirbd ←</a>
+        <a class="link-row" href="https://en.wikipedia.org/wiki/User:Adirbd" target="_blank" rel="noopener noreferrer">en.wikipedia.org/wiki/User:Adirbd <span aria-hidden="true">←</span></a>
       </article>
       <article class="link-card">
         <div class="link-card-head">
-          <img class="link-card-icon" src="/images/email.svg" alt="אימייל" />
+          <img class="link-card-icon" src="/images/email.svg" alt="" />
           <div>
             <h3>אימייל</h3>
             <p class="meta">בשיטה הישנה והטובה</p>
           </div>
         </div>
-        <p>מעדיפים את השיטה הישנה והטובה? אימייל אמיתי, עם שורת נושא וכל הטקס, עדיין הדרך הכי טובה ליצור איתי קשר בכל דבר שצריך באמת הקשר.</p>
-        <a class="link-row" href="mailto:adirbd@me.com">adirbd@me.com ←</a>
+        <p>מעדיפים קלאסיקה? אימייל אמיתי, עם שורת נושא וכל הטקס, הוא עדיין הדרך הכי טובה להגיע אליי בכל נושא שדורש יותר פירוט.</p>
+        <a class="link-row" href="mailto:adirbd@me.com">adirbd@me.com <span aria-hidden="true">←</span></a>
       </article>
     </div>
     <aside class="stack">
@@ -318,7 +320,7 @@
         <ul class="list-clean">
           <li>שיחות מקצועיות</li>
           <li>נושאי תשתיות ומערכות מעניינים</li>
-          <li>רעיונות שמרוויחים מחשיבה פרקטית</li>
+          <li>רעיונות שצריכים עוד מבט פרקטי</li>
         </ul>
       </article>
     </aside>
@@ -333,10 +335,10 @@
       <div class="muted">תל אביב · © <span data-year>2026</span> אדיר בן דוד</div>
     </div>
     <nav class="footer-nav"><a href="/he/">בית</a><a href="/he/work.html">עבודה</a><a href="/he/now.html">עכשיו</a><a href="/he/journeys.html">מסעות</a><a href="/he/connect.html">בואו נדבר</a></nav>
-    <div class="socials"><a href="https://www.linkedin.com/in/adirbd/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn"><img src="/images/linkedin.svg" alt="LinkedIn"></a><a href="https://www.instagram.com/adirbd/" target="_blank" rel="noopener noreferrer" aria-label="Instagram"><img src="/images/instagram.svg" alt="Instagram"></a><a href="https://www.facebook.com/adirbd/" target="_blank" rel="noopener noreferrer" aria-label="Facebook"><img src="/images/facebook.svg" alt="Facebook"></a><a href="https://x.com/adirbd" target="_blank" rel="noopener noreferrer" aria-label="X"><img src="/images/twitter.svg" alt="X"></a><a href="https://www.youtube.com/@adirbd" target="_blank" rel="noopener noreferrer" aria-label="YouTube"><img src="/images/youtube.svg" alt="YouTube"></a><a href="https://github.com/adirbd" target="_blank" rel="noopener noreferrer" aria-label="GitHub"><img src="/images/github.svg" alt="GitHub"></a><a href="https://en.wikipedia.org/wiki/User:Adirbd" target="_blank" rel="noopener noreferrer" aria-label="Wikipedia"><img src="/images/wikipedia.svg" alt="Wikipedia"></a></div>
+    <div class="socials"><a href="https://www.linkedin.com/in/adirbd/" target="_blank" rel="me noopener noreferrer" aria-label="LinkedIn"><img src="/images/linkedin.svg" alt=""></a><a href="https://www.instagram.com/adirbd/" target="_blank" rel="me noopener noreferrer" aria-label="Instagram"><img src="/images/instagram.svg" alt=""></a><a href="https://www.facebook.com/adirbd/" target="_blank" rel="me noopener noreferrer" aria-label="Facebook"><img src="/images/facebook.svg" alt=""></a><a href="https://x.com/adirbd" target="_blank" rel="me noopener noreferrer" aria-label="X"><img src="/images/twitter.svg" alt=""></a><a href="https://www.youtube.com/@adirbd" target="_blank" rel="me noopener noreferrer" aria-label="YouTube"><img src="/images/youtube.svg" alt=""></a><a href="https://github.com/adirbd" target="_blank" rel="me noopener noreferrer" aria-label="GitHub"><img src="/images/github.svg" alt=""></a><a href="https://en.wikipedia.org/wiki/User:Adirbd" target="_blank" rel="me noopener noreferrer" aria-label="Wikipedia"><img src="/images/wikipedia.svg" alt=""></a></div>
   </div>
 </footer>
 
-<script src="../index.js" defer></script>
+<script src="../index.js?v=0584cbf6" defer></script>
 </body>
 </html>

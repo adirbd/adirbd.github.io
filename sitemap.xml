@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <?xml-stylesheet type="text/xsl" href="sitemap.xsl"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
-        xmlns:xhtml="http://www.w3.org/1999/xhtml">
+        xmlns:xhtml="http://www.w3.org/1999/xhtml"
+        xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
   <url>
     <loc>https://www.adirbd.com/</loc>
-    <lastmod>2026-06-17</lastmod>
+    <lastmod>2026-07-03</lastmod>
     <xhtml:link rel="alternate" hreflang="en" href="https://www.adirbd.com/"/>
     <xhtml:link rel="alternate" hreflang="en-US" href="https://www.adirbd.com/"/>
     <xhtml:link rel="alternate" hreflang="he" href="https://www.adirbd.com/he/"/>
@@ -13,43 +14,43 @@
   </url>
   <url>
     <loc>https://www.adirbd.com/work.html</loc>
-    <lastmod>2026-06-17</lastmod>
+    <lastmod>2026-07-03</lastmod>
     <xhtml:link rel="alternate" hreflang="en" href="https://www.adirbd.com/work.html"/>
     <xhtml:link rel="alternate" hreflang="en-US" href="https://www.adirbd.com/work.html"/>
     <xhtml:link rel="alternate" hreflang="he" href="https://www.adirbd.com/he/work.html"/>
     <xhtml:link rel="alternate" hreflang="he-IL" href="https://www.adirbd.com/he/work.html"/>
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.adirbd.com/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.adirbd.com/work.html"/>
   </url>
   <url>
     <loc>https://www.adirbd.com/now.html</loc>
-    <lastmod>2026-06-17</lastmod>
+    <lastmod>2026-07-03</lastmod>
     <xhtml:link rel="alternate" hreflang="en" href="https://www.adirbd.com/now.html"/>
     <xhtml:link rel="alternate" hreflang="en-US" href="https://www.adirbd.com/now.html"/>
     <xhtml:link rel="alternate" hreflang="he" href="https://www.adirbd.com/he/now.html"/>
     <xhtml:link rel="alternate" hreflang="he-IL" href="https://www.adirbd.com/he/now.html"/>
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.adirbd.com/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.adirbd.com/now.html"/>
   </url>
   <url>
     <loc>https://www.adirbd.com/journeys.html</loc>
-    <lastmod>2026-06-17</lastmod>
+    <lastmod>2026-07-03</lastmod>
     <xhtml:link rel="alternate" hreflang="en" href="https://www.adirbd.com/journeys.html"/>
     <xhtml:link rel="alternate" hreflang="en-US" href="https://www.adirbd.com/journeys.html"/>
     <xhtml:link rel="alternate" hreflang="he" href="https://www.adirbd.com/he/journeys.html"/>
     <xhtml:link rel="alternate" hreflang="he-IL" href="https://www.adirbd.com/he/journeys.html"/>
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.adirbd.com/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.adirbd.com/journeys.html"/>
   </url>
   <url>
     <loc>https://www.adirbd.com/connect.html</loc>
-    <lastmod>2026-06-17</lastmod>
+    <lastmod>2026-07-03</lastmod>
     <xhtml:link rel="alternate" hreflang="en" href="https://www.adirbd.com/connect.html"/>
     <xhtml:link rel="alternate" hreflang="en-US" href="https://www.adirbd.com/connect.html"/>
     <xhtml:link rel="alternate" hreflang="he" href="https://www.adirbd.com/he/connect.html"/>
     <xhtml:link rel="alternate" hreflang="he-IL" href="https://www.adirbd.com/he/connect.html"/>
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.adirbd.com/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.adirbd.com/connect.html"/>
   </url>
   <url>
     <loc>https://www.adirbd.com/he/</loc>
-    <lastmod>2026-06-17</lastmod>
+    <lastmod>2026-07-03</lastmod>
     <xhtml:link rel="alternate" hreflang="en" href="https://www.adirbd.com/"/>
     <xhtml:link rel="alternate" hreflang="en-US" href="https://www.adirbd.com/"/>
     <xhtml:link rel="alternate" hreflang="he" href="https://www.adirbd.com/he/"/>
@@ -58,110 +59,620 @@
   </url>
   <url>
     <loc>https://www.adirbd.com/he/work.html</loc>
-    <lastmod>2026-06-17</lastmod>
+    <lastmod>2026-07-03</lastmod>
     <xhtml:link rel="alternate" hreflang="en" href="https://www.adirbd.com/work.html"/>
     <xhtml:link rel="alternate" hreflang="en-US" href="https://www.adirbd.com/work.html"/>
     <xhtml:link rel="alternate" hreflang="he" href="https://www.adirbd.com/he/work.html"/>
     <xhtml:link rel="alternate" hreflang="he-IL" href="https://www.adirbd.com/he/work.html"/>
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.adirbd.com/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.adirbd.com/work.html"/>
   </url>
   <url>
     <loc>https://www.adirbd.com/he/now.html</loc>
-    <lastmod>2026-06-17</lastmod>
+    <lastmod>2026-07-03</lastmod>
     <xhtml:link rel="alternate" hreflang="en" href="https://www.adirbd.com/now.html"/>
     <xhtml:link rel="alternate" hreflang="en-US" href="https://www.adirbd.com/now.html"/>
     <xhtml:link rel="alternate" hreflang="he" href="https://www.adirbd.com/he/now.html"/>
     <xhtml:link rel="alternate" hreflang="he-IL" href="https://www.adirbd.com/he/now.html"/>
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.adirbd.com/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.adirbd.com/now.html"/>
   </url>
   <url>
     <loc>https://www.adirbd.com/he/journeys.html</loc>
-    <lastmod>2026-06-17</lastmod>
+    <lastmod>2026-07-03</lastmod>
     <xhtml:link rel="alternate" hreflang="en" href="https://www.adirbd.com/journeys.html"/>
     <xhtml:link rel="alternate" hreflang="en-US" href="https://www.adirbd.com/journeys.html"/>
     <xhtml:link rel="alternate" hreflang="he" href="https://www.adirbd.com/he/journeys.html"/>
     <xhtml:link rel="alternate" hreflang="he-IL" href="https://www.adirbd.com/he/journeys.html"/>
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.adirbd.com/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.adirbd.com/journeys.html"/>
   </url>
   <url>
     <loc>https://www.adirbd.com/he/connect.html</loc>
-    <lastmod>2026-06-17</lastmod>
+    <lastmod>2026-07-03</lastmod>
     <xhtml:link rel="alternate" hreflang="en" href="https://www.adirbd.com/connect.html"/>
     <xhtml:link rel="alternate" hreflang="en-US" href="https://www.adirbd.com/connect.html"/>
     <xhtml:link rel="alternate" hreflang="he" href="https://www.adirbd.com/he/connect.html"/>
     <xhtml:link rel="alternate" hreflang="he-IL" href="https://www.adirbd.com/he/connect.html"/>
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.adirbd.com/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.adirbd.com/connect.html"/>
   </url>
   <url>
     <loc>https://www.adirbd.com/trips/japan.html</loc>
-    <lastmod>2026-06-17</lastmod>
+    <lastmod>2026-07-03</lastmod>
     <xhtml:link rel="alternate" hreflang="en" href="https://www.adirbd.com/trips/japan.html"/>
     <xhtml:link rel="alternate" hreflang="en-US" href="https://www.adirbd.com/trips/japan.html"/>
     <xhtml:link rel="alternate" hreflang="he" href="https://www.adirbd.com/he/trips/japan.html"/>
     <xhtml:link rel="alternate" hreflang="he-IL" href="https://www.adirbd.com/he/trips/japan.html"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://www.adirbd.com/trips/japan.html"/>
+    <image:image>
+      <image:loc>https://www.adirbd.com/images/journeys/japan-fuji-blossoms.jpg</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.adirbd.com/images/journeys/bamboo-grove.jpg</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.adirbd.com/images/journeys/japan-bamboo-path.jpg</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.adirbd.com/images/journeys/japan-ramen.jpg</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.adirbd.com/images/journeys/japan-nintendo.jpg</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.adirbd.com/images/journeys/japan-nintendo-controllers.jpg</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.adirbd.com/images/journeys/tokyo-tower.jpg</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.adirbd.com/images/journeys/shrine-wish.jpg</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.adirbd.com/images/journeys/japan-rail-poster.jpg</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.adirbd.com/images/journeys/fuji-lakeside.jpg</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.adirbd.com/images/journeys/japan-pagoda.jpg</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.adirbd.com/images/journeys/rome-colosseum.jpg</image:loc>
+    </image:image>
   </url>
   <url>
     <loc>https://www.adirbd.com/he/trips/japan.html</loc>
-    <lastmod>2026-06-17</lastmod>
+    <lastmod>2026-07-03</lastmod>
     <xhtml:link rel="alternate" hreflang="en" href="https://www.adirbd.com/trips/japan.html"/>
     <xhtml:link rel="alternate" hreflang="en-US" href="https://www.adirbd.com/trips/japan.html"/>
     <xhtml:link rel="alternate" hreflang="he" href="https://www.adirbd.com/he/trips/japan.html"/>
     <xhtml:link rel="alternate" hreflang="he-IL" href="https://www.adirbd.com/he/trips/japan.html"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://www.adirbd.com/trips/japan.html"/>
+    <image:image>
+      <image:loc>https://www.adirbd.com/images/journeys/japan-fuji-blossoms.jpg</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.adirbd.com/images/journeys/bamboo-grove.jpg</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.adirbd.com/images/journeys/japan-bamboo-path.jpg</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.adirbd.com/images/journeys/japan-ramen.jpg</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.adirbd.com/images/journeys/japan-nintendo.jpg</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.adirbd.com/images/journeys/japan-nintendo-controllers.jpg</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.adirbd.com/images/journeys/tokyo-tower.jpg</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.adirbd.com/images/journeys/shrine-wish.jpg</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.adirbd.com/images/journeys/japan-rail-poster.jpg</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.adirbd.com/images/journeys/fuji-lakeside.jpg</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.adirbd.com/images/journeys/japan-pagoda.jpg</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.adirbd.com/images/journeys/rome-colosseum.jpg</image:loc>
+    </image:image>
   </url>
   <url>
     <loc>https://www.adirbd.com/trips/avoriaz.html</loc>
-    <lastmod>2026-06-17</lastmod>
+    <lastmod>2026-07-03</lastmod>
     <xhtml:link rel="alternate" hreflang="en" href="https://www.adirbd.com/trips/avoriaz.html"/>
     <xhtml:link rel="alternate" hreflang="en-US" href="https://www.adirbd.com/trips/avoriaz.html"/>
     <xhtml:link rel="alternate" hreflang="he" href="https://www.adirbd.com/he/trips/avoriaz.html"/>
     <xhtml:link rel="alternate" hreflang="he-IL" href="https://www.adirbd.com/he/trips/avoriaz.html"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://www.adirbd.com/trips/avoriaz.html"/>
+    <image:image>
+      <image:loc>https://www.adirbd.com/images/journeys/snowboard-valley.jpg</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.adirbd.com/images/journeys/snowboard-chairlift.jpg</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.adirbd.com/images/journeys/avoriaz-sign.jpg</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.adirbd.com/images/journeys/avoriaz-snow.jpg</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.adirbd.com/images/journeys/snowboard-summit.jpg</image:loc>
+    </image:image>
   </url>
   <url>
     <loc>https://www.adirbd.com/he/trips/avoriaz.html</loc>
-    <lastmod>2026-06-17</lastmod>
+    <lastmod>2026-07-03</lastmod>
     <xhtml:link rel="alternate" hreflang="en" href="https://www.adirbd.com/trips/avoriaz.html"/>
     <xhtml:link rel="alternate" hreflang="en-US" href="https://www.adirbd.com/trips/avoriaz.html"/>
     <xhtml:link rel="alternate" hreflang="he" href="https://www.adirbd.com/he/trips/avoriaz.html"/>
     <xhtml:link rel="alternate" hreflang="he-IL" href="https://www.adirbd.com/he/trips/avoriaz.html"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://www.adirbd.com/trips/avoriaz.html"/>
+    <image:image>
+      <image:loc>https://www.adirbd.com/images/journeys/snowboard-valley.jpg</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.adirbd.com/images/journeys/snowboard-chairlift.jpg</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.adirbd.com/images/journeys/avoriaz-sign.jpg</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.adirbd.com/images/journeys/avoriaz-snow.jpg</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.adirbd.com/images/journeys/snowboard-summit.jpg</image:loc>
+    </image:image>
   </url>
   <url>
     <loc>https://www.adirbd.com/trips/matterhorn.html</loc>
-    <lastmod>2026-06-17</lastmod>
+    <lastmod>2026-07-03</lastmod>
     <xhtml:link rel="alternate" hreflang="en" href="https://www.adirbd.com/trips/matterhorn.html"/>
     <xhtml:link rel="alternate" hreflang="en-US" href="https://www.adirbd.com/trips/matterhorn.html"/>
     <xhtml:link rel="alternate" hreflang="he" href="https://www.adirbd.com/he/trips/matterhorn.html"/>
     <xhtml:link rel="alternate" hreflang="he-IL" href="https://www.adirbd.com/he/trips/matterhorn.html"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://www.adirbd.com/trips/matterhorn.html"/>
+    <image:image>
+      <image:loc>https://www.adirbd.com/images/journeys/matterhorn-zermatt.jpg</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.adirbd.com/images/journeys/matterhorn-cervinia.jpg</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.adirbd.com/images/journeys/alpine-village.jpg</image:loc>
+    </image:image>
   </url>
   <url>
     <loc>https://www.adirbd.com/he/trips/matterhorn.html</loc>
-    <lastmod>2026-06-17</lastmod>
+    <lastmod>2026-07-03</lastmod>
     <xhtml:link rel="alternate" hreflang="en" href="https://www.adirbd.com/trips/matterhorn.html"/>
     <xhtml:link rel="alternate" hreflang="en-US" href="https://www.adirbd.com/trips/matterhorn.html"/>
     <xhtml:link rel="alternate" hreflang="he" href="https://www.adirbd.com/he/trips/matterhorn.html"/>
     <xhtml:link rel="alternate" hreflang="he-IL" href="https://www.adirbd.com/he/trips/matterhorn.html"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://www.adirbd.com/trips/matterhorn.html"/>
+    <image:image>
+      <image:loc>https://www.adirbd.com/images/journeys/matterhorn-zermatt.jpg</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.adirbd.com/images/journeys/matterhorn-cervinia.jpg</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.adirbd.com/images/journeys/alpine-village.jpg</image:loc>
+    </image:image>
   </url>
   <url>
     <loc>https://www.adirbd.com/trips/thailand.html</loc>
-    <lastmod>2026-06-17</lastmod>
+    <lastmod>2026-07-03</lastmod>
     <xhtml:link rel="alternate" hreflang="en" href="https://www.adirbd.com/trips/thailand.html"/>
     <xhtml:link rel="alternate" hreflang="en-US" href="https://www.adirbd.com/trips/thailand.html"/>
     <xhtml:link rel="alternate" hreflang="he" href="https://www.adirbd.com/he/trips/thailand.html"/>
     <xhtml:link rel="alternate" hreflang="he-IL" href="https://www.adirbd.com/he/trips/thailand.html"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://www.adirbd.com/trips/thailand.html"/>
+    <image:image>
+      <image:loc>https://www.adirbd.com/images/journeys/thailand-kohtao-viewpoint.jpg</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.adirbd.com/images/journeys/thailand-night-market.jpg</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.adirbd.com/images/journeys/thailand-elephants-river.jpg</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.adirbd.com/images/journeys/thailand-elephants.jpg</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.adirbd.com/images/journeys/thailand-rafting-poster.jpg</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.adirbd.com/images/journeys/thailand-bua-tong.jpg</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.adirbd.com/images/journeys/thailand-waterfall.jpg</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.adirbd.com/images/journeys/thailand-longneck.jpg</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.adirbd.com/images/journeys/thailand-tea.jpg</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.adirbd.com/images/journeys/thailand-wphk-pagoda.jpg</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.adirbd.com/images/journeys/thailand-guan-yin.jpg</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.adirbd.com/images/journeys/thailand-pink-trees.jpg</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.adirbd.com/images/journeys/thailand-white-temple.jpg</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.adirbd.com/images/journeys/thailand-wish-plaques.jpg</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.adirbd.com/images/journeys/thailand-white-temple-hands.jpg</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.adirbd.com/images/journeys/thailand-hot-spring-poster.jpg</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.adirbd.com/images/journeys/thailand-monkeys-poster.jpg</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.adirbd.com/images/journeys/thailand-rice-bridge.jpg</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.adirbd.com/images/journeys/thailand-pai-view.jpg</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.adirbd.com/images/journeys/thailand-pai-street.jpg</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.adirbd.com/images/journeys/thailand-pai-scooter.jpg</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.adirbd.com/images/journeys/thailand-mueng-pang.jpg</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.adirbd.com/images/journeys/thailand-river-night.jpg</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.adirbd.com/images/journeys/thailand-mochi.jpg</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.adirbd.com/images/journeys/thailand-flower-market.jpg</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.adirbd.com/images/journeys/thailand-samui-aerial-poster.jpg</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.adirbd.com/images/journeys/thailand-samui-airport.jpg</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.adirbd.com/images/journeys/thailand-kohtao-palms.jpg</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.adirbd.com/images/journeys/thailand-kohtao-sunset.jpg</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.adirbd.com/images/journeys/thailand-kohtao-coconut.jpg</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.adirbd.com/images/journeys/thailand-kohtao-fire-poster.jpg</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.adirbd.com/images/journeys/thailand-kohtao-boattrip.jpg</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.adirbd.com/images/journeys/thailand-kohtao-boat-beach.jpg</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.adirbd.com/images/journeys/thailand-kohtao-snorkel.jpg</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.adirbd.com/images/journeys/thailand-kohtao-bar-poster.jpg</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.adirbd.com/images/journeys/thailand-samui-jetski-group.jpg</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.adirbd.com/images/journeys/thailand-jetski.jpg</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.adirbd.com/images/journeys/thailand-samui-jetski-solo.jpg</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.adirbd.com/images/journeys/thailand-samui-dinner.jpg</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.adirbd.com/images/journeys/thailand-phuket-driving.jpg</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.adirbd.com/images/journeys/thailand-kata-beach.jpg</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.adirbd.com/images/journeys/thailand-phuket-beach-steps.jpg</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.adirbd.com/images/journeys/thailand-phuket-waterpark.jpg</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.adirbd.com/images/journeys/thailand-phangnga-boat.jpg</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.adirbd.com/images/journeys/thailand-phangnga-kayak.jpg</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.adirbd.com/images/journeys/thailand-phuket-fruit-stall.jpg</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.adirbd.com/images/journeys/thailand-phuket-naka-market.jpg</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.adirbd.com/images/journeys/thailand-patong-bangla.jpg</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.adirbd.com/images/journeys/thailand-phuket-sunset-bar.jpg</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.adirbd.com/images/journeys/thailand-phiphi-pileh.jpg</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.adirbd.com/images/journeys/thailand-longtail.jpg</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.adirbd.com/images/journeys/thailand-phiphi-bay.jpg</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.adirbd.com/images/journeys/thailand-phiphi-kayaks.jpg</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.adirbd.com/images/journeys/thailand-phiphi-beach-poster.jpg</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.adirbd.com/images/journeys/thailand-phiphi-coconut.jpg</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.adirbd.com/images/journeys/thailand-phiphi-lanterns.jpg</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.adirbd.com/images/journeys/thailand-phiphi-fire-poster.jpg</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.adirbd.com/images/journeys/thailand-bangkok-aerial.jpg</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.adirbd.com/images/journeys/thailand-bangkok-watarun.jpg</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.adirbd.com/images/journeys/thailand-bangkok-lumphini.jpg</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.adirbd.com/images/journeys/thailand-bangkok-monitor.jpg</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.adirbd.com/images/journeys/thailand-bangkok-skyline.jpg</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.adirbd.com/images/journeys/thailand-bangkok-iconsiam.jpg</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.adirbd.com/images/journeys/thailand-bangkok-mbk.jpg</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.adirbd.com/images/journeys/thailand-bangkok-7eleven.jpg</image:loc>
+    </image:image>
   </url>
   <url>
     <loc>https://www.adirbd.com/he/trips/thailand.html</loc>
-    <lastmod>2026-06-17</lastmod>
+    <lastmod>2026-07-03</lastmod>
     <xhtml:link rel="alternate" hreflang="en" href="https://www.adirbd.com/trips/thailand.html"/>
     <xhtml:link rel="alternate" hreflang="en-US" href="https://www.adirbd.com/trips/thailand.html"/>
     <xhtml:link rel="alternate" hreflang="he" href="https://www.adirbd.com/he/trips/thailand.html"/>
     <xhtml:link rel="alternate" hreflang="he-IL" href="https://www.adirbd.com/he/trips/thailand.html"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://www.adirbd.com/trips/thailand.html"/>
+    <image:image>
+      <image:loc>https://www.adirbd.com/images/journeys/thailand-kohtao-viewpoint.jpg</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.adirbd.com/images/journeys/thailand-night-market.jpg</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.adirbd.com/images/journeys/thailand-elephants-river.jpg</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.adirbd.com/images/journeys/thailand-elephants.jpg</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.adirbd.com/images/journeys/thailand-rafting-poster.jpg</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.adirbd.com/images/journeys/thailand-bua-tong.jpg</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.adirbd.com/images/journeys/thailand-waterfall.jpg</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.adirbd.com/images/journeys/thailand-longneck.jpg</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.adirbd.com/images/journeys/thailand-tea.jpg</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.adirbd.com/images/journeys/thailand-wphk-pagoda.jpg</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.adirbd.com/images/journeys/thailand-guan-yin.jpg</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.adirbd.com/images/journeys/thailand-pink-trees.jpg</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.adirbd.com/images/journeys/thailand-white-temple.jpg</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.adirbd.com/images/journeys/thailand-wish-plaques.jpg</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.adirbd.com/images/journeys/thailand-white-temple-hands.jpg</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.adirbd.com/images/journeys/thailand-hot-spring-poster.jpg</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.adirbd.com/images/journeys/thailand-monkeys-poster.jpg</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.adirbd.com/images/journeys/thailand-rice-bridge.jpg</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.adirbd.com/images/journeys/thailand-pai-view.jpg</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.adirbd.com/images/journeys/thailand-pai-street.jpg</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.adirbd.com/images/journeys/thailand-pai-scooter.jpg</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.adirbd.com/images/journeys/thailand-mueng-pang.jpg</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.adirbd.com/images/journeys/thailand-river-night.jpg</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.adirbd.com/images/journeys/thailand-mochi.jpg</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.adirbd.com/images/journeys/thailand-flower-market.jpg</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.adirbd.com/images/journeys/thailand-samui-aerial-poster.jpg</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.adirbd.com/images/journeys/thailand-samui-airport.jpg</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.adirbd.com/images/journeys/thailand-kohtao-palms.jpg</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.adirbd.com/images/journeys/thailand-kohtao-sunset.jpg</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.adirbd.com/images/journeys/thailand-kohtao-coconut.jpg</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.adirbd.com/images/journeys/thailand-kohtao-fire-poster.jpg</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.adirbd.com/images/journeys/thailand-kohtao-boattrip.jpg</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.adirbd.com/images/journeys/thailand-kohtao-boat-beach.jpg</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.adirbd.com/images/journeys/thailand-kohtao-snorkel.jpg</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.adirbd.com/images/journeys/thailand-kohtao-bar-poster.jpg</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.adirbd.com/images/journeys/thailand-samui-jetski-group.jpg</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.adirbd.com/images/journeys/thailand-jetski.jpg</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.adirbd.com/images/journeys/thailand-samui-jetski-solo.jpg</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.adirbd.com/images/journeys/thailand-samui-dinner.jpg</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.adirbd.com/images/journeys/thailand-phuket-driving.jpg</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.adirbd.com/images/journeys/thailand-kata-beach.jpg</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.adirbd.com/images/journeys/thailand-phuket-beach-steps.jpg</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.adirbd.com/images/journeys/thailand-phuket-waterpark.jpg</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.adirbd.com/images/journeys/thailand-phangnga-boat.jpg</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.adirbd.com/images/journeys/thailand-phangnga-kayak.jpg</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.adirbd.com/images/journeys/thailand-phuket-fruit-stall.jpg</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.adirbd.com/images/journeys/thailand-phuket-naka-market.jpg</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.adirbd.com/images/journeys/thailand-patong-bangla.jpg</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.adirbd.com/images/journeys/thailand-phuket-sunset-bar.jpg</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.adirbd.com/images/journeys/thailand-phiphi-pileh.jpg</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.adirbd.com/images/journeys/thailand-longtail.jpg</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.adirbd.com/images/journeys/thailand-phiphi-bay.jpg</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.adirbd.com/images/journeys/thailand-phiphi-kayaks.jpg</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.adirbd.com/images/journeys/thailand-phiphi-beach-poster.jpg</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.adirbd.com/images/journeys/thailand-phiphi-coconut.jpg</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.adirbd.com/images/journeys/thailand-phiphi-lanterns.jpg</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.adirbd.com/images/journeys/thailand-phiphi-fire-poster.jpg</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.adirbd.com/images/journeys/thailand-bangkok-aerial.jpg</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.adirbd.com/images/journeys/thailand-bangkok-watarun.jpg</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.adirbd.com/images/journeys/thailand-bangkok-lumphini.jpg</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.adirbd.com/images/journeys/thailand-bangkok-monitor.jpg</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.adirbd.com/images/journeys/thailand-bangkok-skyline.jpg</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.adirbd.com/images/journeys/thailand-bangkok-iconsiam.jpg</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.adirbd.com/images/journeys/thailand-bangkok-mbk.jpg</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.adirbd.com/images/journeys/thailand-bangkok-7eleven.jpg</image:loc>
+    </image:image>
   </url>
 </urlset>
