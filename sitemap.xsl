@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<xsl:stylesheet version="2.0" 
+<xsl:stylesheet version="2.0"
                 xmlns:html="http://www.w3.org/1999/xhtml"
                 xmlns:sitemap="http://www.sitemaps.org/schemas/sitemap/0.9"
+                xmlns:image="http://www.google.com/schemas/sitemap-image/1.1"
                 xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
   <xsl:output method="html" version="1.0" encoding="UTF-8" indent="yes"/>
   <xsl:template match="/">
@@ -104,6 +105,7 @@
               <th style="width: 150px;">Last Modified</th>
               <th style="width: 100px;">Change Freq</th>
               <th style="width: 80px;">Priority</th>
+              <th style="width: 80px;">Images</th>
             </tr>
             <xsl:for-each select="sitemap:urlset/sitemap:url">
               <tr>
@@ -123,6 +125,11 @@
                 </td>
                 <td>
                   <xsl:value-of select="sitemap:priority"/>
+                </td>
+                <td>
+                  <xsl:if test="count(image:image) &gt; 0">
+                    <xsl:value-of select="count(image:image)"/>
+                  </xsl:if>
                 </td>
               </tr>
             </xsl:for-each>

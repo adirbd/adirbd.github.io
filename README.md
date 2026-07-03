@@ -62,6 +62,16 @@ To add or change a trip:
 This writes the EN + HE album pages, the Journeys preview cards (between the
 `<!-- TRIPS:START -->` / `<!-- TRIPS:END -->` markers), and the sitemap entries.
 
+Each album page also gets, automatically:
+
+- **ImageGallery JSON-LD** (`hasPart` of `ImageObject`s with caption/alt/dims,
+  cover marked `representativeOfPage`) built from the trip's `sections`.
+- **Image-sitemap entries** (`<image:loc>` per photo and clip poster) under the
+  album's URL in `sitemap.xml`, so Google Images can discover the photos.
+
+Nothing to do per trip — add it to `TRIPS`, run the sync, and both are
+generated and covered by tests.
+
 ## Video clips in albums
 
 A trip's `sections` can hold a short looping clip instead of a photo — a

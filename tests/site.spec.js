@@ -226,6 +226,45 @@ test.describe('site pages', () => {
     }
   });
 
+  test('sitemap lists every album image for Google Images', async ({ page, request }) => {
+    const xml = await (await request.get('/sitemap.xml')).text();
+    expect(xml, 'sitemap should declare the image namespace').toContain(
+      'xmlns:image="http://www.google.com/schemas/sitemap-image/1.1"',
+    );
+    for (const pagePath of pages.filter((p) => p.includes('/trips/'))) {
+      await page.goto(pagePath);
+      const media = await page.$$eval('.album-hero-media img, .album-figure img, .album-figure video', (els) =>
+        els.map((el) => (el.tagName === 'VIDEO' ? el.getAttribute('poster') : el.getAttribute('src'))),
+      );
+      expect(media.length, `expected album media on ${pagePath}`).toBeGreaterThan(0);
+      for (const src of media) {
+        expect(xml, `sitemap should list ${src} (shown on ${pagePath})`).toContain(
+          `<image:loc>${SITE_URL}${src}</image:loc>`,
+        );
+      }
+    }
+  });
+
+  test('album pages carry ImageGallery JSON-LD covering all their media', async ({ page }) => {
+    for (const pagePath of pages.filter((p) => p.includes('/trips/'))) {
+      await page.goto(pagePath);
+      const blocks = await page.$$eval('script[type="application/ld+json"]', (nodes) =>
+        nodes.map((n) => n.textContent),
+      );
+      const gallery = blocks.map((b) => JSON.parse(b)).find((b) => b['@type'] === 'ImageGallery');
+      expect(gallery, `expected ImageGallery JSON-LD on ${pagePath}`).toBeTruthy();
+      expect(Array.isArray(gallery.hasPart), `expected hasPart images on ${pagePath}`).toBe(true);
+      for (const img of gallery.hasPart) {
+        expect(img['@type']).toBe('ImageObject');
+        expect(img.contentUrl, `ImageObject needs contentUrl on ${pagePath}`).toContain(`${SITE_URL}/images/journeys/`);
+        expect(Boolean(img.width && img.height), `ImageObject needs dims on ${pagePath}`).toBe(true);
+      }
+      // Every photo/clip figure must be represented (cover may merge with a photo).
+      const figures = await page.$$eval('.album-figure img, .album-figure video', (els) => els.length);
+      expect(gallery.hasPart.length, `hasPart should cover the album media on ${pagePath}`).toBeGreaterThanOrEqual(figures);
+    }
+  });
+
   test('canonical URL matches the page path', async ({ page }) => {
     for (const pagePath of pages) {
       await page.goto(pagePath);

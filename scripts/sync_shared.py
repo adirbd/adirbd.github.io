@@ -247,6 +247,8 @@ def render_head(meta: dict[str, str]) -> str:
         webpage_schema['mainEntity'] = {'@id': f'{SITE_URL}/#person'}
         webpage_schema['dateCreated'] = SITE_CREATED
         webpage_schema['dateModified'] = LASTMOD
+    if meta.get('gallery'):
+        webpage_schema['hasPart'] = meta['gallery']
     if meta.get('og_image'):
         webpage_schema['primaryImageOfPage'] = {'@type': 'ImageObject', 'url': og_image}
     # The two home pages are profiles, not generic websites, in Open Graph terms.
@@ -751,6 +753,51 @@ TRIPS = [
 ]
 
 
+def trip_gallery(trip: dict, lang: str) -> list[dict]:
+    """Ordered ImageObject data for a trip album: the cover first, then every
+    photo and clip poster in album order, deduped by file (a cover that also
+    appears in the album is listed once). Drives both the album's ImageGallery
+    JSON-LD and its image-sitemap entries, so any trip added to TRIPS gets
+    both automatically."""
+    is_he = lang == 'he'
+    seen: set[str] = set()
+    items: list[dict] = []
+
+    def add(src: str, w: int, h: int, caption: str, description: str | None,
+            representative: bool = False) -> None:
+        if src in seen:
+            return
+        seen.add(src)
+        obj: dict = {
+            '@type': 'ImageObject',
+            'contentUrl': f'{SITE_URL}{IMG}/{src}',
+            'width': w,
+            'height': h,
+        }
+        if caption:
+            obj['caption'] = caption
+        if description and description != caption:
+            obj['description'] = description
+        if representative:
+            obj['representativeOfPage'] = True
+        items.append(obj)
+
+    add(trip['cover'], trip['cover_w'], trip['cover_h'],
+        trip['cover_alt_he'] if is_he else trip['cover_alt_en'], None,
+        representative=True)
+    for s in trip['sections']:
+        if s['type'] == 'photo':
+            add(s['src'], s['w'], s['h'],
+                s['cap_he'] if is_he else s['cap_en'],
+                s['alt_he'] if is_he else s['alt_en'])
+        elif s['type'] == 'clip':
+            # The poster frame is the image actually shown on the page.
+            add(s['poster'], s['w'], s['h'],
+                s['cap_he'] if is_he else s['cap_en'],
+                s['alt_he'] if is_he else s['alt_en'])
+    return items
+
+
 def album_meta(trip: dict, lang: str) -> dict[str, str]:
     is_he = lang == 'he'
     slug = f'he/trips/{trip["slug"]}.html' if is_he else f'trips/{trip["slug"]}.html'
@@ -765,6 +812,8 @@ def album_meta(trip: dict, lang: str) -> dict[str, str]:
         'home': '/he/' if is_he else '/',
         'active': '/he/journeys.html' if is_he else '/journeys.html',
         'abs_nav': True,
+        'page_type': 'ImageGallery',
+        'gallery': trip_gallery(trip, lang),
         'switch': he_href if not is_he else en_href,
         'switch_from': 'HE' if is_he else 'EN', 'switch_to': 'EN' if is_he else 'HE',
         'title': title, 'description': description,
@@ -919,7 +968,8 @@ def render_sitemap() -> str:
         '<?xml version="1.0" encoding="UTF-8"?>',
         '<?xml-stylesheet type="text/xsl" href="sitemap.xsl"?>',
         '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"',
-        '        xmlns:xhtml="http://www.w3.org/1999/xhtml">',
+        '        xmlns:xhtml="http://www.w3.org/1999/xhtml"',
+        '        xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">',
     ]
     album_metas = [album_meta(trip, lang) for trip in TRIPS for lang in ('en', 'he')]
     for meta in list(PAGES.values()) + album_metas:
@@ -933,8 +983,16 @@ def render_sitemap() -> str:
             f'    <xhtml:link rel="alternate" hreflang="he" href="{absolute_url(meta["he_href"])}"/>',
             f'    <xhtml:link rel="alternate" hreflang="he-IL" href="{absolute_url(meta["he_href"])}"/>',
             f'    <xhtml:link rel="alternate" hreflang="x-default" href="{absolute_url(meta["x_default"])}"/>',
-            '  </url>',
         ])
+        # Album pages list their photos (and clip posters) so Google Images
+        # can discover them; image:loc is the only tag Google still reads.
+        for img in meta.get('gallery', []):
+            lines.extend([
+                '    <image:image>',
+                f'      <image:loc>{img["contentUrl"]}</image:loc>',
+                '    </image:image>',
+            ])
+        lines.append('  </url>')
     lines.append('</urlset>')
     return '\n'.join(lines) + '\n'
 
