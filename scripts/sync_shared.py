@@ -32,7 +32,7 @@ JS_VER = _asset_ver('index.js')
 # commit dates: the sitemap is committed in the same commit whose date it
 # would record, so a derived value can never match what CI regenerates
 # across a midnight boundary (it drifts and fails the sync check).
-LASTMOD = '2026-07-03'
+LASTMOD = '2026-10-17'
 # When the site first went live (first commit) — used as ProfilePage dateCreated.
 SITE_CREATED = '2026-01-03'
 # Applied before first paint so dark-mode visitors never flash light.
@@ -156,8 +156,14 @@ PAGES = {
     'now.html': {
         'lang': 'en', 'dir': 'ltr', 'home': '/', 'active': 'now.html', 'switch': '/he/now.html', 'switch_from': 'EN', 'switch_to': 'HE',
         'title': 'Now | Adir Ben David',
-        'description': 'What Adir Ben David is building now: AI projects, a self-hosted home server, a Home Assistant smart home, and a long-standing interest in transit and cities.',
+        'description': 'What Adir Ben David is building now: AI projects, a personal infrastructure across three sites, a smart home, and an interest in transit and cities.',
         'slug': 'now.html', 'en_href': f'{SITE_URL}/now.html', 'he_href': '/he/now.html', 'x_default': f'{SITE_URL}/now.html', 'locale': 'en_US', 'locale_alt': 'he_IL'
+    },
+    'homelab.html': {
+        'lang': 'en', 'dir': 'ltr', 'home': '/', 'active': 'now.html', 'switch': '/he/homelab.html', 'switch_from': 'EN', 'switch_to': 'HE',
+        'title': 'A home infrastructure across three sites | Adir Ben David',
+        'description': 'How I build and operate infrastructure across two homes and Oracle Cloud, using Proxmox, K3s, GitOps, Cloudflare, monitoring, and recovery practices.',
+        'slug': 'homelab.html', 'en_href': f'{SITE_URL}/homelab.html', 'he_href': '/he/homelab.html', 'x_default': f'{SITE_URL}/homelab.html', 'locale': 'en_US', 'locale_alt': 'he_IL'
     },
     'journeys.html': {
         'lang': 'en', 'dir': 'ltr', 'home': '/', 'active': 'journeys.html', 'switch': '/he/journeys.html', 'switch_from': 'EN', 'switch_to': 'HE',
@@ -186,8 +192,14 @@ PAGES = {
     'he/now.html': {
         'lang': 'he', 'dir': 'rtl', 'home': '/he/', 'active': '/he/now.html', 'switch': '/now.html', 'switch_from': 'HE', 'switch_to': 'EN',
         'title': 'עכשיו | אדיר בן דוד',
-        'description': 'במה אדיר בן דוד עוסק עכשיו: פרויקטים עם AI, שרת ביתי ובית חכם מבוסס Home Assistant, לצד עניין מתמשך בתחבורה ובערים.',
+        'description': 'במה אדיר בן דוד עוסק עכשיו: פרויקטים עם AI, תשתית אישית בשלושה אתרים, בית חכם ועניין מתמשך בתחבורה ובערים.',
         'slug': 'he/now.html', 'en_href': '/now.html', 'he_href': f'{SITE_URL}/he/now.html', 'x_default': f'{SITE_URL}/now.html', 'locale': 'he_IL', 'locale_alt': 'en_US'
+    },
+    'he/homelab.html': {
+        'lang': 'he', 'dir': 'rtl', 'home': '/he/', 'active': '/he/now.html', 'switch': '/homelab.html', 'switch_from': 'HE', 'switch_to': 'EN',
+        'title': 'תשתית אישית בשלושה אתרים | אדיר בן דוד',
+        'description': 'איך אני בונה ומפעיל תשתית בשני בתים ובענן Oracle Cloud, עם Proxmox, K3s, GitOps, Cloudflare, ניטור ותהליכי התאוששות.',
+        'slug': 'he/homelab.html', 'en_href': '/homelab.html', 'he_href': f'{SITE_URL}/he/homelab.html', 'x_default': f'{SITE_URL}/homelab.html', 'locale': 'he_IL', 'locale_alt': 'en_US'
     },
     'he/journeys.html': {
         'lang': 'he', 'dir': 'rtl', 'home': '/he/', 'active': '/he/journeys.html', 'switch': '/journeys.html', 'switch_from': 'HE', 'switch_to': 'EN',

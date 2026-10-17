@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Now | Adir Ben David</title>
-  <meta name="description" content="What Adir Ben David is building now: AI projects, a self-hosted home server, a Home Assistant smart home, and a long-standing interest in transit and cities." />
+  <meta name="description" content="What Adir Ben David is building now: AI projects, a personal infrastructure across three sites, a smart home, and an interest in transit and cities." />
   <meta name="robots" content="index,follow,max-image-preview:large,max-snippet:-1,max-video-preview:-1" />
   <link rel="canonical" href="https://www.adirbd.com/now.html" />
   <meta name="theme-color" content="#f6f8fc" media="(prefers-color-scheme: light)" />
@@ -22,7 +22,7 @@
   <meta property="og:locale" content="en_US" />
   <meta property="og:locale:alternate" content="he_IL" />
   <meta property="og:title" content="Now | Adir Ben David" />
-  <meta property="og:description" content="What Adir Ben David is building now: AI projects, a self-hosted home server, a Home Assistant smart home, and a long-standing interest in transit and cities." />
+  <meta property="og:description" content="What Adir Ben David is building now: AI projects, a personal infrastructure across three sites, a smart home, and an interest in transit and cities." />
   <meta property="og:image" content="https://www.adirbd.com/images/og-image.png" />
   <meta property="og:image:alt" content="Adir Ben David" />
   <meta property="og:image:width" content="1200" />
@@ -32,7 +32,7 @@
   <meta name="twitter:site" content="@adirbd" />
   <meta name="twitter:creator" content="@adirbd" />
   <meta name="twitter:title" content="Now | Adir Ben David" />
-  <meta name="twitter:description" content="What Adir Ben David is building now: AI projects, a self-hosted home server, a Home Assistant smart home, and a long-standing interest in transit and cities." />
+  <meta name="twitter:description" content="What Adir Ben David is building now: AI projects, a personal infrastructure across three sites, a smart home, and an interest in transit and cities." />
   <meta name="twitter:image" content="https://www.adirbd.com/images/og-image.png" />
   <meta name="twitter:image:alt" content="Adir Ben David" />
   <script type="application/ld+json">{
@@ -172,7 +172,7 @@
       "url": "https://www.adirbd.com/now.html",
       "name": "Now | Adir Ben David",
       "inLanguage": "en",
-      "description": "What Adir Ben David is building now: AI projects, a self-hosted home server, a Home Assistant smart home, and a long-standing interest in transit and cities.",
+      "description": "What Adir Ben David is building now: AI projects, a personal infrastructure across three sites, a smart home, and an interest in transit and cities.",
       "isPartOf": {
             "@type": "WebSite",
             "@id": "https://www.adirbd.com/#website",
@@ -186,7 +186,7 @@
   <script>(function(){try{var t=localStorage.getItem('adirbd-theme');if(t!=='light'&&t!=='dark'){t=window.matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light';}document.documentElement.dataset.theme=t;}catch(e){}})();</script>
   <link rel="preload" href="./fonts/HKGrotesk-Regular.woff2" as="font" type="font/woff2" crossorigin />
   <link rel="preload" href="./fonts/Jost-Regular.woff2" as="font" type="font/woff2" crossorigin />
-  <link rel="stylesheet" href="./index.css?v=5d35b21e" />
+  <link rel="stylesheet" href="./index.css?v=74925882" />
 </head>
 <body>
 
@@ -215,12 +215,28 @@
 </header>
 
 
-<main id="main" tabindex="-1" class="site-shell">
+<main id="main" tabindex="-1" class="site-shell now-page">
   <section class="page-intro">
     <span class="eyebrow">Now</span>
     <h1>What’s got my attention</h1>
     <p class="subtitle">Personal projects and the things I keep coming back to, away from the day job.</p>
-    <p class="lede">Lately that’s a lot of building with AI, tinkering with my home setup, and a few interests that never really leave.</p>
+    <p class="lede">Lately that’s a lot of building with AI, operating a personal infrastructure across three sites, and a few interests that never really leave.</p>
+  </section>
+  <section class="lab-preview" aria-labelledby="lab-preview-title">
+    <div class="lab-preview-copy">
+      <span class="eyebrow">Personal infrastructure</span>
+      <h2 id="lab-preview-title">Two homes. One cloud hub.</h2>
+      <p>I build and operate infrastructure my family uses every day: smart-home routines, photos, media, and storage in two homes, with an Oracle Cloud hub watching from outside. Behind those services are virtualization, Kubernetes, secure access, Git-driven delivery, and monitoring — a system I keep responsible for after launch.</p>
+      <a class="lab-link" href="/homelab.html">Explore the story <span aria-hidden="true">→</span></a>
+    </div>
+    <div class="lab-preview-visual">
+      <div class="lab-map" role="img" aria-label="Tel Aviv and Rehovot follow the same home-site pattern for smart-home, photos, media, and storage; an Oracle Cloud Infrastructure (OCI) hub provides an outside view across both">
+        <div class="lab-map-hub"><span class="lab-map-type">ORACLE CLOUD</span><strong>Independent viewpoint</strong><small>Cross-site monitoring · GitOps</small></div>
+        <div class="lab-map-homes"><div class="lab-map-node"><span class="lab-map-type">HOME 01</span><strong>Tel Aviv</strong><small>Smart home · photos · media · storage</small></div><div class="lab-map-node"><span class="lab-map-type">HOME 02</span><strong>Rehovot</strong><small>Smart home · photos · media · storage</small></div></div>
+        <div class="lab-map-caption">Two homes connected to each other and observed from the cloud</div>
+      </div>
+      <div class="lab-stack-summary" aria-label="Technology at a glance"><span>Proxmox + K3s</span><span>Cloudflare Tunnel + Access</span><span>Oracle Cloud + Grafana</span></div>
+    </div>
   </section>
   <section class="page-layout">
     <div class="stack">
@@ -238,13 +254,6 @@
           <h3>Smart home</h3>
         </div>
         <p>A Home Assistant setup on my own hardware, with Zigbee devices, MQTT, and custom automations tying sensors, buttons, presence, climate, and household modes into everyday routines. I’ve built home/away behavior, desk-based AC control, automations that stay in sync with the physical remotes, and device health checks, with a focus on reliability and easy troubleshooting.</p>
-      </article>
-      <article class="timeline-item">
-        <div class="now-head">
-          <span class="now-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="2.5" y="3" width="19" height="7" rx="1.8"/><rect x="2.5" y="14" width="19" height="7" rx="1.8"/><path d="M6 6.5h.01"/><path d="M6 17.5h.01"/></svg></span>
-          <h3>Home server</h3>
-        </div>
-        <p>My home server gives me a private place to run my own services: backups, monitoring, diagnostics, and the environment my AI agent lives in. It means I can operate my automations, keep an eye on system health, recover from failures, and experiment freely with networking and infrastructure without leaning entirely on the cloud.</p>
       </article>
       <article class="timeline-item">
         <div class="now-head">
@@ -286,6 +295,6 @@
   </div>
 </footer>
 
-<script src="./index.js?v=0584cbf6" defer></script>
+<script src="./index.js?v=8b725fe5" defer></script>
 </body>
 </html>
