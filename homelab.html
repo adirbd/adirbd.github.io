@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>A home infrastructure across three sites | Adir Ben David</title>
+  <meta name="description" content="How I build and operate infrastructure across two homes and Oracle Cloud, using Proxmox, K3s, GitOps, Cloudflare, monitoring, and recovery practices." />
+  <meta name="robots" content="index,follow,max-image-preview:large,max-snippet:-1,max-video-preview:-1" />
+  <link rel="canonical" href="https://www.adirbd.com/homelab.html" />
+  <meta name="theme-color" content="#f6f8fc" media="(prefers-color-scheme: light)" />
+  <meta name="theme-color" content="#0d1320" media="(prefers-color-scheme: dark)" />
+  <link rel="alternate" hreflang="en" href="https://www.adirbd.com/homelab.html" />
+  <link rel="alternate" hreflang="en-US" href="https://www.adirbd.com/homelab.html" />
+  <link rel="alternate" hreflang="he" href="https://www.adirbd.com/he/homelab.html" />
+  <link rel="alternate" hreflang="he-IL" href="https://www.adirbd.com/he/homelab.html" />
+  <link rel="alternate" hreflang="x-default" href="https://www.adirbd.com/homelab.html" />
+  <link rel="icon" type="image/svg+xml" href="./images/favicon-transit.svg" />
+  <link rel="alternate icon" type="image/png" href="./images/favicon.png" />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://www.adirbd.com/homelab.html" />
+  <meta property="og:site_name" content="Adir Ben David" />
+  <meta property="og:locale" content="en_US" />
+  <meta property="og:locale:alternate" content="he_IL" />
+  <meta property="og:title" content="A home infrastructure across three sites | Adir Ben David" />
+  <meta property="og:description" content="How I build and operate infrastructure across two homes and Oracle Cloud, using Proxmox, K3s, GitOps, Cloudflare, monitoring, and recovery practices." />
+  <meta property="og:image" content="https://www.adirbd.com/images/og-image.png" />
+  <meta property="og:image:alt" content="Adir Ben David" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:image:type" content="image/png" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:site" content="@adirbd" />
+  <meta name="twitter:creator" content="@adirbd" />
+  <meta name="twitter:title" content="A home infrastructure across three sites | Adir Ben David" />
+  <meta name="twitter:description" content="How I build and operate infrastructure across two homes and Oracle Cloud, using Proxmox, K3s, GitOps, Cloudflare, monitoring, and recovery practices." />
+  <meta name="twitter:image" content="https://www.adirbd.com/images/og-image.png" />
+  <meta name="twitter:image:alt" content="Adir Ben David" />
+  <script type="application/ld+json">{
+      "@context": "https://schema.org",
+      "@type": "Person",
+      "@id": "https://www.adirbd.com/#person",
+      "name": "Adir Ben David",
+      "alternateName": [
+            "Adirbd",
+            "אדיר בן דוד"
+      ],
+      "jobTitle": "DevOps Engineer",
+      "description": "Adir Ben David is a DevOps engineer at Check Point Software Technologies in Tel Aviv, working on the cloud side, building and managing infrastructure on AWS and Azure with Terraform, Terragrunt, and Crossplane, running Kubernetes across staging, production, and new regions, and building out observability with Grafana, VictoriaMetrics, and OpenTelemetry. He works on FedRAMP-compliant infrastructure and CI/CD, and co-led a migration of 1,000+ users to GitHub Enterprise. He joined Check Point in December 2019; before DevOps he led a six-person team that built and operated complex on-prem environments (servers, networking, firewalls, and ESXi virtualization) from 2021 to 2024. Earlier he was a Tier-2 networking engineer at Bezeq (2017-2019) working with multi-vendor Layer 2/3 networks, routers, and switches, and a communications network technician in the Communications and Computers Corps (Tikshuv) during military service (2014-2017). Having worked in both on-prem data centers and the cloud shapes how he approaches systems.",
+      "worksFor": {
+            "@type": "Organization",
+            "name": "Check Point Software Technologies",
+            "url": "https://www.checkpoint.com/"
+      },
+      "hasOccupation": {
+            "@type": "Occupation",
+            "name": "DevOps Engineer",
+            "occupationLocation": {
+                  "@type": "City",
+                  "name": "Tel Aviv"
+            },
+            "skills": "DevOps, AWS, Azure, Kubernetes, Terraform, Terragrunt, Crossplane, Helm, Docker, CI/CD, GitHub Actions, GitHub Enterprise, Infrastructure as Code, Linux, Bash, Python, observability, Grafana, OpenTelemetry, FedRAMP compliance, on-prem infrastructure, systems integration, virtualization (ESXi), firewalls, networking (Layer 2/3)"
+      },
+      "alumniOf": [
+            {
+                  "@type": "Organization",
+                  "name": "Bezeq"
+            },
+            {
+                  "@type": "Organization",
+                  "name": "Communications and Computers Corps (Tikshuv)"
+            }
+      ],
+      "hasCredential": [
+            {
+                  "@type": "EducationalOccupationalCredential",
+                  "name": "Check Point Certified Security Expert (CCSE)",
+                  "credentialCategory": "certificate",
+                  "recognizedBy": {
+                        "@type": "Organization",
+                        "name": "Check Point Software Technologies"
+                  }
+            },
+            {
+                  "@type": "EducationalOccupationalCredential",
+                  "name": "Check Point Certified Security Administrator (CCSA)",
+                  "credentialCategory": "certificate",
+                  "recognizedBy": {
+                        "@type": "Organization",
+                        "name": "Check Point Software Technologies"
+                  }
+            },
+            {
+                  "@type": "EducationalOccupationalCredential",
+                  "name": "Cisco Certified Network Professional (CCNP) Routing and Switching",
+                  "credentialCategory": "certificate",
+                  "recognizedBy": {
+                        "@type": "Organization",
+                        "name": "Cisco"
+                  }
+            },
+            {
+                  "@type": "EducationalOccupationalCredential",
+                  "name": "Cisco Certified Network Associate (CCNA) Routing and Switching",
+                  "credentialCategory": "certificate",
+                  "recognizedBy": {
+                        "@type": "Organization",
+                        "name": "Cisco"
+                  }
+            },
+            {
+                  "@type": "EducationalOccupationalCredential",
+                  "name": "Cisco Certified Entry Networking Technician (CCENT)",
+                  "credentialCategory": "certificate",
+                  "recognizedBy": {
+                        "@type": "Organization",
+                        "name": "Cisco"
+                  }
+            }
+      ],
+      "address": {
+            "@type": "PostalAddress",
+            "addressLocality": "Tel Aviv"
+      },
+      "image": "https://www.adirbd.com/images/adir-hero.jpg",
+      "url": "https://www.adirbd.com/",
+      "sameAs": [
+            "https://github.com/adirbd",
+            "https://www.linkedin.com/in/adirbd/",
+            "https://www.instagram.com/adirbd/",
+            "https://www.facebook.com/adirbd/",
+            "https://www.youtube.com/@adirbd",
+            "https://x.com/adirbd",
+            "https://en.wikipedia.org/wiki/User:Adirbd"
+      ],
+      "knowsAbout": [
+            "DevOps",
+            "Infrastructure",
+            "Cloud",
+            "AWS",
+            "Azure",
+            "On-premises infrastructure",
+            "Systems integration",
+            "Virtualization",
+            "Firewalls",
+            "Automation",
+            "CI/CD",
+            "GitHub Actions",
+            "Infrastructure as Code",
+            "Kubernetes",
+            "Terraform",
+            "Terragrunt",
+            "Crossplane",
+            "Helm",
+            "Docker",
+            "GitHub Enterprise",
+            "Linux",
+            "Bash",
+            "Python",
+            "Observability",
+            "Grafana",
+            "OpenTelemetry",
+            "FedRAMP compliance",
+            "Networking",
+            "Systems",
+            "Transportation",
+            "Urban systems"
+      ]
+}</script>
+  <script type="application/ld+json">{
+      "@context": "https://schema.org",
+      "@type": "WebPage",
+      "url": "https://www.adirbd.com/homelab.html",
+      "name": "A home infrastructure across three sites | Adir Ben David",
+      "inLanguage": "en",
+      "description": "How I build and operate infrastructure across two homes and Oracle Cloud, using Proxmox, K3s, GitOps, Cloudflare, monitoring, and recovery practices.",
+      "isPartOf": {
+            "@type": "WebSite",
+            "@id": "https://www.adirbd.com/#website",
+            "url": "https://www.adirbd.com/",
+            "name": "Adir Ben David"
+      },
+      "about": {
+            "@id": "https://www.adirbd.com/#person"
+      }
+}</script>
+  <script>(function(){try{var t=localStorage.getItem('adirbd-theme');if(t!=='light'&&t!=='dark'){t=window.matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light';}document.documentElement.dataset.theme=t;}catch(e){}})();</script>
+  <link rel="preload" href="./fonts/HKGrotesk-Regular.woff2" as="font" type="font/woff2" crossorigin />
+  <link rel="preload" href="./fonts/Jost-Regular.woff2" as="font" type="font/woff2" crossorigin />
+  <link rel="stylesheet" href="./index.css?v=74925882" />
+</head>
+<body>
+
+<header class="site-header">
+  <a class="skip-link" href="#main">Skip to content</a>
+  <div class="site-shell header-inner">
+    <a class="brand" href="/">
+      <span class="brand-mark" aria-hidden="true"></span>
+      <span>Adir Ben David</span>
+    </a>
+    <button class="nav-toggle" data-nav-toggle aria-expanded="false" aria-controls="site-menu" aria-label="Menu">
+      ☰
+    </button>
+    <div class="nav-area" id="site-menu">
+      <nav class="site-nav" aria-label="Primary">
+        <ul>
+          <li><a href="/">Home</a></li><li><a href="work.html">Work</a></li><li><a href="now.html" aria-current="page">Now</a></li><li><a href="journeys.html">Journeys</a></li><li><a href="connect.html">Connect</a></li>
+        </ul>
+      </nav>
+      <div class="header-tools">
+        <a class="lang-switch" href="/he/homelab.html" hreflang="he" aria-label="Switch to Hebrew"><span lang="he">HE</span></a>
+        <button class="toggle" type="button" data-theme-toggle aria-label="Toggle theme"><span>◐</span><span data-theme-label>Dark</span></button>
+      </div>
+    </div>
+  </div>
+</header>
+
+
+<main id="main" tabindex="-1" class="site-shell lab-story">
+  <nav class="lab-back" aria-label="Back to Now"><a href="/now.html">← Back to Now</a></nav>
+  <section class="page-intro lab-story-intro">
+    <span class="eyebrow">The home infrastructure</span>
+    <h1>Infrastructure I live with</h1>
+    <p class="subtitle">Two homes, a cloud hub, and services my family actually depends on.</p>
+    <p class="lede">This is where I build and operate infrastructure as code, Kubernetes, networking, security, and observability. When photos or the smart home stop working, it is more than a lab exercise.</p>
+  </section>
+  <section class="lab-story-map" aria-labelledby="lab-map-heading">
+    <div class="section-heading"><div><span class="eyebrow">The system</span><h2 id="lab-map-heading">Two homes, one pattern, one cloud hub</h2></div><p>Both homes follow the same service pattern. Oracle Cloud adds an independent view and a place to coordinate the wider system.</p></div>
+    <figure class="infra-explorer" data-lab-explorer data-focus="overview" aria-labelledby="infra-title">
+      <div class="infra-header"><div><span class="infra-eyebrow">PERSONAL INFRASTRUCTURE / 03 SITES</span><h3 id="infra-title">From everyday services to the infrastructure beneath</h3></div><div class="infra-modes" role="group" aria-label="Explore a system path"><button type="button" data-lab-mode="overview" aria-pressed="true" aria-controls="lab-explanation">Overview</button><button type="button" data-lab-mode="access" aria-pressed="false" aria-controls="lab-explanation">Access</button><button type="button" data-lab-mode="deploy" aria-pressed="false" aria-controls="lab-explanation">Delivery</button><button type="button" data-lab-mode="observe" aria-pressed="false" aria-controls="lab-explanation">Monitoring</button></div></div>
+      <div class="infra-canvas">
+        <div class="infra-controls"><span class="infra-column-label">ACCESS & DELIVERY</span><div class="infra-control" data-lab-topics="access"><span class="infra-number">01 / ACCESS</span><div class="infra-tech"><b dir="ltr">Cloudflare</b><span>Remote service access</span></div><p><b dir="ltr">Access</b> · Identity checks<br><b dir="ltr">Tunnel</b> · Outbound connections</p></div><div class="infra-control" data-lab-topics="deploy"><span class="infra-number">02 / DELIVERY</span><div class="infra-tech"><b dir="ltr">Git + OpenTofu</b><span>Versioned infrastructure definitions</span></div><p><b dir="ltr">GitHub Actions</b> · Checks<br><b dir="ltr">Argo CD</b> · Application delivery</p></div></div>
+        <div class="infra-connector infra-connector-entry" aria-hidden="true"><span>→</span></div>
+        <div class="infra-local"><span class="infra-column-label">TWO HOMES · SHARED PATTERN</span><div class="infra-sites"><div class="infra-site" data-lab-topics="access deploy observe"><div class="infra-site-heading"><span>HOME / 01</span><strong>Tel Aviv</strong></div><div class="infra-tech"><b dir="ltr">Home Assistant</b><span>Smart home & automation</span></div><div class="infra-tech"><b dir="ltr">Immich · Plex</b><span>Photos & media services</span></div><div class="infra-site-base"><div class="infra-tech"><b dir="ltr">K3s / Kubernetes</b><span>Application runtime</span></div><div class="infra-tech"><b dir="ltr">Proxmox · ZFS</b><span>Virtualization & storage</span></div></div></div><div class="infra-site" data-lab-topics="access deploy observe"><div class="infra-site-heading"><span>HOME / 02</span><strong>Rehovot</strong></div><div class="infra-tech"><b dir="ltr">Home Assistant</b><span>Smart home & automation</span></div><div class="infra-tech"><b dir="ltr">Immich · Plex</b><span>Photos & media services</span></div><div class="infra-site-base"><div class="infra-tech"><b dir="ltr">K3s / Kubernetes</b><span>Application runtime</span></div><div class="infra-tech"><b dir="ltr">Proxmox · ZFS</b><span>Virtualization & storage</span></div></div></div></div><div class="infra-private"><span>WireGuard · private link between homes</span></div></div>
+        <div class="infra-connector infra-connector-cloud" aria-hidden="true"><small>Tailscale</small></div>
+        <div class="infra-cloud-column"><span class="infra-column-label">THIRD SITE · CLOUD</span><div class="infra-cloud" data-lab-topics="observe deploy"><span class="infra-number">CLOUD / 03</span><strong class="infra-cloud-title" dir="ltr">Oracle Cloud</strong><div class="infra-cloud-identity"><span>Oracle Cloud Infrastructure</span><small>Connected to both homes over Tailscale</small></div><div data-lab-topics="observe" class="infra-cloud-group"><div class="infra-tech"><b dir="ltr">Grafana</b><span>A view across both homes</span></div><div class="infra-tech"><b dir="ltr">VictoriaMetrics</b><span>Metrics & alerting</span></div></div><div data-lab-topics="deploy" class="infra-cloud-group"><div class="infra-tech"><b dir="ltr">CI runner</b><span>Checks on my own infrastructure</span></div><div class="infra-tech"><b dir="ltr">Argo CD</b><span>GitOps coordination</span></div></div></div></div>
+      </div>
+      <figcaption id="lab-explanation" class="infra-explanation" aria-live="polite" aria-atomic="true"><div data-lab-explanation="overview"><strong>Every layer serves a real use</strong><p>Family services run across both homes. Cloudflare handles remote access, Git and CI support controlled changes, and an Oracle Cloud hub provides monitoring and coordination. Select a path to explore how the layers work together.</p></div><div data-lab-explanation="access" hidden><strong>From person to service</strong><p>Cloudflare Access checks identity; Tunnel reaches services over connections initiated from home. Selected services also have a local path through split DNS, so access follows the appropriate route at home or away.</p></div><div data-lab-explanation="deploy" hidden><strong>From code to a running system</strong><p>OpenTofu defines infrastructure and the access layer. GitHub Actions checks configuration and manifests using a cloud-hosted runner; Argo CD reconciles applications into K3s. Infrastructure plans are reviewed before apply.</p></div><div data-lab-explanation="observe" hidden><strong>An outside view when a site goes quiet</strong><p>VictoriaMetrics and Grafana provide metrics and a view across both homes. The cloud hub probes services from outside, and alerts surface problems. An additional external check watches the monitoring path itself.</p></div></figcaption>
+    </figure>
+  </section>
+  <section class="infra-proof" aria-labelledby="infra-proof-title"><div><span class="eyebrow">Tested in practice</span><h2 id="infra-proof-title">Rebuild it from code</h2></div><div><p>I rebuilt the cloud hub from its infrastructure definitions. It was a practical test of bringing the operations layer back, beyond the initial setup.</p><p class="infra-proof-note">Home is where I keep learning: deployments, failures, access, and data — with responsibility for services we use every day.</p></div></section>
+  <div class="lab-story-cta"><p>Curious how this connects to my professional work?</p><a class="lab-link" href="/work.html">See my work <span aria-hidden="true">→</span></a><a class="lab-link" href="/connect.html">Get in touch <span aria-hidden="true">→</span></a></div>
+  <p class="lab-story-end"><a class="lab-link" href="/now.html">← Back to what I’m building</a></p>
+</main>
+
+
+<footer class="site-footer">
+  <div class="site-shell footer-inner">
+    <div>
+      <strong>Adir Ben David</strong>
+      <div class="muted">Tel Aviv · © <span data-year>2026</span> Adir Ben David</div>
+    </div>
+    <nav class="footer-nav"><a href="/">Home</a><a href="/work.html">Work</a><a href="/now.html">Now</a><a href="/journeys.html">Journeys</a><a href="/connect.html">Connect</a></nav>
+    <div class="socials"><a href="https://www.linkedin.com/in/adirbd/" target="_blank" rel="me noopener noreferrer" aria-label="LinkedIn"><img src="/images/linkedin.svg" alt=""></a><a href="https://www.instagram.com/adirbd/" target="_blank" rel="me noopener noreferrer" aria-label="Instagram"><img src="/images/instagram.svg" alt=""></a><a href="https://www.facebook.com/adirbd/" target="_blank" rel="me noopener noreferrer" aria-label="Facebook"><img src="/images/facebook.svg" alt=""></a><a href="https://x.com/adirbd" target="_blank" rel="me noopener noreferrer" aria-label="X"><img src="/images/twitter.svg" alt=""></a><a href="https://www.youtube.com/@adirbd" target="_blank" rel="me noopener noreferrer" aria-label="YouTube"><img src="/images/youtube.svg" alt=""></a><a href="https://github.com/adirbd" target="_blank" rel="me noopener noreferrer" aria-label="GitHub"><img src="/images/github.svg" alt=""></a><a href="https://en.wikipedia.org/wiki/User:Adirbd" target="_blank" rel="me noopener noreferrer" aria-label="Wikipedia"><img src="/images/wikipedia.svg" alt=""></a></div>
+  </div>
+</footer>
+
+<script src="./index.js?v=8b725fe5" defer></script>
+</body>
+</html>

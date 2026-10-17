@@ -7,11 +7,13 @@ const pages = [
   '/',
   '/work.html',
   '/now.html',
+  '/homelab.html',
   '/journeys.html',
   '/connect.html',
   '/he/',
   '/he/work.html',
   '/he/now.html',
+  '/he/homelab.html',
   '/he/journeys.html',
   '/he/connect.html',
   '/trips/japan.html',
@@ -379,3 +381,22 @@ test.describe('site pages', () => {
     }
   });
 });
+
+for (const route of ['/homelab.html', '/he/homelab.html']) {
+  test(`architecture paths preserve the full stack on ${route}`, async ({ page }) => {
+    await page.goto(route);
+    const diagram = page.locator('[data-lab-explorer]');
+    for (const mode of ['access', 'deploy', 'observe', 'overview']) {
+      const button = diagram.locator(`[data-lab-mode="${mode}"]`);
+      await button.focus();
+      await page.keyboard.press('Enter');
+      await expect(button).toHaveAttribute('aria-pressed', 'true');
+      await expect(diagram.locator('[aria-pressed="true"]')).toHaveCount(1);
+      await expect(diagram.locator(`[data-lab-explanation="${mode}"]`)).toBeVisible();
+      await expect(diagram.locator('[data-lab-explanation]:visible')).toHaveCount(1);
+      for (const technology of ['Cloudflare', 'Grafana', 'VictoriaMetrics', 'Home Assistant', 'K3s / Kubernetes', 'Proxmox · ZFS']) {
+        await expect(diagram.getByText(technology, { exact: true }).first()).toBeVisible();
+      }
+    }
+  });
+}

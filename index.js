@@ -103,3 +103,61 @@ if (clips.length && motionOK && 'IntersectionObserver' in window) {
   }, { threshold: 0.25 });
   clips.forEach((video) => io.observe(video));
 }
+
+// Keep the complete architecture visible while a visitor explores one path.
+document.querySelectorAll('[data-lab-explorer]').forEach((explorer) => {
+  const buttons = explorer.querySelectorAll('[data-lab-mode]');
+  const explanations = explorer.querySelectorAll('[data-lab-explanation]');
+  buttons.forEach((button) => {
+    button.addEventListener('click', () => {
+      const mode = button.dataset.labMode;
+      explorer.dataset.focus = mode;
+      buttons.forEach((item) => item.setAttribute('aria-pressed', String(item === button)));
+      explanations.forEach((panel) => { panel.hidden = panel.dataset.labExplanation !== mode; });
+    });
+  });
+});
+
+// Draw a real connection from each home to the cloud, following the responsive layout.
+document.querySelectorAll('[data-lab-explorer]').forEach((explorer) => {
+  const canvas = explorer.querySelector('.infra-canvas');
+  const cloud = explorer.querySelector('.infra-cloud');
+  const sites = [...explorer.querySelectorAll('.infra-site')];
+  const svg = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
+  svg.classList.add('infra-network-lines');
+  svg.setAttribute('aria-hidden', 'true');
+  const paths = sites.map(() => {
+    const path = document.createElementNS(svg.namespaceURI, 'path');
+    svg.append(path);
+    return path;
+  });
+  canvas.prepend(svg);
+  const draw = () => {
+    const box = canvas.getBoundingClientRect();
+    const target = cloud.getBoundingClientRect();
+    const vertical = window.matchMedia('(max-width: 1000px)').matches;
+    const rtl = document.documentElement.dir === 'rtl';
+    svg.setAttribute('viewBox', `0 0 ${box.width} ${box.height}`);
+    sites.forEach((site, i) => {
+      const source = site.getBoundingClientRect();
+      if (vertical) {
+        const x = source.left + source.width / 2 - box.left;
+        const y = source.bottom - box.top;
+        const tx = target.left + target.width / 2 - box.left;
+        const ty = target.top - box.top;
+        const mid = y + (ty - y) * .65;
+        paths[i].setAttribute('d', `M ${x} ${y} V ${mid} H ${tx} V ${ty}`);
+      } else {
+        const x = (rtl ? source.left : source.right) - box.left;
+        const y = source.top + source.height / 2 - box.top;
+        const tx = (rtl ? target.right : target.left) - box.left;
+        const ty = target.top + target.height / 2 - box.top;
+        const mid = (x + tx) / 2;
+        paths[i].setAttribute('d', `M ${x} ${y} H ${mid} V ${ty} H ${tx}`);
+      }
+    });
+  };
+  new ResizeObserver(draw).observe(canvas);
+  document.fonts.ready.then(draw);
+  draw();
+});
