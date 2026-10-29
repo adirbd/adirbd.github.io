@@ -56,8 +56,8 @@ PERSON_SCHEMA = {
     'jobTitle': 'DevOps Engineer',
     'description': (
         'Adir Ben David is a DevOps engineer at Check Point Software Technologies in Tel Aviv, working on the '
-        'cloud side, building and managing infrastructure on AWS and Azure with Terraform, Terragrunt, and '
-        'Crossplane, running Kubernetes across staging, production, and new regions, and building out observability '
+        'provisioning and operating infrastructure on AWS and Azure with Terraform, Terragrunt, and '
+        'Crossplane, standing up and operating Kubernetes clusters across staging, production, and new regions, and building observability '
         'with Grafana, VictoriaMetrics, and OpenTelemetry. He works on FedRAMP-compliant infrastructure and CI/CD, '
         'and co-led a migration of 1,000+ users to GitHub Enterprise. He joined Check Point in December 2019; '
         'before DevOps he led a six-person team that built and operated complex on-prem environments (servers, '
@@ -150,7 +150,7 @@ PAGES = {
     'work.html': {
         'lang': 'en', 'dir': 'ltr', 'home': '/', 'active': 'work.html', 'switch': '/he/work.html', 'switch_from': 'EN', 'switch_to': 'HE',
         'title': 'Work | Adir Ben David',
-        'description': "Adir Ben David's professional experience: DevOps and cloud infrastructure at Check Point, with years of on-prem server rooms and networking behind it.",
+        'description': "Adir Ben David's DevOps work at Check Point: AWS and Azure infrastructure, Kubernetes cluster provisioning and operations, CI/CD, observability, and FedRAMP infrastructure.",
         'slug': 'work.html', 'en_href': f'{SITE_URL}/work.html', 'he_href': '/he/work.html', 'x_default': f'{SITE_URL}/work.html', 'locale': 'en_US', 'locale_alt': 'he_IL'
     },
     'now.html': {
@@ -186,7 +186,7 @@ PAGES = {
     'he/work.html': {
         'lang': 'he', 'dir': 'rtl', 'home': '/he/', 'active': '/he/work.html', 'switch': '/work.html', 'switch_from': 'HE', 'switch_to': 'EN',
         'title': 'עבודה | אדיר בן דוד',
-        'description': 'ניסיון מקצועי, סגנון עבודה וחשיבה מערכתית של אדיר בן דוד.',
+        'description': 'העבודה של אדיר בן דוד ב־DevOps ב־Check Point: תשתיות AWS ו־Azure, הקמה ותפעול של Kubernetes, תהליכי CI/CD, ניטור ותשתיות FedRAMP.',
         'slug': 'he/work.html', 'en_href': '/work.html', 'he_href': f'{SITE_URL}/he/work.html', 'x_default': f'{SITE_URL}/work.html', 'locale': 'he_IL', 'locale_alt': 'en_US'
     },
     'he/now.html': {
