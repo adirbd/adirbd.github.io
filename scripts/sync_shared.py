@@ -253,12 +253,13 @@ def render_head(meta: dict[str, str]) -> str:
         'inLanguage': meta['lang'],
         'description': meta['description'],
         'isPartOf': {'@type': 'WebSite', '@id': f'{SITE_URL}/#website', 'url': f'{SITE_URL}/', 'name': 'Adir Ben David'},
-        'about': {'@id': f'{SITE_URL}/#person'},
     }
+    person_schema_script = ''
     if webpage_schema['@type'] == 'ProfilePage':
         webpage_schema['mainEntity'] = {'@id': f'{SITE_URL}/#person'}
         webpage_schema['dateCreated'] = SITE_CREATED
         webpage_schema['dateModified'] = LASTMOD
+        person_schema_script = f'<script type="application/ld+json">{json_script(PERSON_SCHEMA)}</script>\n  '
     if meta.get('gallery'):
         webpage_schema['hasPart'] = meta['gallery']
     if meta.get('og_image'):
@@ -306,8 +307,7 @@ def render_head(meta: dict[str, str]) -> str:
   <meta name="twitter:description" content="{e(meta['description'])}" />
   <meta name="twitter:image" content="{og_image}" />
   <meta name="twitter:image:alt" content="{e(og_image_alt)}" />
-  <script type="application/ld+json">{json_script(PERSON_SCHEMA)}</script>
-  <script type="application/ld+json">{json_script(webpage_schema)}</script>
+  {person_schema_script}<script type="application/ld+json">{json_script(webpage_schema)}</script>
   {THEME_BOOT_SCRIPT}
   <link rel="preload" href="{prefix}fonts/HKGrotesk-Regular.woff2" as="font" type="font/woff2" crossorigin />
   <link rel="preload" href="{prefix}fonts/Jost-Regular.woff2" as="font" type="font/woff2" crossorigin />
