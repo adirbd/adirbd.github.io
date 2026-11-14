@@ -55,11 +55,11 @@ PERSON_SCHEMA = {
     'alternateName': ['Adirbd', 'אדיר בן דוד'],
     'jobTitle': 'DevOps Engineer',
     'description': (
-        'Adir Ben David is a DevOps engineer at Check Point Software Technologies in Tel Aviv, working on the '
-        'provisioning and operating infrastructure on AWS and Azure with Terraform, Terragrunt, and '
+        'Adir Ben David is a DevOps engineer at Check Point Software Technologies in Tel Aviv. He builds '
+        'and operates infrastructure on AWS and Azure with Terraform, Terragrunt, and '
         'Crossplane, standing up and operating Kubernetes clusters across staging, production, and new regions, and building observability '
-        'with Grafana, VictoriaMetrics, and OpenTelemetry. He works on FedRAMP-compliant infrastructure and CI/CD, '
-        'and co-led a migration of 1,000+ users to GitHub Enterprise. He joined Check Point in December 2019; '
+        'with Grafana, VictoriaMetrics, and OpenTelemetry. He works on FedRAMP-compliant infrastructure and CI/CD and '
+        'partners with R&D and Security on infrastructure changes. He joined Check Point in December 2019; '
         'before DevOps he led a six-person team that built and operated complex on-prem environments (servers, '
         'networking, firewalls, and ESXi virtualization) from 2021 to 2024. Earlier he was a Tier-2 networking '
         'engineer at Bezeq (2017-2019) working with multi-vendor Layer 2/3 networks, routers, and switches, and a '
