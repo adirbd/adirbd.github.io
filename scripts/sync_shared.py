@@ -55,11 +55,11 @@ PERSON_SCHEMA = {
     'alternateName': ['Adirbd', 'אדיר בן דוד'],
     'jobTitle': 'DevOps Engineer',
     'description': (
-        'Adir Ben David is a DevOps engineer at Check Point Software Technologies in Tel Aviv, working on the '
-        'cloud side, building and managing infrastructure on AWS and Azure with Terraform, Terragrunt, and '
-        'Crossplane, running Kubernetes across staging, production, and new regions, and building out observability '
-        'with Grafana, VictoriaMetrics, and OpenTelemetry. He works on FedRAMP-compliant infrastructure and CI/CD, '
-        'and co-led a migration of 1,000+ users to GitHub Enterprise. He joined Check Point in December 2019; '
+        'Adir Ben David is a DevOps engineer at Check Point Software Technologies in Tel Aviv. He builds '
+        'and operates infrastructure on AWS and Azure with Terraform, Terragrunt, and '
+        'Crossplane, standing up and operating Kubernetes clusters across staging, production, and new regions, and building observability '
+        'with Grafana, VictoriaMetrics, and OpenTelemetry. He works on FedRAMP-compliant infrastructure and CI/CD and '
+        'partners with R&D and Security on infrastructure changes. He joined Check Point in December 2019; '
         'before DevOps he led a six-person team that built and operated complex on-prem environments (servers, '
         'networking, firewalls, and ESXi virtualization) from 2021 to 2024. Earlier he was a Tier-2 networking '
         'engineer at Bezeq (2017-2019) working with multi-vendor Layer 2/3 networks, routers, and switches, and a '
@@ -150,7 +150,7 @@ PAGES = {
     'work.html': {
         'lang': 'en', 'dir': 'ltr', 'home': '/', 'active': 'work.html', 'switch': '/he/work.html', 'switch_from': 'EN', 'switch_to': 'HE',
         'title': 'Work | Adir Ben David',
-        'description': "Adir Ben David's professional experience: DevOps and cloud infrastructure at Check Point, with years of on-prem server rooms and networking behind it.",
+        'description': "Adir Ben David's DevOps work at Check Point: AWS and Azure infrastructure, Kubernetes cluster provisioning and operations, CI/CD, observability, and FedRAMP infrastructure.",
         'slug': 'work.html', 'en_href': f'{SITE_URL}/work.html', 'he_href': '/he/work.html', 'x_default': f'{SITE_URL}/work.html', 'locale': 'en_US', 'locale_alt': 'he_IL'
     },
     'now.html': {
@@ -186,7 +186,7 @@ PAGES = {
     'he/work.html': {
         'lang': 'he', 'dir': 'rtl', 'home': '/he/', 'active': '/he/work.html', 'switch': '/work.html', 'switch_from': 'HE', 'switch_to': 'EN',
         'title': 'עבודה | אדיר בן דוד',
-        'description': 'ניסיון מקצועי, סגנון עבודה וחשיבה מערכתית של אדיר בן דוד.',
+        'description': 'העבודה של אדיר בן דוד ב־DevOps ב־Check Point: תשתיות AWS ו־Azure, הקמה ותפעול של Kubernetes, תהליכי CI/CD, ניטור ותשתיות FedRAMP.',
         'slug': 'he/work.html', 'en_href': '/work.html', 'he_href': f'{SITE_URL}/he/work.html', 'x_default': f'{SITE_URL}/work.html', 'locale': 'he_IL', 'locale_alt': 'en_US'
     },
     'he/now.html': {
@@ -253,12 +253,13 @@ def render_head(meta: dict[str, str]) -> str:
         'inLanguage': meta['lang'],
         'description': meta['description'],
         'isPartOf': {'@type': 'WebSite', '@id': f'{SITE_URL}/#website', 'url': f'{SITE_URL}/', 'name': 'Adir Ben David'},
-        'about': {'@id': f'{SITE_URL}/#person'},
     }
+    person_schema_script = ''
     if webpage_schema['@type'] == 'ProfilePage':
         webpage_schema['mainEntity'] = {'@id': f'{SITE_URL}/#person'}
         webpage_schema['dateCreated'] = SITE_CREATED
         webpage_schema['dateModified'] = LASTMOD
+        person_schema_script = f'<script type="application/ld+json">{json_script(PERSON_SCHEMA)}</script>\n  '
     if meta.get('gallery'):
         webpage_schema['hasPart'] = meta['gallery']
     if meta.get('og_image'):
@@ -306,8 +307,7 @@ def render_head(meta: dict[str, str]) -> str:
   <meta name="twitter:description" content="{e(meta['description'])}" />
   <meta name="twitter:image" content="{og_image}" />
   <meta name="twitter:image:alt" content="{e(og_image_alt)}" />
-  <script type="application/ld+json">{json_script(PERSON_SCHEMA)}</script>
-  <script type="application/ld+json">{json_script(webpage_schema)}</script>
+  {person_schema_script}<script type="application/ld+json">{json_script(webpage_schema)}</script>
   {THEME_BOOT_SCRIPT}
   <link rel="preload" href="{prefix}fonts/HKGrotesk-Regular.woff2" as="font" type="font/woff2" crossorigin />
   <link rel="preload" href="{prefix}fonts/Jost-Regular.woff2" as="font" type="font/woff2" crossorigin />
