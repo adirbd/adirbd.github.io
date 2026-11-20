@@ -145,6 +145,17 @@ test.describe('site pages', () => {
     }
   });
 
+  test('llms.txt is served and summarizes core pages and identity', async ({ request }) => {
+    const res = await request.get('/llms.txt');
+    expect(res.status(), 'llms.txt should be served').toBeLessThan(400);
+    const text = await res.text();
+    expect(text).toContain('# Adir Ben David');
+    expect(text).toContain('אדיר בן דוד');
+    for (const corePath of ['/', '/work.html', '/homelab.html', '/now.html', '/journeys.html', '/connect.html', '/he/']) {
+      expect(text, `llms.txt should link to ${SITE_URL}${corePath}`).toContain(`${SITE_URL}${corePath}`);
+    }
+  });
+
   test('legacy compatibility URLs stay healthy', async ({ request }) => {
     const heLegacy = await request.get('/he.html');
     expect(heLegacy.status(), 'legacy he.html should not 404').toBeLessThan(400);
