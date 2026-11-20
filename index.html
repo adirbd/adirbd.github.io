@@ -48,7 +48,7 @@
             "אדיר בן דוד"
       ],
       "jobTitle": "DevOps Engineer",
-      "description": "Adir Ben David is a DevOps engineer at Check Point Software Technologies in Tel Aviv. He builds and operates infrastructure on AWS and Azure with Terraform, Terragrunt, and Crossplane, standing up and operating Kubernetes clusters across staging, production, and new regions, and building observability with Grafana, VictoriaMetrics, and OpenTelemetry. He works on FedRAMP-compliant infrastructure and CI/CD and partners with R\u0026D and Security on infrastructure changes. He joined Check Point in December 2019; before DevOps he led a six-person team that built and operated complex on-prem environments (servers, networking, firewalls, and ESXi virtualization) from 2021 to 2024. Earlier he was a Tier-2 networking engineer at Bezeq (2017-2019) working with multi-vendor Layer 2/3 networks, routers, and switches, and a communications network technician in the Communications and Computers Corps (Tikshuv) during military service (2014-2017). Having worked in both on-prem data centers and the cloud shapes how he approaches systems.",
+      "description": "Adir Ben David is a DevOps engineer at Check Point Software Technologies in Tel Aviv. He designs and operates cloud infrastructure on AWS and Azure as code with Terraform, Terragrunt, and Crossplane, running Kubernetes clusters across staging and production with Karpenter, Helm, Argo CD, and self-hosted GitHub Actions runners (ARC). He builds CI/CD pipelines, artifact flows (JFrog), and secret/identity management as code with AWS Secrets Manager, IAM, and OIDC, maintains observability with Grafana, VictoriaMetrics, and OpenTelemetry, participates in production on-call and zero-downtime operations (including RDS blue/green upgrades), uses AI agents with plan-and-review workflows to accelerate infrastructure changes and diagnostics, and operates and maintains infrastructure in a FedRAMP-compliant environment in partnership with R\u0026D and Security. He joined Check Point in December 2019; before DevOps he led a six-person team that built and operated complex on-prem environments (servers, networking, firewalls, and ESXi virtualization) from 2021 to 2024. Earlier he was a Tier-2 networking engineer at Bezeq (2017-2019) working with multi-vendor Layer 2/3 networks, routers, and switches, and a communications network technician in the Communications and Computers Corps (Tikshuv) during military service (2014-2017). Having worked in both on-prem data centers and the cloud shapes how he approaches systems.",
       "worksFor": {
             "@type": "Organization",
             "name": "Check Point Software Technologies",
@@ -61,8 +61,12 @@
                   "@type": "City",
                   "name": "Tel Aviv"
             },
-            "skills": "DevOps, AWS, Azure, Kubernetes, Terraform, Terragrunt, Crossplane, Helm, Docker, CI/CD, GitHub Actions, GitHub Enterprise, Infrastructure as Code, Linux, Bash, Python, observability, Grafana, OpenTelemetry, FedRAMP compliance, on-prem infrastructure, systems integration, virtualization (ESXi), firewalls, networking (Layer 2/3)"
+            "skills": "DevOps, AWS, Azure, Kubernetes, Karpenter, K3s, Terraform, Terragrunt, OpenTofu, Crossplane, Argo CD, GitOps, Helm, Docker, CI/CD, GitHub Actions, Actions Runner Controller (ARC), JFrog Artifactory, AWS Secrets Manager, OIDC, IAM, Amazon RDS, Infrastructure as Code, Linux, Bash, Python, observability, Grafana, VictoriaMetrics, OpenTelemetry, FedRAMP compliance, AI agents, Cloudflare, Tailscale, WireGuard, Proxmox, ZFS, on-prem infrastructure, systems integration, virtualization (ESXi), firewalls, networking (Layer 2/3)"
       },
+      "knowsLanguage": [
+            "en",
+            "he"
+      ],
       "alumniOf": [
             {
                   "@type": "Organization",
@@ -144,25 +148,43 @@
             "On-premises infrastructure",
             "Systems integration",
             "Virtualization",
+            "Proxmox",
+            "ZFS",
             "Firewalls",
             "Automation",
             "CI/CD",
             "GitHub Actions",
+            "Actions Runner Controller (ARC)",
+            "JFrog Artifactory",
+            "GitOps",
+            "Argo CD",
             "Infrastructure as Code",
             "Kubernetes",
+            "Karpenter",
+            "K3s",
             "Terraform",
             "Terragrunt",
+            "OpenTofu",
             "Crossplane",
             "Helm",
             "Docker",
-            "GitHub Enterprise",
+            "AWS Secrets Manager",
+            "OIDC",
+            "IAM",
+            "Amazon RDS",
             "Linux",
             "Bash",
             "Python",
             "Observability",
             "Grafana",
+            "VictoriaMetrics",
             "OpenTelemetry",
             "FedRAMP compliance",
+            "AI agents",
+            "Cloudflare",
+            "Tailscale",
+            "WireGuard",
+            "Home Assistant",
             "Networking",
             "Systems",
             "Transportation",
@@ -186,7 +208,7 @@
             "@id": "https://www.adirbd.com/#person"
       },
       "dateCreated": "2026-01-03",
-      "dateModified": "2026-10-17"
+      "dateModified": "2026-11-20"
 }</script>
   <script>(function(){try{var t=localStorage.getItem('adirbd-theme');if(t!=='light'&&t!=='dark'){t=window.matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light';}document.documentElement.dataset.theme=t;}catch(e){}})();</script>
   <link rel="preload" href="./fonts/HKGrotesk-Regular.woff2" as="font" type="font/woff2" crossorigin />
@@ -275,7 +297,7 @@
           <article class="note-card">
             <h3>At home</h3>
             <p>I build and operate infrastructure across three sites: real services for my family in two homes, with an Oracle Cloud hub watching from outside.</p>
-            <p><a href="/now.html#lab-preview-title">See what I’m building <span aria-hidden="true">→</span></a></p>
+            <p><a href="/homelab.html">Explore the home infrastructure <span aria-hidden="true">→</span></a></p>
           </article>
         </aside>
       </div>

@@ -24,7 +24,7 @@ Bilingual (English/Hebrew) personal portfolio website.
 
 ## Maintenance
 
-Shared head/header/footer markup (and the sitemap) is synced with:
+Shared head/header/footer markup, `sitemap.xml`, and `llms.txt` are synced with:
 
 ```bash
 python3 scripts/sync_shared.py

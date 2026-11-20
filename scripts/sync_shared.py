@@ -32,7 +32,7 @@ JS_VER = _asset_ver('index.js')
 # commit dates: the sitemap is committed in the same commit whose date it
 # would record, so a derived value can never match what CI regenerates
 # across a midnight boundary (it drifts and fails the sync check).
-LASTMOD = '2026-10-17'
+LASTMOD = '2026-11-20'
 # When the site first went live (first commit) — used as ProfilePage dateCreated.
 SITE_CREATED = '2026-01-03'
 # Applied before first paint so dark-mode visitors never flash light.
@@ -55,11 +55,14 @@ PERSON_SCHEMA = {
     'alternateName': ['Adirbd', 'אדיר בן דוד'],
     'jobTitle': 'DevOps Engineer',
     'description': (
-        'Adir Ben David is a DevOps engineer at Check Point Software Technologies in Tel Aviv. He builds '
-        'and operates infrastructure on AWS and Azure with Terraform, Terragrunt, and '
-        'Crossplane, standing up and operating Kubernetes clusters across staging, production, and new regions, and building observability '
-        'with Grafana, VictoriaMetrics, and OpenTelemetry. He works on FedRAMP-compliant infrastructure and CI/CD and '
-        'partners with R&D and Security on infrastructure changes. He joined Check Point in December 2019; '
+        'Adir Ben David is a DevOps engineer at Check Point Software Technologies in Tel Aviv. He designs '
+        'and operates cloud infrastructure on AWS and Azure as code with Terraform, Terragrunt, and '
+        'Crossplane, running Kubernetes clusters across staging and production with Karpenter, Helm, Argo CD, and '
+        'self-hosted GitHub Actions runners (ARC). He builds CI/CD pipelines, artifact flows (JFrog), and secret/identity '
+        'management as code with AWS Secrets Manager, IAM, and OIDC, maintains observability with Grafana, VictoriaMetrics, '
+        'and OpenTelemetry, participates in production on-call and zero-downtime operations (including RDS blue/green upgrades), '
+        'uses AI agents with plan-and-review workflows to accelerate infrastructure changes and diagnostics, and operates and maintains '
+        'infrastructure in a FedRAMP-compliant environment in partnership with R&D and Security. He joined Check Point in December 2019; '
         'before DevOps he led a six-person team that built and operated complex on-prem environments (servers, '
         'networking, firewalls, and ESXi virtualization) from 2021 to 2024. Earlier he was a Tier-2 networking '
         'engineer at Bezeq (2017-2019) working with multi-vendor Layer 2/3 networks, routers, and switches, and a '
@@ -71,11 +74,13 @@ PERSON_SCHEMA = {
         '@type': 'Occupation',
         'name': 'DevOps Engineer',
         'occupationLocation': {'@type': 'City', 'name': 'Tel Aviv'},
-        'skills': 'DevOps, AWS, Azure, Kubernetes, Terraform, Terragrunt, Crossplane, Helm, Docker, CI/CD, '
-                  'GitHub Actions, GitHub Enterprise, Infrastructure as Code, Linux, Bash, Python, observability, '
-                  'Grafana, OpenTelemetry, FedRAMP compliance, on-prem infrastructure, systems integration, '
-                  'virtualization (ESXi), firewalls, networking (Layer 2/3)',
+        'skills': 'DevOps, AWS, Azure, Kubernetes, Karpenter, K3s, Terraform, Terragrunt, OpenTofu, Crossplane, Argo CD, GitOps, '
+                  'Helm, Docker, CI/CD, GitHub Actions, Actions Runner Controller (ARC), JFrog Artifactory, AWS Secrets Manager, '
+                  'OIDC, IAM, Amazon RDS, Infrastructure as Code, Linux, Bash, Python, observability, Grafana, VictoriaMetrics, '
+                  'OpenTelemetry, FedRAMP compliance, AI agents, Cloudflare, Tailscale, WireGuard, Proxmox, ZFS, '
+                  'on-prem infrastructure, systems integration, virtualization (ESXi), firewalls, networking (Layer 2/3)',
     },
+    'knowsLanguage': ['en', 'he'],
     'alumniOf': [
         {'@type': 'Organization', 'name': 'Bezeq'},
         {'@type': 'Organization', 'name': 'Communications and Computers Corps (Tikshuv)'},
@@ -106,10 +111,14 @@ PERSON_SCHEMA = {
     ],
     'knowsAbout': [
         'DevOps', 'Infrastructure', 'Cloud', 'AWS', 'Azure', 'On-premises infrastructure',
-        'Systems integration', 'Virtualization', 'Firewalls', 'Automation', 'CI/CD', 'GitHub Actions',
-        'Infrastructure as Code', 'Kubernetes', 'Terraform', 'Terragrunt', 'Crossplane', 'Helm', 'Docker',
-        'GitHub Enterprise', 'Linux', 'Bash', 'Python', 'Observability', 'Grafana', 'OpenTelemetry',
-        'FedRAMP compliance', 'Networking', 'Systems', 'Transportation', 'Urban systems',
+        'Systems integration', 'Virtualization', 'Proxmox', 'ZFS', 'Firewalls', 'Automation',
+        'CI/CD', 'GitHub Actions', 'Actions Runner Controller (ARC)', 'JFrog Artifactory',
+        'GitOps', 'Argo CD', 'Infrastructure as Code', 'Kubernetes', 'Karpenter',
+        'K3s', 'Terraform', 'Terragrunt', 'OpenTofu', 'Crossplane', 'Helm', 'Docker',
+        'AWS Secrets Manager', 'OIDC', 'IAM', 'Amazon RDS', 'Linux', 'Bash', 'Python',
+        'Observability', 'Grafana', 'VictoriaMetrics', 'OpenTelemetry', 'FedRAMP compliance',
+        'AI agents', 'Cloudflare', 'Tailscale', 'WireGuard', 'Home Assistant', 'Networking',
+        'Systems', 'Transportation', 'Urban systems',
     ],
 }
 
@@ -1009,6 +1018,68 @@ def render_sitemap() -> str:
     return '\n'.join(lines) + '\n'
 
 
+def render_llms_txt() -> str:
+    """Generate /llms.txt strictly following the llmstxt.org specification:
+    1. Single H1 title
+    2. Blockquote summary
+    3. Intermediary body context (no headings) with biography, career timeline,
+       skills, and certifications
+    4. H2 sections containing strictly formatted `- [Name](url): description`
+       link lists."""
+    skills = PERSON_SCHEMA['hasOccupation']['skills']
+    creds = ', '.join(c['name'] for c in PERSON_SCHEMA['hasCredential'])
+    socials = '\n'.join(f'- [{label}]({url}): Official {label} profile for Adir Ben David (adirbd).' for url, label, _ in SOCIALS)
+    trip_lines = '\n'.join(
+        f'- [{t["title_en"]} ({t["dates"]})]({SITE_URL}/trips/{t["slug"]}.html): {t["teaser_en"]}'
+        for t in TRIPS
+    )
+    return f"""# Adir Ben David (אדיר בן דוד · adirbd)
+
+> DevOps engineer by profession, systems thinker by nature. Based in Tel Aviv. Over a decade of hands-on infrastructure experience spanning physical Layer 2/3 networks, firewalls, and leading an on-prem systems/virtualization team to cloud infrastructure, Kubernetes, GitOps, and observability at Check Point Software Technologies.
+
+{PERSON_SCHEMA['description']}
+
+Career timeline:
+- **DevOps Engineer · Check Point Software Technologies** (Oct 2024 – Present · Tel Aviv): Cloud infrastructure on AWS (primary) and Azure as code using Terraform, Terragrunt, and Crossplane; Kubernetes cluster operations across staging and production with Karpenter, Helm, Argo CD, and self-hosted GitHub Actions runners (ARC); CI/CD pipelines, artifact flows (JFrog), and secret/identity management as code (AWS Secrets Manager, least-privilege IAM, OIDC); observability with Grafana, VictoriaMetrics, and OpenTelemetry; production on-call, incident response, and zero-downtime operations (such as RDS blue/green upgrades); AI-agent-assisted infrastructure changes and diagnostics with plan-and-review workflows; operating and maintaining infrastructure in a FedRAMP-compliant environment.
+- **COST Team Leader · Check Point Software Technologies** (Jul 2021 – Oct 2024 · Tel Aviv): Led a 6-person infrastructure and integration team operating 100+ servers, routers, switches, ESXi hosts, and firewalls in complex customer-like production validation environments.
+- **COST QA Engineer · Check Point Software Technologies** (Dec 2019 – Jul 2021 · Tel Aviv): Built physical and virtual enterprise environments end to end (servers, ESXi, networking, security stacks) and developed automation with Python, Jenkins, and Docker.
+- **Networking Engineer, Tier 2 (Strategic Business) · Bezeq** (May 2017 – Dec 2019): Configured and troubleshot multi-vendor Layer 2/3 networks (Cisco, Juniper, Check Point, Fortigate, Aruba) for telecom, finance, defense, and enterprise customers.
+- **Communication Network Technician · IDF (Tikshuv)** (Jan 2014 – Jan 2017): Managed operational Layer 2/3 networks and field troubleshooting.
+
+Technical skills and domains: {skills}.
+
+Certifications: {creds}.
+
+Contact email: adirbd@me.com
+
+## Core Pages
+
+- [Home]({SITE_URL}/): Overview of who I am, how I think about infrastructure, transportation, cities, and public economics.
+- [Work & Experience]({SITE_URL}/work.html): Full career timeline (2014–Present), DevOps and infrastructure leadership at Check Point, networking at Bezeq, certifications, and core technical stack.
+- [Personal 3-Site Infrastructure Case Study]({SITE_URL}/homelab.html): Interactive architecture and disaster-recovery walkthrough of the multi-site infrastructure I run across two homes (Tel Aviv & Rehovot) and Oracle Cloud using Proxmox, K3s, OpenTofu, Argo CD, Cloudflare Access/Tunnel, Tailscale, WireGuard, VictoriaMetrics, and Grafana.
+- [Now]({SITE_URL}/now.html): What I am building and exploring right now — AI agents and automation, smart-home engineering with Home Assistant, specialty coffee, and urban transit & public economics.
+- [Journeys]({SITE_URL}/journeys.html): Travel photo and video stories (Japan by rail, snowboarding in the Alps, Thailand north to south).
+- [Connect]({SITE_URL}/connect.html): Direct links to reach me via LinkedIn, GitHub, email, and social platforms.
+
+## Hebrew Pages (עברית)
+
+- [בית — אדיר בן דוד]({SITE_URL}/he/): עמוד הבית בעברית — על העבודה בתשתיות וב־DevOps, תחבורה, ערים וכלכלה ציבורית.
+- [עבודה וניסיון מקצועי]({SITE_URL}/he/work.html): ניסיון תעסוקתי מלא (2014–היום) ב־Check Point, בזק וחיל התקשוב, הסמכות ותחומי ליבה.
+- [תשתית אישית בשלושה אתרים]({SITE_URL}/he/homelab.html): ארכיטקטורה ושחזור מקוד של תשתית ביתית בשני בתים ובענן Oracle Cloud.
+- [עכשיו]({SITE_URL}/he/now.html): פרויקטים עם סוכני AI, בית חכם, קפה ותחבורה.
+- [מסעות]({SITE_URL}/he/journeys.html): אלבומי מסעות מתאילנד, יפן והאלפים.
+- [בואו נדבר]({SITE_URL}/he/connect.html): דרכי יצירת קשר ופרופילים ברשת.
+
+## Travel Albums
+
+{trip_lines}
+
+## External Profiles
+
+{socials}
+"""
+
+
 def replace_section(text: str, start_tag: str, end_tag: str, replacement: str, where: str = '') -> str:
     start = text.find(start_tag)
     if start == -1:
@@ -1110,6 +1181,9 @@ def main() -> int:
     sitemap = render_sitemap()
     if write_if_changed(REPO / 'sitemap.xml', sitemap):
         changed.append('sitemap.xml')
+    llms_txt = render_llms_txt()
+    if write_if_changed(REPO / 'llms.txt', llms_txt):
+        changed.append('llms.txt')
     if changed:
         print('Updated:')
         for item in changed:
